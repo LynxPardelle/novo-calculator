@@ -1,0 +1,654 @@
+/* ---------- NOVO NORDISK ALTERNATIVES CSS ---------- */
+
+/* COLORS
+  #001965   rgba(0, 25, 101, 1)   		novo
+  #939AA7   rgba(147, 154, 167, 1)		disk
+  #005AD2   rgba(0, 90, 210, 1)    	  action
+  #E2F0FA   rgba(266, 240, 250, 1)    nord
+  #DFE1E4   rgba(223, 225, 228, 1)  	stone
+  #F4F5F6   rgba(244, 245, 246, 1)  	cast
+
+ TRANSITIONS
+	transition: all .3s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+*/
+
+/* CUSTOM STYLES */
+::selection {
+  background: #005AD2;
+  color: #FFFFFF;
+}
+
+::-moz-selection {
+  background: #005AD2;
+  color: #FFFFFF;
+}
+
+html,
+body {
+	height: 100%;
+	min-height: 100%;
+}
+
+body {
+	font-family: "Noto Sans", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+	line-height: 1.2 !important;
+	overflow-x: hidden;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.d-none{
+	display: none;
+}
+
+.novo {
+	color: #001965;
+}
+
+.disk {
+	color: #939AA7;
+}
+
+.action {
+	color: #005AD2;
+}
+
+.nord {
+	color: #005AD2;
+}
+
+.cast {
+	color: #F4F5F6;
+}
+
+.rglr {
+	font-weight: 400;
+}
+
+.mdm {
+	font-weight: 500;
+}
+
+.sbld {
+	font-weight: 600;
+}
+
+.bld {
+	font-weight: 700;
+}
+
+
+.background {
+	background-color: #E2F0FA;
+	width: 100%;
+	max-width: 680px;
+	margin: 0px auto !important;
+}
+
+main.wrapper {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative;
+}
+
+
+/* 	== HEADER == */
+header.novo-header {
+	margin-bottom: 16px;	
+}
+
+.novo-header h1 {
+	font-weight: 500;
+	color: #001965;
+}
+
+.novo-header h1 span {
+	font-size: 120%;
+	font-weight: 800;
+	line-height: 1.2;
+}
+
+header.novo-header h1,
+form.form h2 {
+	text-align: center;
+	line-height: 1.2;
+}
+
+/* 	== PANELS == */
+.panel {
+	background-color: #FFFFFF;
+	width: 100%;
+	display: block;
+	border: 1px solid #E2F0FA;
+	margin: 16px auto;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	box-shadow: 0px 24px 32px -8px rgba(0, 90, 210, 0.16);
+	-webkit-box-shadow: 0px 24px 32px -8px rgba(0, 90, 210, 0.16);
+}
+
+form.form input,
+form.form select,
+form.form input[type="text"],
+form.form input[type="password"],
+form.form input[type="email"],
+form.form input[type="number"] {
+	color: #001965;
+}
+
+form.form h2 {
+	font-weight: 800;
+	color: #005AD2;
+}
+
+/*.panel-content form.form .row > * {
+	padding-right: 0px;
+	padding-left: 0px;
+}*/
+
+
+
+form.form input.form-control,
+form.form select.form-control {
+	border: solid 1px #C2D8F4;
+}
+
+form.form input.form-control:focus,
+form.form .form-control:focus-within {
+	box-shadow: 0px 0px 0px 3px rgba(0, 90, 210, 0.24);
+	-webkit-box-shadow: 0px 0px 0px 3px rgba(0, 90, 210, 0.24);
+}
+
+form.form input.form-control:focus-within {
+	z-index: 2;
+}
+
+form.form .form-floating.m-tb label {
+	color: #939AA7;
+	line-height: 1.2;
+	transition: all .3s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+}
+
+form.form .form-check-input.m-tb:checked {
+	background-color: #005AD2;
+	border-color: #005AD2;
+}
+
+form.form .form-check label a.link {
+	line-height: 1.2;
+	font-weight: 800;
+	color: #005AD2;
+	text-decoration: none !important;
+	transition: all .3s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+}
+
+form.form .form-check label a.link:hover {
+	color: #001965;
+}
+
+form.form button.btn.cta-primary {
+	line-height: 1.2;
+	font-weight: 800;
+	color: #FFFFFF;
+	background: #005AD2;
+	border-radius: 64px;
+	-webkit-border-radius: 64px;
+	box-shadow: 0px 0px 0px 0px rgba(0, 90, 210, 0);
+	-webkit-box-shadow: 0px 0px 0px 0px rgba(0, 90, 210, 0);
+	transition: all .3s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+}
+
+form.form button.btn.cta-primary:hover {
+	background: #0048A8;
+	box-shadow: 0px 8px 16px 0px rgba(0, 90, 210, 0.16);
+	-webkit-box-shadow: 0px 8px 16px 0px rgba(0, 90, 210, 0.16);
+}
+
+/* 	== PANEL - ALTERNATIVAS == */
+.panel-content .name {
+	font-weight: 500;
+	color: #939AA7;
+	line-height: 1.2;
+	text-align: right;
+	position: relative;
+	margin-bottom: 16px;
+}
+
+.panel-content .name span {
+	font-weight: 800;
+	color: #001965;
+}
+
+form.form hr {
+	width: 95%;
+	opacity: 1;
+	border-color: #C2D8F4;
+}
+
+form.form h6 {
+	line-height: 1.2;
+	font-weight: 800;
+	color: #005AD2;
+	margin-bottom: 4px;
+}
+
+form.form p {
+	line-height: 1.2;
+	font-weight: 500;
+	color: #939AA7;
+	margin-top: 4px;
+	margin-bottom: 0px;
+}
+
+form.form .input-group-text {
+	line-height: 1.2;
+	font-weight: 500;
+	color: #001965;
+	background-color:  rgba(194, 216, 244, 0.48);
+	border-color: #C2D8F4;
+}
+
+form.form .form-control:disabled {
+	background-color: rgba(194, 216, 244, 0.16);
+}
+
+form.form .col-form-label,
+form.form .form-switch label.form-check-label  {
+	line-height: 1.2;
+	color: #939AA7;
+}
+
+form.form label.form-check-label.privacy {
+	line-height: 1.2;
+	color: #001965;
+}
+
+form.form label.btn {
+	width: 100%;
+}
+
+form.form .btn-check+label.btn.btn-select {
+	color: #001965;
+	opacity: 1;
+	background-color: #FFFFFF;
+	border-color: #C2D8F4;
+}
+
+form.form .btn-check:checked+label.btn.btn-select {
+	color: #FFFFFF;
+	background-color: #005AD2;
+	border-color: #005AD2;
+}
+
+form.form .form-switch {
+	padding-right: 16px;
+	padding-left: 16px;
+	margin-bottom: 0px;
+}
+
+form.form .form-switch .form-check-input.right {
+	width: 48px;
+	height: 24px;
+	float: right;
+	margin-top: 0px;
+	vertical-align: middle;
+}
+
+form.form .input-group.resultado .input-group-text {
+	color: #FFFFFF;
+	background-color: #005AD2;
+	border-color: #005AD2;
+}
+
+form.form .input-group.resultado .form-control {
+	border-color: #005AD2;
+}
+
+form.form .txt-content {
+	font-weight: 500;
+	line-height: 1.2;
+	text-align: left;
+	color: #939AA7;
+	margin: 4px 0px;
+}
+
+form.form .txt-content span {
+	font-weight: 600;
+	color: #001965;
+}
+
+form.form .img-full {
+	max-width: 56px;
+	width: 100%;
+}
+
+form.form .col-form-label.isolated {
+	font-weight: 600;
+	text-align: center;
+	color: #001965;
+	width: 100%;
+}
+
+form.form nav.nav-tabs.inner {
+	border: none;
+}
+
+form.form nav.nav-tabs.inner button {
+	line-height: 1.2;
+	font-weight: 600;
+	text-align: center;
+	color: #001965;
+	font-weight: 500;
+	width: calc(100% - 4px);
+	border-color: #C2D8F4;
+	background-color: rgba(194, 216, 244, 0);
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+form.form nav.nav-tabs.inner button.active {
+	color: #001965;
+	background-color: rgba(194, 216, 244, 0.48);
+}
+
+form.form.alternativa .progress.costo-total {
+	height: 100%;
+	min-height: 32px;
+	background-color: #E2F0FA;
+	border-radius: 48px;
+	-webkit-border-radius: 48px;
+}
+
+form.form.alternativa .progress.costo-total .progress-bar {
+	line-height: 1.2;
+	font-weight: 600;
+	text-align: left;
+	background-color: #005AD2;
+}
+
+form.form.alternativa .progress.costo-total .progress-bar.progress-bar-striped {
+	background-image: linear-gradient(45deg,rgba(0, 25, 101, 0.16) 25%,transparent 25%,transparent 50%,rgba(0, 25, 101, 0.16) 50%,rgba(0, 25, 101, 0.16) 75%,transparent 75%,transparent);
+}
+
+
+
+/* 	== FOOTER == */
+footer.novo-footer {
+	margin-top: 16px;
+}
+
+footer.novo-footer nav.foot-nav {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	align-items: center;
+}
+
+footer.novo-footer nav.foot-nav .col {
+	display: flex;
+	justify-content: center;
+	padding: 0px;
+}
+
+footer.novo-footer nav.foot-nav .col button {
+	text-align: center;
+	color: #FFFFFF;
+	font-weight: 500;
+	background: #CCDEF6;
+	border-radius: 32px;
+	-webkit-border-radius: 32px;
+	box-shadow: 0px 0px 0px 0px rgba(0, 90, 210, 0);
+	-webkit-box-shadow: 0px 0px 0px 0px rgba(0, 90, 210, 0);
+	transition: all .3s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+}
+
+footer.novo-footer nav.foot-nav .col button.active {
+	font-size: 110%;
+	line-height: 1.2;
+	font-weight: 600;
+	background: #669CE4;
+	box-shadow: 0px 8px 16px 0px rgba(0, 90, 210, 0.16);
+	-webkit-box-shadow: 0px 8px 16px 0px rgba(0, 90, 210, 0.16);
+}
+
+
+/* DEVICES MEDIA QUERIES */
+/* -- MIN WIDTH 320PX -- */
+@media only screen and (min-width: 320px) {
+	header.novo-header {
+		padding: 8px 16px;
+	}
+
+	.novo-header h1 {
+		font-size: 14px;
+	}
+
+	.panel {
+		padding: 16px;
+	}
+
+	form.form h2 {
+		font-size: 18px;
+		margin-bottom: 16px;
+	}
+
+	.m-tb {
+		margin: 12px auto;
+	}
+
+	form.form hr {
+		margin: 32px auto 24px;
+	}
+
+	form.form input,
+	form.form select,
+	form.form input[type="text"],
+	form.form input[type="password"],
+	form.form input[type="email"],
+	form.form input[type="number"],
+	form.form button.btn.cta-primary {
+		font-size: 13px;
+	}
+
+	form.form .form-floating.m-tb label,
+	form.form .form-check label,
+	form.form .input-group-text,
+	form.form .col-form-label,
+	form.form p {
+		font-size: 12px;
+	}
+
+	form.form .form-check.m-tb {
+		margin: 12px auto 24px;
+	}
+
+	form.form button.btn.cta-primary {
+		padding: 12px 24px;
+	}
+
+	.form.form h6 {
+		font-size: 16px;
+	}
+
+	form.form label.btn {
+		font-size: 13px;
+		padding: 10px 24px;
+	}
+
+	form.form .btn-check+label.btn.btn-select {
+		font-size: 12px;
+		padding: 8px 12px;
+	}
+
+	form.form .input-group.resultado {
+		margin: 6px auto 12px;
+	}
+
+	form.form .txt-content {
+		font-size: 12px;
+	}
+
+	form.form .col-form-label.isolated {
+		padding: 8px 0px 16px;
+	}
+
+	form.form nav.nav-tabs.inner button {
+		font-size: 10px;
+		min-height: 42px;
+		padding: 8px 10px;
+		margin: 0px auto;
+	}
+
+	form.form.alternativa .progress.costo-total {
+		margin: 8px auto;
+	}
+
+	form.form .input-group.resultado .input-group-text,
+	form.form.alternativa .progress.costo-total .progress-bar {
+		font-size: 12px;
+		padding: 12px 16px;
+	}
+
+	footer.novo-footer nav.foot-nav .col button.active {
+		font-size: 110%;
+		line-height: 1.2;
+		font-weight: 600;
+		background: #669CE4;
+		box-shadow: 0px 8px 16px 0px rgba(0, 90, 210, 0.16);
+		-webkit-box-shadow: 0px 8px 16px 0px rgba(0, 90, 210, 0.16);
+	}
+
+	footer.novo-footer nav.foot-nav .col button,
+	.panel-content .name {
+		font-size: 10px;
+		padding: 10px;
+	}
+
+	footer.novo-footer nav.foot-nav .col button.active {
+		padding: 12px;
+		margin: 12px auto;
+	}
+}
+
+
+
+/* -- MIN WIDTH 1024PX -- */
+@media only screen and (min-width: 1024px) {
+	header.novo-header {
+		padding: 16px 48px;
+	}
+
+	.novo-header h1 {
+		font-size: 32px;
+	}
+
+	.panel {
+		padding: 48px;
+	}
+
+	form.form h2 {
+		font-size: 26px;
+		margin-bottom: 32px;
+	}
+
+	.m-tb {
+		margin: 24px auto;
+	}
+
+	form.form hr {
+		margin: 48px auto 32px;
+	}
+
+	form.form input,
+	form.form select,
+	form.form input[type="text"],
+	form.form input[type="password"],
+	form.form input[type="email"],
+	form.form input[type="number"],
+	form.form button.btn.cta-primary {
+		font-size: 16px;
+	}
+
+	form.form .form-floating.m-tb label,
+	form.form .form-check label,
+	form.form .input-group-text,
+	form.form .col-form-label,
+	form.form p {
+		font-size: 16px;
+	}
+
+	form.form .form-check.m-tb {
+		margin: 16px auto 32px;
+	}
+
+	form.form button.btn.cta-primary {
+		font-size: 16px;
+		padding: 12px 24px;
+	}
+
+	.form.form h6 {
+		font-size: 20px;
+	}
+
+	form.form label.btn {
+		font-size: 16px;
+		padding: 12px 32px;
+	}
+
+	form.form .col-form-label.isolated {
+		padding: 12px 0px 24px;
+	}
+
+	form.form .input-group.resultado {
+		margin: 8px auto 16px;
+	}
+
+	form.form .txt-content {
+		font-size: 16px;
+	}
+
+	form.form nav.nav-tabs.inner button {
+		font-size: 14px;
+		padding: 12px 16px;
+		margin: 0px auto;
+	}
+
+	form.form.alternativa .progress.costo-total {
+		margin: 12px auto;
+	}
+
+	form.form .input-group.resultado .input-group-text,
+	form.form.alternativa .progress.costo-total .progress-bar {
+		font-size: 16px;
+		padding: 16px 32px;
+	}
+
+	footer.novo-footer nav.foot-nav .col button,
+	.panel-content .name {
+		font-size: 12px;
+		padding: 12px;
+	}
+
+	footer.novo-footer nav.foot-nav .col button.active {
+		padding: 16px;
+		margin: 16px auto;
+	}
+
+	form.form .btn-check+label.btn.btn-select {
+		font-size: 16px;
+		padding: 12px 16px;
+	}
+}

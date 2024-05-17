@@ -1,0 +1,481 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>GLP-1 para el tratamiento de pacientes con obesidad</title>
+
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+		<link rel="icon" type="image/x-icon" href="https://www.novonordisk.com/etc.clientlibs/nncorp/components/structure/page/clientlib/resources/favicon.ico"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
+	</head>
+
+	<body class="background">
+		<main class="wrapper">
+			<header class="novo-header"><!-- Header Novo -->
+				<div class="container">
+					<h1 class=""><span>arGLP-1</span> para el tratamiento<br>de pacientes con obesidad</h1>
+				</div>
+			</header><!-- End Header Novo -->
+
+			<div class="tab-content panel" id="panels-content"><!-- Panels Content -->
+
+				<div class="panel-default tab-pane fade show active" id="registro-tab-panel" role="tabpanel" aria-labelledby="registro-tab" tabindex="0"><!-- Panel Sign-In -->
+					<form class="form signin" id="registro">
+						<h2 class="">Bienvenido</h2>
+
+						<div class="form-floating m-tb">
+							<input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre completo">
+							<label for="nombre">Ingrese su nombre completo</label>
+						</div>
+
+						<div class="form-floating m-tb">
+							<select class="form-select" id="institucion" aria-label="Default select">
+								 <option selected>Elige una opción</option>
+								 <option value="1">Público</option>
+								 <option value="2">Privado</option>
+							</select>
+							<label for="institucion">Institución</label>
+						</div>
+
+						<div class="form-floating m-tb">
+							<input type="email" class="form-control" id="correo" placeholder="Ingrese su cuenta de email">
+							<label for="correo">Ingrese su cuenta de email</label>
+						</div>
+
+						<div class="form-check m-tb">
+							<input class="form-check-input" type="checkbox" value="remember-me" id="politicas">
+							<label class="form-check-label privacy" for="CheckPrivacy">He leído y acepto las <a class="link" href="#">políticas de privacidad</a> así como el uso adecuado de mis datos.</label>
+						</div>
+						<button class="btn cta-primary w-100" type="submit" id="ingresar">Ingresar</button>
+					</form>
+				</div><!-- End Panel Sign-In -->
+
+				<div class="panel-content tab-pane fade" id="estimacionpacientes-tab-panel" role="tabpanel" aria-labelledby="estimacionpacientes-tab" tabindex="0"><!-- Panel Estimación Pacientes -->
+					<div class="name">Hola, <span id="usuario">@usurio</span></div>
+
+					<form class="form alternativa" id="alternativa">
+						<div class="form-group m-tb">
+							<h6 class="">Estimación pacientes</h6>
+						</div>
+
+						<div class="row align-items-center m-tb">
+							<div class="col-6">
+								<label for="poblacion" class="col-form-label">Población total</label>
+							</div>
+							<div class="col-6">
+								<input type="number" id="poblacion" class="form-control" aria-describedby="poblacion">
+							</div>
+						</div>
+
+						<div class="row align-items-center m-tb">
+							<div class="col-12">
+								<label class="col-form-label isolated">Pacientes con obesidad</label>
+							</div>
+
+							<div class="col-6">
+								<div class="input-group">
+									<input type="number" class="form-control" id="p-porcentaje" disabled>
+									<span class="input-group-text">%</span>
+								</div>
+							</div>
+
+							<div class="col-6">
+								<input type="number" class="form-control" id="pacientes-resultado" disabled>
+							</div>
+						</div>
+
+						<hr class="solid">
+
+						<div class="row align-items-center m-tb">
+							<div class="col-12">
+								<label class="col-form-label isolated">Seleccionar grado de obesidad</label>
+							</div>
+
+							<div class="col-4">
+								<input type="checkbox" class="btn-check" id="grado-1" value="grado-1" autocomplete="off">
+								<label class="btn btn-select" for="grado-1">Grado I</label>
+							</div>
+
+							<div class="col-4">
+								<input type="checkbox" class="btn-check" id="grado-2" value="grado-2" autocomplete="off">
+								<label class="btn btn-select" for="grado-2">Grado II</label>
+							</div>
+
+							<div class="col-4">
+								<input type="checkbox" class="btn-check" id="grado-3" value="grado-3" autocomplete="off">
+								<label class="btn btn-select" for="grado-3">Grado III</label>
+							</div>
+						</div>
+
+						<div class="row align-items-center m-tb">
+							<div class="col-12">
+								<label class="col-form-label isolated">Pacientes con obesidad <span id="grado-pacientes">@Grado</span></label>
+							</div>
+
+							<div class="col-6">
+								<div class="input-group">
+									<input type="number" class="form-control" id="pacientes-porcentaje" disabled>
+									<span class="input-group-text">%</span>
+								</div>
+							</div>
+
+							<div class="col-6">
+								<input type="number" class="form-control" id="pacientes-resultado" disabled>
+							</div>
+						</div>
+
+						<hr class="solid">
+
+						<div class="row align-items-center m-tb">
+							<div class="col-10 form-check form-switch">
+								<label class="form-check-label" for="comorbilidades">¿Considerar comorbilidades?</label>
+								<input class="form-check-input right" type="checkbox" role="switch" id="comorbilidades">
+							</div>
+							<div class="col-2"></div>
+						</div>
+
+						<div class="row align-items-center m-tb">
+							<div class="col-12">
+								<label class="col-form-label isolated">Seleccionar comorbilidades</label>
+							</div>
+
+							<div class="col-4">
+								<input type="checkbox" class="btn-check" id="hipertension" value="hipertension" autocomplete="off">
+								<label class="btn btn-select" for="hipertension">Hipertensión</label>
+							</div>
+
+							<div class="col-4">
+								<input type="checkbox" class="btn-check" id="dislipidemia" value="dislipidemia" autocomplete="off">
+								<label class="btn btn-select" for="dislipidemia">Dislipidemia</label>
+							</div>
+
+							<div class="col-4">
+								<input type="checkbox" class="btn-check" id="prediabetes" value="prediabetes" autocomplete="off">
+								<label class="btn btn-select" for="prediabetes">Prediabetes</label>
+							</div>
+						</div>
+
+						<div class="row align-items-center m-tb">
+							<div class="col-12">
+								<label class="col-form-label isolated">Pacientes con obesidad <span id="grado-pacientes">@Grado</span> + <span id="comorbilidades">@Comorbilidades</span></label>
+							</div>
+
+							<div class="col-6">
+								<div class="input-group">
+									<input type="number" class="form-control" id="pacientes-porcentaje" disabled>
+									<span class="input-group-text">%</span>
+								</div>
+							</div>
+
+							<div class="col-6">
+								<input type="number" class="form-control" id="pacientes-resultado" disabled>
+							</div>
+						</div>
+
+						<div class="row align-items-center m-tb">
+							<div class="col-12">
+								<div class="input-group resultado">
+									<span class="input-group-text">Población objetivo</span>
+									<input type="number" class="form-control" id="p-porcentaje" disabled>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div><!-- End Panel Estimación Pacientes -->
+
+				<div class="panel-content tab-pane fade" id="costotratamiento-tab-panel" role="tabpanel" aria-labelledby="costotratamiento-tab" tabindex="0"><!-- Panel Costo Tratamiento -->
+					<div class="name">Hola, <span id="usuario">@usurio</span></div>
+
+					<form class="form alternativa" id="alternativa">
+						<div class="form-group m-tb">
+							<h6 class="">Costo de tratamiento</h6>
+						</div>
+
+						<div class="row align-items-center m-tb">
+							<div class="col-3">
+								<img src="imgs/Liraglutida_Costo-tratamiento_Pluma-Img.png" class="img-full" alt="">
+							</div>
+
+							<div class="col-9">
+								<div class="txt-content">Alternativa: <span>Liraglutida</span></div>
+								<div class="txt-content">Presentación: <span>Caja de cartón con 3 plumas precargadas con 3 ml (6 mg/ml)</span></div>
+							</div>
+						</div>
+
+						<div class="row align-items-center m-tb">
+							<div class="col-4">
+								<label for="costo-lira-unitario" class="col-form-label">Costo unitario</label>
+								<div class="input-group">
+									<span class="input-group-text">$</span>
+									<input type="number" class="form-control" id="costo-lira-unitario">
+								</div>
+							</div>
+
+							<div class="col-8">
+								<label for="costo-lira-anual" class="col-form-label">Costo anual de tratamiento</label>
+								<div class="input-group">
+									<span class="input-group-text">$</span>
+									<input type="number" class="form-control" id="costo-lira-anual" disabled>
+								</div>
+							</div>
+						</div>
+
+						<hr class="solid">
+
+						<div class="row align-items-center m-tb">
+							<div class="col-3">
+								<img src="imgs/Estilo-de-vida_Costo-tratamiento_Ejercicio-Img.png" class="img-full" alt="">
+							</div>
+
+							<div class="col-9">
+								<div class="txt-content">Modificación de estilo de vida: <span>Dieta + ejercicio</span></div>
+							</div>
+						</div>
+
+						<nav class="nav nav-tabs inner align-items-center" id="modificaciones-tabs"><!-- Modificación Nav -->
+							<div class="col">
+								<button class="nav-link active" id="nutricion-tab" data-bs-toggle="tab" data-bs-target="#nutricion-tab-costos" type="button" role="tab" aria-controls="nutricion-tab" aria-selected="false">Nutrición</button>
+							</div>
+
+							<div class="col">
+								<button class="nav-link" id="enfermeria-tab" data-bs-toggle="tab" data-bs-target="#enfermeria-tab-costos" type="button" role="tab" aria-controls="enfermeria-tab" aria-selected="false">Enfermería</button>
+							</div>
+							
+							<div class="col">
+								<button class="nav-link" id="activacion-tab" data-bs-toggle="tab" data-bs-target="#activacion-tab-costos" type="button" role="tab" aria-controls="activacion-tab" aria-selected="true">Activación física</button>
+							</div>
+							
+							<div class="col">
+								<button class="nav-link" id="psicologia-tab" data-bs-toggle="tab" data-bs-target="#psicologia-tab-costos" type="button" role="tab" aria-controls="psicologia-tab" aria-selected="false">Psicología</button>
+							</div>
+						</nav><!-- End Modificación Nav -->
+
+
+						<div class="tab-content m-tb" id="estilo-content"><!-- Estilo Content -->
+
+							<div class="panel-content tab-pane fade show active" id="nutricion-tab-costos" role="tabpanel" aria-labelledby="nutricion-tab" tabindex="0">
+								<div class="row align-items-center m-tb">
+									<div class="col-12">
+										<label class="col-form-label isolated">Nutrición</label>
+									</div>
+
+									<div class="col-6">
+										<label for="frecuencia-nutri-anual" class="col-form-label">Frecuencia anual</label>
+										<input type="number" class="form-control" id="frecuencia-nutri-anual">
+									</div>
+
+									<div class="col-6">
+										<label for="costo-nutri-unitario" class="col-form-label">Costo unitario</label>
+										<div class="input-group">
+											<span class="input-group-text">$</span>
+											<input type="number" class="form-control" id="costo-nutri-unitario">
+										</div>
+									</div>
+
+									<div class="col-12">
+										<label for="costo-nutri-anual" class="col-form-label">Costo anual de tratamiento</label>
+										<div class="input-group">
+											<span class="input-group-text">$</span>
+											<input type="number" class="form-control" id="costo-nutri-anual" disabled>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-content tab-pane fade" id="enfermeria-tab-costos" role="tabpanel" aria-labelledby="enfermeria-tab" tabindex="0">
+								<div class="row align-items-center m-tb">
+									<div class="col-12">
+										<label class="col-form-label isolated">Enfermería</label>
+									</div>
+
+									<div class="col-6">
+										<label for="frecuencia-enfer-anual" class="col-form-label">Frecuencia anual</label>
+										<input type="number" class="form-control" id="frecuencia-enfer-anual">
+									</div>
+
+									<div class="col-6">
+										<label for="costo-enfer-unitario" class="col-form-label">Costo unitario</label>
+										<div class="input-group">
+											<span class="input-group-text">$</span>
+											<input type="number" class="form-control" id="costo-enfer-unitario">
+										</div>
+									</div>
+
+									<div class="col-12">
+										<label for="costo-enfer-anual" class="col-form-label">Costo anual de tratamiento</label>
+										<div class="input-group">
+											<span class="input-group-text">$</span>
+											<input type="number" class="form-control" id="costo-enfer-anual" disabled>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-content tab-pane fade" id="activacion-tab-costos" role="tabpanel" aria-labelledby="enfermeria-tab" tabindex="0">
+								<div class="row align-items-center m-tb">
+									<div class="col-12">
+										<label class="col-form-label isolated">Activación física</label>
+									</div>
+
+									<div class="col-6">
+										<label for="frecuencia-fisi-anual" class="col-form-label">Frecuencia anual</label>
+										<input type="number" class="form-control" id="frecuencia-fisi-anual">
+									</div>
+
+									<div class="col-6">
+										<label for="costo-fisi-unitario" class="col-form-label">Costo unitario</label>
+										<div class="input-group">
+											<span class="input-group-text">$</span>
+											<input type="number" class="form-control" id="costo-fisi-unitario">
+										</div>
+									</div>
+
+									<div class="col-12">
+										<label for="costo-fisi-anual" class="col-form-label">Costo anual de tratamiento</label>
+										<div class="input-group">
+											<span class="input-group-text">$</span>
+											<input type="number" class="form-control" id="costo-fisi-anual" disabled>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-content tab-pane fade" id="psicologia-tab-costos" role="tabpanel" aria-labelledby="psicologia-tab" tabindex="0">
+								<div class="row align-items-center m-tb">
+									<div class="col-12">
+										<label class="col-form-label isolated">Psicología</label>
+									</div>
+
+									<div class="col-6">
+										<label for="frecuencia-psico-anual" class="col-form-label">Frecuencia anual</label>
+										<input type="number" class="form-control" id="frecuencia-psico-anual">
+									</div>
+
+									<div class="col-6">
+										<label for="costo-psico-unitario" class="col-form-label">Costo unitario</label>
+										<div class="input-group">
+											<span class="input-group-text">$</span>
+											<input type="number" class="form-control" id="costo-psico-unitario">
+										</div>
+									</div>
+
+									<div class="col-12">
+										<label for="costo-psico-anual" class="col-form-label">Costo anual de tratamiento</label>
+										<div class="input-group">
+											<span class="input-group-text">$</span>
+											<input type="number" class="form-control" id="costo-psico-anual" disabled>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<hr class="solid">
+
+							<div class="row align-items-center m-tb">
+								<div class="col-12">
+									<label class="col-form-label isolated">Costo total anual </label>
+									<div class="input-group resultado">
+										<span class="input-group-text">$</span>
+										<input type="number" class="form-control" id="costo-total-anual" disabled>
+									</div>
+								</div>
+							</div>
+
+							<div class="row align-items-center m-tb">
+								<div class="col-12">
+									<div class="progress costo-total" role="progressbar" aria-label="Info example" aria-valuenow="96080" aria-valuemin="0" aria-valuemax="20000">
+										<div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 64%">$96,080</div>
+									</div>
+								</div>
+
+								<div class="col-12">
+									<div class="progress costo-total" role="progressbar" aria-label="Info example" aria-valuenow="141289" aria-valuemin="0" aria-valuemax="20000">
+										<div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 92%">$141,289</div>
+									</div>
+								</div>
+							</div>
+
+
+						</div><!-- End Estilo Content -->
+
+					</form>
+				</div><!-- End Panel Costo Tratamiento -->
+
+				<div class="panel-content tab-pane fade" id="costocontrol-tab-panel" role="tabpanel" aria-labelledby="costocontrol-tab" tabindex="0"><!-- Panel Estimación Pacientes -->
+					<div class="name">Hola, <span id="usuario">@usurio</span></div>
+
+					<form class="form alternativa" id="alternativa">
+						<div class="row align-items-center m-tb">
+							<div class="col-12">
+								<label class="col-form-label isolated">Meta de tratamiento</label>
+							</div>
+
+							<div class="col-4">
+								<input type="checkbox" class="btn-check" id="perdida-5" value="perdida-5" autocomplete="off">
+								<label class="btn btn-select" for="perdida-5">Pérdida de peso > 5%</label>
+							</div>
+
+							<div class="col-4">
+								<input type="checkbox" class="btn-check" id="perdida-10" value="perdida-10" autocomplete="off">
+								<label class="btn btn-select" for="perdida-10">Pérdida de peso > 10%</label>
+							</div>
+
+							<div class="col-4">
+								<input type="checkbox" class="btn-check" id="perdida-15" value="perdida-15" autocomplete="off">
+								<label class="btn btn-select" for="perdida-15">Pérdida de peso > 15%</label>
+							</div>
+						</div>
+
+						<hr class="solid">
+
+						<div class="row align-items-center m-tb">
+							<div class="col-12">
+								<div class="progress costo-total" role="progressbar" aria-label="Info example" aria-valuenow="96080" aria-valuemin="0" aria-valuemax="20000">
+									<div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 64%">$96,080</div>
+								</div>
+							</div>
+
+							<div class="col-12">
+								<div class="progress costo-total" role="progressbar" aria-label="Info example" aria-valuenow="141289" aria-valuemin="0" aria-valuemax="20000">
+									<div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 92%">$141,289</div>
+								</div>
+							</div>
+						</div>
+
+						<hr class="solid">
+					</form>
+				</div><!-- End Panel Estimación Pacientes -->
+
+			</div><!-- End Panels Content -->
+
+			<footer class="novo-footer"><!-- Footer Novo -->
+
+				<nav class="nav nav-tabs foot-nav" id="pasos-tabs"><!-- Panels Nav -->
+					<div class="col">
+						<button class="nav-link active" id="registro-tab" data-bs-toggle="tab" data-bs-target="#registro-tab-panel" type="button" role="tab" aria-controls="registro-tab" aria-selected="false">01</button>
+					</div>
+
+					<div class="col">
+						<button class="nav-link" id="estimacionpacientes-tab" data-bs-toggle="tab" data-bs-target="#estimacionpacientes-tab-panel" type="button" role="tab" aria-controls="estimacionpacientes-tab" aria-selected="false">02</button>
+					</div>
+			
+					<div class="col">
+						<button class="nav-link" id="costotratamiento-tab" data-bs-toggle="tab" data-bs-target="#costotratamiento-tab-panel" type="button" role="tab" aria-controls="costotratamiento-tab" aria-selected="true">03</button>
+					</div>
+			
+					<div class="col">
+						<button class="nav-link" id="costocontrol-tab" data-bs-toggle="tab" data-bs-target="#costocontrol-tab-panel" type="button" role="tab" aria-controls="costocontrol-tab" aria-selected="true">04</button>
+					</div>
+				</nav><!-- End Panels Nav -->
+
+			</footer><!-- End Footer Novo -->
+		</main>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	</body>
+</html>
