@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComorCardComponent } from './comor-card.component';
+import { ComorbiditiesComponent } from './comorbidities.component';
 
-describe('ComorCardComponent', () => {
-  let component: ComorCardComponent;
-  let fixture: ComponentFixture<ComorCardComponent>;
+describe('ComorbiditiesComponent', () => {
+  let component: ComorbiditiesComponent;
+  let fixture: ComponentFixture<ComorbiditiesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ComorCardComponent]
+      imports: [ComorbiditiesComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ComorCardComponent);
+    fixture = TestBed.createComponent(ComorbiditiesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
