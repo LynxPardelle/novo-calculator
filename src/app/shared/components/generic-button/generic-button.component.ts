@@ -1,12 +1,41 @@
-import { Component } from '@angular/core';
-
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SharedService } from '../../services/shared.service';
+import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 @Component({
-  selector: 'app-generic-button',
+  selector: 'generic-button',
   standalone: true,
-  imports: [],
+  imports: [SafeHtmlPipe],
   templateUrl: './generic-button.component.html',
-  styleUrl: './generic-button.component.scss'
+  styleUrl: './generic-button.component.scss',
 })
-export class GenericButtonComponent {
+export class GenericButtonComponent implements OnInit {
+  @Input() buttonId: string = '';
+  @Input() buttonInner: string = '';
+  @Input() buttonBGColor: string = '';
+  @Input() buttonTextColor: string = '';
+  @Input() buttonClass: string = '';
+  @Input() buttonType: 'rounded' | 'squared' = 'rounded';
+  @Output() buttonClick: EventEmitter<string> = new EventEmitter<string>();
+  @Output() getButtonId: EventEmitter<string> = new EventEmitter<string>();
 
+  constructor(private _sharedService: SharedService) {}
+
+  ngOnInit(): void {
+    if (this.buttonId === '') {
+      this.buttonId = this._sharedService.getRandomId(10);
+    }
+    this.getButtonId.emit(this.buttonId);
+    this.manageButtonType();
+  }
+
+  manageButtonType(): void {
+    switch (this.buttonType) {
+      case 'rounded':
+        this.buttonClass += ' bef- ';
+        break;
+      case 'squared':
+        this.buttonClass += ' bef- ';
+        break;
+    }
+  }
 }

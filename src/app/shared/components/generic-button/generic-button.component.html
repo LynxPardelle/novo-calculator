@@ -1,1 +1,7 @@
-<p>generic-button works!</p>
+<button
+  class="bef {{ buttonClass }} bef-bg-{{ buttonBGColor }} bef-text-{{
+    buttonTextColor
+  }} "
+  (click)="buttonClick.emit(buttonId)"
+  [innerHTML]="buttonInner | safeHtml"
+></button>
