@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+/* Services */
 import { SharedService } from '../../services/shared.service';
-import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
+/* Pipes */
+import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 @Component({
   selector: 'generic-button',
   standalone: true,
