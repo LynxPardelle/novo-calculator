@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { SharedModule } from '../../shared.module';
 
 @Component({
-  selector: 'app-generic-input',
+  selector: 'generic-input',
   standalone: true,
-  imports: [],
+  imports: [SharedModule],
   templateUrl: './generic-input.component.html',
   styleUrl: './generic-input.component.scss'
 })
 export class GenericInputComponent {
-
+  @Input() lableName:string = '';
+  @Input() typeName:string = '';
+  @Input() placeHolderName:string = '';
 }

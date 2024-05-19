@@ -1,6 +1,11 @@
 main{
   background: url("../../../../assets/img/background-home.jpg") center center no-repeat;
   background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: right;
 
 }
+
 
