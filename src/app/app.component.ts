@@ -5,9 +5,8 @@ import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-feat
 /*Modules*/
 import { SharedModule } from './shared/shared.module';
 /*components*/
-import { ButtonComponent } from './shared/components/button/button.component';
-import { InputComponent } from './shared/components/input/input.component';
-import { GenericButtonComponent } from './shared/components/generic-button/generic-button.component';
+import { IndexComponent } from './core/components/index/index.component';
+
 
 @Component({
   selector: 'app-root',
@@ -15,9 +14,8 @@ import { GenericButtonComponent } from './shared/components/generic-button/gener
   imports: [
     RouterOutlet,
     SharedModule,
-    ButtonComponent,
-    InputComponent,
-    GenericButtonComponent,
+    IndexComponent
+
   ],
   providers: [NgxBootstrapExpandedFeaturesService],
   templateUrl: './app.component.html',
@@ -31,8 +29,32 @@ export class AppComponent implements AfterViewInit {
     action: '#005AD2',
     novoError: '#D25A00',
   };
+  public abreviationsValues: { [key: string]: string } = {
+    fleStart: 'flex-start',
+    fleEnd: 'flex-end',
+    between: 'space-between',
+    around: 'space-around',
+
+
+  }
+
+  public abreviationsClasses: { [key: string]: string } = {
+    fleDir: 'bef-flexDirection',
+    jusCon: 'bef-justifyContent',
+    aliIte: 'bef-alignItems',
+    fonWei: 'bef-fontWeight',
+    texAli: 'bef-textAlign',
+
+
+
+
+  }
   constructor(private readonly _bef: NgxBootstrapExpandedFeaturesService) {
     this._bef.pushColors(this.colors);
+    this._bef.pushAbreviationsClasses(this.abreviationsClasses);
+    this._bef.pushAbreviationsValues(this.abreviationsValues);
+
+
   }
   ngAfterViewInit(): void {
     this.cssCreate();
