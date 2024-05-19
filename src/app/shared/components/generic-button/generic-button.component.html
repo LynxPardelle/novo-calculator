@@ -1,7 +1,7 @@
 <button
-  class="bef {{ buttonClass }} bef-bg-{{ buttonBGColor }} bef-text-{{
-    buttonTextColor
-  }} "
+  class="bef {{ buttonClass }} bef-bg-{{
+    !!disabled ? buttonBGColor + '__OPA__0_75' : buttonBGColor
+  }} bef-text-{{ buttonTextColor }} "
   (click)="buttonClick.emit(buttonId)"
   [disabled]="disabled"
   [innerHTML]="buttonInner | safeHtml"

@@ -17,6 +17,7 @@ export class GenericButtonComponent implements OnInit {
   @Input() buttonBGColor: string = '';
   @Input() buttonTextColor: string = '';
   @Input() buttonClass: string = '';
+  @Input() buttonDisabledClass: string = '';
   @Input() buttonType: 'rounded' | 'squared' = 'rounded';
   @Input() disabled: boolean = false;
   @Output() buttonClick: EventEmitter<string> = new EventEmitter<string>();
@@ -39,9 +40,11 @@ export class GenericButtonComponent implements OnInit {
     switch (this.buttonType) {
       case 'rounded':
         this.buttonClass += ' bef-r-2rem bef-p-1rem ';
+        this.buttonDisabledClass += ' bef-r-2rem bef-p-1rem ';
         break;
       case 'squared':
         this.buttonClass += ' bef-p-1rem ';
+        this.buttonDisabledClass += ' bef-p-1rem ';
         break;
     }
   }
