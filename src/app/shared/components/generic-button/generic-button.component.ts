@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
+import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 @Component({
   selector: 'generic-button',
   standalone: true,
@@ -15,10 +16,14 @@ export class GenericButtonComponent implements OnInit {
   @Input() buttonTextColor: string = '';
   @Input() buttonClass: string = '';
   @Input() buttonType: 'rounded' | 'squared' = 'rounded';
+  @Input() disabled: boolean = false;
   @Output() buttonClick: EventEmitter<string> = new EventEmitter<string>();
   @Output() getButtonId: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private _sharedService: SharedService) {}
+  constructor(
+    private _sharedService: SharedService,
+    private _befService: NgxBootstrapExpandedFeaturesService
+  ) {}
 
   ngOnInit(): void {
     if (this.buttonId === '') {
@@ -31,11 +36,15 @@ export class GenericButtonComponent implements OnInit {
   manageButtonType(): void {
     switch (this.buttonType) {
       case 'rounded':
-        this.buttonClass += ' bef- ';
+        this.buttonClass += ' bef-r-2rem bef-p-1rem ';
         break;
       case 'squared':
-        this.buttonClass += ' bef- ';
+        this.buttonClass += ' bef-p-1rem ';
         break;
     }
+  }
+
+  cssCreate(): void {
+    this._befService.cssCreate();
   }
 }

@@ -3,5 +3,6 @@
     buttonTextColor
   }} "
   (click)="buttonClick.emit(buttonId)"
+  [disabled]="disabled"
   [innerHTML]="buttonInner | safeHtml"
 ></button>
