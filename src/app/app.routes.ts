@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { IndexComponent } from './core/components/index/index.component';
 import { ErrorComponent } from './core/components/error/error.component';
+import { HomeComponent } from './core/components/home/home.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: IndexComponent,
+    component: HomeComponent,
   },
   {
     path: 'auth',

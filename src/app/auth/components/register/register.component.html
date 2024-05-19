@@ -5,28 +5,33 @@
     <h2 class="bef bef-d-flex jusCon-center bef-text-novo bef-mt-5rem">
       Ingrese sus datos y cree su cuenta
     </h2>
-  <!-- FIXME: averiguar como poder acomodar bien los inputs -->
-    <div class="bef bef-d-flex fleDir-row bef-p-3rem">
+    <!-- FIXME: averiguar como poder acomodar bien los inputs -->
+    <div class="bef bef-d-flex fleDir-row bef-p-3rem wrap-wrap">
       @for (input of inputs; track $index) {
       <generic-input
         class=""
-        [lableName]="input.lableName"
-        [typeName]="input.typeName"
-        [placeHolderName]="input.placeHolderName"
+        [labelTitle]="input.labelTitle"
+        [type]="input.type"
+        [placeholder]="input.placeholder"
       ></generic-input>
       }
     </div>
     <generic-button
-        [buttonClass]="
-          'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-35vw bef-m-0_8rem'
-        "
-        [buttonBGColor]="'novo'"
-        [buttonInner]="getHtml('register')"
-        [buttonTextColor]="'white'"
-        [buttonType]="'rounded'"
-        (buttonClick)="submit()"
-      ></generic-button>
-    <div class="bef bef-pt-1rem"><p>¿Ya tienes cuenta? <a href="#">Iniciar sesión</a></p></div>
-    <footer class="bef bef-fs-8px bef-mt-3rem">Al registrarme acepto la información de <a href="">privacidad y descargo de responsabilidad de Novo Nordisk</a></footer>
+      [buttonClass]="
+        'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-35vw bef-m-0_8rem'
+      "
+      [buttonBGColor]="'novo'"
+      [buttonInner]="getHtml('register')"
+      [buttonTextColor]="'white'"
+      [buttonType]="'rounded'"
+      (buttonClick)="submit()"
+    ></generic-button>
+    <div class="bef bef-pt-1rem">
+      <p>¿Ya tienes cuenta? <a href="#">Iniciar sesión</a></p>
+    </div>
+    <footer class="bef bef-fs-8px bef-mt-3rem">
+      Al registrarme acepto la información de
+      <a href="">privacidad y descargo de responsabilidad de Novo Nordisk</a>
+    </footer>
   </div>
 </main>

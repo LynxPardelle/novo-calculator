@@ -16,4 +16,8 @@ export class SharedService {
     }
     return result;
   }
+  checkElementValue(elementId: string, value: string): number {
+    let element: any = document.getElementById(elementId);
+    return !!element ? element[value] : 0;
+  }
 }

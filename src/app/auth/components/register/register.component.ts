@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
 import { GenericButtonComponent } from '../../../shared/components/generic-button/generic-button.component';
+import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 
 @Component({
   selector: 'app-register',
@@ -9,39 +10,44 @@ import { GenericButtonComponent } from '../../../shared/components/generic-butto
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent {
+export class RegisterComponent implements AfterViewInit {
   inputs = [
     {
-      lableName: 'Escriba su nombre',
-      typeName: 'text',
-      placeHolderName: 'Escriba su nombre',
+      labelTitle: 'Escriba su nombre',
+      type: 'text',
+      placeholder: 'Escriba su nombre',
     },
     {
-      lableName: 'Escriba su apellido',
-      typeName: 'text',
-      placeHolderName: 'Escriba su apellido',
+      labelTitle: 'Escriba su apellido',
+      type: 'text',
+      placeholder: 'Escriba su apellido',
     },
     {
-      lableName: 'Escriba su correo',
-      typeName: 'email',
-      placeHolderName: 'Escriba su correo',
+      labelTitle: 'Escriba su correo',
+      type: 'email',
+      placeholder: 'Escriba su correo',
     },
     {
-      lableName: 'Escriba su número de teléfono',
-      typeName: 'tel',
-      placeHolderName: 'Escriba su número de teléfono',
+      labelTitle: 'Escriba su número de teléfono',
+      type: 'tel',
+      placeholder: 'Escriba su número de teléfono',
     },
     {
-      lableName: 'Escriba su nombre de usuario',
-      typeName: 'text',
-      placeHolderName: 'Escriba su nombre de usuario',
+      labelTitle: 'Escriba su nombre de usuario',
+      type: 'text',
+      placeholder: 'Escriba su nombre de usuario',
     },
     {
-      lableName: 'Escriba su contraseña',
-      typeName: 'password',
-      placeHolderName: 'Escriba su contraseña',
+      labelTitle: 'Escriba su contraseña',
+      type: 'password',
+      placeholder: 'Escriba su contraseña',
     },
   ];
+  constructor(private _bef: NgxBootstrapExpandedFeaturesService) {}
+
+  ngAfterViewInit(): void {
+    this.cssCreate();
+  }
 
   getHtml(type: string) {
     switch (true) {
@@ -55,6 +61,10 @@ export class RegisterComponent {
   }
 
   submit() {
-    console.log('submit')
+    console.log('submit');
+  }
+
+  cssCreate() {
+    this._bef.cssCreate();
   }
 }

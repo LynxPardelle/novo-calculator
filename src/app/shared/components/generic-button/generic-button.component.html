@@ -4,5 +4,9 @@
   }} bef-text-{{ buttonTextColor }} "
   (click)="buttonClick.emit(buttonId)"
   [disabled]="disabled"
-  [innerHTML]="buttonInner | safeHtml"
+  [innerHTML]="buttonInner || '' | safeHtml"
+  matTooltip="{{ tooltip }}"
+  [matTooltipPosition]="tooltipPosition"
+  matTooltipClass="{{ tooltipClass }}"
+  [matTooltipDisabled]="!showTooltip"
 ></button>

@@ -1,21 +1,18 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router'; // Importa el servicio Router
-
-
 /* Modules */
 import { SharedModule } from '../../../shared/shared.module';
-
 /* Components */
 import { GenericButtonComponent } from '../../../shared/components/generic-button/generic-button.component';
 
 @Component({
-  selector: 'app-index',
+  selector: 'app-home',
   standalone: true,
   imports: [GenericButtonComponent, SharedModule],
-  templateUrl: './index.component.html',
-  styleUrl: './index.component.scss',
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss',
 })
-export class IndexComponent {
+export class HomeComponent {
   constructor(private _router: Router) {} // Inyecta el servicio Router
 
   getHtml(type: string) {
@@ -38,6 +35,4 @@ export class IndexComponent {
       this._router.navigate(['/register']); // Navega a la ruta '/register'
     }
   }
-
-
 }

@@ -4,21 +4,11 @@ import { RouterOutlet } from '@angular/router';
 import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 /*Modules*/
 import { SharedModule } from './shared/shared.module';
-/*components*/
-import { IndexComponent } from './core/components/index/index.component';
-
-
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    SharedModule,
-    IndexComponent,
-
-
-  ],
+  imports: [RouterOutlet, SharedModule],
   providers: [NgxBootstrapExpandedFeaturesService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -36,9 +26,7 @@ export class AppComponent implements AfterViewInit {
     fleEnd: 'flex-end',
     between: 'space-between',
     around: 'space-around',
-
-
-  }
+  };
 
   public abreviationsClasses: { [key: string]: string } = {
     fleDir: 'bef-flexDirection',
@@ -46,17 +34,12 @@ export class AppComponent implements AfterViewInit {
     aliIte: 'bef-alignItems',
     fonWei: 'bef-fontWeight',
     texAli: 'bef-textAlign',
-
-
-
-
-  }
+    wrap: 'bef-flexWrap',
+  };
   constructor(private readonly _bef: NgxBootstrapExpandedFeaturesService) {
     this._bef.pushColors(this.colors);
     this._bef.pushAbreviationsClasses(this.abreviationsClasses);
     this._bef.pushAbreviationsValues(this.abreviationsValues);
-
-
   }
   ngAfterViewInit(): void {
     this.cssCreate();

@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@ngneat/input-mask": "^6.1.0",
     "ng-chartjs": "^0.2.8",
     "ngx-bootstrap-expanded-features": "^1.4.3",
     "rxjs": "~7.8.0",
