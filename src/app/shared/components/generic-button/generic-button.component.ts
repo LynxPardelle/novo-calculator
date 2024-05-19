@@ -39,12 +39,10 @@ export class GenericButtonComponent implements OnInit {
   manageButtonType(): void {
     switch (this.buttonType) {
       case 'rounded':
-        this.buttonClass += ' bef-r-2rem bef-p-1rem ';
-        this.buttonDisabledClass += ' bef-r-2rem bef-p-1rem ';
+        this.buttonClass += ' bef-r-2rem bef-p-0_4rem  ';
         break;
       case 'squared':
-        this.buttonClass += ' bef-p-1rem ';
-        this.buttonDisabledClass += ' bef-p-1rem ';
+        this.buttonClass += ' bef-p-0_4rem ';
         break;
     }
   }

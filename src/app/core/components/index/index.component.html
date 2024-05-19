@@ -1,12 +1,29 @@
 <main class="bef bef-w-100vw bef-hmn-100vh">
-<div class="bef bef-w-40per bef-h-100vh bef-bg-nord bef-p-2rem bef-d-flex fleDir-column jusCon-center aliIte-center">
+<div class="bef bef-w-40per bef-h-100vh bef-bg-nord bef-p-2rem bef-d-flex fleDir-column jusCon-around aliIte-center">
   <div class="bef bef-d-flex bef-bg-white bef-p-1rem fleDir-column jusCon-center aliIte-center bef-text-novo">
     <img src="./assets/img/SVG/logo-novo-nordisk.svg" class="bef bef-w-50px " alt="logo novo nordisk">
     <h2 class="bef fonWei-BOLD texAli-center bef-pt-1rem bef-mb-0">arGLP-1</h2>
     <h3 class="bef texAli-center bef-lh-1_2rem">PARA EL TRATAMIENTO DE PACIENTES CON OBESIDAD</h3>
   </div>
-  <div>
-    <generic-button></generic-button>
+  <div class="bef bef-d-flex fleDir-column aliIte-center jusCon-around">
+    <generic-button
+    [buttonClass]="'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-15rem bef-m-0_8rem'"
+    [buttonBGColor]="'novo'"
+    [buttonInner]="getHtml('login')"
+    [buttonTextColor]="'white'"
+    [buttonType]="'rounded'"
+    (buttonClick)="goTo('login')"
+
+    ></generic-button>
+    <generic-button
+    [buttonClass]="'bef-d-flex aliIte-center jusCon-center bef-w-15rem bef-bc-novo bef-bw-0_1rem bef-m-0_8rem'"
+    [buttonBGColor]="'nord'"
+    [buttonInner]="getHtml('register')"
+    [buttonTextColor]="'novo'"
+    [buttonType]="'rounded'"
+    (buttonClick)="goTo('login')"
+
+    ></generic-button>
   </div>
 </div>
 

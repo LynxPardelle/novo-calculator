@@ -8,13 +8,15 @@ import { SharedModule } from './shared/shared.module';
 import { IndexComponent } from './core/components/index/index.component';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
     SharedModule,
-    IndexComponent
+    IndexComponent,
+
 
   ],
   providers: [NgxBootstrapExpandedFeaturesService],
@@ -59,9 +61,7 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.cssCreate();
   }
-  buttonClick(event: string): void {
-    console.log('button clicked: ', event);
-  }
+
   getButtonId(event: string): void {
     console.log('button id: ', event);
   }
