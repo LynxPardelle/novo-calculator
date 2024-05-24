@@ -1,7 +1,7 @@
-@if (['checkbox', 'radio', 'select', 'select-dropdown'].includes(type)) { @if
-(!type.includes('select') && labelTitle !== '') {
-<label class="{{ labelClasses }}">{{ labelTitle }}</label>
-}
+@if (['checkbox', 'radio', 'select', 'select-dropdown'].includes(type)) {@if
+  (!type.includes('select') && labelTitle !== '') {
+  <label class="{{ labelClasses }}">{{ labelTitle }}</label>
+  }
 <div class="{{ !type.includes('select') ? containerClasses : '' }}">
   @switch (type) { @case ('checkbox') {
   <button
@@ -18,7 +18,11 @@
     (exist)="cssCreate()"
     (click)="changeValue(!thingFather[thing])"
     [disabled]="disabled || readonly"
-  ></button>
+
+  >
+  <ng-content></ng-content>
+</button>
+
   } @case ('radio') { @for (op of options; track op.id) {
   <p class="text-center text-capitalize">{{ op.option }}</p>
   <button

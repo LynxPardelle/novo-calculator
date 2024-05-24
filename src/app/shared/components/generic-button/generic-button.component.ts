@@ -15,7 +15,7 @@ import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 export class GenericButtonComponent implements OnInit {
   @Input() buttonId?: string = '';
   @Input() buttonInner?: string = '';
-  @Input() buttonBGColor?: string = 'black';
+  @Input() buttonBGColor?: string = 'disk';
   @Input() buttonTextColor?: string = 'white';
   @Input() buttonClass?: string = '';
   @Input() buttonDisabledClass?: string = '';
@@ -53,10 +53,12 @@ export class GenericButtonComponent implements OnInit {
         this.buttonClass += ' bef-r-2rem bef-p-0_4rem  ';
         break;
       case 'squared':
-        this.buttonClass += ' bef-p-0_4rem ';
+        this.buttonClass += ' bef-p-0_6rem ';
         break;
     }
   }
+
+
 
   cssCreate(): void {
     this._befService.cssCreate();

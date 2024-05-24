@@ -16,6 +16,7 @@ import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-feat
 import { ExistDirective } from '../../directives/exist.directive';
 /* Libraries */
 import { createMask, InputMaskModule } from '@ngneat/input-mask';
+import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 @Component({
   selector: 'generic-input',
   standalone: true,
@@ -27,6 +28,8 @@ import { createMask, InputMaskModule } from '@ngneat/input-mask';
     GenericDropdownComponent,
     /* Directives */
     ExistDirective,
+    /* Pipes */
+    SafeHtmlPipe,
   ],
   templateUrl: './generic-input.component.html',
   styleUrl: './generic-input.component.scss',

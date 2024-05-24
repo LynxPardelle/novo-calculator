@@ -2,6 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
 import { GenericButtonComponent } from '../../../shared/components/generic-button/generic-button.component';
 import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +12,8 @@ import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-feat
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements AfterViewInit {
+
+
   inputs = [
     {
       labelTitle: 'Escriba su nombre',
@@ -43,7 +46,7 @@ export class RegisterComponent implements AfterViewInit {
       placeholder: 'Escriba su contraseña',
     },
   ];
-  constructor(private _bef: NgxBootstrapExpandedFeaturesService) {}
+  constructor(private _bef: NgxBootstrapExpandedFeaturesService, private _router: Router) {}
 
   ngAfterViewInit(): void {
     this.cssCreate();
@@ -59,6 +62,8 @@ export class RegisterComponent implements AfterViewInit {
         return '';
     }
   }
+
+
 
   submit() {
     console.log('submit');

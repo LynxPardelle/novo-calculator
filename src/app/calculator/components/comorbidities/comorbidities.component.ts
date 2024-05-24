@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-comorbidities',
+  selector: 'comorbidities',
   standalone: true,
   imports: [],
   templateUrl: './comorbidities.component.html',
