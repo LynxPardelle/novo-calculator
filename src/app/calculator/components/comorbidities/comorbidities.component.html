@@ -1,20 +1,81 @@
 <section>
-  <div>
-    <h2>Comorbidities</h2>
-    <div>
-      <div>
-        <label for="chronicLung">Chronic Lung Disease</label>
-        <input type="checkbox" id="chronicLung" />
+  <div class="bef bef-d-flex">
+    <h2
+      class="bef bef-color-novo bef-fontWeight-900 bef-p-0 bef-h-3rem bef-pt-1rem bef-me-3rem bef-mb-0"
+    >
+      ¿CONSIDERAR COMORBILIDADES?
+    </h2>
+    <generic-input
+      [type]="'checkbox'"
+      [checkBoxFalseClasses]="falseClasses"
+      [checkBoxTrueClasses]="trueClasses"
+    >
+      <div [innerHTML]="thumbsUp | safeHtml"></div>
+    </generic-input>
+    <generic-input
+      [type]="'checkbox'"
+      [checkBoxTrueClasses]="trueClasses"
+      [checkBoxFalseClasses]="falseClasses"
+    >
+      <div [innerHTML]="thumbsDown | safeHtml" class=""></div>
+    </generic-input>
+  </div>
+  <div
+    class="bef bef-d-flex bef-bg-white bef-h-17rem fleDir-row wrap-wrap bef-w-auto bef-p-1rem"
+  >
+    <div class="bef bef-d-flex bef-w-11rem bef-me-3_5rem">
+      <div
+        class="bef bef-d-flex jusCon-center aliIte-center bef-p-1rem bef-me-5rem bef-color-novo"
+      >
+        <h2>SELECCIONAR <br />GRADO DE OBESIDAD</h2>
       </div>
-      <div>
-        <label for="cancer">Cancer</label>
-        <input type="checkbox" id="cancer" />
-      </div>
-      <div>
-        <label for="chronicKidney">Chronic Kidney Disease</label>
-        <input type="checkbox" id="chronicKidney" />
-      </div>
+    </div>
+    <div
+      class="bef bef-d-flex fleDir-column jusCon-center bef-h-100per bef-w-13rem bef-me-4rem bef-ms-1rem"
+    >
+      <generic-input
+        [type]="'checkbox'"
+        [buttonClasses]="'bef bef-bw-0 bef-h-auto bef-w-100per bef-m-0_3rem'"
+        [checkBoxTrueClasses]="trueColors"
+        [checkBoxFalseClasses]="falseColors"
+      >
+        <div
+          [innerHTML]="hipertension | safeHtml"
+          class="bef-d-flex bef-w-100per bef-h-100per jusCon-center aliIte-center"
+        ></div>
+      </generic-input>
+      <generic-input
+        [type]="'checkbox'"
+        [buttonClasses]="'bef bef-bw-0 bef-h-100per bef-w-100per bef-m-0_3rem'"
+        [checkBoxTrueClasses]="trueColors"
+        [checkBoxFalseClasses]="falseColors"
+      >
+        <div
+          [innerHTML]="dislipidemia | safeHtml"
+          class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-center aliIte-center"
+        ></div>
+      </generic-input>
+      <generic-input
+        [type]="'checkbox'"
+        [buttonClasses]="'bef bef-bw-0 bef-h-100per bef-w-100per bef-m-0_3rem'"
+        [checkBoxTrueClasses]="trueColors"
+        [checkBoxFalseClasses]="falseColors"
+      >
+        <div
+          [innerHTML]="prediabetes | safeHtml"
+          class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-center aliIte-center"
+        ></div>
+      </generic-input>
+    </div>
+    <div class="bef bef-d-flex aliIte-center bef-flexGrow-1">
+      <div class="bef bef-d-flex fleDir-column bef-p-1rem">
+        <h2 class="bef bef-opacity-0_5">Pacientes con obesidad</h2>
+        <div class="bef bef-d-flex fleDir-row">
 
+          <div [innerHTML]="arrowRight | safeHtml"></div>
+
+        </div>
+      </div>
     </div>
   </div>
 </section>
