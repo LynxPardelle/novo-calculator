@@ -1,1 +1,48 @@
-<p>login works!</p>
+<main>
+  <section class="bef bef-bg-nord bef-w-50per bef-h-100per">
+    <div
+      class="bef bef-d-flex jusCon-center aliIte-center bef-w-auto bef-w-100per bef-h-100per"
+    >
+      <div
+        class="bef bef-d-flex fleDir-column jusCon-center bef-w-100per aliIte-center bef bef-py-10rem bef-px-4rem"
+      >
+        <div
+          [innerHTML]="logo | safeHtml"
+          class="bef bef-w-5rem bef-h-5rem bef-mb-1rem"
+        ></div>
+        <form action="" class="bef bef-d-flex fleDir-column">
+          <generic-input
+            [containerClasses]="'bef bef-w-27rem bef-h-6rem'"
+            [labelTitle]="'Nombre de usuario o correo'"
+          ></generic-input>
+          <generic-input
+          type="password"
+            [containerClasses]="'bef bef-w-27rem bef-h-6rem'"
+            [labelTitle]="'Contraseña'"
+          ></generic-input>
+          <div class="bef bef-d-flex jusCon-center">
+            <generic-button
+              [buttonClass]="
+                'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-21rem bef bef-fs-16px bef-p-0_5rem'
+              "
+              [buttonBGColor]="'novo'"
+              [buttonInner]="arrowRight"
+              [buttonTextColor]="'white'"
+              [buttonType]="'rounded'"
+              (buttonClick)="submit()"
+            ></generic-button>
+          </div>
+        </form>
+        <div class="bef bef-mt-3rem">
+          <span class="bef bef-fs-16px"
+            >¿Aun no tienes cuenta?<a
+              class="bef bef-ms-1rem bef-color-novo"
+              href="/auth/register"
+              >Registrate</a
+            ></span
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

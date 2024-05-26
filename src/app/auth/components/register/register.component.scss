@@ -1,11 +1,13 @@
-main{
-  background: url("../../../../assets/img/background-home.jpg") center center no-repeat;
-  background-size: cover;
-   height: 100vh;
-
-  display: flex;
-  justify-content: right;
-
+*{
+  box-sizing: border-box;
 }
 
-
+main {
+  background: url("../../../../assets/img/background-home.jpg") center center
+    no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}

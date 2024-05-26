@@ -3,17 +3,18 @@ import { GenericInputComponent } from '../../../shared/components/generic-input/
 import { GenericButtonComponent } from '../../../shared/components/generic-button/generic-button.component';
 import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 import { Router } from '@angular/router';
+import { SharedService } from '../../../shared/services/shared.service';
+import { SharedModule } from '../../../shared/shared.module';
+import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [GenericInputComponent, GenericButtonComponent],
+  imports: [GenericInputComponent, GenericButtonComponent, SharedModule, SafeHtmlPipe],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements AfterViewInit {
-
-
   inputs = [
     {
       labelTitle: 'Escriba su nombre',
@@ -46,21 +47,20 @@ export class RegisterComponent implements AfterViewInit {
       placeholder: 'Escriba su contraseña',
     },
   ];
-  constructor(private _bef: NgxBootstrapExpandedFeaturesService, private _router: Router) {}
+
+  constructor(
+    private _bef: NgxBootstrapExpandedFeaturesService,
+    private _router: Router,
+    private _sharedService: SharedService
+  ) {}
+
+  whiteArrowRight = `<span class="bef bef-me-0_5rem bef-color-white">Registrarse</span> ${this._sharedService.getHtml(
+    'whiteArrowRight'
+  )}`;
+  ArrowLeft = `${this._sharedService.getHtml('arrowLeft')} <a href="/" class="bef bef-textDecoration-none bef-color-novo bef-ms-1rem">Regresar</a>`;
 
   ngAfterViewInit(): void {
     this.cssCreate();
-  }
-
-  getHtml(type: string) {
-    switch (true) {
-      case type === 'register':
-        return ` <span class="bef bef-mx-7px aliIte-center">Registrarse </span>
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/></svg>
-    `;
-      default:
-        return '';
-    }
   }
 
 

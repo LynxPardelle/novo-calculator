@@ -1,58 +1,52 @@
 <main>
-  <div
-    class="bef bef-w-75per bef-bg-nord bef-p-1rem bef-d-flex fleDir-column aliIte-center jusCon-between"
-  >
+  <div class="bef bef-w-85per bef-h-100per bef-bg-nord">
 
-
-      <a href="" class="bef bef-color-novo bef-textDecoration-none bef-d-flex aliIte-center bef-w-75vw">
-        <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="24px"
-        viewBox="0 -960 960 960"
-        width="24px"
-        fill="#"
-        class="bef bef-color-novo bef-me-1rem"
+      <div
+        class="bef  bef-h-100per bef-p-2rem bef-d-flex jusCon-between fleDir-column aliIte-center"
       >
-        <path
-          d="M400-240 160-480l240-240 56 58-142 142h486v80H314l142 142-56 58Z"
-        />
-      </svg>
-        Regresar</a
-      >
+        <div
+        [innerHTML]="ArrowLeft | safeHtml"
+        class="bef bef-d-flex aliIte-center jusCon-flexStart bef-h-auto bef-w-100per"
+        ></div>
+        <h2 class="bef bef-d-flex jusCon-center bef-fs-2rem bef-mt-10rem bef-text-novo">
+          Ingrese sus datos y cree su cuenta
+        </h2>
+        <form action="">
+          <div
+            class="bef bef-d-flex bef-my-2rem bef-hmx-75per jusCon-center bef-w-auto bef-px-1rem wrap-wrap "
+          >
+            @for (input of inputs; track $index) {
+            <generic-input
+              [labelClasses]="'bef-fontSize-small'"
+              [inputClasses]="'bef bef-m-0'"
+              [containerClasses]="'bef bef-w-30rem bef-h-5rem bef-mx-1rem'"
+              [labelTitle]="input.labelTitle"
+              [type]="input.type"
+              [placeholder]="input.placeholder"
+            ></generic-input>
+            }
+          </div>
+          <div class="bef bef-d-flex jusCon-center bef-my-2rem">
+            <generic-button
+              [buttonClass]="
+                'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-21rem bef bef-fs-16px bef-p-0_5rem'
+              "
+              [buttonBGColor]="'novo'"
+              [buttonInner]="whiteArrowRight"
+              [buttonTextColor]="'white'"
+              [buttonType]="'rounded'"
+              (buttonClick)="submit()"
+            ></generic-button>
+          </div>
+        </form>
+        <div class="bef bef-mb-16rem">
+          <span>¿Ya tienes cuenta? <a href="/login" >Iniciar sesión</a></span>
+            </div>
+        <footer class="bef bef-fs-8px">
+          Al registrarme acepto la información de
+          <a href="">privacidad y descargo de responsabilidad de Novo Nordisk</a>
+        </footer>
+      </div>
 
-    <h2 class="bef bef-d-flex jusCon-center bef-text-novo bef-mt-5rem">
-      Ingrese sus datos y cree su cuenta
-    </h2>
-    <!-- FIXME: averiguar como poder acomodar bien los inputs -->
-    <div
-      class="bef bef-d-flex fleDir-row bef-py-3rem jusCon-center bef-px-1rem wrap-wrap bef-flex-0__1__auto bef-gap-0__7_5rem"
-    >
-      @for (input of inputs; track $index) {
-      <generic-input
-        [labelClasses]="'bef-fontSize-small'"
-        [containerClasses]="'bef bef-w-16rem bef-m-0_2rem'"
-        [labelTitle]="input.labelTitle"
-        [type]="input.type"
-        [placeholder]="input.placeholder"
-      ></generic-input>
-      }
-    </div>
-    <generic-button
-      [buttonClass]="
-        'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-35vw bef-m-0_8rem bef-mt-3rem'
-      "
-      [buttonBGColor]="'novo'"
-      [buttonInner]="getHtml('register')"
-      [buttonTextColor]="'white'"
-      [buttonType]="'rounded'"
-      (buttonClick)="submit()"
-    ></generic-button>
-    <div class="bef bef-pt-1rem">
-      <p>¿Ya tienes cuenta? <a href="/login" >Iniciar sesión</a></p>
-        </div>
-    <footer class="bef bef-fs-8px bef-mt-5rem">
-      Al registrarme acepto la información de
-      <a href="">privacidad y descargo de responsabilidad de Novo Nordisk</a>
-    </footer>
   </div>
 </main>

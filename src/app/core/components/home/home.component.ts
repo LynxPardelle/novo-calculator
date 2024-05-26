@@ -4,29 +4,23 @@ import { Router } from '@angular/router'; // Importa el servicio Router
 import { SharedModule } from '../../../shared/shared.module';
 /* Components */
 import { GenericButtonComponent } from '../../../shared/components/generic-button/generic-button.component';
+import { SharedService } from '../../../shared/services/shared.service';
+import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [GenericButtonComponent, SharedModule],
+  imports: [GenericButtonComponent, SharedModule, SafeHtmlPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  constructor(private _router: Router) {} // Inyecta el servicio Router
+  constructor(private _router: Router, private _sharedService: SharedService) {} // Inyecta el servicio Router
 
-  getHtml(type: string) {
-    switch (true) {
-      case type === 'login':
-        return ` <span class="bef bef-mx-7px aliIte-center">Iniciar sesión </span>
-      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/></svg>
-      `;
-      case type === 'register':
-        return ` <span>Registrarse</span> `;
-      default:
-        return '';
-    }
-  }
+  whiteArrowRight = `<span class="bef bef-me-0_5rem">Iniciar sesión</span> ${this._sharedService.getHtml(
+    'whiteArrowRight'
+  )}`;
+  logo = this._sharedService.getHtml('logo');
 
   goTo(place: string) {
     if (place === 'login') {
