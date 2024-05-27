@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 /* Modules */
 import { SharedModule } from '../../shared.module';
 /* Components */
@@ -23,6 +24,7 @@ import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
   imports: [
     SharedModule,
     InputMaskModule,
+    NgTemplateOutlet,
     /* Components */
     GenericButtonComponent,
     GenericDropdownComponent,

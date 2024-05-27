@@ -1,0 +1,32 @@
+<section
+  class="bef bef-mb-2rem bef-d-flex fleDir-row wrap-wrap bef-w-auto bef-p-1rem"
+>
+  <h3
+    class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto"
+  >
+    COSTO DE <wbr />TRATAMIENTO
+  </h3>
+  <div class="bef bef-d-flex jusCon-center aliIte-stretch">
+    <div>
+      @for (thermo of [thermo1, thermo2, thermo1]; track thermo) {
+      <div
+        class="bef bef-w-14rem bef-py-1rem"
+        [innerHTML]="thermo | safeHtml"
+      ></div>
+      }
+    </div>
+    <div class="bef bef-w-4rem bef-bg-accentNord"></div>
+  </div>
+  <div class="bef bef-w-40per">
+    @for (treatmentTitle of treatmentTitles; track treatmentTitle.title) {
+    <h3 class="bef bef-d-flex jusCon-between aliCon-stretch bef-text-novo">
+      <span class="bef bef-w-33per bef-fontWeight-400">{{
+        treatmentTitle.title
+      }}</span>
+      <span class="bef bef-w-66per bef-fw-BOLD">{{
+        treatmentTitle.description
+      }}</span>
+    </h3>
+    }
+  </div>
+</section>

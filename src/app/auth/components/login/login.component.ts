@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
-import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
-import { SharedService } from '../../../shared/services/shared.service';
+import { Router } from '@angular/router';
+/* Modules */
 import { SharedModule } from '../../../shared/shared.module';
-import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
+/* Services */
+import { SharedService } from '../../../shared/services/shared.service';
+/* Componentes */
+import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
 import { GenericButtonComponent } from '../../../shared/components/generic-button/generic-button.component';
+/* Pipes */
+import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +23,7 @@ import { GenericButtonComponent } from '../../../shared/components/generic-butto
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  constructor(private _sharedService: SharedService) {}
+  constructor(private _router: Router, private _sharedService: SharedService) {}
 
   logo = this._sharedService.getHtml('logo');
   arrowRight = `<span class="bef bef-me-0_5rem">Iniciar sesión</span> ${this._sharedService.getHtml(
@@ -27,5 +32,6 @@ export class LoginComponent {
 
   submit() {
     console.log('submit');
+    this._router.navigate(['/calculator']);
   }
 }

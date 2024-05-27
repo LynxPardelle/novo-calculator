@@ -18,6 +18,7 @@ export class AppComponent implements AfterViewInit {
     novo: '#001965',
     disk: '#939AA7',
     nord: '#E2F0FA',
+    accentNord: '#c1ecdc',
     action: '#005AD2',
     novoError: '#D25A00',
   };

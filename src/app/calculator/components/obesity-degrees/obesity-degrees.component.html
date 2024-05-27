@@ -1,0 +1,61 @@
+<section
+  class="bef bef-mb-2rem bef-d-flex jusCon-fleEnd bef-w-auto bef-p-1rem bef-me-6_5rem"
+>
+  <div class="bef bef-d-flex fleDir-column bef-w-11rem bef-me-4rem bef-ms-1rem">
+    <generic-input
+      [type]="'checkbox'"
+      [buttonClasses]="'bef bef-bw-0 bef-w-100per'"
+      [checkBoxTrueClasses]="trueClasses"
+      [checkBoxFalseClasses]="falseClasses"
+    >
+      <div
+        [innerHTML]="grado1 | safeHtml"
+        class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-fleStart"
+      ></div>
+    </generic-input>
+    <generic-input
+      [type]="'checkbox'"
+      [buttonClasses]="'bef bef-bw-0 bef-w-100per'"
+      [checkBoxTrueClasses]="trueClasses"
+      [checkBoxFalseClasses]="falseClasses"
+    >
+      <div
+        [innerHTML]="grado2 | safeHtml"
+        class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-fleStart"
+      ></div>
+    </generic-input>
+    <generic-input
+      [type]="'checkbox'"
+      [buttonClasses]="'bef bef-bw-0 bef-w-100per'"
+      [checkBoxTrueClasses]="trueClasses"
+      [checkBoxFalseClasses]="falseClasses"
+    >
+      <div
+        [innerHTML]="grado3 | safeHtml"
+        class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-fleStart"
+      ></div>
+    </generic-input>
+  </div>
+  <div class="bef bef-d-flex aliIte-center">
+    <div class="bef bef-d-flex fleDir-column bef-p-1rem">
+      <h2 class="bef bef-opacity-0_5">Pacientes con obesidad</h2>
+      <div class="bef bef-d-flex fleDir-row">
+        <generic-span
+          [filledClasses]="filledClasses"
+          [emptyClasses]="emptyClasses"
+          [textClasses]="'bef bef-color-novo'"
+          [info]="'65478'"
+        >
+        </generic-span>
+        <div [innerHTML]="arrowRight | safeHtml"></div>
+        <generic-span
+          [filledClasses]="filledClasses"
+          [emptyClasses]="emptyClasses"
+          [textClasses]="'bef bef-color-novo'"
+          [info]="'7894750'"
+        >
+        </generic-span>
+      </div>
+    </div>
+  </div>
+</section>

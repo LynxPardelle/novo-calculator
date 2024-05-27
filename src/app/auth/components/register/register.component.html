@@ -1,52 +1,52 @@
 <main>
   <div class="bef bef-w-85per bef-h-100per bef-bg-nord">
-
+    <div
+      class="bef bef-h-100per bef-p-2rem bef-d-flex jusCon-between fleDir-column aliIte-center"
+    >
       <div
-        class="bef  bef-h-100per bef-p-2rem bef-d-flex jusCon-between fleDir-column aliIte-center"
-      >
-        <div
         [innerHTML]="ArrowLeft | safeHtml"
         class="bef bef-d-flex aliIte-center jusCon-flexStart bef-h-auto bef-w-100per"
-        ></div>
-        <h2 class="bef bef-d-flex jusCon-center bef-fs-2rem bef-mt-10rem bef-text-novo">
-          Ingrese sus datos y cree su cuenta
-        </h2>
-        <form action="">
-          <div
-            class="bef bef-d-flex bef-my-2rem bef-hmx-75per jusCon-center bef-w-auto bef-px-1rem wrap-wrap "
-          >
-            @for (input of inputs; track $index) {
-            <generic-input
-              [labelClasses]="'bef-fontSize-small'"
-              [inputClasses]="'bef bef-m-0'"
-              [containerClasses]="'bef bef-w-30rem bef-h-5rem bef-mx-1rem'"
-              [labelTitle]="input.labelTitle"
-              [type]="input.type"
-              [placeholder]="input.placeholder"
-            ></generic-input>
-            }
-          </div>
-          <div class="bef bef-d-flex jusCon-center bef-my-2rem">
-            <generic-button
-              [buttonClass]="
-                'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-21rem bef bef-fs-16px bef-p-0_5rem'
-              "
-              [buttonBGColor]="'novo'"
-              [buttonInner]="whiteArrowRight"
-              [buttonTextColor]="'white'"
-              [buttonType]="'rounded'"
-              (buttonClick)="submit()"
-            ></generic-button>
-          </div>
-        </form>
-        <div class="bef bef-mb-16rem">
-          <span>¿Ya tienes cuenta? <a href="/login" >Iniciar sesión</a></span>
-            </div>
-        <footer class="bef bef-fs-8px">
-          Al registrarme acepto la información de
-          <a href="">privacidad y descargo de responsabilidad de Novo Nordisk</a>
-        </footer>
+      ></div>
+      <h2
+        class="bef bef-d-flex jusCon-center bef-fs-2rem bef-mt-10rem bef-text-novo bef-fw-BOLD"
+      >
+        Ingrese sus datos y cree su cuenta
+      </h2>
+      <form action="">
+        <div
+          class="bef bef-d-flex bef-my-2rem bef-hmx-75per jusCon-center bef-w-auto bef-px-1rem wrap-wrap"
+        >
+          @for (input of inputs; track $index) {
+          <generic-input
+            [labelClasses]="'bef-fontSize-small'"
+            [inputClasses]="'bef bef-m-0'"
+            [containerClasses]="'bef bef-w-30rem bef-h-5rem bef-mx-1rem'"
+            [labelTitle]="input.labelTitle"
+            [type]="input.type"
+            [placeholder]="input.placeholder"
+          ></generic-input>
+          }
+        </div>
+        <div class="bef bef-d-flex jusCon-center bef-my-2rem">
+          <generic-button
+            [buttonClass]="
+              'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-21rem bef bef-fs-16px bef-p-0_5rem'
+            "
+            [buttonBGColor]="'novo'"
+            [buttonInner]="whiteArrowRight"
+            [buttonTextColor]="'white'"
+            [buttonType]="'rounded'"
+            (buttonClick)="submit()"
+          ></generic-button>
+        </div>
+      </form>
+      <div class="bef bef-mb-16rem">
+        <span>¿Ya tienes cuenta? <a href="/login">Iniciar sesión</a></span>
       </div>
-
+      <footer class="bef bef-fs-8px">
+        Al registrarme acepto la información de
+        <a href="">privacidad y descargo de responsabilidad de Novo Nordisk</a>
+      </footer>
+    </div>
   </div>
 </main>

@@ -1,113 +1,17 @@
-<main>
-  <div
-    class="bef bef-p-2rem bef-bg-nord bef-h-100per bef-w-87vw"
-    style="box-sizing: border-box"
-  >
-    <section class="bef bef-mb-2rem">
-      <div class="bef bef-h-2rem">
-        <a
-          href=""
-          class="bef bef-color-novo bef-px-1rem bef-textDecoration-none bef-d-flex aliIte-center bef-h-100per"
-        >
-          <div [innerHTML]="arrowLeft | safeHtml"></div>
-          Regresar</a
-        >
-      </div>
-      <div class="bef bef-d-flex fleDir-row wrap-wrap bef-w-auto bef-p-1rem">
-        <h2
-          class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto"
-        >
-          Estimación <br />
-          de Pacientes
-        </h2>
-        <div
-          class="bef bef-h-14rem bef-w-14rem bef-pt-1rem bef-me-3rem"
-          [innerHTML]="fatDouble | safeHtml"
-        ></div>
-        <div class="bef bef-d-flex fleDir-column bef-p-1rem bef-flexGrow-1">
-          <generic-input
-            [type]="'number'"
-            [labelTitle]="'población total'"
-          ></generic-input>
-          <h2 class="bef bef-opacity-0_5">Pacientes con obesidad</h2>
-          <div class="bef bef-d-flex fleDir-row bef-flexGrow-1">
-            <generic-span
-              [filledClasses]="filledClasses"
-              [emptyClasses]="emptyClasses"
-              [textClasses]="'bef bef-color-novo'"
-              [info]="'7894'"> </generic-span>
-            <div [innerHTML]="arrowRight | safeHtml"></div>
-            <generic-span
-              [filledClasses]="filledClasses"
-              [emptyClasses]="emptyClasses"
-              [textClasses]="'bef bef-color-novo'"
-              [info]="'3335654'"> </generic-span>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="bef bef-mb-2rem">
-      <div
-        class="bef bef-d-flex jusCon-fleEnd bef-w-auto bef-p-1rem bef-me-6_5rem"
+<main class="bef bef-pb-5rem">
+  <div class="bef bef-p-2rem bef-bg-nord bef-h-100per bef-w-87vw bef-mb-5rem">
+    <div class="bef bef-h-2rem">
+      <a
+        href=""
+        class="bef bef-color-novo bef-px-1rem bef-textDecoration-none bef-d-flex aliIte-center bef-h-100per"
       >
-        <div
-          class="bef bef-d-flex fleDir-column bef-w-11rem bef-me-4rem bef-ms-1rem"
-        >
-          <generic-input
-            [type]="'checkbox'"
-            [buttonClasses]="'bef bef-bw-0 bef-w-100per'"
-            [checkBoxTrueClasses]="trueClasses"
-            [checkBoxFalseClasses]="falseClasses"
-          >
-            <div
-              [innerHTML]="grado1 | safeHtml"
-              class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-fleStart"
-            ></div>
-          </generic-input>
-          <generic-input
-            [type]="'checkbox'"
-            [buttonClasses]="'bef bef-bw-0 bef-w-100per'"
-            [checkBoxTrueClasses]="trueClasses"
-            [checkBoxFalseClasses]="falseClasses"
-          >
-            <div
-              [innerHTML]="grado2 | safeHtml"
-              class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-fleStart"
-            ></div>
-          </generic-input>
-          <generic-input
-            [type]="'checkbox'"
-            [buttonClasses]="'bef bef-bw-0 bef-w-100per'"
-            [checkBoxTrueClasses]="trueClasses"
-            [checkBoxFalseClasses]="falseClasses"
-          >
-            <div
-              [innerHTML]="grado3 | safeHtml"
-              class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-fleStart"
-            ></div>
-          </generic-input>
-        </div>
-        <div class="bef bef-d-flex aliIte-center">
-          <div class="bef bef-d-flex fleDir-column bef-p-1rem">
-            <h2 class="bef bef-opacity-0_5">Pacientes con obesidad</h2>
-            <div class="bef bef-d-flex fleDir-row">
-              <generic-span
-              [filledClasses]="filledClasses"
-              [emptyClasses]="emptyClasses"
-              [textClasses]="'bef bef-color-novo'"
-              [info]="'65478'"> </generic-span>
-              <div [innerHTML]="arrowRight | safeHtml"></div>
-              <generic-span
-              [filledClasses]="filledClasses"
-              [emptyClasses]="emptyClasses"
-              [textClasses]="'bef bef-color-novo'"
-              [info]="'7894750'"> </generic-span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+        <div [innerHTML]="arrowLeft | safeHtml"></div>
+        Regresar</a
+      >
+    </div>
+    <patient-estimation> </patient-estimation>
+    <obesity-degrees> </obesity-degrees>
     <comorbidities> </comorbidities>
+    <treatment-cost> </treatment-cost>
   </div>
 </main>

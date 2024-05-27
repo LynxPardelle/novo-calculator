@@ -1,16 +1,25 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { Router } from '@angular/router';
+/* Modules */
+import { SharedModule } from '../../../shared/shared.module';
+/* Services */
+import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
+import { SharedService } from '../../../shared/services/shared.service';
+/* Componentes */
 import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
 import { GenericButtonComponent } from '../../../shared/components/generic-button/generic-button.component';
-import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
-import { Router } from '@angular/router';
-import { SharedService } from '../../../shared/services/shared.service';
-import { SharedModule } from '../../../shared/shared.module';
+/* Pipes */
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [GenericInputComponent, GenericButtonComponent, SharedModule, SafeHtmlPipe],
+  imports: [
+    SharedModule,
+    GenericInputComponent,
+    GenericButtonComponent,
+    SafeHtmlPipe,
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
@@ -57,16 +66,17 @@ export class RegisterComponent implements AfterViewInit {
   whiteArrowRight = `<span class="bef bef-me-0_5rem bef-color-white">Registrarse</span> ${this._sharedService.getHtml(
     'whiteArrowRight'
   )}`;
-  ArrowLeft = `${this._sharedService.getHtml('arrowLeft')} <a href="/" class="bef bef-textDecoration-none bef-color-novo bef-ms-1rem">Regresar</a>`;
+  ArrowLeft = `${this._sharedService.getHtml(
+    'arrowLeft'
+  )} <a href="/" class="bef bef-textDecoration-none bef-color-novo bef-ms-1rem">Regresar</a>`;
 
   ngAfterViewInit(): void {
     this.cssCreate();
   }
 
-
-
   submit() {
     console.log('submit');
+    this._router.navigate(['/calculator']);
   }
 
   cssCreate() {

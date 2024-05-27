@@ -1,0 +1,38 @@
+<section
+  class="bef bef-mb-2rem bef-d-flex fleDir-row wrap-wrap bef-w-auto bef-p-1rem"
+>
+  <h2
+    class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto"
+  >
+    Estimación <br />
+    de Pacientes
+  </h2>
+  <div
+    class="bef bef-h-14rem bef-w-14rem bef-pt-1rem bef-me-3rem"
+    [innerHTML]="fatDouble | safeHtml"
+  ></div>
+  <div class="bef bef-d-flex fleDir-column bef-p-1rem bef-flexGrow-1">
+    <generic-input
+      [type]="'number'"
+      [labelTitle]="'población total'"
+    ></generic-input>
+    <h2 class="bef bef-opacity-0_5">Pacientes con obesidad</h2>
+    <div class="bef bef-d-flex fleDir-row bef-flexGrow-1">
+      <generic-span
+        [filledClasses]="filledClasses"
+        [emptyClasses]="emptyClasses"
+        [textClasses]="'bef bef-color-novo'"
+        [info]="'7894'"
+      >
+      </generic-span>
+      <div [innerHTML]="arrowRight | safeHtml"></div>
+      <generic-span
+        [filledClasses]="filledClasses"
+        [emptyClasses]="emptyClasses"
+        [textClasses]="'bef bef-color-novo'"
+        [info]="'3335654'"
+      >
+      </generic-span>
+    </div>
+  </div>
+</section>
