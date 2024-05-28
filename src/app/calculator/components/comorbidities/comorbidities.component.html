@@ -21,58 +21,57 @@
     </generic-input>
   </div>
   <div
-    class="bef bef-d-flex bef-bg-white bef-h-17rem fleDir-row wrap-wrap bef-w-auto bef-p-1rem"
+    class="bef bef-d-flex bef-bg-white bef-h-17rem fleDir-row bef-w-auto bef-p-1rem"
   >
-    <div
-      class="bef bef-d-flex fleDir-column jusCon-center aliIte-center bef-wmn-11rem bef-me-3_5rem"
+    <h2
+      class="bef bef-d-flex jusCon-fleStart aliIte-center bef-w-20per bef-p-1rem bef-me-1rem bef-color-novo"
     >
-      <h2 class="bef bef-p-1rem bef-me-5rem bef-color-novo">
-        SELECCIONAR <br />GRADO DE OBESIDAD
-      </h2>
-    </div>
+      SELECCIONAR <br />GRADO DE OBESIDAD
+    </h2>
+
     <div
       class="bef bef-d-flex fleDir-column jusCon-center bef-h-100per bef-w-13rem bef-me-4rem bef-ms-1rem"
     >
+      @for (comorbiditie of [hipertension, dislipidemia, prediabetes]; track
+      comorbiditie; let i = $index) {
       <generic-input
         [type]="'checkbox'"
         [buttonClasses]="'bef bef-bw-0 bef-h-auto bef-w-100per bef-m-0_3rem'"
         [checkBoxTrueClasses]="trueColors"
         [checkBoxFalseClasses]="falseColors"
+        [thingFather]="comorbidities"
+        thing="{{ comorbiditiesName[i] }}"
+        (changesInput)="comorbiditiesClick($event)"
       >
         <div
-          [innerHTML]="hipertension | safeHtml"
+          [innerHTML]="comorbiditie | safeHtml"
           class="bef-d-flex bef-w-100per bef-h-100per jusCon-center aliIte-center"
         ></div>
       </generic-input>
-      <generic-input
-        [type]="'checkbox'"
-        [buttonClasses]="'bef bef-bw-0 bef-h-100per bef-w-100per bef-m-0_3rem'"
-        [checkBoxTrueClasses]="trueColors"
-        [checkBoxFalseClasses]="falseColors"
-      >
-        <div
-          [innerHTML]="dislipidemia | safeHtml"
-          class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-center aliIte-center"
-        ></div>
-      </generic-input>
-      <generic-input
-        [type]="'checkbox'"
-        [buttonClasses]="'bef bef-bw-0 bef-h-100per bef-w-100per bef-m-0_3rem'"
-        [checkBoxTrueClasses]="trueColors"
-        [checkBoxFalseClasses]="falseColors"
-      >
-        <div
-          [innerHTML]="prediabetes | safeHtml"
-          class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-center aliIte-center"
-        ></div>
-      </generic-input>
+      }
     </div>
-    <div class="bef bef-d-flex aliIte-center bef-flexGrow-1">
-      <div class="bef bef-d-flex fleDir-column bef-p-1rem">
-        <h2 class="bef bef-opacity-0_5">Pacientes con obesidad</h2>
-        <div class="bef bef-d-flex fleDir-row">
-          <div [innerHTML]="arrowRight | safeHtml"></div>
-        </div>
+
+    <div class="bef bef-d-flex fleDir-column bef-p-1rem bef-w-50per">
+      <h2 class="bef bef-hmn-4rem">
+        <span class="bef bef-opacity-0_5">Pacientes con obesidad </span>
+        <span class="bef bef-borderBottom-1px__solid__novo bef-text-novo">{{ comorbiditiesText }}</span>
+      </h2>
+      <div class="bef bef-d-flex fleDir-row">
+        <generic-span
+          [filledClasses]="filledClasses"
+          [emptyClasses]="emptyClasses"
+          [textClasses]="'bef bef-color-novo'"
+          [info]="'65478'"
+        >
+        </generic-span>
+        <div [innerHTML]="arrowRight | safeHtml"></div>
+        <generic-span
+          [filledClasses]="filledClasses"
+          [emptyClasses]="emptyClasses"
+          [textClasses]="'bef bef-color-novo'"
+          [info]="'65478'"
+        >
+        </generic-span>
       </div>
     </div>
   </div>

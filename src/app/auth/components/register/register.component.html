@@ -15,7 +15,7 @@
       <div
         class="bef bef-d-flex bef-my-2rem bef-hmx-75per jusCon-center bef-w-100per bef-px-1rem wrap-wrap"
       >
-        @for (input of inputs; track $index) {
+        @for (input of inputs; track input ;let i = $index) {
         <generic-input
           class="bef bef-w-50per"
           [labelClasses]="'bef-fontSize-small'"
@@ -27,6 +27,9 @@
           [type]="input.type"
           [placeholder]="input.placeholder"
           [thingFather]="registerForm"
+          [thing]="inputs[i].thing"
+          (changesInput)="recoverChangesFromInput($event)"
+          [spans]="input.spans"
         ></generic-input>
         }
       </div>

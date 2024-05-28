@@ -33,40 +33,78 @@ export class RegisterComponent implements AfterViewInit {
     password: '',
     locked: true,
   };
+  public spanClass: string = ' bef-d-block bef-w-50per bef-ms-1rem bef-color-novoError bef-mb-1rem';
+
   inputs = [
     {
       labelTitle: 'Escriba su nombre',
       type: 'text',
       placeholder: 'Escriba su nombre',
       thing: 'name',
-      spans: [],
+      spans: [{
+        text: 'Su nombre es requerido',
+        evalThing: 'required',
+        spanClass: this.spanClass
+      }],
     },
     {
       labelTitle: 'Escriba su apellido',
       type: 'text',
       placeholder: 'Escriba su apellido',
+      thing: 'lastName',
+      spans: [{
+        text: 'Su apellido es requerido',
+        evalThing: 'required',
+        spanClass: this.spanClass
+      }],
     },
     {
       labelTitle: 'Escriba su correo',
       type: 'email',
       placeholder: 'Escriba su correo',
+      thing: 'email',
+      spans: [{
+        text: 'Su email es requerido',
+        evalThing: 'required',
+        spanClass: this.spanClass
+      }],
     },
     {
       labelTitle: 'Escriba su número de teléfono',
       type: 'tel',
       placeholder: 'Escriba su número de teléfono',
+      thing: 'tel',
+      spans: [{
+        text: 'Su teléfono es requerido',
+        evalThing: 'required',
+        spanClass: this.spanClass
+      }],
     },
     {
       labelTitle: 'Escriba su nombre de usuario',
       type: 'text',
       placeholder: 'Escriba su nombre de usuario',
+      thing: 'username',
+      spans: [{
+        text: 'Su nombre de usuario es requerido',
+        evalThing: 'required',
+        spanClass: this.spanClass
+      }],
     },
     {
       labelTitle: 'Escriba su contraseña',
       type: 'password',
       placeholder: 'Escriba su contraseña',
+      thing: 'password',
+      spans: [{
+        text: 'Su contraseña es requerida',
+        evalThing: 'required',
+        spanClass: this.spanClass
+      }],
     },
   ];
+
+
 
   constructor(
     private _bef: NgxBootstrapExpandedFeaturesService,
@@ -83,6 +121,12 @@ export class RegisterComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.cssCreate();
+  }
+
+  recoverChangesFromInput(event: any) {
+    console.log('recoverChangesFromInput', event);
+    this.registerForm = event;
+    console.log('loginCredentials', this.registerForm);
   }
 
   submit() {
