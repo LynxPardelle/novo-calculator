@@ -48,7 +48,7 @@ export class GenericInputComponent implements OnInit {
     locked?: boolean;
   } = { thing: '' };
   @Input() thing: string = 'thing';
-  @Input() type: string = '';
+  @Input() type: string = 'text';
   @Input() spans: TSpanInput[] = [];
   @Input() disabled: boolean = false;
   @Input() inputClasses: string = ' bef ';
@@ -115,7 +115,7 @@ export class GenericInputComponent implements OnInit {
       : createMask(this.inputMask);
     this.thingFather.locked = !this.spans.every((s) => {
       let passEval = this.evalThing(s.evalThing);
-      if (passEval) {
+      if (!passEval) {
         this.pushOrRemoveToSpansNotPassed(s, 'remove');
       } else {
         this.pushOrRemoveToSpansNotPassed(s, 'push');
@@ -142,6 +142,7 @@ export class GenericInputComponent implements OnInit {
     this.changesInput.emit(this.thingFather);
   }
   evalThing(thingToEval: string): boolean {
+    console.log('evalThing', thingToEval);
     if (this.hasBeenTouched === true) {
       switch (true) {
         case thingToEval === 'required':

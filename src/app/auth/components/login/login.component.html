@@ -12,13 +12,54 @@
         ></div>
         <form action="" class="bef bef-d-flex fleDir-column">
           <generic-input
-            [containerClasses]="'bef bef-w-27rem bef-h-6rem'"
+            [containerClasses]="containerClasses"
             [labelTitle]="'Nombre de usuario o correo'"
+            [thingFather]="loginCredentials"
+            [thing]="'email'"
+            [type]="'text'"
+            (changesInput)="recoverChangesFromInput($event)"
+            [spans]="[
+              {
+                text: 'El nombre de usuario o correo es requerido',
+                evalThing: 'required',
+                spanClass: spanClass
+              }
+            ]"
           ></generic-input>
           <generic-input
-          type="password"
-            [containerClasses]="'bef bef-w-27rem bef-h-6rem'"
+            type="password"
+            [containerClasses]="containerClasses"
             [labelTitle]="'Contraseña'"
+            [thingFather]="loginCredentials"
+            [thing]="'password'"
+            (changesInput)="recoverChangesFromInput($event)"
+            [spans]="[
+              {
+                text: 'La contraseña es requerida',
+                evalThing: 'required',
+                spanClass: spanClass
+              }
+            ]"
+          ></generic-input>
+          <generic-input
+            type="select"
+            [containerClasses]="containerClasses"
+            [labelTitle]="'Institución'"
+            [thingFather]="loginCredentials"
+            [thing]="'institution'"
+            (changesInput)="recoverChangesFromInput($event)"
+            [options]="[
+              { type: 'option', option: 'Elige una opción', click: '' },
+              { type: 'option', option: 'Público', click: 'public' },
+              { type: 'option', option: 'Privado', click: 'private' }
+            ]"
+            [spans]="[
+              {
+                text: 'Es necesario elegir una opción válida.',
+                evalThing: 'required',
+                spanClass: spanClass
+              }
+            ]"
           ></generic-input>
           <div class="bef bef-d-flex jusCon-center">
             <generic-button

@@ -10,6 +10,12 @@ import { GenericButtonComponent } from '../../../shared/components/generic-butto
 /* Pipes */
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 
+export type TLoginCredentials = {
+  email: string;
+  password: string;
+  institution: 'private' | 'public' | '';
+  locked: boolean;
+};
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -23,6 +29,14 @@ import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  public loginCredentials: TLoginCredentials = {
+    email: '',
+    password: '',
+    institution: '',
+    locked: true,
+  };
+  public containerClasses: string = 'bef bef-w-100per bef-h-6rem';
+  public spanClass: string = ' bef-d-block bef-color-novoError bef-mb-1rem';
   constructor(private _router: Router, private _sharedService: SharedService) {}
 
   logo = this._sharedService.getHtml('logo');
@@ -31,7 +45,18 @@ export class LoginComponent {
   )}`;
 
   submit() {
-    console.log('submit');
-    this._router.navigate(['/calculator']);
+    if (!this.loginCredentials.locked) {
+      console.log('submit');
+      this._router.navigate(['/calculator']);
+    } else {
+      console.log('submit locked');
+      this._router.navigate(['/calculator']);
+    }
+  }
+
+  recoverChangesFromInput(event: any) {
+    console.log('recoverChangesFromInput', event);
+    this.loginCredentials = event;
+    console.log('loginCredentials', this.loginCredentials);
   }
 }

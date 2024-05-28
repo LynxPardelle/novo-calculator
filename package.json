@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "st:op": "ng serve -o",
+    "st:op4444": "ng serve -o --port 4444",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

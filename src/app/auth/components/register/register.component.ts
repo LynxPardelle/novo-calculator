@@ -24,11 +24,22 @@ import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements AfterViewInit {
+  public registerForm: any = {
+    name: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    username: '',
+    password: '',
+    locked: true,
+  };
   inputs = [
     {
       labelTitle: 'Escriba su nombre',
       type: 'text',
       placeholder: 'Escriba su nombre',
+      thing: 'name',
+      spans: [],
     },
     {
       labelTitle: 'Escriba su apellido',

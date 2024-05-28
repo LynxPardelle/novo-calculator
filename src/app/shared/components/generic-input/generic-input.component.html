@@ -1,7 +1,7 @@
 @if (['checkbox', 'radio', 'select', 'select-dropdown'].includes(type)) {@if
-  (!type.includes('select') && labelTitle !== '') {
-  <label class="{{ labelClasses }}">{{ labelTitle }}</label>
-  }
+(!type.includes('select') && labelTitle !== '') {
+<label class="{{ labelClasses }}">{{ labelTitle }}</label>
+}
 <div class="{{ !type.includes('select') ? containerClasses : '' }}">
   @switch (type) { @case ('checkbox') {
   <button
@@ -18,10 +18,9 @@
     (exist)="cssCreate()"
     (click)="changeValue(!thingFather[thing])"
     [disabled]="disabled || readonly"
-
   >
-  <ng-content></ng-content>
-</button>
+    <ng-content></ng-content>
+  </button>
 
   } @case ('radio') { @for (op of options; track op.id) {
   <p class="text-center text-capitalize">{{ op.option }}</p>
@@ -110,11 +109,7 @@
 </mat-form-field>
 <ng-container *ngTemplateOutlet="buttonsTemplate"></ng-container>
 } @for (span of spansNotPassed; track span.text; let last = $last) {
-<span
-  class="{{ span.spanClass }} + 'bef bef-my-10px'"
-  [exist]="last"
-  (exist)="cssCreate()"
->
+<span class="bef {{ span.spanClass }}" [exist]="last" (exist)="cssCreate()">
   {{ span.text }}
 </span>
 }

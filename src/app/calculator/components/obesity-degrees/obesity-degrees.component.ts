@@ -30,8 +30,27 @@ export class ObesityDegreesComponent {
   public emptyClasses: string =
     'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED  bef-wmn-6rem bef-w-100per bef-wmx-10rem bef-h-2_5rem bef  bef-p-0_5rem';
 
-  public grado1 = this._sharedService.getHtml('grado1');
-  public grado2 = this._sharedService.getHtml('grado2');
-  public grado3 = this._sharedService.getHtml('grado3');
+  public grade1 = this._sharedService.getHtml('grade1');
+  public grade2 = this._sharedService.getHtml('grade2');
+  public grade3 = this._sharedService.getHtml('grade3');
   public arrowRight = this._sharedService.getHtml('arrowRight');
+  public obesityDegrees: { [key: string]: boolean } = {
+    grade1: false,
+    grade2: false,
+    grade3: false,
+  };
+  public obesityText: string = '';
+
+  degreesClick(event: any) {
+    console.log('event: ', event);
+    this.obesityDegrees = event;
+    console.log('obesityDegrees: ', this.obesityDegrees);
+    this.obesityText = Object.keys(this.obesityDegrees)
+      .filter((key) => {
+        return this.obesityDegrees[key] === true;
+      })
+      .join(' + ')
+      .replace(/grade/g, 'Grado ');
+    console.log('obesityText: ', this.obesityText);
+  }
 }

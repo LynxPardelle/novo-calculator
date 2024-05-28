@@ -1,8 +1,6 @@
 <div
-class="{{!!info ? filledClasses: emptyClasses}}"
-(mouseenter)="onHover()"
+  class="{{ info !== '' && info !== 0 ? filledClasses : emptyClasses }}"
+  (mouseenter)="onHover()"
 >
-<span
-class="{{textClasses}}"
->{{info}}</span>
+  <span class="{{ textClasses }}">{{ info }}</span>
 </div>
