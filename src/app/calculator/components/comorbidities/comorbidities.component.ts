@@ -28,9 +28,9 @@ export class ComorbiditiesComponent {
   public falseColors: string =
     'bef bef-d-flex bef-bg-#b2b7bf bef-bw-0 bef-w-auto bef-color-gray bef-h-5rem';
   public filledClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED  bef-wmn-6rem bef-w-100per bef-wmx-10rem bef-h-2_5rem bef  bef-p-0_5rem';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED   bef-h-2_5rem bef  bef-p-0_5rem';
   public emptyClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED  bef-wmn-6rem bef-w-100per bef-wmx-10rem bef-h-2_5rem bef  bef-p-0_5rem';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED   bef-h-2_5rem bef  bef-p-0_5rem';
 
   public thumbsUp = this.sharedService.getHtml('arriba');
   public thumbsDown = this.sharedService.getHtml('abajo');
@@ -38,6 +38,7 @@ export class ComorbiditiesComponent {
   public dislipidemia = this.sharedService.getHtml('dislipidemia');
   public prediabetes = this.sharedService.getHtml('prediabetes');
   public arrowRight = this.sharedService.getHtml('arrowRight');
+  public bascula = this.sharedService.getHtml('bascula');
 
   public comorbidities: { [key: string]: boolean } = {
     hipertension: false,

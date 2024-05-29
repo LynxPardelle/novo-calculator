@@ -35,6 +35,7 @@
       @for (comorbiditie of [hipertension, dislipidemia, prediabetes]; track
       comorbiditie; let i = $index) {
       <generic-input
+        class="bef bef-w-100per"
         [type]="'checkbox'"
         [buttonClasses]="'bef bef-bw-0 bef-h-auto bef-w-100per bef-m-0_3rem'"
         [checkBoxTrueClasses]="trueColors"
@@ -54,18 +55,24 @@
     <div class="bef bef-d-flex fleDir-column bef-p-1rem bef-w-50per">
       <h2 class="bef bef-hmn-4rem">
         <span class="bef bef-opacity-0_5">Pacientes con obesidad </span>
-        <span class="bef bef-borderBottom-1px__solid__novo bef-text-novo">{{ comorbiditiesText }}</span>
+        <span class="bef bef-borderBottom-1px__solid__novo bef-text-novo">{{
+          comorbiditiesText
+        }}</span>
       </h2>
       <div class="bef bef-d-flex fleDir-row">
         <generic-span
+        class="bef bef-w-30per bef-wmx-50per"
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
           [textClasses]="'bef bef-color-novo'"
           [info]="'65478'"
         >
         </generic-span>
-        <div [innerHTML]="arrowRight | safeHtml"></div>
+        <div
+        class="bef bef-mx-5per"
+        [innerHTML]="arrowRight | safeHtml"></div>
         <generic-span
+        class="bef bef-w-30per bef-wmx-50per"
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
           [textClasses]="'bef bef-color-novo'"
@@ -75,4 +82,23 @@
       </div>
     </div>
   </div>
+  <div class="bef bef-d-flex aliIte-center bef-mt-MIN1_2rem bef-me-2rem fleDir-row jusCon-fleEnd">
+    <generic-span
+      class="bef bef-w-15per"
+      [filledClasses]="'bef'"
+      [textClasses]="'bef bef-fs-15px bef-color-novoError'"
+      [info]="'POBLACIÓN OBJETIVO'"
+    ></generic-span>
+    <generic-span
+    class="bef bef-w-15per bef-wmx-50per"
+      [filledClasses]="'bef bef-bg-novoError bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-h-2_5rem bef  bef-p-0_5rem bef-rt-2px'"
+      [emptyClasses]="emptyClasses"
+      [textClasses]="'bef bef-color-white'"
+      [info]="'65478'"
+    ></generic-span>
+  </div>
+  <div
+  class="bef bef-w-100per"
+  [innerHTML]="bascula|safeHtml"
+  ></div>
 </section>
