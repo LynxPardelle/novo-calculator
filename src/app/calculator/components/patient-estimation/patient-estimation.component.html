@@ -1,19 +1,28 @@
 <section
-  class="bef bef-mb-2rem bef-d-flex fleDir-row wrap-wrap bef-w-auto bef-p-1rem"
+  class="bef bef-mb-2rem bef-d-flex jusCon-fleEnd bef-p-1rem bef-me-6_5rem wrap-wrap"
 >
-  <h2
-    class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto"
-  >
-    Estimación <br />
-    de Pacientes
-  </h2>
   <div
-    class="bef bef-h-14rem bef-w-14rem bef-pt-1rem bef-me-3rem"
-    [innerHTML]="fatDouble | safeHtml"
-  ></div>
-  <div class="bef bef-d-flex fleDir-column bef-p-1rem bef-flexGrow-1">
+    class="bef bef-w-calcSD50per__MIN__6remED bef-d-flex jusCon-center aliIte-start wrap-wrap"
+  >
+    <h2
+      class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-w-calcSD50per__MIN__3remED"
+    >
+      Estimación <br />
+      de Pacientes
+    </h2>
+    <div
+      class="bef bef-h-14rem bef-w-calcSD50per__MIN__3remED bef-pt-1rem bef-me-3rem"
+      [innerHTML]="fatDouble | safeHtml"
+    ></div>
+  </div>
+  <div
+    class="bef bef-d-flex fleDir-column bef-p-1rem bef-w-calcSD50per__MIN__2remED"
+  >
     <generic-input
       [type]="'number'"
+      [containerClasses]="
+        'bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__novoError'
+      "
       [labelTitle]="'población total'"
     ></generic-input>
     <h2 class="bef bef-opacity-0_5">Pacientes con obesidad</h2>
@@ -21,16 +30,20 @@
       <generic-span
         [filledClasses]="filledClasses"
         [emptyClasses]="emptyClasses"
-        [textClasses]="'bef bef-color-novo'"
-        [info]="'7894'"
+        [textClasses]="
+          'bef bef-color-novo bef-w-100px bef-p-1rem bef-textAlign-center'
+        "
+        [info]="patientsPercentage + '%'"
       >
       </generic-span>
       <div [innerHTML]="arrowRight | safeHtml"></div>
       <generic-span
         [filledClasses]="filledClasses"
         [emptyClasses]="emptyClasses"
-        [textClasses]="'bef bef-color-novo'"
-        [info]="'3335654'"
+        [textClasses]="
+          'bef bef-color-novo bef-w-100px bef-p-1rem bef-textAlign-center'
+        "
+        [info]="patients"
       >
       </generic-span>
     </div>

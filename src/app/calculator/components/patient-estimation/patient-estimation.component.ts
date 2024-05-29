@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 /* Modules */
 /* Services */
 import { SharedService } from '../../../shared/services/shared.service';
@@ -16,11 +16,13 @@ import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
   styleUrl: './patient-estimation.component.scss',
 })
 export class PatientEstimationComponent {
+  @Input() patientsPercentage: number = 36.9;
+  @Input() patients: number = 3629115;
   constructor(private _sharedService: SharedService) {}
   public filledClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED  bef-wmn-6rem bef-w-100per bef-wmx-10rem bef-h-2_5rem bef  bef-p-0_5rem';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-white bef-bwb-4px bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED';
   public emptyClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED  bef-wmn-6rem bef-w-100per bef-wmx-10rem bef-h-2_5rem bef  bef-p-0_5rem';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-white bef-bwb-4px bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED';
   public arrowRight = this._sharedService.getHtml('arrowRight');
   public fatDouble = this._sharedService.getHtml('fatDouble');
 }

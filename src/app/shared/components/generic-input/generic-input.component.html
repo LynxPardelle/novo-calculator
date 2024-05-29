@@ -40,7 +40,7 @@
     [disabled]="disabled || readonly"
   ></button>
   }}@case ('select') {
-  <mat-form-field class="{{ containerClasses }}">
+  <mat-form-field class="bef {{ containerClasses }}">
     <mat-label class="{{ labelClasses }}">{{ labelTitle }}</mat-label>
     <mat-select
       [(ngModel)]="thingFather[thing]"
