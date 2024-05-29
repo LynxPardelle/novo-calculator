@@ -9,15 +9,18 @@ import { GenericButtonComponent } from '../../../shared/components/generic-butto
 import { GenericSpanComponent } from '../../../shared/components/generic-span/generic-span.component';
 import { PatientEstimationComponent } from '../patient-estimation/patient-estimation.component';
 import { ComorbiditiesComponent } from '../comorbidities/comorbidities.component';
-/* Pipes */
-import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 import { ObesityDegreesComponent } from '../obesity-degrees/obesity-degrees.component';
 import { TreatmentCostComponent } from '../treatment-cost/treatment-cost.component';
+import { AnualTreatmentCostComponent } from '../anual-treatment-cost/anual-treatment-cost.component';
+/* Pipes */
+import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
+import { LiraglutideAndLifestyleModificationComponent } from '../liraglutide-and-lifestyle-modification/liraglutide-and-lifestyle-modification.component';
 
 @Component({
   selector: 'app-calculator',
   standalone: true,
   imports: [
+    SharedModule,
     GenericInputComponent,
     GenericButtonComponent,
     GenericSpanComponent,
@@ -25,8 +28,9 @@ import { TreatmentCostComponent } from '../treatment-cost/treatment-cost.compone
     ComorbiditiesComponent,
     ObesityDegreesComponent,
     TreatmentCostComponent,
+    AnualTreatmentCostComponent,
+    LiraglutideAndLifestyleModificationComponent,
     SafeHtmlPipe,
-    SharedModule,
   ],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss',

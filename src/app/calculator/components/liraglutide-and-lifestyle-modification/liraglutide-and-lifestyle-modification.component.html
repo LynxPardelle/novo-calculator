@@ -1,0 +1,37 @@
+<section class="bef bef-mb-2rem bef-p-1rem">
+  <h2
+    class="bef bef-w-20per bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto"
+  >
+    LOGRO DE META <wbr />DE TRATAMIENTO
+  </h2>
+  <div class="bef bef-d-flex bef-jusCon-center aliIte-center wrap-wrap">
+    @for (results of [liraglutideAndLifeStyleModificationResults,
+    lifeStyleModificationResults]; track results[0].name; let i = $index) {
+    <div class="bef bef-w-300px bef-d-block bef-mx-auto bef-mb-1rem">
+      <h3
+        class="bef bef-w-75per bef-wordBreak-breakMINword bef-textAlign-center bef-mx-auto bef-mb-0 bef-d-block"
+      >
+        {{
+          i === 0
+            ? "Liraglutida + Modificación de Estilo de Vida"
+            : "Modificación de Estilo de Vida"
+        }}
+      </h3>
+      <ngx-charts-pie-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="results"
+        [gradient]="gradient"
+        [legend]="showLegend"
+        [legendPosition]="legendPosition"
+        [labels]="showLabels"
+        [doughnut]="isDoughnut"
+        (select)="onSelect($event)"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)"
+      >
+      </ngx-charts-pie-chart>
+    </div>
+    }
+  </div>
+</section>

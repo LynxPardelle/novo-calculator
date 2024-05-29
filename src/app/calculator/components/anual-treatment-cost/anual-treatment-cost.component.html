@@ -1,1 +1,29 @@
-<p>anual-treatment-cost works!</p>
+<section class="bef bef-mb-2rem bef-p-1rem">
+  <h2
+    class="bef bef-w-20per bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto"
+  >
+    COSTO ANUAL <wbr />DE TRATAMIENTO
+  </h2>
+  <ngx-charts-bar-vertical-2d
+    class="bef bef-mx-auto bef-d-block bef-w-350px"
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="multi"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [legendTitle]="legendTitle"
+    [barPadding]="barPadding"
+    [showDataLabel]="showDataLabel"
+    [yScaleMax]="yScaleMax"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)"
+  >
+  </ngx-charts-bar-vertical-2d>
+</section>
