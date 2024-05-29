@@ -14,10 +14,10 @@ import { TCondition, TInputMask } from '../../types/inputMask.type';
 import { SharedService } from '../../services/shared.service';
 import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 /* Directives */
-import { ExistDirective } from '../../directives/exist.directive';
 /* Libraries */
 import { createMask, InputMaskModule } from '@ngneat/input-mask';
 import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
+import { ExistDirective } from '../../directives/exists.directive';
 @Component({
   selector: 'generic-input',
   standalone: true,

@@ -2,12 +2,20 @@
   <div
     class="bef bef-w-85per bef-bg-nord bef-p-2rem bef-d-flex jusCon-between fleDir-column aliIte-center"
   >
-    <div
-      [innerHTML]="ArrowLeft | safeHtml"
-      class="bef bef-d-flex aliIte-center jusCon-flexStart bef-h-auto bef-w-100per"
-    ></div>
+    <a
+      class="bef bef-color-novo bef-px-1rem bef-textDecoration-none bef-d-flex aliIte-center jusCon-fleStart jusSel-start aliSel-start"
+      href="/"
+      [routerLink]="['/']"
+      routerLinkActive="router-link-active"
+    >
+      <span
+        class="bef bef-h-24px bef-me-1rem"
+        [innerHTML]="ArrowLeft | safeHtml"
+      ></span>
+      Regresar
+    </a>
     <h2
-      class="bef bef-d-flex jusCon-center bef-fs-2rem bef-mt-10rem bef-text-novo bef-fw-BOLD"
+      class="bef bef-d-flex jusCon-center bef-fs-2rem bef-mt-5rem bef-mt-sm-10rem bef-text-novo bef-fw-BOLD"
     >
       Ingrese sus datos y cree su cuenta
     </h2>
@@ -17,7 +25,7 @@
       >
         @for (input of inputs; track input ;let i = $index) {
         <generic-input
-          class="bef bef-w-50per"
+          class="bef bef-w-50per bef-wmn-275px"
           [labelClasses]="'bef-fontSize-small'"
           [inputClasses]="'bef bef-m-0'"
           [containerClasses]="
@@ -33,25 +41,35 @@
         ></generic-input>
         }
       </div>
-      <div class="bef bef-d-flex jusCon-center bef-my-2rem">
-        <generic-button
-          [buttonClass]="
-            'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-21rem bef bef-fs-16px bef-p-0_5rem'
-          "
-          [buttonBGColor]="'novo'"
-          [buttonInner]="whiteArrowRight"
-          [buttonTextColor]="'white'"
-          [buttonType]="'rounded'"
-          (buttonClick)="submit()"
-        ></generic-button>
-      </div>
+      <generic-button
+        [buttonClass]="
+          'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-37_5per bef-wmn-200px bef-p-0_5rem bef-my-2rem bef-mx-auto'
+        "
+        [buttonBGColor]="'novo'"
+        [buttonInner]="whiteArrowRight"
+        [buttonTextColor]="'white'"
+        [buttonType]="'rounded'"
+        (buttonClick)="submit()"
+      ></generic-button>
     </form>
-    <div class="bef bef-mb-16rem">
-      <span>¿Ya tienes cuenta? <a href="/login">Iniciar sesión</a></span>
-    </div>
+    <p class="bef bef-mb-4rem">
+      ¿Ya tienes cuenta?
+      <a
+        href="/login"
+        [routerLink]="['/login']"
+        routerLinkActive="router-link-active"
+        >Iniciar sesión</a
+      >
+    </p>
   </div>
 </main>
-<footer class="bef bef-d-flex bef-w-75per jusCon-fleEnd bef-fs-8px bef-mt-MIN1rem">
-  Al registrarme acepto la información de
-  <a href="">privacidad y descargo de responsabilidad de Novo Nordisk</a>
-</footer>
+<div class="bef bef-d-flex jusCon-end aliIte-center bef-mt-MIN2rem">
+  <div class="bef bef-w-85per">
+    <footer
+      class="bef bef-d-block bef-w-75per bef-fs-0_75rem bef-mt-MIN1rem worBre-breakMINword bef-mx-auto texAli-center"
+    >
+      Al registrarme acepto la información de
+      <a href="">privacidad y descargo de responsabilidad de Novo Nordisk</a>
+    </footer>
+  </div>
+</div>

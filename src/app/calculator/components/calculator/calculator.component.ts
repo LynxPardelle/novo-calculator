@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 /* Modules */
 import { SharedModule } from '../../../shared/shared.module';
 /* Services */
@@ -21,6 +22,7 @@ import { PatientsComponent } from '../patients/patients.component';
   selector: 'app-calculator',
   standalone: true,
   imports: [
+    RouterLink,
     SharedModule,
     GenericInputComponent,
     GenericButtonComponent,

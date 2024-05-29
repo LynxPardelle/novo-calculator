@@ -20,7 +20,9 @@ export class AppComponent implements AfterViewInit {
     nord: '#E2F0FA',
     accentNord: '#c1ecdc',
     action: '#005AD2',
-    novoError: '#D25A00',
+    suvo: '#5AD200',
+    rovo: '#921A00',
+    oranvo: '#f27A00',
   };
   public abreviationsValues: { [key: string]: string } = {
     fleStart: 'flex-start',
@@ -32,15 +34,19 @@ export class AppComponent implements AfterViewInit {
   public abreviationsClasses: { [key: string]: string } = {
     fleDir: 'bef-flexDirection',
     jusCon: 'bef-justifyContent',
+    jusSel: 'bef-justifySelf',
     aliIte: 'bef-alignItems',
+    aliSel: 'bef-alignSelf',
     fonWei: 'bef-fontWeight',
     texAli: 'bef-textAlign',
     wrap: 'bef-flexWrap',
+    worBre: 'bef-wordBreak',
   };
   constructor(private readonly _bef: NgxBootstrapExpandedFeaturesService) {
     this._bef.pushColors(this.colors);
     this._bef.pushAbreviationsClasses(this.abreviationsClasses);
     this._bef.pushAbreviationsValues(this.abreviationsValues);
+    // this._bef.changeDebugOption(true);
   }
   ngAfterViewInit(): void {
     this.cssCreate();

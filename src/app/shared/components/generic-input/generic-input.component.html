@@ -14,8 +14,8 @@
     }} {{
       thingFather[thing] == true ? checkBoxTrueClasses : checkBoxFalseClasses
     }}"
-    [exist]="type === 'checkbox'"
-    (exist)="cssCreate()"
+    [exists]="type === 'checkbox'"
+    (exists)="cssCreate()"
     (click)="changeValue(!thingFather[thing])"
     [disabled]="disabled || readonly"
   >
@@ -109,7 +109,7 @@
 </mat-form-field>
 <ng-container *ngTemplateOutlet="buttonsTemplate"></ng-container>
 } @for (span of spansNotPassed; track span.text; let last = $last) {
-<span class="bef {{ span.spanClass }}" [exist]="last" (exist)="cssCreate()">
+<span class="bef {{ span.spanClass }}" [exists]="last" (exists)="cssCreate()">
   {{ span.text }}
 </span>
 }

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 /* Modules */
 import { SharedModule } from '../../../shared/shared.module';
 /* Services */
@@ -15,6 +15,7 @@ import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
   selector: 'app-register',
   standalone: true,
   imports: [
+    RouterLink,
     SharedModule,
     GenericInputComponent,
     GenericButtonComponent,
@@ -33,7 +34,8 @@ export class RegisterComponent implements AfterViewInit {
     password: '',
     locked: true,
   };
-  public spanClass: string = ' bef-d-block bef-w-50per bef-ms-1rem bef-color-novoError bef-mb-1rem';
+  public spanClass: string =
+    ' bef-d-block bef-w-50per bef-ms-1rem bef-color-rovo bef-mb-1rem';
 
   inputs = [
     {
@@ -41,70 +43,80 @@ export class RegisterComponent implements AfterViewInit {
       type: 'text',
       placeholder: 'Escriba su nombre',
       thing: 'name',
-      spans: [{
-        text: 'Su nombre es requerido',
-        evalThing: 'required',
-        spanClass: this.spanClass
-      }],
+      spans: [
+        {
+          text: 'Su nombre es requerido',
+          evalThing: 'required',
+          spanClass: this.spanClass,
+        },
+      ],
     },
     {
       labelTitle: 'Escriba su apellido',
       type: 'text',
       placeholder: 'Escriba su apellido',
       thing: 'lastName',
-      spans: [{
-        text: 'Su apellido es requerido',
-        evalThing: 'required',
-        spanClass: this.spanClass
-      }],
+      spans: [
+        {
+          text: 'Su apellido es requerido',
+          evalThing: 'required',
+          spanClass: this.spanClass,
+        },
+      ],
     },
     {
       labelTitle: 'Escriba su correo',
       type: 'email',
       placeholder: 'Escriba su correo',
       thing: 'email',
-      spans: [{
-        text: 'Su email es requerido',
-        evalThing: 'required',
-        spanClass: this.spanClass
-      }],
+      spans: [
+        {
+          text: 'Su email es requerido',
+          evalThing: 'required',
+          spanClass: this.spanClass,
+        },
+      ],
     },
     {
       labelTitle: 'Escriba su número de teléfono',
       type: 'tel',
       placeholder: 'Escriba su número de teléfono',
       thing: 'tel',
-      spans: [{
-        text: 'Su teléfono es requerido',
-        evalThing: 'required',
-        spanClass: this.spanClass
-      }],
+      spans: [
+        {
+          text: 'Su teléfono es requerido',
+          evalThing: 'required',
+          spanClass: this.spanClass,
+        },
+      ],
     },
     {
       labelTitle: 'Escriba su nombre de usuario',
       type: 'text',
       placeholder: 'Escriba su nombre de usuario',
       thing: 'username',
-      spans: [{
-        text: 'Su nombre de usuario es requerido',
-        evalThing: 'required',
-        spanClass: this.spanClass
-      }],
+      spans: [
+        {
+          text: 'Su nombre de usuario es requerido',
+          evalThing: 'required',
+          spanClass: this.spanClass,
+        },
+      ],
     },
     {
       labelTitle: 'Escriba su contraseña',
       type: 'password',
       placeholder: 'Escriba su contraseña',
       thing: 'password',
-      spans: [{
-        text: 'Su contraseña es requerida',
-        evalThing: 'required',
-        spanClass: this.spanClass
-      }],
+      spans: [
+        {
+          text: 'Su contraseña es requerida',
+          evalThing: 'required',
+          spanClass: this.spanClass,
+        },
+      ],
     },
   ];
-
-
 
   constructor(
     private _bef: NgxBootstrapExpandedFeaturesService,
@@ -115,9 +127,7 @@ export class RegisterComponent implements AfterViewInit {
   whiteArrowRight = `<span class="bef bef-me-0_5rem bef-color-white">Registrarse</span> ${this._sharedService.getHtml(
     'whiteArrowRight'
   )}`;
-  ArrowLeft = `${this._sharedService.getHtml(
-    'arrowLeft'
-  )} <a href="/" class="bef bef-textDecoration-none bef-color-novo bef-ms-1rem">Regresar</a>`;
+  ArrowLeft = `${this._sharedService.getHtml('arrowLeft')}`;
 
   ngAfterViewInit(): void {
     this.cssCreate();

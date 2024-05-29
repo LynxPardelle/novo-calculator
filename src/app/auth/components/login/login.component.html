@@ -10,14 +10,14 @@
           [innerHTML]="logo | safeHtml"
           class="bef bef-w-5rem bef-h-5rem bef-mb-1rem"
         ></div>
-        <form action="" class="bef bef-d-flex fleDir-column">
+        <form action="" class="bef bef-d-flex fleDir-column bef-w-100per">
           <generic-input
             [containerClasses]="containerClasses"
             [labelTitle]="'Nombre de usuario o correo'"
             [thingFather]="loginCredentials"
             [thing]="'email'"
             [type]="'text'"
-            (changesInput)="recoverChangesFromInput($event)"
+            (changesInput)="recoverChangesFromInput($event, 'email')"
             [spans]="[
               {
                 text: 'El nombre de usuario o correo es requerido',
@@ -32,7 +32,7 @@
             [labelTitle]="'Contraseña'"
             [thingFather]="loginCredentials"
             [thing]="'password'"
-            (changesInput)="recoverChangesFromInput($event)"
+            (changesInput)="recoverChangesFromInput($event, 'password')"
             [spans]="[
               {
                 text: 'La contraseña es requerida',
@@ -47,7 +47,7 @@
             [labelTitle]="'Institución'"
             [thingFather]="loginCredentials"
             [thing]="'institution'"
-            (changesInput)="recoverChangesFromInput($event)"
+            (changesInput)="recoverChangesFromInput($event, 'institution')"
             [options]="[
               { type: 'option', option: 'Elige una opción', click: '' },
               { type: 'option', option: 'Público', click: 'public' },
@@ -61,28 +61,47 @@
               }
             ]"
           ></generic-input>
-          <div class="bef bef-d-flex jusCon-center">
-            <generic-button
-              [buttonClass]="
-                'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-21rem bef bef-fs-16px bef-p-0_5rem'
-              "
-              [buttonBGColor]="'novo'"
-              [buttonInner]="arrowRight"
-              [buttonTextColor]="'white'"
-              [buttonType]="'rounded'"
-              (buttonClick)="submit()"
-            ></generic-button>
-          </div>
-        </form>
-        <div class="bef bef-mt-3rem">
-          <span class="bef bef-fs-16px"
-            >¿Aun no tienes cuenta?<a
-              class="bef bef-ms-1rem bef-color-novo"
-              href="/auth/register"
-              >Registrate</a
-            ></span
+          @if (consoleMessage.message && consoleMessage.message !== '') {
+          <p
+            class="bef bef-text-{{
+              consoleMessage.type === 'success'
+                ? 'suvo'
+                : consoleMessage.type === 'error'
+                ? 'rovo'
+                : consoleMessage.type === 'warning'
+                ? 'oranvo'
+                : consoleMessage.type === 'info'
+                ? 'novo'
+                : ''
+            }} bef-my-1rem bef-fontWeight-800 bef-textAlign-center"
+            [exists]="
+              !!(consoleMessage.message && consoleMessage.message !== '')
+            "
+            (exists)="cssCreate()"
           >
-        </div>
+            {{ consoleMessage.message }}
+          </p>
+          }
+          <generic-button
+            [buttonClass]="
+              'bef bef-mx-auto bef-d-flex jusCon-center aliIte-center texAli-center bef-w-75per bef-p-0_5rem'
+            "
+            [buttonBGColor]="'novo'"
+            [buttonInner]="arrowRight"
+            [buttonTextColor]="'white'"
+            [buttonType]="'rounded'"
+            (buttonClick)="submit()"
+          ></generic-button>
+        </form>
+        <p class="bef bef-mt-3rem">
+          ¿Aun no tienes cuenta?<a
+            class="bef bef-ms-1rem bef-color-novo"
+            href="/auth/register"
+            [routerLink]="['/auth/register']"
+            routerLinkActive="router-link-active"
+            >Registrate</a
+          >
+        </p>
       </div>
     </div>
   </section>

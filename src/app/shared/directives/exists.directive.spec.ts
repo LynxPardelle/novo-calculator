@@ -1,4 +1,4 @@
-import { ExistDirective } from './exist.directive';
+import { ExistDirective } from './exists.directive';
 
 describe('ExistDirective', () => {
   it('should create an instance', () => {

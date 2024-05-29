@@ -14,9 +14,10 @@ import { TDropDownOption } from '../../types/dropDownOption.type';
 /* Services */
 import { SharedService } from '../../services/shared.service';
 import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
-/* Directives */
-import { ExistDirective } from '../../directives/exist.directive';
+/* Components */
 import { GenericInputComponent } from '../generic-input/generic-input.component';
+/* Directives */
+import { ExistDirective } from '../../directives/exists.directive';
 
 @Component({
   selector: 'generic-dropdown',

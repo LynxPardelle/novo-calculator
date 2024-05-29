@@ -51,8 +51,8 @@
             })
           "
           class="bef {{ chipClasses }}"
-          [exist]="!!last"
-          (exist)="cssCreate()"
+          [exists]="!!last"
+          (exists)="cssCreate()"
         >
           {{ pill }}
           <button matChipRemove [attr.aria-label]="'remove ' + pill">
@@ -116,8 +116,8 @@
       onClicked(option); dropdownOpen = !!disabled ? false : !dropdownOpen
     "
     role="menuitem"
-    [exist]="!placeholder.toString().includes(option.option) || !multiselect"
-    (ngInit)="cssCreate()"
+    [exists]="!placeholder.toString().includes(option.option) || !multiselect"
+    (exists)="cssCreate()"
   >
     <span
       class="w-100 bef {{
