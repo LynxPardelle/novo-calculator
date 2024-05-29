@@ -37,16 +37,7 @@ export class LiraglutideAndLifestyleModificationComponent
       value: this.liraglutideAndLifeStyleModificationDoesNotArchiveTheGoal,
     },
   ];
-  public lifeStyleModificationResults: any[] = [
-    {
-      name: 'Logran la meta',
-      value: this.lifeStyleModificationArchivesTheGoal,
-    },
-    {
-      name: 'No logran la meta',
-      value: this.lifeStyleModificationDoesNotArchiveTheGoal,
-    },
-  ];
+  public lifeStyleModificationResults: any[] = [];
   public view: [number, number] = [300, 300];
 
   // options
@@ -64,6 +55,45 @@ export class LiraglutideAndLifestyleModificationComponent
   };
 
   constructor() {}
+  ngOnInit(): void {
+    this.configResults();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      (changes['lifeStyleModificationArchivesTheGoal'] &&
+        changes['lifeStyleModificationArchivesTheGoal'].currentValue !==
+          changes['lifeStyleModificationArchivesTheGoal'].previousValue) ||
+      (changes['lifeStyleModificationDoesNotArchiveTheGoal'] &&
+        changes['lifeStyleModificationDoesNotArchiveTheGoal'].currentValue !==
+          changes['lifeStyleModificationDoesNotArchiveTheGoal']
+            .previousValue) ||
+      (changes['liraglutideAndLifeStyleModificationArchivesTheGoal'] &&
+        changes['liraglutideAndLifeStyleModificationArchivesTheGoal']
+          .currentValue !==
+          changes['liraglutideAndLifeStyleModificationArchivesTheGoal']
+            .previousValue) ||
+      (changes['liraglutideAndLifeStyleModificationDoesNotArchiveTheGoal'] &&
+        changes['liraglutideAndLifeStyleModificationDoesNotArchiveTheGoal']
+          .currentValue !==
+          changes['liraglutideAndLifeStyleModificationDoesNotArchiveTheGoal']
+            .previousValue)
+    ) {
+      this.configResults();
+    }
+  }
+
+  configResults(): void {
+    this.lifeStyleModificationResults = [
+      {
+        name: 'Logran la meta',
+        value: this.lifeStyleModificationArchivesTheGoal,
+      },
+      {
+        name: 'No logran la meta',
+        value: this.lifeStyleModificationDoesNotArchiveTheGoal,
+      },
+    ];
+  }
 
   onSelect(data: any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
@@ -76,6 +106,4 @@ export class LiraglutideAndLifestyleModificationComponent
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
-  ngOnInit(): void {}
-  ngOnChanges(changes: SimpleChanges): void {}
 }

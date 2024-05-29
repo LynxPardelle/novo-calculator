@@ -15,6 +15,7 @@ import { AnualTreatmentCostComponent } from '../anual-treatment-cost/anual-treat
 /* Pipes */
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 import { LiraglutideAndLifestyleModificationComponent } from '../liraglutide-and-lifestyle-modification/liraglutide-and-lifestyle-modification.component';
+import { PatientsComponent } from '../patients/patients.component';
 
 @Component({
   selector: 'app-calculator',
@@ -30,6 +31,7 @@ import { LiraglutideAndLifestyleModificationComponent } from '../liraglutide-and
     TreatmentCostComponent,
     AnualTreatmentCostComponent,
     LiraglutideAndLifestyleModificationComponent,
+    PatientsComponent,
     SafeHtmlPipe,
   ],
   templateUrl: './calculator.component.html',
