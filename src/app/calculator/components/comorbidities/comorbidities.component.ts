@@ -40,6 +40,8 @@ export class ComorbiditiesComponent {
   public arrowRight = this.sharedService.getHtml('arrowRight');
   public bascula = this.sharedService.getHtml('bascula');
 
+  public needsComorbidities: { itNeeds: boolean } = { itNeeds: false };
+
   public comorbidities: { [key: string]: boolean } = {
     hipertension: false,
     dislipidemia: false,
@@ -64,6 +66,12 @@ export class ComorbiditiesComponent {
       })
       .join(' + ')
       .replace(/grade/g, 'Grado ');
-      console.log('comorbiditiesText: ', this.comorbiditiesText);
+    console.log('comorbiditiesText: ', this.comorbiditiesText);
+  }
+
+  needsComorbiditiesClick(event: any) {
+    console.log('event: ', event);
+    this.needsComorbidities = event;
+    console.log('needsComorbidities: ', this.needsComorbidities);
   }
 }

@@ -1,4 +1,4 @@
-<section>
+<section class="bef bef-mb-5rem">
   <div class="bef bef-d-flex">
     <h2
       class="bef bef-color-novo bef-fontWeight-900 bef-p-0 bef-h-3rem bef-pt-1rem bef-me-3rem bef-mb-0"
@@ -9,17 +9,24 @@
       [type]="'checkbox'"
       [checkBoxFalseClasses]="falseClasses"
       [checkBoxTrueClasses]="trueClasses"
+      [thingFather]="needsComorbidities"
+      [thing]="'itNeeds'"
+      (changesInput)="needsComorbiditiesClick($event)"
     >
       <div [innerHTML]="thumbsUp | safeHtml"></div>
     </generic-input>
     <generic-input
       [type]="'checkbox'"
-      [checkBoxTrueClasses]="trueClasses"
-      [checkBoxFalseClasses]="falseClasses"
+      [checkBoxTrueClasses]="falseClasses"
+      [checkBoxFalseClasses]="trueClasses"
+      [thingFather]="needsComorbidities"
+      [thing]="'itNeeds'"
+      (changesInput)="needsComorbiditiesClick($event)"
     >
       <div [innerHTML]="thumbsDown | safeHtml" class=""></div>
     </generic-input>
   </div>
+  @if (needsComorbidities.itNeeds) {
   <div
     class="bef bef-d-flex bef-bg-white bef-h-17rem fleDir-row bef-w-auto bef-p-1rem"
   >
@@ -80,8 +87,11 @@
       </div>
     </div>
   </div>
+  }
   <div
-    class="bef bef-d-flex aliIte-center bef-mt-MIN2rem bef-me-6rem fleDir-row jusCon-fleEnd"
+    class="bef bef-d-flex aliIte-center {{
+      needsComorbidities.itNeeds ? 'bef-mt-MIN2rem' : 'bef-mt-2rem'
+    }} bef-me-6rem fleDir-row jusCon-fleEnd"
   >
     <generic-span
       class="bef bef-w-180px"
