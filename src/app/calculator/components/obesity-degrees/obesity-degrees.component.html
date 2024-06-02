@@ -1,8 +1,11 @@
 <section
-  class="bef bef-mb-2rem bef-d-flex jusCon-fleEnd bef-p-1rem bef-me-6_5rem wrap-wrap"
+
+  class="bef bef-mb-2rem bef-d-flex jusCon-fleEnd fleDir-row bef-p-1rem bef-me-6_5rem "
 >
+
+<h2 class="bef bef-ms-1rem bef-color-novo bef-fontWeight-900 bef-pt-1rem" >Seleccionar <br/> Grados de <br/> obesidad</h2>
   <div
-    class="bef bef-d-flex fleDir-column bef-me-4rem bef-ms-1rem bef-w-calcSD50per__MIN__6remED aliIte-end"
+    class="bef bef-d-flex fleDir-column bef-me-1rem bef-ms-1rem bef-w-calcSD50per__MIN__6remED aliIte-center"
   >
     @for (degree of [grade1, grade2, grade3]; track degree; let i = $index) {
     <generic-input
@@ -25,25 +28,32 @@
   <div
     class="bef bef-d-flex aliIte-center fleDir-column bef-p-1rem bef-w-calcSD50per__MIN__2remED aliIte-start"
   >
-    <h2 class="bef bef-mb-2rem bef-hmn-4rem">
-      <span class="bef bef-opacity-0_5"> Pacientes con obesidad </span>
-      <span class="bef bef-borderBottom-1px__solid__novo bef-text-novo">
-        {{ obesityText }}
+    <h2 class="bef bef-mb-2rem">
+      <span class="bef bef-opacity-0_5"> Pacientes con obesidad </span><br/>
+      <span
+      [innerHTML]="obesityText | safeHtml"
+      class="bef bef-borderBottom-1px__solid__novo bef-text-novo">
+
       </span>
     </h2>
-    <div class="bef bef-d-flex fleDir-row">
+    <div class="bef bef-d-flex jusCon-center aliIte-center bef-h-20per fleDir-row bef-w-auto">
       <generic-span
         [filledClasses]="filledClasses"
         [emptyClasses]="emptyClasses"
-        [textClasses]="'bef bef-color-novo'"
+        [textClasses]="'bef bef-color-novo bef-w-100px bef-p-1rem bef-textAlign-center'
+        "
         [info]="'65478'"
       >
       </generic-span>
-      <div [innerHTML]="arrowRight | safeHtml"></div>
+      <div
+      class=""
+      [innerHTML]="arrowRight | safeHtml"
+      ></div>
       <generic-span
         [filledClasses]="filledClasses"
         [emptyClasses]="emptyClasses"
-        [textClasses]="'bef bef-color-novo'"
+        [textClasses]="'bef bef-color-novo bef-w-100px bef-p-1rem bef-textAlign-center'
+        "
         [info]="'7894750'"
       >
       </generic-span>

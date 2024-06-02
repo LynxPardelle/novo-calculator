@@ -26,9 +26,9 @@ export class ObesityDegreesComponent {
   public falseColors: string =
     'bef bef-d-flex bef-bg-#b2b7bf bef-bw-0 bef-w-auto bef-color-gray bef-mx-0_5rem';
   public filledClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED  bef-wmn-6rem bef-w-100per bef-wmx-10rem bef-h-2_5rem bef  bef-p-0_5rem';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED ';
   public emptyClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED  bef-wmn-6rem bef-w-100per bef-wmx-10rem bef-h-2_5rem bef  bef-p-0_5rem';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED ';
 
   public grade1 = this._sharedService.getHtml('grade1');
   public grade2 = this._sharedService.getHtml('grade2');
@@ -49,7 +49,7 @@ export class ObesityDegreesComponent {
       .filter((key) => {
         return this.obesityDegrees[key] === true;
       })
-      .join(' + ')
+      .join(' <br/> + ')
       .replace(/grade/g, 'Grado ');
     console.log('obesityText: ', this.obesityText);
   }

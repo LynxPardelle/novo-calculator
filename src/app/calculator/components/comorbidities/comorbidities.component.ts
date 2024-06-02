@@ -64,7 +64,7 @@ export class ComorbiditiesComponent {
       .filter((key) => {
         return this.comorbidities[key] === true;
       })
-      .join(' + ')
+      .join(' <br/> + ')
       .replace(/grade/g, 'Grado ');
     console.log('comorbiditiesText: ', this.comorbiditiesText);
   }

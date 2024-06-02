@@ -2,7 +2,7 @@
   class="bef bef-mb-2rem bef-d-flex fleDir-row wrap-wrap bef-w-auto bef-p-1rem"
 >
   <h3
-    class="bef bef-w-20per bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto"
+    class="bef bef-w-20per bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-2rem bef-mb-0 bef-h-auto"
   >
     COSTO DE <wbr />TRATAMIENTO
   </h3>
@@ -17,21 +17,22 @@
     </div>
     <div class="bef bef-w-4rem bef-bg-accentNord"></div>
   </div>
-  <div class="bef bef-w-40per">
+  <div class="bef bef-w-40per bef-flexGrow-0_5">
     <div>
       @for (treatmentTitle of treatmentTitles; track treatmentTitle.title) {
-      <h3 class="bef bef-d-flex jusCon-between aliCon-stretch bef-text-novo">
-        <span class="bef bef-w-33per bef-fontWeight-400">{{
+      <h3 class="bef bef-d-flex jusCon-between bef-me-0 aliCon-stretch bef-text-novo">
+        <span class="bef bef-ms-1rem bef-w-35per bef-fontWeight-400 bef-d-flex jusCon-fleStart">{{
           treatmentTitle.title
         }}</span>
-        <span class="bef bef-w-66per bef-fw-BOLD">{{
+        <span class="bef bef-w-55per bef-fw-BOLD bef-d-flex jusCon-fleStart">{{
           treatmentTitle.description
         }}</span>
       </h3>
       }
     </div>
-    <div class="bef bef-d-flex fleDir-row jusCon-center">
+    <div class="bef bef-d-flex fleDir-row jusCon-center bef-w-100per">
       <generic-span
+
         [filledClasses]="filledClasses"
         [emptyClasses]="emptyClasses"
         [textClasses]="'bef bef-color-novo'"

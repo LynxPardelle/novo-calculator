@@ -33,7 +33,7 @@
     <h3
       class="bef bef-d-flex jusCon-fleStart aliIte-center bef-w-20per bef-p-1rem bef-me-1rem bef-color-novo"
     >
-      SELECCIONAR <br />GRADO DE OBESIDAD
+      SELECCIONAR <br />COMORBILIDADES
     </h3>
 
     <div
@@ -61,10 +61,10 @@
 
     <div class="bef bef-d-flex fleDir-column bef-p-1rem bef-w-50per">
       <h2 class="bef bef-hmn-4rem">
-        <span class="bef bef-opacity-0_5">Pacientes con obesidad </span>
-        <span class="bef bef-borderBottom-1px__solid__novo bef-text-novo">{{
-          comorbiditiesText
-        }}</span>
+        <span class="bef bef-opacity-0_5">Pacientes con obesidad </span><br/>
+        <span
+        [innerHTML]="comorbiditiesText | safeHtml"
+        class="bef bef-borderBottom-1px__solid__novo bef-text-novo"></span>
       </h2>
       <div class="bef bef-d-flex fleDir-row">
         <generic-span
@@ -96,13 +96,13 @@
     <generic-span
       class="bef bef-w-180px"
       [filledClasses]="'bef'"
-      [textClasses]="'bef bef-fs-1_5rem bef-fontWeight-BOLD bef-color-rovo'"
+      [textClasses]="'bef bef-fs-1_5rem bef-fontWeight-BOLD bef-color-oranvo'"
       [info]="'POBLACIÓN OBJETIVO'"
     ></generic-span>
     <generic-span
       class="bef bef-w-180px bef-wmx-50per"
       [filledClasses]="
-        'bef bef-bg-rovo bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-h-2_5rem bef-p-0_5rem bef-rt-2px'
+        'bef bef-bg-oranvo bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-h-2_5rem bef-p-0_5rem bef-rt-2px'
       "
       [emptyClasses]="emptyClasses"
       [textClasses]="'bef bef-fs-1_5rem bef-color-white'"
