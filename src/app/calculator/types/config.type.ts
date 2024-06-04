@@ -1,8 +1,8 @@
 export type TConfig = {
   /* Obesity Degrees  */
-  persentageObesityDegreeI: number;
-  persentageObesityDegreeII: number;
-  persentageObesityDegreeIII: number;
+  percentageObesityDegreeI: number;
+  percentageObesityDegreeII: number;
+  percentageObesityDegreeIII: number;
   /* Comorbidities */
   comorbidities: TComorbidity[];
   /* Alternatives */

@@ -9,9 +9,9 @@
       [type]="'checkbox'"
       [checkBoxFalseClasses]="falseClasses"
       [checkBoxTrueClasses]="trueClasses"
-      [thingFather]="needsComorbidities"
-      [thing]="'itNeeds'"
-      (changesInput)="needsComorbiditiesClick($event)"
+      [thingFather]="{ needs: needsComorbidities }"
+      [thing]="'needs'"
+      (changesInput)="needsComorbiditiesChange.emit($event.needs)"
     >
       <div [innerHTML]="thumbsUp | safeHtml"></div>
     </generic-input>
@@ -19,14 +19,14 @@
       [type]="'checkbox'"
       [checkBoxTrueClasses]="falseClasses"
       [checkBoxFalseClasses]="trueClasses"
-      [thingFather]="needsComorbidities"
-      [thing]="'itNeeds'"
-      (changesInput)="needsComorbiditiesClick($event)"
+      [thingFather]="{ needs: needsComorbidities }"
+      [thing]="'needs'"
+      (changesInput)="needsComorbiditiesChange.emit($event.needs)"
     >
       <div [innerHTML]="thumbsDown | safeHtml" class=""></div>
     </generic-input>
   </div>
-  @if (needsComorbidities.itNeeds) {
+  @if (needsComorbidities) {
   <div
     class="bef bef-d-flex bef-bg-white bef-h-17rem fleDir-row bef-w-auto bef-p-1rem"
   >
@@ -49,7 +49,7 @@
         [checkBoxFalseClasses]="falseColors"
         [thingFather]="comorbidities"
         thing="{{ comorbiditiesName[i] }}"
-        (changesInput)="comorbiditiesClick($event)"
+        (changesInput)="comorbiditiesChange.emit($event)"
       >
         <div
           [innerHTML]="comorbiditie | safeHtml"
@@ -61,10 +61,11 @@
 
     <div class="bef bef-d-flex fleDir-column bef-p-1rem bef-w-50per">
       <h2 class="bef bef-hmn-4rem">
-        <span class="bef bef-opacity-0_5">Pacientes con obesidad </span><br/>
+        <span class="bef bef-opacity-0_5">Pacientes con obesidad </span><br />
         <span
-        [innerHTML]="comorbiditiesText | safeHtml"
-        class="bef bef-borderBottom-1px__solid__novo bef-text-novo"></span>
+          [innerHTML]="comorbiditiesText | safeHtml"
+          class="bef bef-borderBottom-1px__solid__novo bef-text-novo"
+        ></span>
       </h2>
       <div class="bef bef-d-flex fleDir-row">
         <generic-span
@@ -72,7 +73,10 @@
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
           [textClasses]="'bef bef-color-novo'"
-          [info]="'65478'"
+          [info]="
+            (comorbiditiesPatientsPercentage
+              | math : [{ operation: 'roundDigit', value: 2 }]) + '%'
+          "
         >
         </generic-span>
         <div class="bef bef-mx-5per" [innerHTML]="arrowRight | safeHtml"></div>
@@ -81,7 +85,7 @@
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
           [textClasses]="'bef bef-color-novo'"
-          [info]="'65478'"
+          [info]="comorbiditiesPatients"
         >
         </generic-span>
       </div>
@@ -90,7 +94,7 @@
   }
   <div
     class="bef bef-d-flex aliIte-center {{
-      needsComorbidities.itNeeds ? 'bef-mt-MIN2rem' : 'bef-mt-2rem'
+      needsComorbidities ? 'bef-mt-MIN2rem' : 'bef-mt-2rem'
     }} bef-me-6rem fleDir-row jusCon-fleEnd"
   >
     <generic-span
@@ -106,7 +110,7 @@
       "
       [emptyClasses]="emptyClasses"
       [textClasses]="'bef bef-fs-1_5rem bef-color-white'"
-      [info]="'65478'"
+      [info]="populationTotal"
     ></generic-span>
   </div>
   <div

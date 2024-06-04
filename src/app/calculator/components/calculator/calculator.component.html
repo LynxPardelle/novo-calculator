@@ -12,9 +12,34 @@
       ></span>
       Regresar</a
     >
-    <patient-estimation> </patient-estimation>
-    <obesity-degrees> </obesity-degrees>
-    <comorbidities> </comorbidities>
+    <patient-estimation
+      [patientsPercentage]="calculatorData.patientsPercentage"
+      [patients]="calculatorData.patients"
+      [totalPopulation]="calculatorData.totalPopulation"
+      (totalPopulationChange)="totalPopulationChange($event)"
+    >
+    </patient-estimation>
+    <obesity-degrees
+      [obesityDegrees]="calculatorData.obesityDegrees"
+      [obesityText]="calculatorData.obesityText"
+      [obesityPatientsPercentage]="calculatorData.obesityPatientsPercentage"
+      [obesityPatients]="calculatorData.obesityPatients"
+      (obesityDegreesChange)="degreesChange($event)"
+    >
+    </obesity-degrees>
+    <comorbidities
+      [needsComorbidities]="calculatorData.needsComorbidities"
+      [comorbidities]="calculatorData.comorbidities"
+      [comorbiditiesText]="calculatorData.comorbiditiesText"
+      [comorbiditiesPatientsPercentage]="
+        calculatorData.comorbiditiesPatientsPercentage
+      "
+      [comorbiditiesPatients]="calculatorData.comorbiditiesPatients"
+      [populationTotal]="calculatorData.populationTotal"
+      (needsComorbiditiesChange)="needsComorbiditiesChange($event)"
+      (comorbiditiesChange)="comorbiditiesChange($event)"
+    >
+    </comorbidities>
     <treatment-cost> </treatment-cost>
     <anual-treatment-cost> </anual-treatment-cost>
     <liraglutide-and-lifestyle-modification></liraglutide-and-lifestyle-modification>

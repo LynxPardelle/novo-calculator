@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 /* Modules */
 /* Services */
 import { SharedService } from '../../../shared/services/shared.service';
@@ -17,7 +17,10 @@ import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 })
 export class PatientEstimationComponent {
   @Input() patientsPercentage: number = 36.9;
-  @Input() patients: number = 3629115;
+  @Input() patients: number = 3690;
+  @Input() totalPopulation: number = 10000;
+  @Output() totalPopulationChange: EventEmitter<number> =
+    new EventEmitter<number>();
   constructor(private _sharedService: SharedService) {}
   public filledClasses: string =
     'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-white bef-bwb-4px bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED';

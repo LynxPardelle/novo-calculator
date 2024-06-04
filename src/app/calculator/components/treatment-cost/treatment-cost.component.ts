@@ -29,7 +29,8 @@ export class TreatmentCostComponent {
     },
     {
       title: 'Presentación:',
-      description: 'Caja de cartón con 3 plumas precargadas con 3 ml (6 mg/ml)',
+      description:
+        'Caja de cartón con 3 plumas precargadas con 3 ml (6 mg/ml) Clave CNIS:7125.00',
     },
   ];
 }

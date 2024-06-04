@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 /* Modules */
 /* Services */
 import { SharedService } from '../../../shared/services/shared.service';
@@ -7,11 +7,18 @@ import { GenericInputComponent } from '../../../shared/components/generic-input/
 import { GenericSpanComponent } from '../../../shared/components/generic-span/generic-span.component';
 /* Pipes */
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
+import { TObesityDegrees } from '../../types/obesityDegrees.type';
+import { MathPipe } from '../../../shared/pipes/math.pipe';
 
 @Component({
   selector: 'obesity-degrees',
   standalone: true,
-  imports: [GenericInputComponent, GenericSpanComponent, SafeHtmlPipe],
+  imports: [
+    GenericInputComponent,
+    GenericSpanComponent,
+    SafeHtmlPipe,
+    MathPipe,
+  ],
   templateUrl: './obesity-degrees.component.html',
   styleUrl: './obesity-degrees.component.scss',
 })
@@ -34,23 +41,14 @@ export class ObesityDegreesComponent {
   public grade2 = this._sharedService.getHtml('grade2');
   public grade3 = this._sharedService.getHtml('grade3');
   public arrowRight = this._sharedService.getHtml('arrowRight');
-  public obesityDegrees: { [key: string]: boolean } = {
+  @Input() obesityDegrees: TObesityDegrees = {
     grade1: false,
     grade2: false,
     grade3: false,
   };
-  public obesityText: string = '';
-
-  degreesClick(event: any) {
-    console.log('event: ', event);
-    this.obesityDegrees = event;
-    console.log('obesityDegrees: ', this.obesityDegrees);
-    this.obesityText = Object.keys(this.obesityDegrees)
-      .filter((key) => {
-        return this.obesityDegrees[key] === true;
-      })
-      .join(' <br/> + ')
-      .replace(/grade/g, 'Grado ');
-    console.log('obesityText: ', this.obesityText);
-  }
+  @Input() obesityText: string = '';
+  @Input() obesityPatientsPercentage: number = 0;
+  @Input() obesityPatients: number = 0;
+  @Output() obesityDegreesChange: EventEmitter<TObesityDegrees> =
+    new EventEmitter<TObesityDegrees>();
 }

@@ -23,7 +23,10 @@
       [containerClasses]="
         'bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__oranvo'
       "
+      [thingFather]="{ population: totalPopulation }"
+      [thing]="'population'"
       [labelTitle]="'población total'"
+      (changesInput)="totalPopulationChange.emit($event.population)"
     ></generic-input>
     <h2 class="bef bef-opacity-0_5">Pacientes con obesidad</h2>
     <div class="bef bef-d-flex fleDir-row bef-flexGrow-1">

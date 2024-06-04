@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
 import { GenericButtonComponent } from '../../../shared/components/generic-button/generic-button.component';
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 import { SharedService } from '../../../shared/services/shared.service';
 import { GenericSpanComponent } from '../../../shared/components/generic-span/generic-span.component';
+import { TComorbidities } from '../../types/comorbidities.type';
+import { MathPipe } from '../../../shared/pipes/math.pipe';
 
 @Component({
   selector: 'comorbidities',
@@ -13,6 +15,7 @@ import { GenericSpanComponent } from '../../../shared/components/generic-span/ge
     GenericButtonComponent,
     GenericSpanComponent,
     SafeHtmlPipe,
+    MathPipe,
   ],
   templateUrl: './comorbidities.component.html',
   styleUrl: './comorbidities.component.scss',
@@ -40,38 +43,27 @@ export class ComorbiditiesComponent {
   public arrowRight = this.sharedService.getHtml('arrowRight');
   public bascula = this.sharedService.getHtml('bascula');
 
-  public needsComorbidities: { itNeeds: boolean } = { itNeeds: false };
+  @Input() needsComorbidities: boolean = false;
 
-  public comorbidities: { [key: string]: boolean } = {
-    hipertension: false,
+  @Input() comorbidities: TComorbidities = {
+    hipertensión: false,
     dislipidemia: false,
     prediabetes: false,
   };
 
   public comorbiditiesName: string[] = [
-    'hipertension',
+    'hipertensión',
     'dislipidemia',
     'prediabetes',
   ];
 
-  public comorbiditiesText: string = '';
+  @Input() comorbiditiesText: string = '';
 
-  comorbiditiesClick(event: any) {
-    console.log('event: ', event);
-    this.comorbidities = event;
-    console.log('comorbidities: ', this.comorbidities);
-    this.comorbiditiesText = Object.keys(this.comorbidities)
-      .filter((key) => {
-        return this.comorbidities[key] === true;
-      })
-      .join(' <br/> + ')
-      .replace(/grade/g, 'Grado ');
-    console.log('comorbiditiesText: ', this.comorbiditiesText);
-  }
-
-  needsComorbiditiesClick(event: any) {
-    console.log('event: ', event);
-    this.needsComorbidities = event;
-    console.log('needsComorbidities: ', this.needsComorbidities);
-  }
+  @Input() comorbiditiesPatientsPercentage: number = 0;
+  @Input() comorbiditiesPatients: number = 0;
+  @Input() populationTotal: number = 0;
+  @Output() needsComorbiditiesChange: EventEmitter<boolean> =
+    new EventEmitter();
+  @Output() comorbiditiesChange: EventEmitter<TComorbidities> =
+    new EventEmitter();
 }
