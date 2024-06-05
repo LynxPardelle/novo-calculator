@@ -85,7 +85,7 @@
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
           [textClasses]="'bef bef-color-novo'"
-          [info]="comorbiditiesPatients"
+          [info]="comorbiditiesPatients | math : [{ operation: 'round' }]"
         >
         </generic-span>
       </div>
@@ -110,7 +110,7 @@
       "
       [emptyClasses]="emptyClasses"
       [textClasses]="'bef bef-fs-1_5rem bef-color-white'"
-      [info]="populationTotal"
+      [info]="populationTotal | math : [{ operation: 'round' }]"
     ></generic-span>
   </div>
   <div

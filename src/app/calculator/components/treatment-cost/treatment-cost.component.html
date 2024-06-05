@@ -20,10 +20,13 @@
   <div class="bef bef-w-40per bef-flexGrow-0_5">
     <div>
       @for (treatmentTitle of treatmentTitles; track treatmentTitle.title) {
-      <h3 class="bef bef-d-flex jusCon-between bef-ms-1rem aliCon-stretch bef-text-novo">
-        <span class="bef bef-ms-1rem bef-w-35per bef-fontWeight-400 bef-d-flex jusCon-fleStart">{{
-          treatmentTitle.title
-        }}</span>
+      <h3
+        class="bef bef-d-flex jusCon-between bef-ms-1rem aliCon-stretch bef-text-novo"
+      >
+        <span
+          class="bef bef-ms-1rem bef-w-35per bef-fontWeight-400 bef-d-flex jusCon-fleStart"
+          >{{ treatmentTitle.title }}</span
+        >
         <span class="bef bef-w-55per bef-fw-BOLD bef-d-flex jusCon-fleStart">{{
           treatmentTitle.description
         }}</span>
@@ -31,19 +34,31 @@
       }
     </div>
     <div class="bef bef-d-flex fleDir-row jusCon-between bef-w-85per">
+      @if (institution === 'private') {
+      <generic-input
+        [labelTitle]="'Costo Unitario'"
+        [type]="'text'"
+        [thingFather]="{ cost: unitCost }"
+        [thing]="'cost'"
+        [inputClasses]="filledClasses"
+        [containerClasses]="''"
+        (changesInput)="unitCostChange.emit($event.cost)"
+      >
+      </generic-input>
+      } @else{
       <generic-span
-
         [filledClasses]="filledClasses"
         [emptyClasses]="emptyClasses"
         [textClasses]="'bef bef-color-novo'"
-        [info]="'Costo unitario $245'"
+        [info]="'Costo unitario $' + unitCost"
       >
       </generic-span>
+      }
       <generic-span
         [filledClasses]="filledClasses"
         [emptyClasses]="emptyClasses"
         [textClasses]="'bef bef-color-novo'"
-        [info]="'Costo anual $4,763.89'"
+        [info]="'Costo anual $' + anualCost"
       >
       </generic-span>
     </div>

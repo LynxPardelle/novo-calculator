@@ -9,6 +9,12 @@ export type TConfig = {
   alternatives: TAlternative[];
   /* Life Style */
   lifeStyles: TLifeStyle[];
+  /* Treatment */
+  publicUnitCost: number;
+  publicAnualCost: number;
+  privateUnitCost: number;
+  privateAnualCost: number;
+  privateCostTreatmentMultiplicator: number;
 };
 
 export type TComorbidity = {

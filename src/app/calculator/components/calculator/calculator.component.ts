@@ -20,6 +20,8 @@ import { PatientsComponent } from '../patients/patients.component';
 import { TObesityDegrees } from '../../types/obesityDegrees.type';
 import { TComorbidity, TConfig } from '../../types/config.type';
 import { TComorbidities } from '../../types/comorbidities.type';
+import { TCalculatorData } from '../../types/calculatorData.type';
+import { TObesityDegreesNames } from '../../types/obesityDegreesNames.type';
 
 @Component({
   selector: 'app-calculator',
@@ -43,7 +45,8 @@ import { TComorbidities } from '../../types/comorbidities.type';
   styleUrl: './calculator.component.scss',
 })
 export class CalculatorComponent implements OnInit {
-  public calculatorData: any = {
+  public calculatorData: TCalculatorData = {
+    institution: 'private',
     /* Pacient */
     totalPopulation: 10000,
     patientsPercentage: 36.9,
@@ -68,6 +71,7 @@ export class CalculatorComponent implements OnInit {
     comorbiditiesPatientsPercentage: 0,
     comorbiditiesPatients: 0,
     populationTotal: 0,
+    /* Treatment */
   };
   public config: TConfig = {
     /* Obesity */
@@ -98,6 +102,12 @@ export class CalculatorComponent implements OnInit {
     /* Treatment */
     alternatives: [],
     lifeStyles: [],
+    /* Treatment */
+    publicUnitCost: 2325,
+    publicAnualCost: 45208.33,
+    privateUnitCost: 4141.16,
+    privateAnualCost: 80522.56,
+    privateCostTreatmentMultiplicator: 19.44,
   };
   constructor(private _sharedService: SharedService) {}
   public arrowLeft = this._sharedService.getHtml('arrowLeft');
@@ -148,7 +158,7 @@ export class CalculatorComponent implements OnInit {
       if (!!selectedDegree) {
         let key = `percentageObesityDegree${d[1]}`;
         console.log('key', key);
-        let percentage = this.config[key as keyof TConfig];
+        let percentage: number = this.config[key as keyof TConfig] as number;
         console.log('percentage', percentage);
         this.calculatorData.obesityPatientsPercentage += percentage;
       }
@@ -157,7 +167,11 @@ export class CalculatorComponent implements OnInit {
       (this.calculatorData.obesityPatientsPercentage / 100) *
         this.calculatorData.patients
     );
-    this.calculatorData.populationTotal = this.calculatorData.obesityPatients;
+    if (!!this.calculatorData.needsComorbidities) {
+      this.manageComorbiditiesPatientsPercentage();
+    } else {
+      this.calculatorData.populationTotal = this.calculatorData.obesityPatients;
+    }
   }
   /* Comorbidities */
   needsComorbiditiesChange(event: boolean) {
@@ -186,6 +200,11 @@ export class CalculatorComponent implements OnInit {
     this.manageComorbiditiesPatientsPercentage();
   }
   manageComorbiditiesPatientsPercentage() {
+    let comorbiditiesPatientsPerDegree: TObesityDegreesNames = {
+      grade1: 0,
+      grade2: 0,
+      grade3: 0,
+    };
     this.calculatorData.comorbiditiesPatients = 0;
     let percentage = [
       ['1', 'I'],
@@ -203,7 +222,8 @@ export class CalculatorComponent implements OnInit {
           let selectedComorbidities: number = 1;
           let p: number = ['hipertensión', 'dislipidemia', 'prediabetes']
             .map((c): number => {
-              let selectedComorbidity = this.calculatorData.comorbidities[c];
+              let selectedComorbidity =
+                this.calculatorData.comorbidities[c as keyof TComorbidities];
               console.log('c', c);
               console.log('selectedComorbidity', selectedComorbidity);
 
@@ -221,24 +241,30 @@ export class CalculatorComponent implements OnInit {
             .reduce((a, b) => a * b);
           console.log('selectedComorbidities', selectedComorbidities);
           p = p / Math.pow(10, selectedComorbidities);
+          if (p === 1 || p === 0.1) p = 0;
           console.log('p', p);
           console.log(
             'comorbiditiesPatients',
             this.calculatorData.comorbiditiesPatients
           );
-          let degree: number = this.config[
+          let de: number = this.config[
             `percentageObesityDegree${d[1]}` as keyof TConfig
           ] as number;
-          console.log('degree', degree);
-          let patients: number = this.calculatorData.patients * (degree / 100);
+          console.log('de', de);
+          let patients: number = this.calculatorData.patients * (de / 100);
           console.log('patients', patients);
-          this.calculatorData.comorbiditiesPatients = Math.round(p * patients);
+          let comorbiditiesPatients: number = (p / 100) * patients;
+          console.log('comorbiditiesPatients', comorbiditiesPatients);
+          comorbiditiesPatientsPerDegree[degree] = comorbiditiesPatients;
           console.log(
-            'comorbiditiesPatients',
-            this.calculatorData.comorbiditiesPatients
+            'comorbiditiesPatientsPerDegree',
+            comorbiditiesPatientsPerDegree
+          );
+          console.log(
+            'comorbiditiesPatientsPerDegree[degree]',
+            comorbiditiesPatientsPerDegree[degree]
           );
 
-          if (p === 1) return 0;
           return p;
         } else {
           return 0;
@@ -247,7 +273,31 @@ export class CalculatorComponent implements OnInit {
       .reduce((a, b) => a + b);
     console.log('percentage', percentage);
     this.calculatorData.comorbiditiesPatientsPercentage = percentage;
+    console.log(
+      'comorbiditiesPatientsPercentage',
+      this.calculatorData.comorbiditiesPatientsPercentage
+    );
+
+    this.calculatorData.comorbiditiesPatients =
+      comorbiditiesPatientsPerDegree.grade1 +
+      comorbiditiesPatientsPerDegree.grade2 +
+      comorbiditiesPatientsPerDegree.grade3;
+    console.log(
+      'comorbiditiesPatients',
+      this.calculatorData.comorbiditiesPatients
+    );
+
     this.calculatorData.populationTotal =
       this.calculatorData.comorbiditiesPatients;
+    console.log('populationTotal', this.calculatorData.populationTotal);
+  }
+  /* Treatment Cost */
+  unitCostChange(event: number) {
+    if (this.calculatorData.institution === 'private') {
+      this.config.privateUnitCost = event;
+      console.log('privateUnitCost', this.config.privateUnitCost);
+    } else {
+      this.config.publicUnitCost = event;
+    }
   }
 }
