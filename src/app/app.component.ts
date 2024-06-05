@@ -41,6 +41,7 @@ export class AppComponent implements AfterViewInit {
     texAli: 'bef-textAlign',
     wrap: 'bef-flexWrap',
     worBre: 'bef-wordBreak',
+    textTra: 'bef-textTransform',
   };
   constructor(private readonly _bef: NgxBootstrapExpandedFeaturesService) {
     this._bef.pushColors(this.colors);
