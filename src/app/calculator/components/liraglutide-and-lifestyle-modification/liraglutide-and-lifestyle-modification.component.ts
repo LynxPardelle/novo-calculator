@@ -22,6 +22,7 @@ import {
 export class LiraglutideAndLifestyleModificationComponent
   implements OnInit, OnChanges
 {
+  @Input() times: number = 4.1;
   @Input() liraglutideAndLifeStyleModificationArchivesTheGoal: number = 2.15;
   @Input()
   liraglutideAndLifeStyleModificationDoesNotArchiveTheGoal: number = 12.85;
@@ -43,7 +44,8 @@ export class LiraglutideAndLifestyleModificationComponent
   // options
   public gradient: boolean = true;
   public showLegend: boolean = true;
-  public showLabels: boolean = true;
+  public legendTitle: string = '';
+  public showLabels: boolean = false;
   public isDoughnut: boolean = false;
   public legendPosition: LegendPosition = LegendPosition.Below;
 

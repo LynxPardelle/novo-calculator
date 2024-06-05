@@ -22,6 +22,7 @@ import { TComorbidity, TConfig } from '../../types/config.type';
 import { TComorbidities } from '../../types/comorbidities.type';
 import { TCalculatorData } from '../../types/calculatorData.type';
 import { TObesityDegreesNames } from '../../types/obesityDegreesNames.type';
+import { ArchieveGoalPatientsComponent } from '../archieve-goal-patients/archieve-goal-patients.component';
 
 @Component({
   selector: 'app-calculator',
@@ -37,6 +38,7 @@ import { TObesityDegreesNames } from '../../types/obesityDegreesNames.type';
     ObesityDegreesComponent,
     TreatmentCostComponent,
     AnualTreatmentCostComponent,
+    ArchieveGoalPatientsComponent,
     LiraglutideAndLifestyleModificationComponent,
     PatientsComponent,
     SafeHtmlPipe,
@@ -153,13 +155,9 @@ export class CalculatorComponent implements OnInit {
     ].forEach((d: string[]) => {
       let degree = `grade${d[0]}` as keyof TObesityDegrees;
       let selectedDegree = this.calculatorData.obesityDegrees[degree];
-      console.log('degree', degree);
-      console.log('selectedDegree', selectedDegree);
       if (!!selectedDegree) {
         let key = `percentageObesityDegree${d[1]}`;
-        console.log('key', key);
         let percentage: number = this.config[key as keyof TConfig] as number;
-        console.log('percentage', percentage);
         this.calculatorData.obesityPatientsPercentage += percentage;
       }
     });
@@ -183,9 +181,7 @@ export class CalculatorComponent implements OnInit {
     }
   }
   comorbiditiesChange(event: TComorbidities) {
-    console.log('event: ', event);
     this.calculatorData.comorbidities = event;
-    console.log('comorbidities: ', this.calculatorData.comorbidities);
     this.calculatorData.comorbiditiesText = Object.keys(
       this.calculatorData.comorbidities
     )
@@ -196,7 +192,6 @@ export class CalculatorComponent implements OnInit {
         );
       })
       .join(' + ');
-    console.log('comorbiditiesText: ', this.calculatorData.comorbiditiesText);
     this.manageComorbiditiesPatientsPercentage();
   }
   manageComorbiditiesPatientsPercentage() {
@@ -214,24 +209,17 @@ export class CalculatorComponent implements OnInit {
       .map((d: string[]): number => {
         let degree = `grade${d[0]}` as keyof TObesityDegrees;
         let selectedDegree = this.calculatorData.obesityDegrees[degree];
-        console.log('degree', degree);
-        console.log('selectedDegree', selectedDegree);
         if (!!selectedDegree) {
           let k = `percentageObesity${d[1]}` as keyof TComorbidity;
-          console.log('k', k);
           let selectedComorbidities: number = 1;
           let p: number = ['hipertensión', 'dislipidemia', 'prediabetes']
             .map((c): number => {
               let selectedComorbidity =
                 this.calculatorData.comorbidities[c as keyof TComorbidities];
-              console.log('c', c);
-              console.log('selectedComorbidity', selectedComorbidity);
-
               if (!!selectedComorbidity) {
                 let comorbidity: TComorbidity | undefined =
                   this.config.comorbidities.find((co) => co.name === c);
                 if (!comorbidity) return 1;
-                console.log('comorbidity', comorbidity);
                 selectedComorbidities++;
                 return comorbidity[k] as number;
               } else {
@@ -239,63 +227,37 @@ export class CalculatorComponent implements OnInit {
               }
             })
             .reduce((a, b) => a * b);
-          console.log('selectedComorbidities', selectedComorbidities);
           p = p / Math.pow(10, selectedComorbidities);
           if (p === 1 || p === 0.1) p = 0;
-          console.log('p', p);
-          console.log(
-            'comorbiditiesPatients',
-            this.calculatorData.comorbiditiesPatients
-          );
           let de: number = this.config[
             `percentageObesityDegree${d[1]}` as keyof TConfig
           ] as number;
-          console.log('de', de);
           let patients: number = this.calculatorData.patients * (de / 100);
-          console.log('patients', patients);
           let comorbiditiesPatients: number = (p / 100) * patients;
-          console.log('comorbiditiesPatients', comorbiditiesPatients);
           comorbiditiesPatientsPerDegree[degree] = comorbiditiesPatients;
-          console.log(
-            'comorbiditiesPatientsPerDegree',
-            comorbiditiesPatientsPerDegree
-          );
-          console.log(
-            'comorbiditiesPatientsPerDegree[degree]',
-            comorbiditiesPatientsPerDegree[degree]
-          );
-
           return p;
         } else {
           return 0;
         }
       })
       .reduce((a, b) => a + b);
-    console.log('percentage', percentage);
     this.calculatorData.comorbiditiesPatientsPercentage = percentage;
-    console.log(
-      'comorbiditiesPatientsPercentage',
-      this.calculatorData.comorbiditiesPatientsPercentage
-    );
-
     this.calculatorData.comorbiditiesPatients =
       comorbiditiesPatientsPerDegree.grade1 +
       comorbiditiesPatientsPerDegree.grade2 +
       comorbiditiesPatientsPerDegree.grade3;
-    console.log(
-      'comorbiditiesPatients',
-      this.calculatorData.comorbiditiesPatients
-    );
-
     this.calculatorData.populationTotal =
       this.calculatorData.comorbiditiesPatients;
-    console.log('populationTotal', this.calculatorData.populationTotal);
   }
   /* Treatment Cost */
   unitCostChange(event: number) {
     if (this.calculatorData.institution === 'private') {
       this.config.privateUnitCost = event;
       console.log('privateUnitCost', this.config.privateUnitCost);
+      this.config.privateAnualCost =
+        this.config.privateUnitCost *
+        this.config.privateCostTreatmentMultiplicator;
+      console.log('privateAnualCost', this.config.privateAnualCost);
     } else {
       this.config.publicUnitCost = event;
     }
