@@ -36,21 +36,22 @@
     <div class="bef bef-d-flex fleDir-row jusCon-around bef-w-100per">
       @if (institution === 'private') {
       <generic-input
-
+        class="bef bef-d-flex jusCon-center aliIte-center bef-w-50per"
         [labelTitle]="'Costo Unitario'"
         [type]="'text'"
         [thingFather]="{ cost: unitCost }"
         [thing]="'cost'"
-        [labelClasses]="'bef'"
+        [labelClasses]="'bef bef-fs-1rem bef-text-novo'"
         [inputClasses]="''"
         [containerClasses]="
-        ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__oranvo bef-wmn-5rem bef-w-80per bef-wmx-10rem  '
-      "
+          ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__oranvo bef-wmn-5rem bef-w-80per bef-wmx-10rem  bef-dSEL___mdcMINlineMINripple-none bef-transformSEL__label-translateYSDMIN110perED bef-bgSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-white'
+        "
         (changesInput)="unitCostChange.emit($event.cost)"
       >
       </generic-input>
       } @else{
       <generic-span
+        class="bef bef-w-50per"
         [filledClasses]="filledClasses"
         [emptyClasses]="emptyClasses"
         [textClasses]="'bef bef-color-novo'"
@@ -59,6 +60,7 @@
       </generic-span>
       }
       <generic-span
+        class="bef bef-w-50per"
         [filledClasses]="filledClasses"
         [emptyClasses]="emptyClasses"
         [textClasses]="'bef bef-color-novo'"

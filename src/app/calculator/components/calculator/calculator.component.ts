@@ -23,6 +23,7 @@ import { TComorbidities } from '../../types/comorbidities.type';
 import { TCalculatorData } from '../../types/calculatorData.type';
 import { TObesityDegreesNames } from '../../types/obesityDegreesNames.type';
 import { ArchieveGoalPatientsComponent } from '../archieve-goal-patients/archieve-goal-patients.component';
+import { LiraglutideCostComponent } from '../liraglutide-cost/liraglutide-cost.component';
 
 @Component({
   selector: 'app-calculator',
@@ -36,6 +37,7 @@ import { ArchieveGoalPatientsComponent } from '../archieve-goal-patients/archiev
     PatientEstimationComponent,
     ComorbiditiesComponent,
     ObesityDegreesComponent,
+    LiraglutideCostComponent,
     TreatmentCostComponent,
     AnualTreatmentCostComponent,
     ArchieveGoalPatientsComponent,
