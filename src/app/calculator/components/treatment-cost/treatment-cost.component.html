@@ -33,15 +33,19 @@
       </h3>
       }
     </div>
-    <div class="bef bef-d-flex fleDir-row jusCon-between bef-w-85per">
+    <div class="bef bef-d-flex fleDir-row jusCon-around bef-w-100per">
       @if (institution === 'private') {
       <generic-input
+
         [labelTitle]="'Costo Unitario'"
         [type]="'text'"
         [thingFather]="{ cost: unitCost }"
         [thing]="'cost'"
+        [labelClasses]="'bef'"
         [inputClasses]="''"
-        [containerClasses]="''"
+        [containerClasses]="
+        ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__oranvo bef-wmn-5rem bef-w-80per bef-wmx-10rem  '
+      "
         (changesInput)="unitCostChange.emit($event.cost)"
       >
       </generic-input>
