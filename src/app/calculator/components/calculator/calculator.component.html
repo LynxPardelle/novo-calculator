@@ -40,7 +40,12 @@
       (comorbiditiesChange)="comorbiditiesChange($event)"
     >
     </comorbidities>
-    <liraglutide-cost></liraglutide-cost>
+    <liraglutide-cost
+      [anualCost]="
+        calculatorData.institution === 'private'
+          ? config.privateAnualCost
+          : config.publicAnualCost"
+    ></liraglutide-cost>
     <treatment-cost
       [institution]="calculatorData.institution"
       [unitCost]="

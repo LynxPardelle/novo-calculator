@@ -1,1 +1,37 @@
-<p>liraglutide-cost works!</p>
+<section class="bef bef-mb-5rem">
+  <div class="bef bef-d-flex fleDir-column bef-p-1rem">
+    <h2 class="bef bef-text-novo bef-fontWeight-900">Costo de tratamiento con liranglutida 3.0 mg</h2>
+    <div class="bef bef-d-flex aliIte-center bef-py-1rem fleDir-row wrap-wrap">
+      @for(semana of semanas; track semanas; let i = $index){
+        <generic-span
+          class="bef  bef-d-flex bef-mt-1rem"
+          [info]="(semana.semana || '') + (semana.dosis || '') + (semana.mantenimiento || '')"
+          [filledClasses]="getClasses(semana.color,semana.size)"
+          [textClasses]="'bef bef-fs-12px bef-text-white bef-fontWeight-400'"
+
+        >
+    </generic-span>
+    @if(i<=4){
+      <div class="bef bef-d-flex aliIte-center bef-w-4per bef-mt-1rem" [innerHTML]="arrowRight | safeHtml"></div>
+    }
+
+      }
+    </div>
+    <div class="bef bef-d-flex fleDir-column">
+      <span id="banner" class="bef bef-d-flex bef-bg-diskSoft jusCon-center">
+        <h4 class="bef bef-m-0 bef-fontWeight-300 bef-fs-14px bef-p-2px">Costo Semanal</h4>
+      </span>
+
+      <span id="costos" class="bef bef-d-flex fleDir-row">
+        @for(cost of ['$181', '$362', '$543', '$723', '$904'] ; track cost; let i = $index){
+           <p class="bef bef-m-0 bef-w-20per">{{cost.valueOf()}}</p>}
+      </span>
+    </div>
+    <span class="bef bef-d-flex fleDir-row jusCon-center">
+      <h3 class="bef texAli-center bef-m-1rem">Costo Anual de Tratamiento <br/> con Liraglutida 3.0 mg</h3>
+      <p
+      class="bef bef-d-flex aliIte-center bef-m-1rem bef-text-rovo bef-fs-1_5rem"
+      >${{anualCost}}</p>
+    </span>
+  </div>
+</section>

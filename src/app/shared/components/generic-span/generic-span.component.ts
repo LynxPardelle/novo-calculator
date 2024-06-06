@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './generic-span.component.scss',
 })
 export class GenericSpanComponent {
-  @Input() info: string | number = '';
+  @Input() info: string | number |any = '';
   @Input() emptyClasses: string = '';
   @Input() filledClasses: string = '';
   @Input() textClasses: string = '';

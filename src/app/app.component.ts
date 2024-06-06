@@ -17,6 +17,7 @@ export class AppComponent implements AfterViewInit {
   public colors: { [key: string]: string } = {
     novo: '#001965',
     disk: '#939AA7',
+    diskSoft: '#d1d3d8',
     nord: '#E2F0FA',
     accentNord: '#c1ecdc',
     action: '#005AD2',
