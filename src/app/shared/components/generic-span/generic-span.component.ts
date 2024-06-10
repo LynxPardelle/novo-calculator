@@ -9,6 +9,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class GenericSpanComponent {
   @Input() info: string | number |any = '';
+  @Input() title: string = '';
+  @Input() titleClasses: string = '';
   @Input() emptyClasses: string = '';
   @Input() filledClasses: string = '';
   @Input() textClasses: string = '';

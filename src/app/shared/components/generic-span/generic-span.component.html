@@ -2,5 +2,10 @@
   class="{{ info !== '' && info !== 0 ? filledClasses : emptyClasses }}"
   (mouseenter)="onHover()"
 >
+  @if(title !== '')
+  {<span class="{{titleClasses}}">{{title}} <br/> <p class="{{ textClasses }}">{{ info }}</p></span>}
+  @else {
   <span class="{{ textClasses }}">{{ info }}</span>
+  }
+
 </div>

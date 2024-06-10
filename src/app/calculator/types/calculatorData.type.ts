@@ -17,4 +17,5 @@ export type TCalculatorData = {
   comorbiditiesPatientsPercentage: number;
   comorbiditiesPatients: number;
   populationTotal: number;
+  months: number;
 };

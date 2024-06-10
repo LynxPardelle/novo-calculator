@@ -1,24 +1,33 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
+  input,
 } from '@angular/core';
 /* Module */
 /* Directives */
 /* Libraries */
 import { Color, NgxChartsModule, ScaleType } from '@swimlane/ngx-charts';
+import { SharedModule } from '../../../shared/shared.module';
+import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
+import { GenericSpanComponent } from '../../../shared/components/generic-span/generic-span.component';
 @Component({
   selector: 'anual-treatment-cost',
   standalone: true,
-  imports: [NgxChartsModule],
+  imports: [NgxChartsModule, SharedModule, GenericInputComponent, GenericSpanComponent],
   templateUrl: './anual-treatment-cost.component.html',
   styleUrl: './anual-treatment-cost.component.scss',
-})
-export class AnualTreatmentCostComponent implements OnChanges, OnInit {
-  @Input() lifeStyleModification: number = 96080;
-  @Input() liraglutideNLifeStyleModification: number = 141289;
+  })
+  export class AnualTreatmentCostComponent implements OnChanges, OnInit {
+    @Input() lifeStyleModification: number = 96080;
+    @Input() liraglutideNLifeStyleModification: number = 141289;
+    @Input() anualCost: number = 45208.33;
+    @Input() inputNumber: number = 0;
+    @Output() inputNumberChange: EventEmitter<number> = new EventEmitter<number>();
 
   public multi: any[] = [
     {
@@ -63,6 +72,33 @@ export class AnualTreatmentCostComponent implements OnChanges, OnInit {
     domain: ['#001965', '#E2F0FA'],
   };
 
+  public tabs: { title: string; inputLable: string, spanNumber:number, }[] = [
+    {
+      title: 'Nutrición',
+      inputLable: 'Frecuencia Anual',
+      spanNumber: this.anualCost,
+
+
+    },
+    {
+      title: 'Enfermería',
+      inputLable: 'Frecuencia Anual',
+      spanNumber: this.anualCost,
+
+    },
+    {
+      title: 'Actividad física',
+      inputLable: 'Frecuencia Anual',
+      spanNumber: this.anualCost,
+
+    },
+    {
+      title: 'Psicología',
+      inputLable: 'Frencuencia Anual',
+      spanNumber: this.anualCost,
+
+    }
+  ];
   constructor() {}
   ngOnInit(): void {
     this.configYScaleMax();
@@ -84,6 +120,7 @@ export class AnualTreatmentCostComponent implements OnChanges, OnInit {
       this.multi[1].series[0].value = this.liraglutideNLifeStyleModification;
       this.configYScaleMax();
     }
+
   }
 
   configYScaleMax() {
@@ -105,4 +142,15 @@ export class AnualTreatmentCostComponent implements OnChanges, OnInit {
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
+
+  selectedTab(event: any) {
+    console.log(event);
+
+  }
+
+  inputChange(event: string) {
+    let meses = parseInt(event);
+    this.inputNumberChange.emit(meses);
+  }
+
 }

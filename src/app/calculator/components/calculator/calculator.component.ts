@@ -76,6 +76,7 @@ export class CalculatorComponent implements OnInit {
     comorbiditiesPatients: 0,
     populationTotal: 0,
     /* Treatment */
+    months: 12,
   };
   public config: TConfig = {
     /* Obesity */
@@ -123,6 +124,7 @@ export class CalculatorComponent implements OnInit {
   totalPopulationChange(event: any) {
     this.calculatorData.totalPopulation = event;
     this.percentageCalculation();
+
   }
 
   percentageCalculation() {
@@ -263,5 +265,10 @@ export class CalculatorComponent implements OnInit {
     } else {
       this.config.publicUnitCost = event;
     }
+  }
+  /* Anual Treatment Cost */
+  anualCostChange(event: number){
+    console.log('months', event);
+    this.calculatorData.months = event;
   }
 }

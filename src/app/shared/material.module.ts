@@ -6,6 +6,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 @NgModule({
   declarations: [],
@@ -17,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatDividerModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatTabsModule,
   ],
   exports: [
     MatInputModule,
@@ -25,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatDividerModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatTabsModule,
   ],
 })
 export class MaterialModule {}

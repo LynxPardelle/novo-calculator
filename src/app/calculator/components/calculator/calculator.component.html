@@ -61,7 +61,10 @@
       (unitCostChange)="unitCostChange($event)"
     >
     </treatment-cost>
-    <anual-treatment-cost> </anual-treatment-cost>
+    <anual-treatment-cost
+      [inputNumber]="calculatorData.months"
+      (inputNumberChange)="anualCostChange($event)"
+    > </anual-treatment-cost>
     <archieve-goal-patients></archieve-goal-patients>
     <liraglutide-and-lifestyle-modification></liraglutide-and-lifestyle-modification>
     <patients> </patients>
