@@ -80,8 +80,8 @@
       "
     ></generic-span>
   </div>
-  <ngx-charts-bar-vertical-2d
-    class="bef bef-mx-auto bef-d-block bef-w-350px"
+  <ngx-charts-bar-vertical
+    class="bef bef-mx-auto bef-d-none bef-w-500px"
     [view]="view"
     [scheme]="colorScheme"
     [results]="multi"
@@ -93,6 +93,7 @@
     [showYAxisLabel]="showYAxisLabel"
     [xAxisLabel]="xAxisLabel"
     [yAxisLabel]="yAxisLabel"
+    [legendPosition]="legendPosition"
     [legendTitle]="legendTitle"
     [barPadding]="barPadding"
     [showDataLabel]="showDataLabel"
@@ -101,5 +102,5 @@
     (activate)="onActivate($event)"
     (deactivate)="onDeactivate($event)"
   >
-  </ngx-charts-bar-vertical-2d>
+  </ngx-charts-bar-vertical>
 </section>

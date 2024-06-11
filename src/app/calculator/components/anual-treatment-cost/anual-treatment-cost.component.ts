@@ -11,7 +11,12 @@ import {
 /* Module */
 /* Directives */
 /* Libraries */
-import { Color, NgxChartsModule, ScaleType } from '@swimlane/ngx-charts';
+import {
+  Color,
+  LegendPosition,
+  NgxChartsModule,
+  ScaleType,
+} from '@swimlane/ngx-charts';
 import { SharedModule } from '../../../shared/shared.module';
 import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
 import { GenericSpanComponent } from '../../../shared/components/generic-span/generic-span.component';
@@ -29,8 +34,6 @@ import { TLifeStyleModifications } from '../../types/lifeStyleModifications';
   styleUrl: './anual-treatment-cost.component.scss',
 })
 export class AnualTreatmentCostComponent implements OnChanges, OnInit {
-  @Input() lifeStyleModification: number = 96080;
-  @Input() liraglutideNLifeStyleModification: number = 141289;
   @Input() nutritionMonths: number = 0;
   @Input() infirmaryMonths: number = 0;
   @Input() physicalActivityMonths: number = 0;
@@ -44,33 +47,15 @@ export class AnualTreatmentCostComponent implements OnChanges, OnInit {
   @Output() monthChange: EventEmitter<[number, TLifeStyleModifications]> =
     new EventEmitter<[number, TLifeStyleModifications]>();
 
-  public multi: any[] = [
-    {
-      name: 'Modificación de estilo de vida',
-      series: [
-        {
-          name: '',
-          value: this.lifeStyleModification,
-        },
-      ],
-    },
-    {
-      name: 'Liraglutida + modificación de estilo de vida',
-      series: [
-        {
-          name: '',
-          value: this.liraglutideNLifeStyleModification,
-        },
-      ],
-    },
-  ];
-  public view: [number, number] = [350, 350];
+  public multi: any[] = [];
+  public view: [number, number] = [500, 500];
 
   // options
-  public showXAxis: boolean = true;
+  public showXAxis: boolean = false;
   public showYAxis: boolean = true;
   public gradient: boolean = true;
-  public showLegend: boolean = false;
+  public showLegend: boolean = true;
+  public legendPosition: LegendPosition = LegendPosition.Below;
   public showXAxisLabel: boolean = false;
   public xAxisLabel: string = 'Costo anual de tratamiento';
   public showYAxisLabel: boolean = false;
@@ -84,7 +69,7 @@ export class AnualTreatmentCostComponent implements OnChanges, OnInit {
     name: 'novo',
     selectable: true,
     group: ScaleType.Linear,
-    domain: ['#001965', '#E2F0FA'],
+    domain: ['#001965', '#005AD2'],
   };
 
   public tabs: {
@@ -97,25 +82,45 @@ export class AnualTreatmentCostComponent implements OnChanges, OnInit {
   ngOnInit(): void {
     this.configYScaleMax();
     this.configTabs();
+    this.configMulti();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (
-      changes['lifeStyleModification'] &&
-      changes['lifeStyleModification'].currentValue !==
-        changes['lifeStyleModification'].previousValue
+      changes['totalAnualCost'] &&
+      changes['totalAnualCost'].currentValue !==
+        changes['totalAnualCost'].previousValue
     ) {
-      this.multi[0].series[0].value = this.lifeStyleModification;
+      if (this.multi.length > 0 && this.multi[0].series.length > 0) {
+        this.multi[0].series[0].value = this.totalAnualCost;
+      }
       this.configYScaleMax();
+      this.configMulti();
     }
     if (
-      changes['liraglutideNLifeStyleModification'] &&
-      changes['liraglutideNLifeStyleModification'].currentValue !==
-        changes['liraglutideNLifeStyleModification'].previousValue
+      changes['totalAnualCostPlusLiraglutide'] &&
+      changes['totalAnualCostPlusLiraglutide'].currentValue !==
+        changes['totalAnualCostPlusLiraglutide'].previousValue
     ) {
-      this.multi[1].series[0].value = this.liraglutideNLifeStyleModification;
+      if (this.multi.length > 0 && this.multi[0].series.length > 0) {
+        this.multi[1].series[0].value = this.totalAnualCostPlusLiraglutide;
+      }
       this.configYScaleMax();
+      this.configMulti();
     }
+  }
+
+  configMulti() {
+    this.multi = [
+      {
+        name: 'Modificación de estilo de vida',
+        value: this.totalAnualCost,
+      },
+      {
+        name: 'Liraglutida + modificación de estilo de vida',
+        value: this.totalAnualCostPlusLiraglutide,
+      },
+    ];
   }
 
   configTabs() {
@@ -149,9 +154,9 @@ export class AnualTreatmentCostComponent implements OnChanges, OnInit {
 
   configYScaleMax() {
     let max =
-      this.liraglutideNLifeStyleModification > this.lifeStyleModification
-        ? this.liraglutideNLifeStyleModification
-        : this.lifeStyleModification;
+      this.totalAnualCostPlusLiraglutide > this.totalAnualCost
+        ? this.totalAnualCostPlusLiraglutide
+        : this.totalAnualCost;
     this.yScaleMax = Math.ceil(max / 20000) * 20000;
   }
 

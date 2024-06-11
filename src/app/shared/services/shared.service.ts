@@ -8,7 +8,6 @@ export class SharedService {
   public svgTotal: TTotalSvg = svgTotal;
   constructor() {}
 
-
   getRandomId(length: number): string {
     let result = '';
     const characters =
@@ -105,5 +104,9 @@ export class SharedService {
         let svgTotal: any = this.svgTotal;
         return svgTotal[type] || '';
     }
+  }
+
+  capitalizeFirstLetter(st: string) {
+    return st.charAt(0).toUpperCase() + st.slice(1);
   }
 }

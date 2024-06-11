@@ -25,6 +25,7 @@ import { TObesityDegreesNames } from '../../types/obesityDegreesNames.type';
 import { ArchieveGoalPatientsComponent } from '../archieve-goal-patients/archieve-goal-patients.component';
 import { LiraglutideCostComponent } from '../liraglutide-cost/liraglutide-cost.component';
 import { TLifeStyleModifications } from '../../types/lifeStyleModifications';
+import { TInstitution } from '../../types/institution.type';
 
 @Component({
   selector: 'app-calculator',
@@ -278,7 +279,7 @@ export class CalculatorComponent implements OnInit, OnChanges {
   }
   /* Treatment Cost */
   unitCostChange(event: number) {
-    let inst: 'public' | 'private' = this.calculatorData.institution;
+    let inst: TInstitution = this.calculatorData.institution;
     this.config[`${inst}UnitCost`] = event;
     this.config[`${inst}AnualCost`] =
       this.config[`${inst}UnitCost`] *
@@ -299,12 +300,14 @@ export class CalculatorComponent implements OnInit, OnChanges {
   }
   anualCostChange(type: TLifeStyleModifications, event?: number) {
     console.log('months', event);
-    let inst: 'public' | 'private' = this.calculatorData.institution;
+    let inst: TInstitution = this.calculatorData.institution;
     this.calculatorData[`${type}Months`] =
       event || this.calculatorData[`${type}Months`];
     this.calculatorData[`${type}AnualCost`] =
       (this.config[
-        `${inst}${this.capitalizeFirstLetter(type)}UnitCost` as keyof TConfig
+        `${inst}${this._sharedService.capitalizeFirstLetter(
+          type
+        )}UnitCost` as keyof TConfig
       ] as number) * this.calculatorData[`${type}Months`];
     this.calculatorData.totalAnualCost =
       this.calculatorData.nutritionAnualCost +
@@ -314,9 +317,6 @@ export class CalculatorComponent implements OnInit, OnChanges {
     this.calculatorData.totalAnualCostPlusLiraglutide =
       this.calculatorData.totalAnualCost +
       (this.config[`${inst}AnualCost` as keyof TConfig] as number);
-  }
-
-  capitalizeFirstLetter(st: string) {
-    return st.charAt(0).toUpperCase() + st.slice(1);
+    console.log('this.calculatorData', this.calculatorData);
   }
 }
