@@ -4,7 +4,21 @@
   >
     COSTO POR PACIENTE QUE LOGRA LA META TERAPÉUTICA
   </h2>
+  <generic-input
 
+  type="select"
+  [containerClasses]="'bef bef-w-30per bef-mt-2rem'"
+  [labelTitle]="'Meta de Tratamiento'"
+  [thingFather]="{percentage: treatmentGoalPercentage}"
+  [thing]="'percentage'"
+  (changesInput)="selectTreatmentGoalPersentage($event)"
+  [options]="[
+    { type: 'option', option: 'Pérdida de Peso > 5%', click: '5' },
+    { type: 'option', option: 'Pérdida de Peso > 10%', click: '10' },
+    { type: 'option', option: 'Pérdida de Peso > 15%', click: '15' }
+  ]"
+
+></generic-input>
   <ngx-charts-bar-vertical
     class="bef bef-mx-auto bef-d-block bef-w-500px"
     [view]="view"

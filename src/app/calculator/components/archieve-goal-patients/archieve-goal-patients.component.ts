@@ -86,6 +86,8 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
       this.multi[1].series[0].value = this.liraglutideNLifeStyleModification;
       this.configYScaleMax();
     }
+
+
   }
 
   configYScaleMax() {
@@ -106,5 +108,12 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
 
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
+  selectTreatmentGoalPersentage(event: any) {
+
+    this.treatmentGoalPercentage = parseInt(event.percentage) as 5 | 10 | 15;
+    console.log('treatmentGoalPercentage', this.treatmentGoalPercentage);
+    this.treatmentGoalPercentageChange.emit(this.treatmentGoalPercentage);
+
   }
 }
