@@ -1,8 +1,10 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 /* Module */
@@ -14,16 +16,20 @@ import {
   NgxChartsModule,
   ScaleType,
 } from '@swimlane/ngx-charts';
+import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
 @Component({
   selector: 'archieve-goal-patients',
   standalone: true,
-  imports: [NgxChartsModule],
+  imports: [NgxChartsModule, GenericInputComponent],
   templateUrl: './archieve-goal-patients.component.html',
   styleUrl: './archieve-goal-patients.component.scss',
 })
 export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
   @Input() lifeStyleModification: number = 5454615;
   @Input() liraglutideNLifeStyleModification: number = 1891406;
+  @Input() treatmentGoalPercentage: 5 | 10 | 15 = 5;
+  @Output() treatmentGoalPercentageChange: EventEmitter<5 | 10 | 15> =
+    new EventEmitter<5 | 10 | 15>();
 
   public multi: any[] = [
     {

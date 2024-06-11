@@ -88,6 +88,10 @@ export class CalculatorComponent implements OnInit, OnChanges {
     psychologyAnualCost: 0,
     totalAnualCost: 0,
     totalAnualCostPlusLiraglutide: 0,
+    /* Archive-Goal-Patients */
+    treatmentGoalPercentage: 5,
+    lifeStyleModification: 0,
+    liraglutideNLifeStyleModification: 0,
   };
   public config: TConfig = {
     /* Obesity */
@@ -133,6 +137,13 @@ export class CalculatorComponent implements OnInit, OnChanges {
     privatePhysicalActivityUnitCost: 5340,
     publicPsychologyUnitCost: 1531,
     privatePsychologyUnitCost: 3062,
+    /* Archive-Goal-Patients */
+    treatMentGoal5LifestyleModification: 27.1,
+    treatMentGoal5LifestyleModificationNLirglutide: 63.2,
+    treatMentGoal10LifestyleModification: 10.6,
+    treatMentGoal10LifestyleModificationNLirglutide: 33.1,
+    treatMentGoal15LifestyleModification: 3.5,
+    treatMentGoal15LifestyleModificationNLirglutide: 14.4,
   };
   constructor(private _sharedService: SharedService) {}
   public arrowLeft = this._sharedService.getHtml('arrowLeft');
@@ -197,6 +208,7 @@ export class CalculatorComponent implements OnInit, OnChanges {
       this.manageComorbiditiesPatientsPercentage();
     } else {
       this.calculatorData.populationTotal = this.calculatorData.obesityPatients;
+      this.treatmentGoalToChange();
     }
   }
   /* Comorbidities */
@@ -206,6 +218,7 @@ export class CalculatorComponent implements OnInit, OnChanges {
       this.manageComorbiditiesPatientsPercentage();
     } else {
       this.calculatorData.populationTotal = this.calculatorData.obesityPatients;
+      this.treatmentGoalToChange();
     }
   }
   comorbiditiesChange(event: TComorbidities) {
@@ -276,6 +289,7 @@ export class CalculatorComponent implements OnInit, OnChanges {
       comorbiditiesPatientsPerDegree.grade3;
     this.calculatorData.populationTotal =
       this.calculatorData.comorbiditiesPatients;
+    this.treatmentGoalToChange();
   }
   /* Treatment Cost */
   unitCostChange(event: number) {
@@ -317,6 +331,24 @@ export class CalculatorComponent implements OnInit, OnChanges {
     this.calculatorData.totalAnualCostPlusLiraglutide =
       this.calculatorData.totalAnualCost +
       (this.config[`${inst}AnualCost` as keyof TConfig] as number);
+    this.treatmentGoalToChange();
     console.log('this.calculatorData', this.calculatorData);
+  }
+  /* Archive-Goal-Patients */
+  treatmentGoalToChange() {
+    this.calculatorData.lifeStyleModification =
+      this.calculatorData.totalAnualCost /
+      ((this.calculatorData.populationTotal *
+        (this.config[
+          `treatMentGoal${this.calculatorData.treatmentGoalPercentage}LifestyleModification` as keyof TConfig
+        ] as number)) /
+        this.calculatorData.populationTotal);
+    this.calculatorData.liraglutideNLifeStyleModification =
+      this.calculatorData.totalAnualCostPlusLiraglutide /
+      ((this.calculatorData.populationTotal *
+        (this.config[
+          `treatMentGoal${this.calculatorData.treatmentGoalPercentage}LifestyleModificationNLirglutide` as keyof TConfig
+        ] as number)) /
+        this.calculatorData.populationTotal);
   }
 }

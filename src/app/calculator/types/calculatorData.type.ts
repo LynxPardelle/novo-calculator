@@ -27,4 +27,8 @@ export type TCalculatorData = {
   psychologyAnualCost: number;
   totalAnualCost: number;
   totalAnualCostPlusLiraglutide: number;
+  /* Archieve Goals Patients */
+  treatmentGoalPercentage: 5 | 10 | 15;
+  lifeStyleModification: number;
+  liraglutideNLifeStyleModification: number;
 };

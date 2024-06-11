@@ -4,7 +4,7 @@
   >
     COSTO ANUAL <wbr />DE TRATAMIENTO
   </h2>
-  <div class="bef bef-p-1rem bef-mb-3rem">
+  <div class="bef bef-p-1rem bef-mb-3rem mat-elevation-z4">
     <mat-tab-group (selectedTabChange)="selectedTab($event)">
       @for(tab of tabs; track tab; let i = $index) {
       <mat-tab label="{{ tab.title }}">
@@ -54,11 +54,12 @@
       }
     </mat-tab-group>
   </div>
-
   <div class="bef bef-d-flex fleDir-row jusCon-center">
     <generic-span
       [title]="'Modificación de Estilo de Vida'"
-      [titleClasses]="'bef bef-d-flex fleDir-column jusCon-between aliIte-center'"
+      [titleClasses]="
+        'bef bef-d-flex fleDir-column jusCon-between aliIte-center'
+      "
       [textClasses]="'bef bef-m-0 bef-fontWeight-700'"
       [info]="'$' + totalAnualCost"
       [filledClasses]="
@@ -71,7 +72,9 @@
     <div class="bef bef-w-3rem"></div>
     <generic-span
       [title]="'Liraglutida + Modificación de Estilo de Vida'"
-      [titleClasses]="'bef bef-d-flex fleDir-column jusCon-between aliIte-center'"
+      [titleClasses]="
+        'bef bef-d-flex fleDir-column jusCon-between aliIte-center'
+      "
       [textClasses]="'bef bef-m-0 bef-fontWeight-700'"
       [info]="'$' + totalAnualCostPlusLiraglutide"
       [filledClasses]="

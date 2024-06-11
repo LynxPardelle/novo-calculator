@@ -23,6 +23,13 @@ export type TConfig = {
   privatePhysicalActivityUnitCost: number;
   publicPsychologyUnitCost: number;
   privatePsychologyUnitCost: number;
+  /* Archive-Goal-Patients */
+  treatMentGoal5LifestyleModification: number;
+  treatMentGoal5LifestyleModificationNLirglutide: number;
+  treatMentGoal10LifestyleModification: number;
+  treatMentGoal10LifestyleModificationNLirglutide: number;
+  treatMentGoal15LifestyleModification: number;
+  treatMentGoal15LifestyleModificationNLirglutide: number;
 };
 
 export type TComorbidity = {

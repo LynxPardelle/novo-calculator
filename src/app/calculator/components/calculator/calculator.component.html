@@ -94,7 +94,15 @@
       (monthChange)="anualCostChange($event[1], $event[0])"
     >
     </anual-treatment-cost>
-    <archieve-goal-patients></archieve-goal-patients>
+    <archieve-goal-patients
+      [lifeStyleModification]="calculatorData.lifeStyleModification"
+      [liraglutideNLifeStyleModification]="
+        calculatorData.liraglutideNLifeStyleModification
+      "
+      (treatmentGoalPercentageChange)="
+        calculatorData.treatmentGoalPercentage = $event; treatmentGoalToChange()
+      "
+    ></archieve-goal-patients>
     <liraglutide-and-lifestyle-modification></liraglutide-and-lifestyle-modification>
     <patients> </patients>
   </div>
