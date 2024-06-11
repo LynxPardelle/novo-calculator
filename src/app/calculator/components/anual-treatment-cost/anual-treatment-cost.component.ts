@@ -91,8 +91,8 @@ export class AnualTreatmentCostComponent implements OnChanges, OnInit {
       changes['totalAnualCost'].currentValue !==
         changes['totalAnualCost'].previousValue
     ) {
-      if (this.multi?.length > 0 && this.multi[0]?.series?.length > 0) {
-        this.multi[0].series[0].value = this.totalAnualCost;
+      if (this.multi?.length > 0) {
+        this.multi[0].value = this.totalAnualCost;
       }
       this.configYScaleMax();
       this.configMulti();
@@ -102,8 +102,8 @@ export class AnualTreatmentCostComponent implements OnChanges, OnInit {
       changes['totalAnualCostPlusLiraglutide'].currentValue !==
         changes['totalAnualCostPlusLiraglutide'].previousValue
     ) {
-      if (this.multi?.length > 0 && this.multi[1]?.series?.length > 0) {
-        this.multi[1].series[0].value = this.totalAnualCostPlusLiraglutide;
+      if (this.multi?.length > 0) {
+        this.multi[1].value = this.totalAnualCostPlusLiraglutide;
       }
       this.configYScaleMax();
       this.configMulti();

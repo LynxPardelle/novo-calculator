@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 /* Modules */
 import { SharedModule } from '../../../shared/shared.module';
+/* Services */
+import { SharedService } from '../../../shared/services/shared.service';
+import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 /* Components */
 import { GenericButtonComponent } from '../../../shared/components/generic-button/generic-button.component';
-import { SharedService } from '../../../shared/services/shared.service';
+/* Pipes */
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 
 @Component({
@@ -14,8 +17,16 @@ import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
-  constructor(private _router: Router, private _sharedService: SharedService) {} // Inyecta el servicio Router
+export class HomeComponent implements AfterViewInit {
+  constructor(
+    private _router: Router,
+    private _sharedService: SharedService,
+    private readonly _bef: NgxBootstrapExpandedFeaturesService
+  ) {}
+
+  ngAfterViewInit(): void {
+    this.cssCreate();
+  }
 
   whiteArrowRight = `<span class="bef bef-me-0_5rem">Iniciar sesión</span> ${this._sharedService.getHtml(
     'whiteArrowRight'
@@ -28,5 +39,8 @@ export class HomeComponent {
     } else if (place === 'register') {
       this._router.navigate(['/register']); // Navega a la ruta '/register'
     }
+  }
+  cssCreate() {
+    this._bef.cssCreate();
   }
 }

@@ -89,9 +89,18 @@ export class CalculatorComponent implements OnInit, OnChanges {
     totalAnualCost: 0,
     totalAnualCostPlusLiraglutide: 0,
     /* Archive-Goal-Patients */
-    treatmentGoalPercentage: 5,
+    treatmentGoalPercentage: 15,
     lifeStyleModification: 0,
     liraglutideNLifeStyleModification: 0,
+    archieveGoal: 0,
+    dontArchiveGoal: 0,
+    archiveGoalPercentage: 0,
+    dontArchiveGoalPercentage: 0,
+    archieveGoalWithLiraglutide: 0,
+    dontArchiveGoalWithLiraglutide: 0,
+    archiveGoalWithLiraglutidePercentage: 0,
+    dontArchiveGoalWithLiraglutidePercentage: 0,
+    moreTimes: 0,
   };
   public config: TConfig = {
     /* Obesity */
@@ -336,19 +345,76 @@ export class CalculatorComponent implements OnInit, OnChanges {
   }
   /* Archive-Goal-Patients */
   treatmentGoalToChange() {
+    console.log(
+      'this.calculatorData.populationTotal',
+      this.calculatorData.populationTotal
+    );
+    let populationTotal: number = this.calculatorData.populationTotal / 100;
+    this.calculatorData.archieveGoal =
+      populationTotal *
+      (this.config[
+        `treatMentGoal${this.calculatorData.treatmentGoalPercentage}LifestyleModification` as keyof TConfig
+      ] as number);
+    console.log(
+      'this.calculatorData.archieveGoal',
+      this.calculatorData.archieveGoal
+    );
+    this.calculatorData.archiveGoalPercentage =
+      this.calculatorData.archieveGoal / populationTotal;
+    console.log(
+      'this.calculatorData.archiveGoalPercentage',
+      this.calculatorData.archiveGoalPercentage
+    );
     this.calculatorData.lifeStyleModification =
       this.calculatorData.totalAnualCost /
-      ((this.calculatorData.populationTotal *
-        (this.config[
-          `treatMentGoal${this.calculatorData.treatmentGoalPercentage}LifestyleModification` as keyof TConfig
-        ] as number)) /
-        this.calculatorData.populationTotal);
+      (this.calculatorData.archiveGoalPercentage / 100);
+    this.calculatorData.archieveGoalWithLiraglutide =
+      populationTotal *
+      (this.config[
+        `treatMentGoal${this.calculatorData.treatmentGoalPercentage}LifestyleModificationNLirglutide` as keyof TConfig
+      ] as number);
+    console.log(
+      'this.calculatorData.archieveGoalWithLiraglutide',
+      this.calculatorData.archieveGoalWithLiraglutide
+    );
+    this.calculatorData.archiveGoalWithLiraglutidePercentage =
+      this.calculatorData.archieveGoalWithLiraglutide / populationTotal;
+    console.log(
+      '.archiveGoalWithLiraglutidePercentage',
+      this.calculatorData.archiveGoalWithLiraglutidePercentage
+    );
     this.calculatorData.liraglutideNLifeStyleModification =
       this.calculatorData.totalAnualCostPlusLiraglutide /
-      ((this.calculatorData.populationTotal *
-        (this.config[
-          `treatMentGoal${this.calculatorData.treatmentGoalPercentage}LifestyleModificationNLirglutide` as keyof TConfig
-        ] as number)) /
-        this.calculatorData.populationTotal);
+      (this.calculatorData.archiveGoalWithLiraglutidePercentage / 100);
+
+    this.calculatorData.moreTimes =
+      this.calculatorData.archieveGoalWithLiraglutide /
+      this.calculatorData.archieveGoal;
+    console.log('this.calculatorData.moreTimes', this.calculatorData.moreTimes);
+    this.calculatorData.dontArchiveGoal =
+      this.calculatorData.populationTotal - this.calculatorData.archieveGoal;
+    console.log(
+      'this.calculatorData.dontArchiveGoal',
+      this.calculatorData.dontArchiveGoal
+    );
+    this.calculatorData.dontArchiveGoalPercentage =
+      this.calculatorData.dontArchiveGoal / populationTotal;
+    console.log(
+      'this.calculatorData.dontArchiveGoalPercentage',
+      this.calculatorData.dontArchiveGoalPercentage
+    );
+    this.calculatorData.dontArchiveGoalWithLiraglutide =
+      this.calculatorData.populationTotal -
+      this.calculatorData.archieveGoalWithLiraglutide;
+    console.log(
+      'this.calculatorData.dontArchiveGoalWithLiraglutide',
+      this.calculatorData.dontArchiveGoalWithLiraglutide
+    );
+    this.calculatorData.dontArchiveGoalWithLiraglutidePercentage =
+      this.calculatorData.dontArchiveGoalWithLiraglutide / populationTotal;
+    console.log(
+      'this.calculatorData.dontArchiveGoalWithLiraglutidePercentage',
+      this.calculatorData.dontArchiveGoalWithLiraglutidePercentage
+    );
   }
 }

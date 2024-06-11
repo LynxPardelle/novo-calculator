@@ -85,6 +85,7 @@
       "
     ></generic-span>
   </div>
+  @if (multi[0]) {
   <ngx-charts-bar-vertical
     class="bef bef-mx-auto bef-d-none bef-w-500px"
     [view]="view"
@@ -108,4 +109,5 @@
     (deactivate)="onDeactivate($event)"
   >
   </ngx-charts-bar-vertical>
+  }
 </section>

@@ -12,10 +12,11 @@ import {
   NgxChartsModule,
   ScaleType,
 } from '@swimlane/ngx-charts';
+import { MathPipe } from '../../../shared/pipes/math.pipe';
 @Component({
   selector: 'liraglutide-and-lifestyle-modification',
   standalone: true,
-  imports: [NgxChartsModule],
+  imports: [NgxChartsModule, MathPipe],
   templateUrl: './liraglutide-and-lifestyle-modification.component.html',
   styleUrl: './liraglutide-and-lifestyle-modification.component.scss',
 })
@@ -23,21 +24,12 @@ export class LiraglutideAndLifestyleModificationComponent
   implements OnInit, OnChanges
 {
   @Input() times: number = 4.1;
-  @Input() liraglutideAndLifeStyleModificationArchivesTheGoal: number = 2.15;
+  @Input() archieveGoalWithLiraglutide: number = 2.15;
   @Input()
-  liraglutideAndLifeStyleModificationDoesNotArchiveTheGoal: number = 12.85;
-  @Input() lifeStyleModificationArchivesTheGoal: number = 1.7;
-  @Input() lifeStyleModificationDoesNotArchiveTheGoal: number = 13.93;
-  public liraglutideAndLifeStyleModificationResults: any[] = [
-    {
-      name: 'Logran la meta',
-      value: this.liraglutideAndLifeStyleModificationArchivesTheGoal,
-    },
-    {
-      name: 'No logran la meta',
-      value: this.liraglutideAndLifeStyleModificationDoesNotArchiveTheGoal,
-    },
-  ];
+  dontArchiveGoalWithLiraglutide: number = 12.85;
+  @Input() archieveGoal: number = 1.7;
+  @Input() dontArchiveGoal: number = 13.93;
+  public liraglutideAndLifeStyleModificationResults: any[] = [];
   public lifeStyleModificationResults: any[] = [];
   public view: [number, number] = [300, 300];
 
@@ -62,23 +54,18 @@ export class LiraglutideAndLifestyleModificationComponent
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (
-      (changes['lifeStyleModificationArchivesTheGoal'] &&
-        changes['lifeStyleModificationArchivesTheGoal'].currentValue !==
-          changes['lifeStyleModificationArchivesTheGoal'].previousValue) ||
-      (changes['lifeStyleModificationDoesNotArchiveTheGoal'] &&
-        changes['lifeStyleModificationDoesNotArchiveTheGoal'].currentValue !==
-          changes['lifeStyleModificationDoesNotArchiveTheGoal']
-            .previousValue) ||
-      (changes['liraglutideAndLifeStyleModificationArchivesTheGoal'] &&
-        changes['liraglutideAndLifeStyleModificationArchivesTheGoal']
-          .currentValue !==
-          changes['liraglutideAndLifeStyleModificationArchivesTheGoal']
-            .previousValue) ||
-      (changes['liraglutideAndLifeStyleModificationDoesNotArchiveTheGoal'] &&
-        changes['liraglutideAndLifeStyleModificationDoesNotArchiveTheGoal']
-          .currentValue !==
-          changes['liraglutideAndLifeStyleModificationDoesNotArchiveTheGoal']
-            .previousValue)
+      (changes['archieveGoal'] &&
+        changes['archieveGoal'].currentValue !==
+          changes['archieveGoal'].previousValue) ||
+      (changes['dontArchiveGoal'] &&
+        changes['dontArchiveGoal'].currentValue !==
+          changes['dontArchiveGoal'].previousValue) ||
+      (changes['archieveGoalWithLiraglutide'] &&
+        changes['archieveGoalWithLiraglutide'].currentValue !==
+          changes['archieveGoalWithLiraglutide'].previousValue) ||
+      (changes['dontArchiveGoalWithLiraglutide'] &&
+        changes['dontArchiveGoalWithLiraglutide'].currentValue !==
+          changes['dontArchiveGoalWithLiraglutide'].previousValue)
     ) {
       this.configResults();
     }
@@ -88,11 +75,21 @@ export class LiraglutideAndLifestyleModificationComponent
     this.lifeStyleModificationResults = [
       {
         name: 'Logran la meta',
-        value: this.lifeStyleModificationArchivesTheGoal,
+        value: this.archieveGoal,
       },
       {
         name: 'No logran la meta',
-        value: this.lifeStyleModificationDoesNotArchiveTheGoal,
+        value: this.dontArchiveGoal,
+      },
+    ];
+    this.liraglutideAndLifeStyleModificationResults = [
+      {
+        name: 'Logran la meta',
+        value: this.archieveGoalWithLiraglutide,
+      },
+      {
+        name: 'No logran la meta',
+        value: this.dontArchiveGoalWithLiraglutide,
       },
     ];
   }

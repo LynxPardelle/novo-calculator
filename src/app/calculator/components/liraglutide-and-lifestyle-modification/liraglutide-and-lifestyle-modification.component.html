@@ -2,8 +2,8 @@
   <h2
     class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord texTra-uppercase"
   >
-    {{ times }} veces más pacientes con liraglutida logran las metas de pérdida
-    de peso
+    {{ times | math : [{ operation: "roundDigit", value: 2 }] }} veces más
+    pacientes con liraglutida logran las metas de pérdida de peso
   </h2>
   <div class="bef bef-d-flex bef-jusCon-center aliIte-center wrap-wrap">
     @for (results of [liraglutideAndLifeStyleModificationResults,

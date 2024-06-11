@@ -31,16 +31,7 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
   @Output() treatmentGoalPercentageChange: EventEmitter<5 | 10 | 15> =
     new EventEmitter<5 | 10 | 15>();
 
-  public multi: any[] = [
-    {
-      name: 'Modificación de estilo de vida',
-      value: this.lifeStyleModification,
-    },
-    {
-      name: 'Liraglutida + modificación de estilo de vida',
-      value: this.liraglutideNLifeStyleModification,
-    },
-  ];
+  public multi: any[] = [];
   public view: [number, number] = [500, 500];
 
   // options
@@ -67,27 +58,37 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
 
   constructor() {}
   ngOnInit(): void {
+    this.configMulti();
     this.configYScaleMax();
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (
-      changes['lifeStyleModification'] &&
-      changes['lifeStyleModification'].currentValue !==
-        changes['lifeStyleModification'].previousValue
+      (changes['lifeStyleModification'] &&
+        changes['lifeStyleModification'].currentValue !==
+          changes['lifeStyleModification'].previousValue) ||
+      (changes['liraglutideNLifeStyleModification'] &&
+        changes['liraglutideNLifeStyleModification'].currentValue !==
+          changes['liraglutideNLifeStyleModification'].previousValue)
     ) {
-      this.multi[0].series[0].value = this.lifeStyleModification;
-      this.configYScaleMax();
-    }
-    if (
-      changes['liraglutideNLifeStyleModification'] &&
-      changes['liraglutideNLifeStyleModification'].currentValue !==
-        changes['liraglutideNLifeStyleModification'].previousValue
-    ) {
-      this.multi[1].series[0].value = this.liraglutideNLifeStyleModification;
+      this.configMulti();
       this.configYScaleMax();
     }
 
 
+  }
+
+  configMulti() {
+    this.multi = [
+      {
+        name: 'Modificación de estilo de vida',
+        value: this.lifeStyleModification,
+      },
+      {
+        name: 'Liraglutida + modificación de estilo de vida',
+        value: this.liraglutideNLifeStyleModification,
+      },
+    ];
+    this.configYScaleMax();
   }
 
   configYScaleMax() {

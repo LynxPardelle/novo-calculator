@@ -31,4 +31,13 @@ export type TCalculatorData = {
   treatmentGoalPercentage: 5 | 10 | 15;
   lifeStyleModification: number;
   liraglutideNLifeStyleModification: number;
+  archieveGoal: number;
+  archiveGoalPercentage: number;
+  dontArchiveGoal: number;
+  dontArchiveGoalPercentage: number;
+  archieveGoalWithLiraglutide: number;
+  dontArchiveGoalWithLiraglutide: number;
+  archiveGoalWithLiraglutidePercentage: number;
+  dontArchiveGoalWithLiraglutidePercentage: number;
+  moreTimes: number;
 };
