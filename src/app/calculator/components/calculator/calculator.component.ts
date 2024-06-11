@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { RouterLink } from '@angular/router';
 /* Modules */
 import { SharedModule } from '../../../shared/shared.module';
@@ -24,6 +24,7 @@ import { TCalculatorData } from '../../types/calculatorData.type';
 import { TObesityDegreesNames } from '../../types/obesityDegreesNames.type';
 import { ArchieveGoalPatientsComponent } from '../archieve-goal-patients/archieve-goal-patients.component';
 import { LiraglutideCostComponent } from '../liraglutide-cost/liraglutide-cost.component';
+import { TLifeStyleModifications } from '../../types/lifeStyleModifications';
 
 @Component({
   selector: 'app-calculator',
@@ -48,7 +49,7 @@ import { LiraglutideCostComponent } from '../liraglutide-cost/liraglutide-cost.c
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss',
 })
-export class CalculatorComponent implements OnInit {
+export class CalculatorComponent implements OnInit, OnChanges {
   public calculatorData: TCalculatorData = {
     institution: 'private',
     /* Pacient */
@@ -76,7 +77,16 @@ export class CalculatorComponent implements OnInit {
     comorbiditiesPatients: 0,
     populationTotal: 0,
     /* Treatment */
-    months: 12,
+    nutritionMonths: 12,
+    infirmaryMonths: 12,
+    physicalActivityMonths: 12,
+    psychologyMonths: 12,
+    nutritionAnualCost: 0,
+    infirmaryAnualCost: 0,
+    physicalActivityAnualCost: 0,
+    psychologyAnualCost: 0,
+    totalAnualCost: 0,
+    totalAnualCostPlusLiraglutide: 0,
   };
   public config: TConfig = {
     /* Obesity */
@@ -107,24 +117,37 @@ export class CalculatorComponent implements OnInit {
     /* Treatment */
     alternatives: [],
     lifeStyles: [],
-    /* Treatment */
+    /* Liraglutide */
     publicUnitCost: 2325,
     publicAnualCost: 45208.33,
     privateUnitCost: 4141.16,
     privateAnualCost: 80522.56,
+    /* AnualTreatment */
     privateCostTreatmentMultiplicator: 19.44,
+    publicNutritionUnitCost: 2670,
+    privateNutritionUnitCost: 5340,
+    publicInfirmaryUnitCost: 1136,
+    privateInfirmaryUnitCost: 2272,
+    publicPhysicalActivityUnitCost: 2570,
+    privatePhysicalActivityUnitCost: 5340,
+    publicPsychologyUnitCost: 1531,
+    privatePsychologyUnitCost: 3062,
   };
   constructor(private _sharedService: SharedService) {}
   public arrowLeft = this._sharedService.getHtml('arrowLeft');
 
   ngOnInit(): void {
     this.percentageCalculation();
+    this.configInitialAnualCostChange();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
   }
   /* Patient Estimation */
   totalPopulationChange(event: any) {
     this.calculatorData.totalPopulation = event;
     this.percentageCalculation();
-
   }
 
   percentageCalculation() {
@@ -255,20 +278,45 @@ export class CalculatorComponent implements OnInit {
   }
   /* Treatment Cost */
   unitCostChange(event: number) {
-    if (this.calculatorData.institution === 'private') {
-      this.config.privateUnitCost = event;
-      console.log('privateUnitCost', this.config.privateUnitCost);
-      this.config.privateAnualCost =
-        this.config.privateUnitCost *
-        this.config.privateCostTreatmentMultiplicator;
-      console.log('privateAnualCost', this.config.privateAnualCost);
-    } else {
-      this.config.publicUnitCost = event;
-    }
+    let inst: 'public' | 'private' = this.calculatorData.institution;
+    this.config[`${inst}UnitCost`] = event;
+    this.config[`${inst}AnualCost`] =
+      this.config[`${inst}UnitCost`] *
+      (inst === 'private' ? this.config.privateCostTreatmentMultiplicator : 1);
+    this.configInitialAnualCostChange();
   }
   /* Anual Treatment Cost */
-  anualCostChange(event: number){
+  configInitialAnualCostChange() {
+    let lifeStyleModifications: TLifeStyleModifications[] = [
+      'nutrition',
+      'infirmary',
+      'physicalActivity',
+      'psychology',
+    ];
+    lifeStyleModifications.forEach((value: TLifeStyleModifications): void => {
+      this.anualCostChange(value);
+    });
+  }
+  anualCostChange(type: TLifeStyleModifications, event?: number) {
     console.log('months', event);
-    this.calculatorData.months = event;
+    let inst: 'public' | 'private' = this.calculatorData.institution;
+    this.calculatorData[`${type}Months`] =
+      event || this.calculatorData[`${type}Months`];
+    this.calculatorData[`${type}AnualCost`] =
+      (this.config[
+        `${inst}${this.capitalizeFirstLetter(type)}UnitCost` as keyof TConfig
+      ] as number) * this.calculatorData[`${type}Months`];
+    this.calculatorData.totalAnualCost =
+      this.calculatorData.nutritionAnualCost +
+      this.calculatorData.infirmaryAnualCost +
+      this.calculatorData.physicalActivityAnualCost +
+      this.calculatorData.psychologyAnualCost;
+    this.calculatorData.totalAnualCostPlusLiraglutide =
+      this.calculatorData.totalAnualCost +
+      (this.config[`${inst}AnualCost` as keyof TConfig] as number);
+  }
+
+  capitalizeFirstLetter(st: string) {
+    return st.charAt(0).toUpperCase() + st.slice(1);
   }
 }

@@ -15,6 +15,14 @@ export type TConfig = {
   privateUnitCost: number;
   privateAnualCost: number;
   privateCostTreatmentMultiplicator: number;
+  publicNutritionUnitCost: number;
+  privateNutritionUnitCost: number;
+  publicInfirmaryUnitCost: number;
+  privateInfirmaryUnitCost: number;
+  publicPhysicalActivityUnitCost: number;
+  privatePhysicalActivityUnitCost: number;
+  publicPsychologyUnitCost: number;
+  privatePsychologyUnitCost: number;
 };
 
 export type TComorbidity = {

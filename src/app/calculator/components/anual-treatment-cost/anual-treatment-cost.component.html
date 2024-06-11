@@ -4,7 +4,6 @@
   >
     COSTO ANUAL <wbr />DE TRATAMIENTO
   </h2>
-
   <div class="bef bef-p-1rem bef-mb-3rem">
     <mat-tab-group (selectedTabChange)="selectedTab($event)">
       @for(tab of tabs; track tab; let i = $index) {
@@ -15,16 +14,26 @@
           </h3>
           <div class="bef bef-d-flex fleDir-row jusCon-center">
             <generic-input
-              id="{{i}}"
+              id="{{ i }}"
               [type]="'number'"
               [labelTitle]="tab.inputLable"
-              [thingFather]="{ months: inputNumber }"
+              [thingFather]="{
+                months:
+                  tab.type === 'nutrition'
+                    ? nutritionMonths
+                    : tab.type === 'psychology'
+                    ? psychologyMonths
+                    : tab.type === 'physicalActivity'
+                    ? physicalActivityMonths
+                    : tab.type === 'infirmary'
+                    ? infirmaryMonths
+                    : 0
+              }"
               [thing]="'months'"
               [containerClasses]="
                 'bef bef-transformSEL__label-translateYSDMIN110perED bef-bgSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-white bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__novo  bef-dSEL___mdcMINlineMINripple-none'
               "
-              (changesInput)="inputChange($event.months)"
-
+              (changesInput)="monthInChange($event.months, tab.type)"
             ></generic-input>
             <div class="bef bef-w-3rem"></div>
             <generic-span
@@ -46,6 +55,31 @@
     </mat-tab-group>
   </div>
 
+  <div class="bef bef-d-flex fleDir-row jusCon-center">
+    <generic-span
+      [title]="'Modificación de Estilo de Vida'"
+      [textClasses]="'bef bef-m-0'"
+      [info]="totalAnualCost"
+      [filledClasses]="
+        'bef bef-d-flex  bef-borderBottom-0_25rem__solid__novo bef-rt-5px bef-bg-white bef-w-12rem bef-h-4rem bef-px-0_5rem'
+      "
+      [emptyClasses]="
+        'bef bef-d-flex  bef-borderBottom-0_25rem__solid__novo  bef-rt-5px bef-bg-white bef-w-12rem bef-h-4rem bef-px-0_5rem'
+      "
+    ></generic-span>
+    <div class="bef bef-w-3rem"></div>
+    <generic-span
+      [title]="'Liraglutida + Modificación de Estilo de Vida'"
+      [textClasses]="'bef bef-m-0'"
+      [info]="totalAnualCostPlusLiraglutide"
+      [filledClasses]="
+        'bef bef-d-flex  bef-borderBottom-0_25rem__solid__novo bef-rt-5px bef-bg-white bef-w-12rem bef-h-4rem bef-px-0_5rem'
+      "
+      [emptyClasses]="
+        'bef bef-d-flex  bef-borderBottom-0_25rem__solid__novo  bef-rt-5px bef-bg-white bef-w-12rem bef-h-4rem bef-px-0_5rem'
+      "
+    ></generic-span>
+  </div>
   <ngx-charts-bar-vertical-2d
     class="bef bef-mx-auto bef-d-block bef-w-350px"
     [view]="view"

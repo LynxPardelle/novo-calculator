@@ -44,7 +44,8 @@
       [anualCost]="
         calculatorData.institution === 'private'
           ? config.privateAnualCost
-          : config.publicAnualCost"
+          : config.publicAnualCost
+      "
     ></liraglutide-cost>
     <treatment-cost
       [institution]="calculatorData.institution"
@@ -62,9 +63,37 @@
     >
     </treatment-cost>
     <anual-treatment-cost
-      [inputNumber]="calculatorData.months"
-      (inputNumberChange)="anualCostChange($event)"
-    > </anual-treatment-cost>
+      [nutritionMonths]="calculatorData.nutritionMonths"
+      [infirmaryMonths]="calculatorData.infirmaryMonths"
+      [psychologyMonths]="calculatorData.psychologyMonths"
+      [physicalActivityMonths]="calculatorData.physicalActivityMonths"
+      [nutritionUnitCost]="
+        calculatorData.institution === 'private'
+          ? config.privateNutritionUnitCost
+          : config.publicNutritionUnitCost
+      "
+      [infirmaryUnitCost]="
+        calculatorData.institution === 'private'
+          ? config.privateInfirmaryUnitCost
+          : config.publicInfirmaryUnitCost
+      "
+      [psychologyUnitCost]="
+        calculatorData.institution === 'private'
+          ? config.privatePsychologyUnitCost
+          : config.publicPsychologyUnitCost
+      "
+      [physicalActivityUnitCost]="
+        calculatorData.institution === 'private'
+          ? config.privatePhysicalActivityUnitCost
+          : config.publicPhysicalActivityUnitCost
+      "
+      [totalAnualCost]="calculatorData.totalAnualCost"
+      [totalAnualCostPlusLiraglutide]="
+        calculatorData.totalAnualCostPlusLiraglutide
+      "
+      (monthChange)="anualCostChange($event[1], $event[0])"
+    >
+    </anual-treatment-cost>
     <archieve-goal-patients></archieve-goal-patients>
     <liraglutide-and-lifestyle-modification></liraglutide-and-lifestyle-modification>
     <patients> </patients>

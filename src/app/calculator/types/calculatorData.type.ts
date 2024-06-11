@@ -17,5 +17,14 @@ export type TCalculatorData = {
   comorbiditiesPatientsPercentage: number;
   comorbiditiesPatients: number;
   populationTotal: number;
-  months: number;
+  nutritionMonths: number;
+  infirmaryMonths: number;
+  physicalActivityMonths: number;
+  psychologyMonths: number;
+  nutritionAnualCost: number;
+  infirmaryAnualCost: number;
+  physicalActivityAnualCost: number;
+  psychologyAnualCost: number;
+  totalAnualCost: number;
+  totalAnualCostPlusLiraglutide: number;
 };
