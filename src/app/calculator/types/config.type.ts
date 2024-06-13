@@ -1,3 +1,4 @@
+import { TComorbidities } from './comorbidities.type';
 export type TConfig = {
   /* Obesity Degrees  */
   percentageObesityDegreeI: number;
@@ -10,10 +11,6 @@ export type TConfig = {
   /* Life Style */
   lifeStyles: TLifeStyle[];
   /* Treatment */
-  publicUnitCost: number;
-  publicAnualCost: number;
-  privateUnitCost: number;
-  privateAnualCost: number;
   privateCostTreatmentMultiplicator: number;
   publicNutritionUnitCost: number;
   privateNutritionUnitCost: number;
@@ -30,7 +27,46 @@ export type TConfig = {
   treatMentGoal10LifestyleModificationNLirglutide: number;
   treatMentGoal15LifestyleModification: number;
   treatMentGoal15LifestyleModificationNLirglutide: number;
+  /* Liraglutide & LifeStyle Modification */
+  obesityWLiraglutideProbs: TProb5<TObesityProbs>;
+  obesityProbs: TProb5<TObesityProbs>;
+  diseaseProbs: TProb3<TDiseaseProbs>;
 };
+export type TObesityProbs =
+  | 'Obesidad grado III'
+  | 'Obesidad grado II'
+  | 'Obesidad grado I'
+  | 'Sobrepeso o peso normal'
+  | 'Muerte';
+export type TDiseaseProbs =
+  | 'Diabetes'
+  | 'Enfermedad coronaria'
+  | 'Accidente cerebrovascular'
+  | 'Grado III'
+  | 'Grado II'
+  | 'Grado I';
+export type TProb5<U> = [
+  TProb<TProb5<U>, U>,
+  TProb<TProb5<U>, U>,
+  TProb<TProb5<U>, U>,
+  TProb<TProb5<U>, U>,
+  TProb<TProb5<U>, U>
+];
+export type TProb3<U> = [
+  TProb<TProb3<U>, U>,
+  TProb<TProb3<U>, U>,
+  TProb<TProb3<U>, U>
+];
+export type TProb<T, U> = {
+  name: U;
+} & (
+  | {
+      value: number;
+    }
+  | {
+      probs: T;
+    }
+);
 
 export type TComorbidity = {
   name: string;

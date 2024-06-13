@@ -26,6 +26,7 @@ import { ArchieveGoalPatientsComponent } from '../archieve-goal-patients/archiev
 import { LiraglutideCostComponent } from '../liraglutide-cost/liraglutide-cost.component';
 import { TLifeStyleModifications } from '../../types/lifeStyleModifications';
 import { TInstitution } from '../../types/institution.type';
+import { CalculatorService } from '../../services/calculator.service';
 
 @Component({
   selector: 'app-calculator',
@@ -51,119 +52,30 @@ import { TInstitution } from '../../types/institution.type';
   styleUrl: './calculator.component.scss',
 })
 export class CalculatorComponent implements OnInit, OnChanges {
-  public calculatorData: TCalculatorData = {
-    institution: 'private',
-    /* Pacient */
-    totalPopulation: 10000,
-    patientsPercentage: 36.9,
-    patients: 3690,
-    /* Obesity */
-    obesityDegrees: {
-      grade1: false,
-      grade2: false,
-      grade3: false,
-    },
-    obesityText: '',
-    obesityPatientsPercentage: 0,
-    obesityPatients: 0,
-    /* Comorbidities */
-    needsComorbidities: false,
-    comorbidities: {
-      hipertensión: false,
-      dislipidemia: false,
-      prediabetes: false,
-    },
-    comorbiditiesText: '',
-    comorbiditiesPatientsPercentage: 0,
-    comorbiditiesPatients: 0,
-    populationTotal: 0,
-    /* Treatment */
-    nutritionMonths: 12,
-    infirmaryMonths: 12,
-    physicalActivityMonths: 12,
-    psychologyMonths: 12,
-    nutritionAnualCost: 0,
-    infirmaryAnualCost: 0,
-    physicalActivityAnualCost: 0,
-    psychologyAnualCost: 0,
-    totalAnualCost: 0,
-    totalAnualCostPlusLiraglutide: 0,
-    /* Archive-Goal-Patients */
-    treatmentGoalPercentage: 15,
-    lifeStyleModification: 0,
-    liraglutideNLifeStyleModification: 0,
-    archieveGoal: 0,
-    dontArchiveGoal: 0,
-    archiveGoalPercentage: 0,
-    dontArchiveGoalPercentage: 0,
-    archieveGoalWithLiraglutide: 0,
-    dontArchiveGoalWithLiraglutide: 0,
-    archiveGoalWithLiraglutidePercentage: 0,
-    dontArchiveGoalWithLiraglutidePercentage: 0,
-    moreTimes: 0,
-  };
-  public config: TConfig = {
-    /* Obesity */
-    percentageObesityDegreeI: 65.5826558265583,
-    percentageObesityDegreeII: 23.5772357723577,
-    percentageObesityDegreeIII: 10.840108401084,
-    /* Comorbidities */
-    comorbidities: [
-      {
-        name: 'hipertensión',
-        percentageObesityI: 20.2,
-        percentageObesityII: 25.4,
-        percentageObesityIII: 30.1,
-      },
-      {
-        name: 'dislipidemia',
-        percentageObesityI: 27.1,
-        percentageObesityII: 27.8,
-        percentageObesityIII: 24.5,
-      },
-      {
-        name: 'prediabetes',
-        percentageObesityI: 22.1,
-        percentageObesityII: 22.1,
-        percentageObesityIII: 22.1,
-      },
-    ],
-    /* Treatment */
-    alternatives: [],
-    lifeStyles: [],
-    /* Liraglutide */
-    publicUnitCost: 2325,
-    publicAnualCost: 45208.33,
-    privateUnitCost: 4141.16,
-    privateAnualCost: 80522.56,
-    /* AnualTreatment */
-    privateCostTreatmentMultiplicator: 19.44,
-    publicNutritionUnitCost: 2670,
-    privateNutritionUnitCost: 5340,
-    publicInfirmaryUnitCost: 1136,
-    privateInfirmaryUnitCost: 2272,
-    publicPhysicalActivityUnitCost: 2570,
-    privatePhysicalActivityUnitCost: 5340,
-    publicPsychologyUnitCost: 1531,
-    privatePsychologyUnitCost: 3062,
-    /* Archive-Goal-Patients */
-    treatMentGoal5LifestyleModification: 27.1,
-    treatMentGoal5LifestyleModificationNLirglutide: 63.2,
-    treatMentGoal10LifestyleModification: 10.6,
-    treatMentGoal10LifestyleModificationNLirglutide: 33.1,
-    treatMentGoal15LifestyleModification: 3.5,
-    treatMentGoal15LifestyleModificationNLirglutide: 14.4,
-  };
-  constructor(private _sharedService: SharedService) {}
+  constructor(
+    private _sharedService: SharedService,
+    private _calculatorService: CalculatorService
+  ) {}
+  get config() {
+    return this._calculatorService.config$();
+  }
+  get calculatorData() {
+    return this._calculatorService.calculatorData$();
+  }
   public arrowLeft = this._sharedService.getHtml('arrowLeft');
 
   ngOnInit(): void {
     this.percentageCalculation();
-    this.configInitialAnualCostChange();
+    this.calculatorDataInitialAnualCostChange();
   }
   ngOnChanges(changes: SimpleChanges): void {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
+    if (
+      changes['calculatorData'] &&
+      changes['calculatorData'].currentValue !==
+        changes['calculatorData'].previousValue
+    ) {
+      this._calculatorService.calculatorData$.set(this.calculatorData);
+    }
   }
   /* Patient Estimation */
   totalPopulationChange(event: any) {
@@ -206,13 +118,35 @@ export class CalculatorComponent implements OnInit, OnChanges {
       if (!!selectedDegree) {
         let key = `percentageObesityDegree${d[1]}`;
         let percentage: number = this.config[key as keyof TConfig] as number;
-        this.calculatorData.obesityPatientsPercentage += percentage;
+        this.calculatorData[
+          `obesityGrade${d[1] as 'I' | 'II' | 'III'}PatientsPercentage`
+        ] = percentage;
+        this.calculatorData[
+          `obesityGrade${d[1] as 'I' | 'II' | 'III'}Patients`
+        ] = Math.round(
+          (this.calculatorData[
+            `obesityGrade${d[1] as 'I' | 'II' | 'III'}PatientsPercentage`
+          ] /
+            100) *
+            this.calculatorData.patients
+        );
+      } else {
+        this.calculatorData[
+          `obesityGrade${d[1] as 'I' | 'II' | 'III'}Patients`
+        ] = 0;
+        this.calculatorData[
+          `obesityGrade${d[1] as 'I' | 'II' | 'III'}PatientsPercentage`
+        ] = 0;
       }
     });
-    this.calculatorData.obesityPatients = Math.round(
-      (this.calculatorData.obesityPatientsPercentage / 100) *
-        this.calculatorData.patients
-    );
+    this.calculatorData.obesityPatientsPercentage =
+      this.calculatorData.obesityGradeIPatientsPercentage +
+      this.calculatorData.obesityGradeIIPatientsPercentage +
+      this.calculatorData.obesityGradeIIIPatientsPercentage;
+    this.calculatorData.obesityPatients =
+      this.calculatorData.obesityGradeIPatients +
+      this.calculatorData.obesityGradeIIPatients +
+      this.calculatorData.obesityGradeIIIPatients;
     if (!!this.calculatorData.needsComorbidities) {
       this.manageComorbiditiesPatientsPercentage();
     } else {
@@ -308,14 +242,14 @@ export class CalculatorComponent implements OnInit, OnChanges {
   /* Treatment Cost */
   unitCostChange(event: number) {
     let inst: TInstitution = this.calculatorData.institution;
-    this.config[`${inst}UnitCost`] = event;
-    this.config[`${inst}AnualCost`] =
-      this.config[`${inst}UnitCost`] *
+    this.calculatorData[`${inst}UnitCost`] = event;
+    this.calculatorData[`${inst}AnualCost`] =
+      this.calculatorData[`${inst}UnitCost`] *
       (inst === 'private' ? this.config.privateCostTreatmentMultiplicator : 1);
-    this.configInitialAnualCostChange();
+    this.calculatorDataInitialAnualCostChange();
   }
   /* Anual Treatment Cost */
-  configInitialAnualCostChange() {
+  calculatorDataInitialAnualCostChange() {
     let lifeStyleModifications: TLifeStyleModifications[] = [
       'nutrition',
       'infirmary',
@@ -343,7 +277,9 @@ export class CalculatorComponent implements OnInit, OnChanges {
       this.calculatorData.psychologyAnualCost;
     this.calculatorData.totalAnualCostPlusLiraglutide =
       this.calculatorData.totalAnualCost +
-      (this.config[`${inst}AnualCost` as keyof TConfig] as number);
+      (this.calculatorData[
+        `${inst}AnualCost` as keyof TCalculatorData
+      ] as number);
     this.treatmentGoalToChange();
   }
   /* Archive-Goal-Patients */

@@ -1,0 +1,63 @@
+import { TCalculatorData } from '../../types/calculatorData.type';
+
+export const calculatorData: TCalculatorData = {
+  institution: 'private',
+  /* Pacient */
+  totalPopulation: 10000,
+  patientsPercentage: 36.9,
+  patients: 3690,
+  /* Obesity */
+  obesityDegrees: {
+    grade1: false,
+    grade2: false,
+    grade3: false,
+  },
+  obesityText: '',
+  obesityGradeIPatientsPercentage: 0,
+  obesityGradeIPatients: 0,
+  obesityGradeIIPatientsPercentage: 0,
+  obesityGradeIIPatients: 0,
+  obesityGradeIIIPatientsPercentage: 0,
+  obesityGradeIIIPatients: 0,
+  obesityPatientsPercentage: 0,
+  obesityPatients: 0,
+  /* Comorbidities */
+  needsComorbidities: false,
+  comorbidities: {
+    hipertensión: false,
+    dislipidemia: false,
+    prediabetes: false,
+  },
+  comorbiditiesText: '',
+  comorbiditiesPatientsPercentage: 0,
+  comorbiditiesPatients: 0,
+  populationTotal: 0,
+  /* Treatment */
+  nutritionMonths: 12,
+  infirmaryMonths: 12,
+  physicalActivityMonths: 12,
+  psychologyMonths: 12,
+  nutritionAnualCost: 0,
+  infirmaryAnualCost: 0,
+  physicalActivityAnualCost: 0,
+  psychologyAnualCost: 0,
+  publicUnitCost: 2325,
+  publicAnualCost: 45208.33,
+  privateUnitCost: 4141.16,
+  privateAnualCost: 80522.56,
+  totalAnualCost: 0,
+  totalAnualCostPlusLiraglutide: 0,
+  /* Archive-Goal-Patients */
+  treatmentGoalPercentage: 15,
+  lifeStyleModification: 0,
+  liraglutideNLifeStyleModification: 0,
+  archieveGoal: 0,
+  dontArchiveGoal: 0,
+  archiveGoalPercentage: 0,
+  dontArchiveGoalPercentage: 0,
+  archieveGoalWithLiraglutide: 0,
+  dontArchiveGoalWithLiraglutide: 0,
+  archiveGoalWithLiraglutidePercentage: 0,
+  dontArchiveGoalWithLiraglutidePercentage: 0,
+  moreTimes: 0,
+};

@@ -9,6 +9,12 @@ export type TCalculatorData = {
   patients: number;
   obesityDegrees: TObesityDegrees;
   obesityText: string;
+  obesityGradeIPatientsPercentage: number;
+  obesityGradeIPatients: number;
+  obesityGradeIIPatientsPercentage: number;
+  obesityGradeIIPatients: number;
+  obesityGradeIIIPatientsPercentage: number;
+  obesityGradeIIIPatients: number;
   obesityPatientsPercentage: number;
   obesityPatients: number;
   needsComorbidities: boolean;
@@ -25,6 +31,10 @@ export type TCalculatorData = {
   infirmaryAnualCost: number;
   physicalActivityAnualCost: number;
   psychologyAnualCost: number;
+  publicUnitCost: number;
+  publicAnualCost: number;
+  privateUnitCost: number;
+  privateAnualCost: number;
   totalAnualCost: number;
   totalAnualCostPlusLiraglutide: number;
   /* Archieve Goals Patients */

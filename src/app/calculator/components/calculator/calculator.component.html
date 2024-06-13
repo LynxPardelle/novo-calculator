@@ -43,21 +43,21 @@
     <liraglutide-cost
       [anualCost]="
         calculatorData.institution === 'private'
-          ? config.privateAnualCost
-          : config.publicAnualCost
+          ? calculatorData.privateAnualCost
+          : calculatorData.publicAnualCost
       "
     ></liraglutide-cost>
     <treatment-cost
       [institution]="calculatorData.institution"
       [unitCost]="
         calculatorData.institution === 'private'
-          ? config.privateUnitCost
-          : config.publicUnitCost
+          ? calculatorData.privateUnitCost
+          : calculatorData.publicUnitCost
       "
       [anualCost]="
         calculatorData.institution === 'private'
-          ? config.privateAnualCost
-          : config.publicAnualCost
+          ? calculatorData.privateAnualCost
+          : calculatorData.publicAnualCost
       "
       (unitCostChange)="unitCostChange($event)"
     >

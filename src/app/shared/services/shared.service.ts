@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import { svgTotal, TTotalSvg } from './svgs/svg.total';
 
+export type TMultiplyMatricesReq =
+  | {
+      row: [number, number, number, number, number];
+      column: [number, number, number, number, number];
+    }
+  | {
+      row: [number, number, number];
+      column: [number, number, number];
+    };
 @Injectable({
   providedIn: 'root',
 })
@@ -108,5 +117,19 @@ export class SharedService {
 
   capitalizeFirstLetter(st: string) {
     return st.charAt(0).toUpperCase() + st.slice(1);
+  }
+
+  multiplyMatrices(args: TMultiplyMatricesReq): number {
+    const { row, column } = args;
+    if (row.length !== column.length) {
+      throw new Error('Las matrices deben tener el mismo tamaño');
+    }
+
+    let result = 0;
+    for (let i = 0; i < row.length; i++) {
+      result += row[i] * column[i];
+    }
+
+    return result;
   }
 }
