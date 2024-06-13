@@ -261,7 +261,7 @@ export class CalculatorComponent implements OnInit, OnChanges {
         let selectedDegree = this.calculatorData.obesityDegrees[degree];
         if (!!selectedDegree) {
           let k = `percentageObesity${d[1]}` as keyof TComorbidity;
-          let selectedComorbidities: number = 1;
+          let selectedComorbidities: number = -2;
           let p: number = ['hipertensión', 'dislipidemia', 'prediabetes']
             .map((c): number => {
               let selectedComorbidity =
@@ -270,14 +270,19 @@ export class CalculatorComponent implements OnInit, OnChanges {
                 let comorbidity: TComorbidity | undefined =
                   this.config.comorbidities.find((co) => co.name === c);
                 if (!comorbidity) return 1;
-                selectedComorbidities++;
+                selectedComorbidities += 2;
                 return comorbidity[k] as number;
               } else {
                 return 1;
               }
             })
             .reduce((a, b) => a * b);
-          p = p / Math.pow(10, selectedComorbidities);
+          p =
+            p /
+            Math.pow(
+              10,
+              selectedComorbidities !== -2 ? selectedComorbidities : 0
+            );
           if (p === 1 || p === 0.1) p = 0;
           let de: number = this.config[
             `percentageObesityDegree${d[1]}` as keyof TConfig
@@ -322,7 +327,6 @@ export class CalculatorComponent implements OnInit, OnChanges {
     });
   }
   anualCostChange(type: TLifeStyleModifications, event?: number) {
-    console.log('months', event);
     let inst: TInstitution = this.calculatorData.institution;
     this.calculatorData[`${type}Months`] =
       event || this.calculatorData[`${type}Months`];
@@ -341,30 +345,17 @@ export class CalculatorComponent implements OnInit, OnChanges {
       this.calculatorData.totalAnualCost +
       (this.config[`${inst}AnualCost` as keyof TConfig] as number);
     this.treatmentGoalToChange();
-    console.log('this.calculatorData', this.calculatorData);
   }
   /* Archive-Goal-Patients */
   treatmentGoalToChange() {
-    console.log(
-      'this.calculatorData.populationTotal',
-      this.calculatorData.populationTotal
-    );
     let populationTotal: number = this.calculatorData.populationTotal / 100;
     this.calculatorData.archieveGoal =
       populationTotal *
       (this.config[
         `treatMentGoal${this.calculatorData.treatmentGoalPercentage}LifestyleModification` as keyof TConfig
       ] as number);
-    console.log(
-      'this.calculatorData.archieveGoal',
-      this.calculatorData.archieveGoal
-    );
     this.calculatorData.archiveGoalPercentage =
       this.calculatorData.archieveGoal / populationTotal;
-    console.log(
-      'this.calculatorData.archiveGoalPercentage',
-      this.calculatorData.archiveGoalPercentage
-    );
     this.calculatorData.lifeStyleModification =
       this.calculatorData.totalAnualCost /
       (this.calculatorData.archiveGoalPercentage / 100);
@@ -373,16 +364,8 @@ export class CalculatorComponent implements OnInit, OnChanges {
       (this.config[
         `treatMentGoal${this.calculatorData.treatmentGoalPercentage}LifestyleModificationNLirglutide` as keyof TConfig
       ] as number);
-    console.log(
-      'this.calculatorData.archieveGoalWithLiraglutide',
-      this.calculatorData.archieveGoalWithLiraglutide
-    );
     this.calculatorData.archiveGoalWithLiraglutidePercentage =
       this.calculatorData.archieveGoalWithLiraglutide / populationTotal;
-    console.log(
-      '.archiveGoalWithLiraglutidePercentage',
-      this.calculatorData.archiveGoalWithLiraglutidePercentage
-    );
     this.calculatorData.liraglutideNLifeStyleModification =
       this.calculatorData.totalAnualCostPlusLiraglutide /
       (this.calculatorData.archiveGoalWithLiraglutidePercentage / 100);
@@ -390,31 +373,14 @@ export class CalculatorComponent implements OnInit, OnChanges {
     this.calculatorData.moreTimes =
       this.calculatorData.archieveGoalWithLiraglutide /
       this.calculatorData.archieveGoal;
-    console.log('this.calculatorData.moreTimes', this.calculatorData.moreTimes);
     this.calculatorData.dontArchiveGoal =
       this.calculatorData.populationTotal - this.calculatorData.archieveGoal;
-    console.log(
-      'this.calculatorData.dontArchiveGoal',
-      this.calculatorData.dontArchiveGoal
-    );
     this.calculatorData.dontArchiveGoalPercentage =
       this.calculatorData.dontArchiveGoal / populationTotal;
-    console.log(
-      'this.calculatorData.dontArchiveGoalPercentage',
-      this.calculatorData.dontArchiveGoalPercentage
-    );
     this.calculatorData.dontArchiveGoalWithLiraglutide =
       this.calculatorData.populationTotal -
       this.calculatorData.archieveGoalWithLiraglutide;
-    console.log(
-      'this.calculatorData.dontArchiveGoalWithLiraglutide',
-      this.calculatorData.dontArchiveGoalWithLiraglutide
-    );
     this.calculatorData.dontArchiveGoalWithLiraglutidePercentage =
       this.calculatorData.dontArchiveGoalWithLiraglutide / populationTotal;
-    console.log(
-      'this.calculatorData.dontArchiveGoalWithLiraglutidePercentage',
-      this.calculatorData.dontArchiveGoalWithLiraglutidePercentage
-    );
   }
 }
