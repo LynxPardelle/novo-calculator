@@ -61,9 +61,11 @@ export type TProb<T, U> = {
   name: U;
 } & (
   | {
+      type: 'value';
       value: number;
     }
   | {
+      type: 'props';
       probs: T;
     }
 );

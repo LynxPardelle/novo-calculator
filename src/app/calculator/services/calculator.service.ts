@@ -5,37 +5,16 @@ import {
   Signal,
   WritableSignal,
 } from '@angular/core';
-import { TConfig } from '../types/config.type';
+import { TConfig, TObesityProbs, TProb, TProb5 } from '../types/config.type';
 import { config } from './data/config.data';
 import { TCalculatorData } from '../types/calculatorData.type';
 import { calculatorData } from './data/calculatorData.data';
 import { SharedService } from '../../shared/services/shared.service';
+import { TNumber10, TNumber5 } from '../../shared/types/numbers.type';
 
 export type TPatientsDetails = {
-  liraglutideNLifeStyleModification: [
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number
-  ];
-  lifeStyleModification: [
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number,
-    number
-  ];
+  liraglutideNLifeStyleModification: TNumber10;
+  lifeStyleModification: TNumber10;
 };
 @Injectable({
   providedIn: 'root',
@@ -45,7 +24,7 @@ export class CalculatorService {
   public calculatorData$: WritableSignal<TCalculatorData> =
     signal<TCalculatorData>(calculatorData);
 
-  public comput = computed(() => {
+  public comput: Signal<TCalculatorData> = computed(() => {
     const newCalculatorData = this.calculatorData$();
     console.log('computing', newCalculatorData);
     return newCalculatorData;
@@ -53,50 +32,28 @@ export class CalculatorService {
   constructor(private _sharedService: SharedService) {}
 
   getDiabetesDetails(): TPatientsDetails {
-    /*
-    X21 = this._sharedService.multiplyMatrices({
-      row: [U7, U8, U9, U10, U11],
-      column: [X20, Y20, Z20, AA20, AB20],
-    });
-    Y21 = this._sharedService.multiplyMatrices({
-      row: [V7, V8, V9, V10, V11],
-      column: [X20, Y20, Z20, AA20, AB20],
-    });
-    Z21 = this._sharedService.multiplyMatrices({
-      row: [W7, W8, W9, W10, W11],
-      column: [X20, Y20, Z20, AA20, AB20],
-    });
-    AA21 = this._sharedService.multiplyMatrices({
-      row: [X7, X8, X9, X10, X11],
-      column: [X20, Y20, Z20, AA20, AB20],
-    });
-    AB21 = this._sharedService.multiplyMatrices({
-      row: [Y7, Y8, Y9, Y10, Y11],
-      column: [X20, Y20, Z20, AA20, AB20],
-    });
-    // XAB21 = func(arg): [X21, Y21, Z21, AA21, AB21]
-    X22 = this._sharedService.multiplyMatrices({
-      row: [U7, U8, U9, U10, U11],
-      column: [X21, Y21, Z21, AA21, AB21],
-    });
-    Y22 = this._sharedService.multiplyMatrices({
-      row: [V7, V8, V9, V10, V11],
-      column: [X21, Y21, Z21, AA21, AB21],
-    });
-    Z22 = this._sharedService.multiplyMatrices({
-      row: [W7, W8, W9, W10, W11],
-      column: [X21, Y21, Z21, AA21, AB21],
-    });
-    AA22 = this._sharedService.multiplyMatrices({
-      row: [X7, X8, X9, X10, X11],
-      column: [X21, Y21, Z21, AA21, AB21],
-    });
-    AB22 = this._sharedService.multiplyMatrices({
-      row: [Y7, Y8, Y9, Y10, Y11],
-      column: [X21, Y21, Z21, AA21, AB21],
-    });
-    ...
-    */
+    let obesityTable: TNumber5[] = this.getTable(
+      [
+        this.calculatorData$().obesityGradeIIIPatients,
+        this.calculatorData$().obesityGradeIIPatients,
+        this.calculatorData$().obesityGradeIPatients,
+        0,
+        0,
+      ],
+      'obesityProbs',
+      10
+    );
+    let obesityWLiraGlutideTable: TNumber5[] = this.getTable(
+      [
+        this.calculatorData$().obesityGradeIIIPatients,
+        this.calculatorData$().obesityGradeIIPatients,
+        this.calculatorData$().obesityGradeIPatients,
+        0,
+        0,
+      ],
+      'obesityWLiraglutideProbs',
+      10
+    );
     /*
     X55 = X21*B6
     Y55 = Y21*C6
@@ -160,5 +117,44 @@ export class CalculatorService {
       liraglutideNLifeStyleModification: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       lifeStyleModification: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     };
+  }
+
+  getTable(
+    initialArr: TNumber5,
+    prob: 'obesityWLiraglutideProbs' | 'obesityProbs',
+    times: number
+  ): TNumber5[] {
+    let rows: TNumber5[] = [initialArr];
+    for (let i = 0; i < times; i++) {
+      rows.push(
+        /*
+          Get the rows of the table one by one
+          Observe that the function probsDeconstruct is called with the current row
+        */
+        Array.from(Array(5).keys()).map((i) => {
+          return this._sharedService.multiplyMatrices({
+            row: this.probsDeconstruct(i, prob),
+            column: rows[i],
+          });
+        }) as TNumber5
+      );
+    }
+    return rows;
+  }
+
+  probsDeconstruct(
+    selection: number,
+    prob: 'obesityWLiraglutideProbs' | 'obesityProbs'
+  ): TNumber5 {
+    let obesityWLiraglutideProb = this.config$()[prob][selection];
+    if (obesityWLiraglutideProb.type === 'value') {
+      return [obesityWLiraglutideProb.value, 0, 0, 0, 0];
+    } else {
+      return obesityWLiraglutideProb.probs?.map(
+        (p: TProb<TProb5<TObesityProbs>, TObesityProbs>) => {
+          return p.type === 'value' ? p.value : 0;
+        }
+      ) as TNumber5;
+    }
   }
 }
