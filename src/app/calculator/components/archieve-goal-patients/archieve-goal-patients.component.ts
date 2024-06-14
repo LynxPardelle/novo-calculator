@@ -17,10 +17,12 @@ import {
   ScaleType,
 } from '@swimlane/ngx-charts';
 import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
+import { SharedService } from '../../../shared/services/shared.service';
+import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 @Component({
   selector: 'archieve-goal-patients',
   standalone: true,
-  imports: [NgxChartsModule, GenericInputComponent],
+  imports: [NgxChartsModule, GenericInputComponent, SafeHtmlPipe],
   templateUrl: './archieve-goal-patients.component.html',
   styleUrl: './archieve-goal-patients.component.scss',
 })
@@ -56,7 +58,8 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
     domain: ['#001965', '#005AD2'],
   };
 
-  constructor() {}
+  constructor(private _sharedService: SharedService) {}
+  public person = this._sharedService.getHtml('person6');
   ngOnInit(): void {
     this.configMulti();
     this.configYScaleMax();
@@ -73,8 +76,6 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
       this.configMulti();
       this.configYScaleMax();
     }
-
-
   }
 
   configMulti() {
@@ -111,10 +112,8 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
   selectTreatmentGoalPersentage(event: any) {
-
     this.treatmentGoalPercentage = parseInt(event.percentage) as 5 | 10 | 15;
     console.log('treatmentGoalPercentage', this.treatmentGoalPercentage);
     this.treatmentGoalPercentageChange.emit(this.treatmentGoalPercentage);
-
   }
 }

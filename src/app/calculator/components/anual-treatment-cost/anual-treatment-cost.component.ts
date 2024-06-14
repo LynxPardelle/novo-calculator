@@ -21,6 +21,9 @@ import { SharedModule } from '../../../shared/shared.module';
 import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
 import { GenericSpanComponent } from '../../../shared/components/generic-span/generic-span.component';
 import { TLifeStyleModifications } from '../../types/lifeStyleModifications';
+import { SharedService } from '../../../shared/services/shared.service';
+import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
+import { CurrencyPipe } from '@angular/common';
 @Component({
   selector: 'anual-treatment-cost',
   standalone: true,
@@ -29,11 +32,15 @@ import { TLifeStyleModifications } from '../../types/lifeStyleModifications';
     SharedModule,
     GenericInputComponent,
     GenericSpanComponent,
+    CurrencyPipe,
+    SafeHtmlPipe,
   ],
   templateUrl: './anual-treatment-cost.component.html',
   styleUrl: './anual-treatment-cost.component.scss',
 })
 export class AnualTreatmentCostComponent implements OnChanges, OnInit {
+  constructor(private _sharedService: SharedService) {}
+  public person = this._sharedService.getHtml('person5');
   @Input() nutritionMonths: number = 0;
   @Input() infirmaryMonths: number = 0;
   @Input() physicalActivityMonths: number = 0;
@@ -78,7 +85,6 @@ export class AnualTreatmentCostComponent implements OnChanges, OnInit {
     spanNumber: number;
     type: TLifeStyleModifications;
   }[] = [];
-  constructor() {}
   ngOnInit(): void {
     this.configYScaleMax();
     this.configTabs();

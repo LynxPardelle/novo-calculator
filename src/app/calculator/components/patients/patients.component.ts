@@ -22,6 +22,8 @@ import {
 } from '@swimlane/ngx-charts';
 import { ExistDirective } from '../../../shared/directives/exists.directive';
 import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
+import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
+import { SharedService } from '../../../shared/services/shared.service';
 
 export type TPatients = {
   name: string;
@@ -44,24 +46,27 @@ export type TResult = {
     GenericPeopleChartComponent,
     /* Directives */
     ExistDirective,
+    /* Pipes */
+    SafeHtmlPipe,
   ],
   templateUrl: './patients.component.html',
   styleUrl: './patients.component.scss',
 })
 export class PatientsComponent implements OnInit, OnChanges {
   results: TResult[] = [];
-  view: [number, number] = [350, 300];
+  view: [number, number] = [275, 275];
 
   // options
-  legend: boolean = true;
+  legend: boolean = false;
   legendPosition: LegendPosition = LegendPosition.Below;
+  legendTitle: string = '';
   showLabels: boolean = true;
   animations: boolean = true;
   xAxis: boolean = true;
   yAxis: boolean = true;
-  showYAxisLabel: boolean = true;
+  showYAxisLabel: boolean = false;
   showXAxisLabel: boolean = false;
-  xAxisLabel: string = '';
+  xAxisLabel: string = 'Years';
   yAxisLabel: string = 'Cost';
   timeline: boolean = true;
 
@@ -69,17 +74,19 @@ export class PatientsComponent implements OnInit, OnChanges {
     name: 'novo',
     selectable: true,
     group: ScaleType.Linear,
-    domain: ['#91bcac', '#D25A00'],
+    domain: ['#001965', '#D25A00'],
   };
 
   constructor(
     private _calculatorService: CalculatorService,
-    private _bef: NgxBootstrapExpandedFeaturesService
+    private _bef: NgxBootstrapExpandedFeaturesService,
+    private _sharedService: SharedService
   ) {
     effect(() => {
       this.configResults();
     });
   }
+  public person = this._sharedService.getHtml('person8');
 
   get patients() {
     return this._calculatorService.patients$();

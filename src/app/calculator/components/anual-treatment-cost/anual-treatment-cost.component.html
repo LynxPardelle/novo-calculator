@@ -61,7 +61,7 @@
         'bef bef-d-flex fleDir-column jusCon-between aliIte-center'
       "
       [textClasses]="'bef bef-m-0 bef-fontWeight-700'"
-      [info]="'$' + totalAnualCost"
+      [info]="totalAnualCost | currency"
       [filledClasses]="
         'bef bef-d-flex  bef-borderBottom-0_25rem__solid__oranvo bef-rt-5px bef-bg-white bef-w-15rem bef-h-4_5rem bef-p-0_5rem'
       "
@@ -76,7 +76,7 @@
         'bef bef-d-flex fleDir-column jusCon-between aliIte-center'
       "
       [textClasses]="'bef bef-m-0 bef-fontWeight-700'"
-      [info]="'$' + totalAnualCostPlusLiraglutide"
+      [info]="totalAnualCostPlusLiraglutide | currency"
       [filledClasses]="
         'bef bef-d-flex  bef-borderBottom-0_25rem__solid__oranvo bef-rt-5px bef-bg-white bef-w-15rem bef-h-4_5rem bef-p-0_5rem'
       "
@@ -110,4 +110,12 @@
   >
   </ngx-charts-bar-vertical>
   }
+  <div
+    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN400px bef-me-MIN125px bef-mb-100px"
+  >
+    <div
+      class="bef bef-w-180px bef-d-inline"
+      [innerHTML]="person | safeHtml"
+    ></div>
+  </div>
 </section>

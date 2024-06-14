@@ -22,10 +22,25 @@
           person.width
         }}px bef-position-absolute bef-top-0 bef-left-0 shrink-0 test bef-d-flex aliIte-center jusCon-center bef-textAlign-center bef-fontWeight-900"
       >
-        <p class="bef bef-m-0">
-          {{ person.value }}
+        <p class="bef bef-m-0">${{ person.value }}</p>
+      </div>
+      @if (i % 2 !== 0 ) {
+      <div
+        class="bef bef-text-{{
+          i % 2 === 0 ? 'novo' : 'oranvo'
+        }} bef-h-200px bef-mx-1rem bef-w-{{
+          person.width
+        }}px bef-position-absolute bef-bottom-0 bef-left-0 shrink-0 test bef-d-flex aliIte-fleStart jusCon-start bef-textAlign-left"
+      >
+        <p
+          class="bef bef-me-0 bef-mb-0 fonWei-900 bef-fs-1_5rem bef-ms-MIN3_25rem
+        bef-tsh-1px__1px__3px__{{ i % 2 !== 0 ? 'novo' : 'oranvo' }}
+        "
+        >
+          Año {{ i === 1 ? 1 : (i / 2 + 1 | math : [{ operation: "floor" }]) }}
         </p>
       </div>
+      }
     </div>
     }
   </div>

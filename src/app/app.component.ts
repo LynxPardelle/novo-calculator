@@ -44,6 +44,7 @@ export class AppComponent implements AfterViewInit {
     worBre: 'bef-wordBreak',
     textTra: 'bef-textTransform',
     shrink: 'bef-flexShrink',
+    objFit: 'bef-objectFit',
   };
   constructor(private readonly _bef: NgxBootstrapExpandedFeaturesService) {
     this._bef.pushColors(this.colors);

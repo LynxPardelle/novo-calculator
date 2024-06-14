@@ -73,43 +73,6 @@ export class SharedService {
         return `
             ${this.svgTotal.fatSingle}
               <span class="bef bef-color-HASHcbcfd5 bef-d-flex jusCon-center aliIte-center bef-m-0 ">Grado III</span>`;
-
-      case type === 'bascula':
-        return `
-        ${this.svgTotal.bascula}`;
-
-      case type === 'estetoscopio':
-        return `
-        ${this.svgTotal.estetoscopio}`;
-
-      case type === 'thermo1':
-        return `
-        ${this.svgTotal.thermo1}`;
-
-      case type === 'thermo2':
-        return `
-        ${this.svgTotal.thermo2}`;
-
-      case type === 'apple':
-        return `
-        ${this.svgTotal.apple}`;
-
-      case type === 'arrowRight':
-        return `
-        ${this.svgTotal.arrowRight}`;
-
-      case type === 'whiteArrowRight':
-        return `
-        ${this.svgTotal.whiteArrowRight}`;
-
-      case type === 'arrowLeft':
-        return `
-        ${this.svgTotal.arrowLeft}`;
-
-      case type === 'fatDouble':
-        return `
-        ${this.svgTotal.fatDouble}`;
-
       default:
         let svgTotal: any = this.svgTotal;
         return svgTotal[type] || '';

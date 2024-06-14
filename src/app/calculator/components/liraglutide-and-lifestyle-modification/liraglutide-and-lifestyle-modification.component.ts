@@ -13,10 +13,12 @@ import {
   ScaleType,
 } from '@swimlane/ngx-charts';
 import { MathPipe } from '../../../shared/pipes/math.pipe';
+import { SharedService } from '../../../shared/services/shared.service';
+import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 @Component({
   selector: 'liraglutide-and-lifestyle-modification',
   standalone: true,
-  imports: [NgxChartsModule, MathPipe],
+  imports: [NgxChartsModule, MathPipe, SafeHtmlPipe],
   templateUrl: './liraglutide-and-lifestyle-modification.component.html',
   styleUrl: './liraglutide-and-lifestyle-modification.component.scss',
 })
@@ -48,7 +50,8 @@ export class LiraglutideAndLifestyleModificationComponent
     domain: ['#c1ecdc', '#939AA7'],
   };
 
-  constructor() {}
+  constructor(private _sharedService: SharedService) {}
+  public person = this._sharedService.getHtml('person7');
   ngOnInit(): void {
     this.configResults();
   }

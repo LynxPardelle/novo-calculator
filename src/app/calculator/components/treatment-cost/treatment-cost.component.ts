@@ -27,6 +27,7 @@ export class TreatmentCostComponent {
   public thermo1: string = this._sharedService.getHtml('thermo1');
   public thermo2: string = this._sharedService.getHtml('thermo2');
   public arrowRight = this._sharedService.getHtml('arrowRight');
+  public person = this._sharedService.getHtml('person4');
   public treatmentTitles: { title: string; description: string }[] = [
     {
       title: 'Alternativa:',

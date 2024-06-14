@@ -2,11 +2,12 @@ import { JsonPipe } from '@angular/common';
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 import { ExistDirective } from '../../directives/exists.directive';
+import { MathPipe } from '../../pipes/math.pipe';
 
 @Component({
   selector: 'generic-people-chart',
   standalone: true,
-  imports: [JsonPipe, ExistDirective],
+  imports: [JsonPipe, ExistDirective, MathPipe],
   templateUrl: './generic-people-chart.component.html',
   styleUrl: './generic-people-chart.component.scss',
 })

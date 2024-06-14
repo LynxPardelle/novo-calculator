@@ -41,6 +41,7 @@ export class ObesityDegreesComponent {
   public grade2 = this._sharedService.getHtml('grade2');
   public grade3 = this._sharedService.getHtml('grade3');
   public arrowRight = this._sharedService.getHtml('arrowRight');
+  public person = this._sharedService.getHtml('person2');
   @Input() obesityDegrees: TObesityDegrees = {
     grade1: false,
     grade2: false,

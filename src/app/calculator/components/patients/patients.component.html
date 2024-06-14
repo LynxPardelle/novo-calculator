@@ -23,21 +23,30 @@
       }
     </mat-tab-group>
   </div>
+  <div
+    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN375px bef-me-MIN150px bef-mb-75px"
+  >
+    <div
+      class="bef bef-w-180px bef-d-inline"
+      [innerHTML]="person | safeHtml"
+    ></div>
+  </div>
   <!-- Charts -->
   <div class="bef bef-d-flex bef-jusCon-center aliIte-center wrap-wrap">
     @for (result of results; track result.name; let i = $index) {
-    <div class="bef bef-w-350px bef-d-block bef-mx-auto bef-mb-5rem">
+    <div class="bef bef-w-275px bef-d-block bef-mx-auto">
       <h3
-        class="bef bef-w-75per bef-wordBreak-breakMINword bef-textAlign-center bef-mx-auto bef-mb-0 bef-d-block"
+        class="bef bef-w-75per bef-wordBreak-breakMINword bef-textAlign-center bef-mx-auto bef-mb-1rem bef-d-block bef-h-100px"
       >
         {{ result.name }}
       </h3>
       <ngx-charts-line-chart
-        class="bef bef-mx-auto bef-d-block bef-w-350px"
+        class="bef bef-mx-auto bef-d-block bef-w-275px"
         [view]="view"
         [scheme]="colorScheme"
         [legend]="legend"
         [legendPosition]="legendPosition"
+        [legendTitle]="legendTitle"
         [showXAxisLabel]="showXAxisLabel"
         [showYAxisLabel]="showYAxisLabel"
         [xAxis]="xAxis"
