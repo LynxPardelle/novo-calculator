@@ -55,7 +55,7 @@ export const config: TConfig = {
         {
           name: 'Obesidad grado III',
           type: 'value',
-          value: 145,
+          value: 1.45,
         },
         {
           name: 'Obesidad grado II',
@@ -70,7 +70,7 @@ export const config: TConfig = {
         {
           name: 'Sobrepeso o peso normal',
           type: 'value',
-          value: 163,
+          value: 1.63,
         },
         {
           name: 'Muerte',
@@ -369,17 +369,17 @@ export const config: TConfig = {
         {
           name: 'Grado III',
           type: 'value',
-          value: 15,
+          value: 14.8468536585366,
         },
         {
           name: 'Grado II',
           type: 'value',
-          value: 12,
+          value: 12.336756097561,
         },
         {
           name: 'Grado I',
           type: 'value',
-          value: 8,
+          value: 8.08891463414634,
         },
       ],
     },
@@ -390,17 +390,17 @@ export const config: TConfig = {
         {
           name: 'Grado III',
           type: 'value',
-          value: 40,
+          value: 39.8286097560975,
         },
         {
           name: 'Grado II',
           type: 'value',
-          value: 38,
+          value: 37.7207073170732,
         },
         {
           name: 'Grado I',
           type: 'value',
-          value: 34,
+          value: 33.9233170731707,
         },
       ],
     },
@@ -411,17 +411,17 @@ export const config: TConfig = {
         {
           name: 'Grado III',
           type: 'value',
-          value: 18,
+          value: 17.8634146341463,
         },
         {
           name: 'Grado II',
           type: 'value',
-          value: 17,
+          value: 17.467,
         },
         {
           name: 'Grado I',
           type: 'value',
-          value: 17,
+          value: 16.6742804878049,
         },
       ],
     },

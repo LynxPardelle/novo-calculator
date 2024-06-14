@@ -1,16 +1,27 @@
 import {
   Component,
+  effect,
   Input,
   OnChanges,
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+/* Modules */
+import { SharedModule } from '../../../shared/shared.module';
+import { MatTabsModule } from '@angular/material/tabs';
+/* Services */
+import { CalculatorService } from '../../services/calculator.service';
+/* Components */
+import { GenericPeopleChartComponent } from '../../../shared/components/generic-people-chart/generic-people-chart.component';
+/* Libraries */
 import {
   Color,
   LegendPosition,
   NgxChartsModule,
   ScaleType,
 } from '@swimlane/ngx-charts';
+import { ExistDirective } from '../../../shared/directives/exists.directive';
+import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 
 export type TPatients = {
   name: string;
@@ -25,34 +36,19 @@ export type TResult = {
 @Component({
   selector: 'patients',
   standalone: true,
-  imports: [NgxChartsModule],
+  imports: [
+    NgxChartsModule,
+    SharedModule,
+    MatTabsModule,
+    /* Components */
+    GenericPeopleChartComponent,
+    /* Directives */
+    ExistDirective,
+  ],
   templateUrl: './patients.component.html',
   styleUrl: './patients.component.scss',
 })
 export class PatientsComponent implements OnInit, OnChanges {
-  @Input() patients: TPatients[] = [
-    {
-      name: 'Pacientes con DM2',
-      liraglutideNLifeStyleModification: [
-        82, 139, 179, 209, 230, 245, 256, 264, 269,
-      ],
-      lifeStyleModification: [89, 154, 201, 236, 262, 282, 296, 306, 314],
-    },
-    {
-      name: 'Pacientes con enfermedad coronaria',
-      liraglutideNLifeStyleModification: [
-        245, 423, 554, 650, 720, 772, 810, 838, 859,
-      ],
-      lifeStyleModification: [251, 436, 573, 675, 750, 806, 847, 877, 900],
-    },
-    {
-      name: 'Pacientes con accidente cerebrovascular',
-      liraglutideNLifeStyleModification: [
-        113, 196, 257, 302, 335, 360, 378, 392, 401,
-      ],
-      lifeStyleModification: [114, 199, 261, 308, 342, 367, 386, 400, 411],
-    },
-  ];
   results: TResult[] = [];
   view: [number, number] = [350, 300];
 
@@ -76,18 +72,23 @@ export class PatientsComponent implements OnInit, OnChanges {
     domain: ['#91bcac', '#D25A00'],
   };
 
-  constructor() {}
+  constructor(
+    private _calculatorService: CalculatorService,
+    private _bef: NgxBootstrapExpandedFeaturesService
+  ) {
+    effect(() => {
+      this.configResults();
+    });
+  }
+
+  get patients() {
+    return this._calculatorService.patients$();
+  }
   ngOnInit(): void {
     this.configResults();
+    this.cssCreate();
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    if (
-      changes['patients'] &&
-      changes['patients'].currentValue !== changes['patients'].previousValue
-    ) {
-      this.configResults();
-    }
-  }
+  ngOnChanges(changes: SimpleChanges): void {}
 
   configResults(): void {
     this.results = this.patients.map((patient) => {
@@ -123,5 +124,8 @@ export class PatientsComponent implements OnInit, OnChanges {
 
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
+  cssCreate() {
+    this._bef.cssCreate();
   }
 }

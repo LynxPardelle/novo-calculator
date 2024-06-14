@@ -62,6 +62,7 @@ export class CalculatorComponent implements OnInit, OnChanges {
   get calculatorData() {
     return this._calculatorService.calculatorData$();
   }
+
   public arrowLeft = this._sharedService.getHtml('arrowLeft');
 
   ngOnInit(): void {
@@ -74,13 +75,19 @@ export class CalculatorComponent implements OnInit, OnChanges {
       changes['calculatorData'].currentValue !==
         changes['calculatorData'].previousValue
     ) {
-      this._calculatorService.calculatorData$.set(this.calculatorData);
     }
+  }
+
+  setCalculatorData() {
+    this._calculatorService.calculatorData$.set(
+      JSON.parse(JSON.stringify(this.calculatorData))
+    );
   }
   /* Patient Estimation */
   totalPopulationChange(event: any) {
     this.calculatorData.totalPopulation = event;
     this.percentageCalculation();
+    this.manageObesityPatientsPercentage();
   }
 
   percentageCalculation() {
@@ -88,6 +95,7 @@ export class CalculatorComponent implements OnInit, OnChanges {
       (this.calculatorData.patientsPercentage / 100) *
         this.calculatorData.totalPopulation
     );
+    this.setCalculatorData();
   }
   /* Obesity Degrees */
   degreesChange(event: TObesityDegrees) {
@@ -318,5 +326,6 @@ export class CalculatorComponent implements OnInit, OnChanges {
       this.calculatorData.archieveGoalWithLiraglutide;
     this.calculatorData.dontArchiveGoalWithLiraglutidePercentage =
       this.calculatorData.dontArchiveGoalWithLiraglutide / populationTotal;
+    this.setCalculatorData();
   }
 }

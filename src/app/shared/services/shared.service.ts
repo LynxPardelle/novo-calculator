@@ -130,7 +130,18 @@ export class SharedService {
     for (let i = 0; i < row.length; i++) {
       result += row[i] * column[i];
     }
-
     return result;
+  }
+
+  detectCeilOrFloor(value: number) {
+    if (value.toString().includes('.')) {
+      if (Number.parseInt(value.toString().split('.')[1]) <= 5) {
+        return Math.floor(value);
+      } else {
+        return Math.ceil(value);
+      }
+    } else {
+      return value;
+    }
   }
 }

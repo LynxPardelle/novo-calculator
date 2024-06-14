@@ -1,0 +1,40 @@
+<div class="bef bef-overflowX-auto bef-w-827px">
+  <div class="bef bef-d-flex aliIte-fleEnd wrap-nowrap">
+    @for (person of people; track person; let i = $index; let last = $last) {
+    <div
+      [exists]="last"
+      (exists)="cssCreate()"
+      class="bef bef-position-relative"
+    >
+      <div
+        class="bef bef-h-{{ person.height }}px bef-mx-1rem bef-w-{{
+          person.width
+        }}px bef-maskImage-urlSD{{
+          befysize('/assets/img/SVG/fat-single.svg')
+        }}ED {{
+          i % 2 === 0 ? 'bef-bg-novo' : 'bef-bg-oranvo'
+        }} bef-maskClip-fillMINbox bef-maskSize-100per__100per bef-top-0 bef-left-0 shrink-0 test"
+      ></div>
+      <div
+        class="bef bef-text-{{ i % 2 === 0 ? 'novo' : 'oranvo' }} bef-h-{{
+          person.height
+        }}px bef-mx-1rem bef-w-{{
+          person.width
+        }}px bef-position-absolute bef-top-0 bef-left-0 shrink-0 test bef-d-flex aliIte-center jusCon-center bef-textAlign-center bef-fontWeight-900"
+      >
+        <p class="bef bef-m-0">
+          {{ person.value }}
+        </p>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+<div
+  class="bef bef-w-75per bef-d-flex aliIte-center jusCon-center bef-gap-1rem bef-p-2rem bef-mx-auto"
+>
+  <p class="bef bef-text-novo fonWei-900">
+    Liraglutide + Modificacion de estilo de vida
+  </p>
+  <p class="bef bef-text-oranvo fonWei-900">Modificación de estilo de vida</p>
+</div>
