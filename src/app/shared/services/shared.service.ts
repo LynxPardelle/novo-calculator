@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { svgTotal, TTotalSvg } from './svgs/svg.total';
+import { TNumber3, TNumber5 } from '../types/numbers.type';
 
 export type TMultiplyMatricesReq =
   | {
-      row: [number, number, number, number, number];
-      column: [number, number, number, number, number];
+      row: TNumber5;
+      column: TNumber5;
     }
   | {
-      row: [number, number, number];
-      column: [number, number, number];
+      row: TNumber3;
+      column: TNumber3;
     };
 @Injectable({
   providedIn: 'root',
