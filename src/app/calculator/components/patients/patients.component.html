@@ -1,18 +1,18 @@
 <section class="bef bef-mb-2rem bef-p-1rem">
-  <h2
+  <h3
     class="bef bef-w-50per bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakMINword"
   >
     Después de 10 años de tratamiento, el uso de Liraglutida 3.0 mg evitó que...
-  </h2>
+  </h3>
 
   <div class="bef bef-p-1rem bef-my-3rem mat-elevation-z4">
     <mat-tab-group (selectedTabChange)="cssCreate()">
       @for(result of results; track result; let i = $index) {
       <mat-tab label="{{ result.name }}">
         <div class="bef bef-d-flex fleDir-column aliIte-center">
-          <h3 class="bef bef-d-flex jusCon-center bef-w-100per">
+          <h4 class="bef bef-d-flex jusCon-center bef-w-100per">
             {{ result.name }}
-          </h3>
+          </h4>
           <div class="bef bef-d-flex fleDir-row jusCon-center">
             <generic-people-chart
               [chartData]="result.chart"
@@ -32,10 +32,10 @@
     ></div>
   </div>
   <!-- Charts -->
-  <div class="bef bef-d-flex bef-jusCon-center aliIte-center wrap-wrap">
+  <!-- <div class="bef bef-d-flex bef-jusCon-center aliIte-center wrap-wrap">
     @for (result of results; track result.name; let i = $index) {
     <div class="bef bef-w-275px bef-d-block bef-mx-auto">
-      <h3
+      <h4
         class="bef bef-w-75per bef-wordBreak-breakMINword bef-textAlign-center bef-mx-auto bef-mb-1rem bef-d-block bef-h-100px"
       >
         {{ result.name }}
@@ -62,5 +62,5 @@
       </ngx-charts-line-chart>
     </div>
     }
-  </div>
+  </div> -->
 </section>

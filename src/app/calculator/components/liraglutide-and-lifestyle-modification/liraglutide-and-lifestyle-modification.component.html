@@ -1,11 +1,14 @@
 <section class="bef bef-mb-2rem bef-p-1rem">
-  <h2 class="bef bef-fs-3rem bef-m-0 bef-d-flex jusCon-center bef-color-rovo"><u>{{ times | math : [{ operation: "roundDigit", value: 2 }] }}</u></h2>
-  <h2
+  <h3
     class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-m-0 bef-h-auto worBre-breakWord texTra-uppercase texAli-center"
   >
-    VECES MÁS
-    PACIENTES CON LIRAGLUTIDA LOGRAN LAS METAS DE PÉRDIDA DE PESO
-  </h2>
+    <span class="bef bef-fs-2rem bef-color-rovo">
+      <u>
+        {{ times | math : [{ operation: "roundDigit", value: 2 }] }}
+      </u>
+    </span>
+    VECES MÁS PACIENTES CON LIRAGLUTIDA LOGRAN LAS METAS DE PÉRDIDA DE PESO
+  </h3>
   <div class="bef bef-d-flex bef-jusCon-center aliIte-center wrap-wrap">
     @for (results of [liraglutideAndLifeStyleModificationResults,
     lifeStyleModificationResults]; track results[0].name; let i = $index) {

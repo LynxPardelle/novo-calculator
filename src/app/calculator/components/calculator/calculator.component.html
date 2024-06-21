@@ -96,16 +96,32 @@
     </anual-treatment-cost>
     @if (calculatorData.lifeStyleModification ||
     calculatorData.liraglutideNLifeStyleModification) {
-    <archieve-goal-patients
-      [lifeStyleModification]="calculatorData.lifeStyleModification"
-      [liraglutideNLifeStyleModification]="
-        calculatorData.liraglutideNLifeStyleModification
+    <h2
+      class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
+    >
+      BENEFICIOS DE LA INVERSIÓN EN LIRAGLUTIDA 3.0 MG EN UN AÑO DE TRATAMIENTO
+    </h2>
+    <generic-input
+      type="select"
+      [containerClasses]="'bef bef-w-30per bef-mt-2rem'"
+      [labelTitle]="
+        calculatorData.treatmentGoalPercentage === 5
+          ? 'Pérdida de Peso > 5%'
+          : calculatorData.treatmentGoalPercentage === 10
+          ? 'Pérdida de Peso > 10%'
+          : calculatorData.treatmentGoalPercentage === 15
+          ? 'Pérdida de Peso > 15%'
+          : 'Meta de Tratamiento'
       "
-      [treatmentGoalPercentage]="calculatorData.treatmentGoalPercentage"
-      (treatmentGoalPercentageChange)="
-        calculatorData.treatmentGoalPercentage = $event; treatmentGoalToChange()
-      "
-    ></archieve-goal-patients>
+      [thingFather]="{ percentage: calculatorData.treatmentGoalPercentage }"
+      [thing]="'treatmentGoalPercentage'"
+      (changesInput)="selectTreatmentGoalPercentage($event)"
+      [options]="[
+        { type: 'option', option: 'Pérdida de Peso > 5%', click: '5' },
+        { type: 'option', option: 'Pérdida de Peso > 10%', click: '10' },
+        { type: 'option', option: 'Pérdida de Peso > 15%', click: '15' }
+      ]"
+    ></generic-input>
     <liraglutide-and-lifestyle-modification
       [times]="calculatorData.moreTimes"
       [archieveGoal]="calculatorData.archieveGoal"
@@ -115,6 +131,17 @@
         calculatorData.dontArchiveGoalWithLiraglutide
       "
     ></liraglutide-and-lifestyle-modification>
+    <archieve-goal-patients
+      [lifeStyleModification]="calculatorData.lifeStyleModification"
+      [liraglutideNLifeStyleModification]="
+        calculatorData.liraglutideNLifeStyleModification
+      "
+    ></archieve-goal-patients>
+    <h2
+      class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
+    >
+      BENEFICIOS A LARGO PLAZO
+    </h2>
     <patients> </patients>
     }
   </div>

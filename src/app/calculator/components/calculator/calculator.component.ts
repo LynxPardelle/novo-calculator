@@ -291,6 +291,17 @@ export class CalculatorComponent implements OnInit, OnChanges {
     this.treatmentGoalToChange();
   }
   /* Archive-Goal-Patients */
+  selectTreatmentGoalPercentage(event: any) {
+    this.calculatorData.treatmentGoalPercentage = parseInt(event.percentage) as
+      | 5
+      | 10
+      | 15;
+    console.log(
+      'calculatorData.treatmentGoalPercentage',
+      this.calculatorData.treatmentGoalPercentage
+    );
+    this.treatmentGoalToChange();
+  }
   treatmentGoalToChange() {
     let populationTotal: number = this.calculatorData.populationTotal / 100;
     this.calculatorData.archieveGoal =

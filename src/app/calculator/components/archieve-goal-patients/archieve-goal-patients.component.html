@@ -1,30 +1,9 @@
 <section class="bef bef-mb-2rem bef-p-1rem">
-  <h2
+  <h3
     class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
   >
     COSTO POR PACIENTE QUE LOGRA LA META TERAPÉUTICA
-  </h2>
-  <generic-input
-    type="select"
-    [containerClasses]="'bef bef-w-30per bef-mt-2rem'"
-    [labelTitle]="
-      treatmentGoalPercentage === 5
-        ? 'Pérdida de Peso > 5%'
-        : treatmentGoalPercentage === 10
-        ? 'Pérdida de Peso > 10%'
-        : treatmentGoalPercentage === 15
-        ? 'Pérdida de Peso > 15%'
-        : 'Meta de Tratamiento'
-    "
-    [thingFather]="{ percentage: treatmentGoalPercentage }"
-    [thing]="'percentage'"
-    (changesInput)="selectTreatmentGoalPersentage($event)"
-    [options]="[
-      { type: 'option', option: 'Pérdida de Peso > 5%', click: '5' },
-      { type: 'option', option: 'Pérdida de Peso > 10%', click: '10' },
-      { type: 'option', option: 'Pérdida de Peso > 15%', click: '15' }
-    ]"
-  ></generic-input>
+  </h3>
   @if (multi[0]) {
   <ngx-charts-bar-vertical
     class="bef bef-mx-auto bef-d-block bef-w-500px"

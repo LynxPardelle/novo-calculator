@@ -29,9 +29,6 @@ import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
   @Input() lifeStyleModification: number = 5454615;
   @Input() liraglutideNLifeStyleModification: number = 1891406;
-  @Input() treatmentGoalPercentage: 5 | 10 | 15 = 5;
-  @Output() treatmentGoalPercentageChange: EventEmitter<5 | 10 | 15> =
-    new EventEmitter<5 | 10 | 15>();
 
   public multi: any[] = [];
   public view: [number, number] = [500, 500];
@@ -110,10 +107,5 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
 
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
-  selectTreatmentGoalPersentage(event: any) {
-    this.treatmentGoalPercentage = parseInt(event.percentage) as 5 | 10 | 15;
-    console.log('treatmentGoalPercentage', this.treatmentGoalPercentage);
-    this.treatmentGoalPercentageChange.emit(this.treatmentGoalPercentage);
   }
 }
