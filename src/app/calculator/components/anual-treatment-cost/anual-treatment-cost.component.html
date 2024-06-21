@@ -39,7 +39,7 @@
             <generic-span
               [title]="'Costo Unitario'"
               [titleClasses]="'bef bef-p-0_2rem'"
-              [info]="'$' + tab.spanNumber"
+              [info]="tab.spanNumber | currency"
               [textClasses]="'bef bef-m-0'"
               [filledClasses]="
                 'bef bef-d-flex  bef-borderBottom-0_25rem__solid__novo bef-rt-5px bef-bg-white bef-w-12rem bef-h-3_5rem bef-px-0_5rem'

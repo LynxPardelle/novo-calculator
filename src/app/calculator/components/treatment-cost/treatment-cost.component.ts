@@ -8,11 +8,12 @@ import { GenericSpanComponent } from '../../../shared/components/generic-span/ge
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 /*Types */
 import { TInstitution } from '../../types/institution.type';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'treatment-cost',
   standalone: true,
-  imports: [GenericSpanComponent, SafeHtmlPipe, GenericInputComponent],
+  imports: [GenericSpanComponent, SafeHtmlPipe, GenericInputComponent, CurrencyPipe],
   templateUrl: './treatment-cost.component.html',
   styleUrl: './treatment-cost.component.scss',
 })
@@ -36,7 +37,8 @@ export class TreatmentCostComponent {
     {
       title: 'Presentación:',
       description:
-        'Caja de cartón con 3 plumas precargadas con 3 ml (6 mg/ml) Clave CNIS:7125.00',
+        `Caja de cartón con 3 plumas precargadas
+        con 3 ml (6 mg/ml) Clave CNIS:7125.00`,
     },
   ];
   @Output() unitCostChange: EventEmitter<number> = new EventEmitter<number>();

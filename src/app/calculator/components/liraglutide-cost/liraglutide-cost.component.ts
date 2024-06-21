@@ -10,7 +10,7 @@ import { SharedService } from '../../../shared/services/shared.service';
 @Component({
   selector: 'liraglutide-cost',
   standalone: true,
-  imports: [GenericSpanComponent, CurrencyPipe, SafeHtmlPipe, JsonPipe],
+  imports: [GenericSpanComponent, CurrencyPipe, SafeHtmlPipe, JsonPipe, CurrencyPipe],
   templateUrl: './liraglutide-cost.component.html',
   styleUrl: './liraglutide-cost.component.scss',
 })
@@ -24,30 +24,35 @@ export class LiraglutideCostComponent {
       dosis: ' ' + '0.6 mg al día',
       color: 'oranvo',
       size: 'small',
+      cost: 181
     },
     {
       semana: 'Semana 2:',
       dosis: ' ' + '1.2 mg al día',
       color: 'oranvo',
       size: 'small',
+      cost: 362
     },
     {
       semana: 'Semana 3:',
       dosis: ' ' + '1.8 mg al día',
       color: 'oranvo',
       size: 'small',
+      cost: 543
     },
     {
       semana: 'Semana 4:',
       dosis: ' ' + '2.4 mg al día',
       color: 'oranvo',
       size: 'small',
+      cost: 724
     },
     {
       semana: 'Semana 5+:',
       dosis: ' ' + '3.0 mg al día',
       color: 'rovo',
       size: 'small',
+      cost: 904
     },
     {
       mantenimiento: '48 semanas en dosis de mantenimiento',
@@ -62,11 +67,11 @@ export class LiraglutideCostComponent {
   getClasses(color: string, size?: string) {
     switch (`${color}-${size}`) {
       case 'oranvo-small':
-        return 'bef-bg-oranvo bef bef-d-flex jusCon-center aliIte-center   bef-r-5px bef-w-4_5rem bef-h-2rem bef-p-0_8rem';
+        return 'bef-bg-oranvo bef bef-d-flex jusCon-center aliIte-center   bef-rt-5px bef-w-4_4rem bef-h-2rem bef-p-0_8rem';
       case 'rovo-small':
-        return 'bef-bg-rovo bef bef-d-flex jusCon-center aliIte-center  bef-r-5px bef-w-4_5rem  bef-h-2rem bef-p-0_8rem';
+        return 'bef-bg-rovo bef bef-d-flex jusCon-center aliIte-center  bef-rt-5px bef-w-4_4rem  bef-h-2rem bef-p-0_8rem';
       case 'rovo-large':
-        return 'bef-bg-rovo bef bef-d-flex jusCon-center aliIte-center bef-w-8rem bef-r-5px  bef-h-2rem bef-p-0_8rem';
+        return 'bef-bg-rovo bef bef-d-flex jusCon-center aliIte-center bef-w-7rem bef-r-5px  bef-h-2rem bef-p-0_8rem';
       default:
         return ``;
     }

@@ -6,6 +6,7 @@ import { SharedService } from '../../../shared/services/shared.service';
 import { GenericSpanComponent } from '../../../shared/components/generic-span/generic-span.component';
 import { TComorbidities } from '../../types/comorbidities.type';
 import { MathPipe } from '../../../shared/pipes/math.pipe';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'comorbidities',
@@ -16,6 +17,7 @@ import { MathPipe } from '../../../shared/pipes/math.pipe';
     GenericSpanComponent,
     SafeHtmlPipe,
     MathPipe,
+    CurrencyPipe
   ],
   templateUrl: './comorbidities.component.html',
   styleUrl: './comorbidities.component.scss',

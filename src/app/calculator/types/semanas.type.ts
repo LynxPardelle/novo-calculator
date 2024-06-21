@@ -4,4 +4,5 @@ export type TSemanas = {
   mantenimiento?: string;
   color: string;
   size: string;
+  cost?: number;
 };

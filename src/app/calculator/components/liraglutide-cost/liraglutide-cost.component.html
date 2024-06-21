@@ -1,7 +1,7 @@
 <section class="bef bef-mb-5rem">
   <div class="bef bef-d-flex fleDir-column bef-p-1rem">
     <h2 class="bef bef-text-novo bef-fontWeight-900">
-      Costo de tratamiento con liranglutida 3.0 mg
+      COSTO DE TRATAMIENTO CON LIRAGLUTIDA 3.0 mg
     </h2>
     <div class="bef bef-d-flex aliIte-end jusCon-center">
       <img
@@ -15,40 +15,42 @@
         class="bef bef-w-50per objFit-contain bef-p-1rem bef-ms-MIN6_25per bef-h-120px"
       />
     </div>
-    <div class="bef bef-d-flex aliIte-center bef-py-1rem fleDir-row wrap-wrap">
+    <span id="banner" class="bef bef-d-flex bef-bg-diskSoft jusCon-center">
+      <h4 class="bef bef-m-0 bef-fontWeight-300 bef-fs-14px bef-p-2px">
+        Costo Semanal
+      </h4>
+    </span>
+    <div class="bef bef-d-flex aliIte-center bef-p-1rem fleDir-row wrap-wrap">
       @for(semana of semanas; track semanas; let i = $index){
-      <generic-span
-        class="bef bef-d-flex bef-mt-1rem"
-        [info]="
-          (semana.semana || '') +
-          (semana.dosis || '') +
-          (semana.mantenimiento || '')
-        "
-        [filledClasses]="getClasses(semana.color, semana.size)"
-        [textClasses]="'bef bef-fs-12px bef-text-white bef-fontWeight-400'"
+      <div
+        class="bef bef-d-flex bef-mb-1rem fleDir-column jusCon-center aliIte-center bef-bg-diskSoft bef-r-5px bef-boxShadow-2px__2px__10px__2px"
       >
-      </generic-span>
+        <generic-span
+          class="bef bef-d-flex"
+          [info]="
+            (semana.semana || '') +
+            (semana.dosis || '') +
+            (semana.mantenimiento || '')
+          "
+          [filledClasses]="getClasses(semana.color, semana.size)"
+          [textClasses]="'bef bef-fs-12px bef-text-white bef-fontWeight-500'"
+        >
+        </generic-span>
+        @if(i<=4){
+        <span id="costos" class="bef bef-d-flex fleDir-row">
+          <p class="bef bef-my-0_5rem bef-color-rovo">
+            {{ semana.cost | currency }}
+          </p> </span
+        >}
+      </div>
       @if(i<=4){
       <div
-        class="bef bef-d-flex aliIte-center bef-w-4per bef-mt-1rem"
+        class="bef bef-d-flex aliIte-center bef-w-4_1per bef-mb-1rem"
         [innerHTML]="arrowRight | safeHtml"
       ></div>
       } }
     </div>
-    <div class="bef bef-d-flex fleDir-column">
-      <span id="banner" class="bef bef-d-flex bef-bg-diskSoft jusCon-center">
-        <h4 class="bef bef-m-0 bef-fontWeight-300 bef-fs-14px bef-p-2px">
-          Costo Semanal
-        </h4>
-      </span>
-
-      <span id="costos" class="bef bef-d-flex fleDir-row">
-        @for(cost of ['$181', '$362', '$543', '$723', '$904'] ; track cost; let
-        i = $index){
-        <p class="bef bef-m-0 bef-w-20per">{{ cost.valueOf() }}</p>
-        }
-      </span>
-    </div>
+    <div class="bef bef-d-flex fleDir-column"></div>
     <span class="bef bef-d-flex fleDir-row jusCon-center">
       <h3 class="bef texAli-center bef-m-1rem">
         Costo Anual de Tratamiento <br />

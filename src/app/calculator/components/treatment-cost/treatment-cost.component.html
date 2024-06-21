@@ -2,11 +2,11 @@
   <div
     class="bef bef-mb-2rem bef-d-flex fleDir-row wrap-wrap bef-w-auto bef-p-1rem"
   >
-    <h3
-      class="bef bef-w-20per bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-2rem bef-mb-0 bef-h-auto"
+    <h2
+      class="bef bef-w-20per bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-1rem bef-mb-0 bef-h-auto"
     >
       COSTO DE <wbr />TRATAMIENTO
-    </h3>
+    </h2>
     <div class="bef bef-d-flex jusCon-center aliIte-stretch">
       <div>
         @for (thermo of [thermo1, thermo2, thermo1]; track thermo) {
@@ -18,35 +18,35 @@
       </div>
       <div class="bef bef-w-4rem bef-bg-accentNord"></div>
     </div>
-    <div class="bef bef-w-40per bef-flexGrow-0_5">
-      <div>
+    <div class="bef bef-w-40per bef-pe-20px bef-boxShadow-2px__2px__10px__2px">
+      <div class="bef ">
         @for (treatmentTitle of treatmentTitles; track treatmentTitle.title) {
-        <h3
-          class="bef bef-d-flex jusCon-between bef-ms-1rem aliCon-stretch bef-text-novo"
+        <h4
+          class="bef bef-d-flex jusCon-between bef-ms-0_5rem aliCon-stretch bef-text-novo"
         >
           <span
-            class="bef bef-ms-1rem bef-w-35per bef-fontWeight-400 bef-d-flex jusCon-fleStart"
-            >{{ treatmentTitle.title }}</span
+            class="bef bef-ms-1rem bef-w-35per bef-fontWeight-500 bef-d-flex jusCon-fleStart"
+            ><u>{{ treatmentTitle.title }}</u></span
           >
           <span
-            class="bef bef-w-55per bef-fw-BOLD bef-d-flex jusCon-fleStart"
+            class="bef bef-w-55per bef-fontWeight-800 bef-d-flex jusCon-fleStart "
             >{{ treatmentTitle.description }}</span
           >
-        </h3>
+        </h4>
         }
       </div>
       <div class="bef bef-d-flex fleDir-row jusCon-around bef-w-100per">
         @if (institution === 'private') {
         <generic-input
-          class="bef bef-d-flex jusCon-center aliIte-center bef-w-50per"
-          [labelTitle]="'Costo Unitario'"
+          class="bef bef-d-flex jusCon-center aliIte-center bef-w-55per bef-d-flex"
+          [labelTitle]="'Costo unitario'"
           [type]="'text'"
-          [thingFather]="{ cost: unitCost }"
+          [thingFather]="{ cost: unitCost | currency }"
           [thing]="'cost'"
-          [labelClasses]="'bef bef-fs-1rem bef-text-novo'"
-          [inputClasses]="''"
+          [labelClasses]="'bef  bef-text-black'"
+          [inputClasses]="'bef texAli-center'"
           [containerClasses]="
-            ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__oranvo bef-wmn-5rem bef-w-80per bef-wmx-10rem  bef-dSEL___mdcMINlineMINripple-none bef-transformSEL__label-translateYSDMIN110perED bef-bgSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-white'
+            ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__oranvo bef-wmn-5rem bef-w-80per bef-wmx-10rem  bef-dSEL___mdcMINlineMINripple-none bef-transformSEL__label-translateYSDMIN110perED bef-pSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-white'
           "
           (changesInput)="unitCostChange.emit($event.cost)"
         >
@@ -56,8 +56,10 @@
           class="bef bef-w-50per"
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
-          [textClasses]="'bef bef-color-novo'"
-          [info]="'Costo unitario $' + unitCost"
+          [textClasses]="'bef bef-fs-1rem '"
+          [titleClasses]="'bef bef-m-0 bef-fs-1rem'"
+          [title]="'Costo unitario'"
+          [info]="unitCost | currency"
         >
         </generic-span>
         }
@@ -65,8 +67,10 @@
           class="bef bef-w-50per"
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
-          [textClasses]="'bef bef-color-novo'"
-          [info]="'Costo anual $' + anualCost"
+          [textClasses]="'bef bef-m-0'"
+          [titleClasses]="'bef bef-m-0 bef-fs-1rem bef-letterSpacing-0_2px'"
+          [title]="'Costo anual'"
+          [info]="anualCost | currency"
         >
         </generic-span>
       </div>
