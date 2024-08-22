@@ -43,6 +43,9 @@ export class SharedService {
         return `
       ${this.svgTotal.thumbsDown}`;
 
+      case type === 'poligonArrow':
+        return `${this.svgTotal.poligonArrow}`;
+
       case type === 'hipertension':
         return `
       ${this.svgTotal.heart}

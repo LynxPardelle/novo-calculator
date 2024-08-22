@@ -1,10 +1,11 @@
 <section class="bef bef-mb-5rem">
+  <h2 class="bef bef-color-novo">SELECCIONAR COMORBILIDADES</h2>
   <div class="bef bef-d-flex">
-    <h2
+    <h3
       class="bef bef-color-novo bef-fontWeight-900 bef-p-0 bef-h-3rem bef-pt-1rem bef-me-3rem bef-mb-0"
     >
       ¿CONSIDERAR COMORBILIDADES?
-    </h2>
+    </h3>
     <generic-input
       [type]="'checkbox'"
       [checkBoxFalseClasses]="falseClasses"
@@ -30,21 +31,17 @@
   <div
     class="bef bef-d-flex bef-bg-white bef-h-17rem fleDir-row bef-w-auto bef-p-1rem"
   >
-    <h3
-      class="bef bef-d-flex jusCon-fleStart aliIte-center bef-w-20per bef-p-1rem bef-me-1rem bef-color-novo"
-    >
-      SELECCIONAR <br />COMORBILIDADES
-    </h3>
+
 
     <div
-      class="bef bef-d-flex fleDir-column jusCon-center bef-h-100per bef-w-13rem bef-me-4rem bef-ms-1rem"
+      class="bef bef-d-flex fleDir-column jusCon-center bef-h-100per bef-w-13rem bef-me-1rem bef-ms-1rem"
     >
       @for (comorbiditie of [hipertension, dislipidemia, prediabetes]; track
       comorbiditie; let i = $index) {
       <generic-input
         class="bef bef-w-100per"
         [type]="'checkbox'"
-        [buttonClasses]="'bef bef-bw-0 bef-h-auto bef-w-100per bef-m-0_3rem'"
+        [buttonClasses]="'bef bef-bw-0 bef-h-auto bef-w-192px bef-m-0_3rem'"
         [checkBoxTrueClasses]="trueColors"
         [checkBoxFalseClasses]="falseColors"
         [thingFather]="comorbidities"
@@ -56,17 +53,18 @@
           class="bef-d-flex bef-w-100per bef-h-100per jusCon-center aliIte-center"
         ></div>
       </generic-input>
+
       }
     </div>
 
-    <div class="bef bef-d-flex fleDir-column bef-p-1rem bef-w-50per">
-      <h2 class="bef bef-hmn-4rem">
+    <div class="bef bef-d-flex fleDir-column jusCon-center bef-p-1rem bef-w-50per">
+      <h3 class="bef bef-hmn-4rem bef-m-0">
         <span class="bef bef-opacity-0_5">Pacientes con obesidad </span><br />
         <span
           [innerHTML]="comorbiditiesText | safeHtml"
           class="bef bef-borderBottom-1px__solid__novo bef-text-novo"
         ></span>
-      </h2>
+      </h3>
       <div class="bef bef-d-flex fleDir-row">
         <generic-span
           class="bef bef-w-30per bef-wmx-50per"
@@ -81,7 +79,7 @@
         </generic-span>
         <div class="bef bef-mx-5per" [innerHTML]="arrowRight | safeHtml"></div>
         <generic-span
-          class="bef bef-w-30per bef-wmx-50per"
+          class="bef bef-w-160px"
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
           [textClasses]="'bef bef-color-novo'"
@@ -90,6 +88,24 @@
         </generic-span>
       </div>
     </div>
+    <div class="bef bef-d-flex fleDir-column jusCon-center aliIte-center bef-p-1rem">
+      <generic-span
+      class="bef bef-w-160px"
+      [filledClasses]="'bef'"
+      [textClasses]="'bef bef-fs-1_2rem bef-fontWeight-BOLD bef-color-oranvo'"
+      [info]="'POBLACIÓN OBJETIVO'"
+        ></generic-span>
+        <generic-span
+      class="bef bef-w-160px "
+      [filledClasses]="
+        'bef bef-bg-oranvo bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-h-2_5rem bef-p-0_5rem bef-rt-2px'
+      "
+      [emptyClasses]="'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-oranvo  bef-h-2_5rem bef  bef-p-0_5rem'"
+      [textClasses]="'bef bef-fs-1_5rem bef-color-white'"
+      [info]="populationTotal | math : [{ operation: 'round' }]"
+        ></generic-span>
+    </div>
+
   </div>
   }
   <div
@@ -97,21 +113,7 @@
       needsComorbidities ? 'bef-mt-MIN2rem' : 'bef-mt-2rem'
     }} bef-me-6rem fleDir-row jusCon-fleEnd"
   >
-    <generic-span
-      class="bef bef-w-180px"
-      [filledClasses]="'bef'"
-      [textClasses]="'bef bef-fs-1_5rem bef-fontWeight-BOLD bef-color-oranvo'"
-      [info]="'POBLACIÓN OBJETIVO'"
-    ></generic-span>
-    <generic-span
-      class="bef bef-w-180px bef-wmx-50per"
-      [filledClasses]="
-        'bef bef-bg-oranvo bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-h-2_5rem bef-p-0_5rem bef-rt-2px'
-      "
-      [emptyClasses]="emptyClasses"
-      [textClasses]="'bef bef-fs-1_5rem bef-color-white'"
-      [info]="populationTotal | math : [{ operation: 'round' }]"
-    ></generic-span>
+
   </div>
   <div
     class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN250px bef-me-MIN125px"

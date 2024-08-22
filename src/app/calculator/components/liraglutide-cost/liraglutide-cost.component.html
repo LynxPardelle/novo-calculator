@@ -1,55 +1,39 @@
 <section class="bef bef-mb-5rem">
   <div class="bef bef-d-flex fleDir-column bef-p-1rem">
     <h2 class="bef bef-text-novo bef-fontWeight-900">
-      COSTO DE TRATAMIENTO CON LIRAGLUTIDA 3.0 mg
+      LIRAGLUTIDA 3.0 MG PARA EL TRATAMIENTO DE PACIENTES CON OBESIDAD
     </h2>
-    <div class="bef bef-d-flex aliIte-end jusCon-center">
+    <div class="bef bef-d-flex aliIte-center jusCon-fleStart">
       <img
         src="./assets/img/Saxenda_PS.png"
         alt="Saxenda 1"
-        class="bef bef-w-50per objFit-contain bef-p-1rem bef-me-MIN6_25per"
+        class="bef bef-w-50per objFit-contain bef-p-1rem bef-me-MIN295px "
       />
       <img
         src="./assets/img/Saxenda_PS2.png"
         alt="Saxenda 1"
-        class="bef bef-w-50per objFit-contain bef-p-1rem bef-ms-MIN6_25per bef-h-120px"
+        class="bef bef-w-50per objFit-contain bef-p-1rem bef-mb-MIN125px bef-ms-MIN6_25per bef-h-120px"
       />
-    </div>
-    <span id="banner" class="bef bef-d-flex bef-bg-diskSoft jusCon-center">
-      <h4 class="bef bef-m-0 bef-fontWeight-300 bef-fs-14px bef-p-2px">
-        Costo Semanal
-      </h4>
-    </span>
-    <div class="bef bef-d-flex aliIte-center bef-p-1rem fleDir-row wrap-wrap">
-      @for(semana of semanas; track semanas; let i = $index){
-      <div
-        class="bef bef-d-flex bef-mb-1rem fleDir-column jusCon-center aliIte-center bef-bg-diskSoft bef-r-5px bef-boxShadow-2px__2px__10px__dark__OPA__0_5"
-      >
-        <generic-span
-          class="bef bef-d-flex"
-          [info]="
-            (semana.semana || '') +
-            (semana.dosis || '') +
-            (semana.mantenimiento || '')
-          "
-          [filledClasses]="getClasses(semana.color, semana.size)"
-          [textClasses]="'bef bef-fs-12px bef-text-white bef-fontWeight-500'"
+      <div class="bef bef-h-100per bef-w-55per">
+        @for (treatmentTitle of treatmentTitles; track treatmentTitle.title) {
+        <h4
+          class="bef bef-d-flex jusCon-center bef-ms-0_5rem aliCon-center bef-text-novo"
         >
-        </generic-span>
-        @if(i<=4){
-        <span id="costos" class="bef bef-d-flex fleDir-row">
-          <p class="bef bef-my-0_5rem bef-color-rovo">
-            {{ semana.cost | currency }}
-          </p> </span
-        >}
+          <span
+            class="bef bef-me-5rem bef-w-15per bef-fontWeight-500 bef-d-flex jusCon-fleStart"
+            ><u>{{ treatmentTitle.title }}</u></span
+          >
+          <span
+            class="bef bef-w-65per bef-fontWeight-800 bef-d-flex jusCon-fleStart "
+            >{{ treatmentTitle.description }}</span
+          >
+        </h4>
+        }
       </div>
-      @if(i<=4){
-      <div
-        class="bef bef-d-flex aliIte-center bef-w-4_1per bef-mb-1rem"
-        [innerHTML]="arrowRight | safeHtml"
-      ></div>
-      } }
     </div>
+
+
+
     <div class="bef bef-d-flex fleDir-column"></div>
     <span class="bef bef-d-flex fleDir-row jusCon-center">
       <h3 class="bef texAli-center bef-m-1rem">

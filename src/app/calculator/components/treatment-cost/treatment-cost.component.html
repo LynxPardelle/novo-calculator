@@ -1,56 +1,70 @@
 <section>
   <div
-    class="bef bef-mb-2rem bef-d-flex fleDir-row wrap-wrap bef-w-auto bef-p-1rem"
+    class="bef bef-mb-2rem bef-d-flex fleDir-column bef-w-auto bef-p-1rem"
   >
     <h2
-      class="bef bef-w-20per bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-1rem bef-mb-0 bef-h-auto"
+      class="bef bef-w-100per bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-1rem bef-mb-0 bef-h-auto"
     >
-      COSTO DE <wbr />TRATAMIENTO
+      COSTO DE TRATAMIENTO CON LIRAGLUTIDA 3.0 MG
     </h2>
-    <div class="bef bef-d-flex jusCon-center aliIte-stretch">
-      <div>
-        @for (thermo of [thermo1, thermo2, thermo1]; track thermo) {
-        <div
-          class="bef bef-w-14rem bef-py-1rem"
-          [innerHTML]="thermo | safeHtml"
-        ></div>
-        }
-      </div>
-      <div class="bef bef-w-4rem bef-bg-accentNord"></div>
-    </div>
-    <div class="bef bef-w-40per bef-pe-20px bef-boxShadow-2px__2px__10px__2px">
-      <div class="bef ">
-        @for (treatmentTitle of treatmentTitles; track treatmentTitle.title) {
-        <h4
-          class="bef bef-d-flex jusCon-between bef-ms-0_5rem aliCon-stretch bef-text-novo"
-        >
-          <span
-            class="bef bef-ms-1rem bef-w-35per bef-fontWeight-500 bef-d-flex jusCon-fleStart"
-            ><u>{{ treatmentTitle.title }}</u></span
-          >
-          <span
-            class="bef bef-w-55per bef-fontWeight-800 bef-d-flex jusCon-fleStart "
-            >{{ treatmentTitle.description }}</span
-          >
-        </h4>
-        }
-      </div>
-      <div class="bef bef-d-flex fleDir-row jusCon-around bef-w-100per">
-        @if (institution === 'private') {
-        <generic-input
-          class="bef bef-d-flex jusCon-center aliIte-center bef-w-55per bef-d-flex"
-          [labelTitle]="'Costo unitario'"
-          [type]="'text'"
-          [thingFather]="{ cost: unitCost | currency }"
-          [thing]="'cost'"
-          [labelClasses]="'bef  bef-text-black'"
-          [inputClasses]="'bef texAli-center'"
-          [containerClasses]="
-            ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__oranvo bef-wmn-5rem bef-w-80per bef-wmx-10rem  bef-dSEL___mdcMINlineMINripple-none bef-transformSEL__label-translateYSDMIN110perED bef-pSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-white'
+
+    <div class="bef bef-d-flex aliIte-center bef-p-1rem fleDir-row wrap-wrap">
+      @for(semana of semanas; track semanas; let i = $index){
+      <div
+        class="bef bef-d-flex bef-mb-1rem fleDir-column jusCon-center aliIte-center bef-bg-diskSoft bef-r-5px bef-boxShadow-2px__2px__10px__dark__OPA__0_5"
+      >
+        <generic-span
+          class="bef bef-d-flex"
+          [info]="
+            (semana.semana || '') +
+            (semana.dosis || '') +
+            (semana.mantenimiento || '')
           "
-          (changesInput)="unitCostChange.emit($event.cost)"
+          [filledClasses]="getClasses(semana.color, semana.size)"
+          [textClasses]="'bef bef-fs-12px bef-text-white bef-fontWeight-500'"
         >
-        </generic-input>
+        </generic-span>
+        @if(i<=4){
+        <span id="costos" class="bef bef-d-flex fleDir-row">
+          <p class="bef bef-my-0_5rem bef-color-rovo">
+            {{ semana.cost | currency }}
+          </p> </span
+        >}
+      </div>
+      @if(i<=4){
+      <div
+        class="bef bef-d-flex aliIte-center bef-w-4_1per bef-mb-1rem"
+        [innerHTML]="arrowRight | safeHtml"
+      ></div>
+      } }
+    </div>
+    <div class="bef bef-d-flex jusCon-center aliIte-stretch">
+
+    </div>
+    <div class="bef bef-w-100per bef-pe-0 ">
+
+      <div class="bef bef-d-flex fleDir-row  jusCon-around bef-w-100per">
+        @if (institution === 'private') {
+          <div class="bef bef-d-flex fleDir-row">
+            <span>
+              <h4 class="bef bef-m-0 bef-color-novo">Costo unitario</h4>
+              <h5 class="bef bef-m-0 bef-color-novo">de tratamiento</h5>
+            </span>
+                    <generic-input
+            class="bef bef-d-flex jusCon-center aliIte-center bef-w-220px bef-d-flex "
+            [labelTitle]="''"
+            [type]="'text'"
+            [thingFather]="{ cost: unitCost | currency }"
+            [thing]="'cost'"
+            [labelClasses]="'bef  bef-text-black'"
+            [inputClasses]="'bef texAli-center'"
+            [containerClasses]="
+              ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_18rem__solid__oranvo bef-pSEL___matMINmdcMINformMINfieldMINinfix-18px  bef-w-190px   bef-dSEL___mdcMINlineMINripple-none bef-transformSEL__label-translateYSDMIN110perED bef-pSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-white'
+            "
+            (changesInput)="unitCostChange.emit($event.cost)"
+                    >
+                    </generic-input>
+          </div>
         } @else{
         <generic-span
           class="bef bef-w-50per"
@@ -58,21 +72,28 @@
           [emptyClasses]="emptyClasses"
           [textClasses]="'bef bef-fs-1rem '"
           [titleClasses]="'bef bef-m-0 bef-fs-1rem'"
-          [title]="'Costo unitario'"
+          [title]="''"
           [info]="unitCost | currency"
         >
         </generic-span>
         }
-        <generic-span
-          class="bef bef-w-50per"
-          [filledClasses]="filledClasses"
-          [emptyClasses]="emptyClasses"
-          [textClasses]="'bef bef-m-0'"
-          [titleClasses]="'bef bef-m-0 bef-fs-1rem bef-letterSpacing-0_2px'"
-          [title]="'Costo anual'"
-          [info]="anualCost | currency"
-        >
-        </generic-span>
+        <div class="bef bef-d-flex fleDir-row">
+          <span>
+            <h4 class="bef bef-m-0 bef-color-novo">Costo anual</h4>
+            <h5 class="bef bef-m-0 bef-color-novo">de tratamiento</h5>
+            <h6 class="bef bef-m-0 bef-color-novo">[52 semanas]</h6>
+          </span>
+          <generic-span
+            class="bef bef-d-flex jusCon-center aliIte-center bef-w-220px"
+            [filledClasses]="filledClasses"
+            [emptyClasses]="emptyClasses"
+            [textClasses]="'bef bef-m-0'"
+            [titleClasses]="'bef bef-m-0 bef-fs-1rem bef-letterSpacing-0_2px'"
+            [title]="''"
+            [info]="anualCost | currency"
+          >
+          </generic-span>
+        </div>
       </div>
     </div>
   </div>

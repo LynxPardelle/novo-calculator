@@ -22,6 +22,7 @@ import { person5 } from './person5.svg';
 import { person6 } from './person6.svg';
 import { person7 } from './person7.svg';
 import { person8 } from './person8.svg';
+import { poligonArrow } from './poligonArrow';
 
 export type TTotalSvg = {
   logo: string;
@@ -48,6 +49,7 @@ export type TTotalSvg = {
   person6: string;
   person7: string;
   person8: string;
+  poligonArrow: string;
 };
 export const svgTotal: TTotalSvg = {
   logo: logo,
@@ -74,4 +76,5 @@ export const svgTotal: TTotalSvg = {
   person6: person6,
   person7: person7,
   person8: person8,
+  poligonArrow: poligonArrow,
 };
