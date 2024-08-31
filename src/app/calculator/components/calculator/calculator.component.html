@@ -1,5 +1,5 @@
 <main>
-  <div class="bef bef-p-2rem bef-bg-nord bef-h-100per bef-w-87vw bef-pb-5rem">
+  <div class="bef bef-p-2rem bef-bg-nord bef-h-100per bef-w-83vw bef-pb-5rem">
   <!--   <a
       class="bef bef-color-novo bef-px-1rem bef-textDecoration-none bef-d-flex aliIte-center jusCon-fleStart jusSel-start aliSel-start"
       href="/"
@@ -19,6 +19,7 @@
       (totalPopulationChange)="totalPopulationChange($event)"
     >
     </patient-estimation>
+    <hr class="bef bef-color-white bef-w-80per">
     <obesity-degrees
       [obesityDegrees]="calculatorData.obesityDegrees"
       [obesityText]="calculatorData.obesityText"
@@ -27,6 +28,7 @@
       (obesityDegreesChange)="degreesChange($event)"
     >
     </obesity-degrees>
+    <hr class="bef bef-color-white bef-w-80per">
     <comorbidities
       [needsComorbidities]="calculatorData.needsComorbidities"
       [comorbidities]="calculatorData.comorbidities"
@@ -40,6 +42,7 @@
       (comorbiditiesChange)="comorbiditiesChange($event)"
     >
     </comorbidities>
+    <hr class="bef bef-color-white bef-w-80per bef-mt-5rem">
     <liraglutide-cost
       [anualCost]="
         calculatorData.institution === 'private'
@@ -47,6 +50,7 @@
           : calculatorData.publicAnualCost
       "
     ></liraglutide-cost>
+    <hr class="bef bef-color-white bef-w-80per">
     <treatment-cost
       [institution]="calculatorData.institution"
       [unitCost]="
@@ -62,6 +66,7 @@
       (unitCostChange)="unitCostChange($event)"
     >
     </treatment-cost>
+    <hr class="bef bef-color-white bef-w-80per">
     <anual-treatment-cost
       [nutritionMonths]="calculatorData.nutritionMonths"
       [infirmaryMonths]="calculatorData.infirmaryMonths"
@@ -94,10 +99,12 @@
       (monthChange)="anualCostChange($event[1], $event[0])"
     >
     </anual-treatment-cost>
+
     @if (calculatorData.lifeStyleModification ||
     calculatorData.liraglutideNLifeStyleModification) {
+      <hr class="bef bef-color-white bef-w-80per">
     <h2
-      class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
+      class="bef bef-color-novo bef-fontWeight-700 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
     >
       BENEFICIOS DE LA INVERSIÓN EN LIRAGLUTIDA 3.0 MG EN UN AÑO DE TRATAMIENTO
     </h2>
@@ -122,6 +129,7 @@
         { type: 'option', option: 'Pérdida de Peso > 15%', click: '15' }
       ]"
     ></generic-input>
+
     <liraglutide-and-lifestyle-modification
       [times]="calculatorData.moreTimes"
       [archieveGoal]="calculatorData.archieveGoal"
@@ -131,14 +139,16 @@
         calculatorData.dontArchiveGoalWithLiraglutide
       "
     ></liraglutide-and-lifestyle-modification>
+    <hr class="bef bef-color-white bef-w-80per">
     <archieve-goal-patients
       [lifeStyleModification]="calculatorData.lifeStyleModification"
       [liraglutideNLifeStyleModification]="
         calculatorData.liraglutideNLifeStyleModification
       "
     ></archieve-goal-patients>
+    <hr class="bef bef-color-white bef-w-80per">
     <h2
-      class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
+      class="bef bef-color-novo bef-d-flex jusCon-center bef-fontWeight-700 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
     >
       BENEFICIOS A LARGO PLAZO
     </h2>

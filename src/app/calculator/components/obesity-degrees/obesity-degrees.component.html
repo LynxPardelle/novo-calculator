@@ -1,7 +1,7 @@
 <section
   class="bef bef-mb-2rem bef-d-flex jusCon-fleEnd fleDir-column bef-p-1rem "
 >
-  <h2 class="bef bef-d-flex jusCon-center bef-ms-1rem bef-mb-2rem bef-color-novo bef-fontWeight-900 bef-pt-1rem">
+  <h2 class="bef bef-d-flex jusCon-center bef-ms-1rem bef-mb-2rem bef-color-novo bef-fontWeight-700 bef-pt-1rem">
     SELECCIONAR GRADOS DE OBESIDAD
   </h2>
   <div class="bef bef-d-flex fleDir-row">
@@ -20,7 +20,7 @@
         (changesInput)="obesityDegreesChange.emit($event)"
       >
         <div
-          [innerHTML]="degree | safeHtml"
+          [innerHTML]="degree | safeHtml "
           class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-fleStart"
         ></div>
       </generic-input>
@@ -38,7 +38,7 @@
         </span>
       </h4>
       <div
-        class="bef bef-d-flex jusCon-center aliIte-center bef-h-20per fleDir-row bef-w-auto"
+        class="bef bef-d-flex jusCon-fleStart aliIte-center bef-h-20per fleDir-row bef-w-100per"
       >
         <generic-span
           [filledClasses]="filledClasses"
@@ -51,7 +51,7 @@
           "
         >
         </generic-span>
-        <div class="" [innerHTML]="arrowRight | safeHtml"></div>
+        <div class="" [innerHTML]="arrowRight | safeHtml" class="bef bef-d-flex jusCon-center aliIte-center bef-m-20px" ></div>
         <generic-span
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
@@ -64,12 +64,12 @@
       </div>
     </div>
   </div>
-  <div
-    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN100px bef-me-MIN225px"
-  >
-    <div
-      class="bef bef-w-180px bef-d-inline"
-      [innerHTML]="person | safeHtml"
-    ></div>
-  </div>
 </section>
+<div
+  class="bef bef-mt-MIN350px bef-ms-92per"
+>
+  <div
+    class="bef bef-w-180px "
+    [innerHTML]="person | safeHtml"
+  ></div>
+</div>

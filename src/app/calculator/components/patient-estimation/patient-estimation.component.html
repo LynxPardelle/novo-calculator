@@ -2,7 +2,7 @@
   class="bef bef-mb-2rem bef-d-flex fleDir-column bef-p-1rem "
 >
 <h2
-      class="bef bef-d-flex jusCon-center bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-mb-2rem "
+      class="bef bef-d-flex jusCon-center bef-color-novo bef-fontWeight-700 bef-pt-1rem bef-mb-2rem "
     >
       ESTIMACIÓN DE PACIENTES
     </h2>
@@ -42,7 +42,7 @@
           [info]="patientsPercentage + '%'"
         >
         </generic-span>
-        <div [innerHTML]="arrowRight | safeHtml"></div>
+        <div [innerHTML]="arrowRight | safeHtml" class="bef bef-d-flex jusCon-center aliIte-center bef-m-20px"></div>
         <generic-span
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
@@ -55,12 +55,14 @@
       </div>
     </div>
   </div>
-  <div
-    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-me-MIN50px"
-  >
-    <div
-      class="bef bef-w-140px bef-d-inline"
-      [innerHTML]="person1 | safeHtml"
-    ></div>
-  </div>
+
 </section>
+<div
+  class="bef bef-mt-MIN270px bef-ms-92per"
+>
+  <div
+    class="bef bef-w-140px"
+    [innerHTML]="person1 | safeHtml"
+  ></div>
+</div>
+

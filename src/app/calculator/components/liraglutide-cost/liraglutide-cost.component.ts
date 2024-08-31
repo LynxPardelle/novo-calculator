@@ -30,8 +30,13 @@ export class LiraglutideCostComponent {
       title: 'Presentación:',
       description:
         `Caja de cartón con 3 plumas precargadas
-        con 3 ml (6 mg/ml) Clave CNIS:7125.00`,
+        con 3 ml (6 mg/ml) `,
     },
+    {
+      title: 'Clave:',
+      description: 'CNIS:7125.00',
+    },
+
   ];
   public person = this._sharedService.getHtml('person3');
 

@@ -24,6 +24,7 @@ export class AppComponent implements AfterViewInit {
     suvo: '#5AD200',
     rovo: '#921A00',
     oranvo: '#f27A00',
+    yell: '#EBAC1F'
   };
   public abreviationsValues: { [key: string]: string } = {
     fleStart: 'flex-start',

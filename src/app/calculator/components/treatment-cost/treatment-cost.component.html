@@ -3,47 +3,46 @@
     class="bef bef-mb-2rem bef-d-flex fleDir-column bef-w-auto bef-p-1rem"
   >
     <h2
-      class="bef bef-w-100per bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-1rem bef-mb-0 bef-h-auto"
+      class="bef bef-d-flex jusCon-center bef-w-100per bef-color-novo bef-fontWeight-700 bef-pt-1rem bef-me-1rem bef-mb-0 bef-h-auto"
     >
       COSTO DE TRATAMIENTO CON LIRAGLUTIDA 3.0 MG
     </h2>
 
-    <div class="bef bef-d-flex aliIte-center bef-p-1rem fleDir-row wrap-wrap">
+    <div class="bef bef-d-flex aliIte-center bef-p-1rem fleDir-row ">
       @for(semana of semanas; track semanas; let i = $index){
-      <div
-        class="bef bef-d-flex bef-mb-1rem fleDir-column jusCon-center aliIte-center bef-bg-diskSoft bef-r-5px bef-boxShadow-2px__2px__10px__dark__OPA__0_5"
-      >
-        <generic-span
-          class="bef bef-d-flex"
-          [info]="
-            (semana.semana || '') +
-            (semana.dosis || '') +
-            (semana.mantenimiento || '')
-          "
-          [filledClasses]="getClasses(semana.color, semana.size)"
-          [textClasses]="'bef bef-fs-12px bef-text-white bef-fontWeight-500'"
-        >
-        </generic-span>
-        @if(i<=4){
-        <span id="costos" class="bef bef-d-flex fleDir-row">
-          <p class="bef bef-my-0_5rem bef-color-rovo">
-            {{ semana.cost | currency }}
-          </p> </span
-        >}
+
+        <div class="bef bef-position-relative">
+          <h5 style="position: absolute; top: -32px; left: 33px; z-index: 1;">{{semana.semana}}</h5>
+          <svg width="108" height="29" viewBox="0 0 108 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: -15px; left: 13px;">
+            <path d="M96.08 0.929932H0.380005L11.74 14.8298L0.380005 28.7198H96.08L107.44 14.8298L96.08 0.929932Z" fill="#DFE1E4"/>
+            </svg>
+          <svg width="144" height="60" viewBox="0 0 144 60" fill="none" xmlns="http://www.w3.org/2000/svg" >
+            <path d="M128.03 0.939819H0.690063L15.8101 30.0999L0.690063 59.2699H128.03L143.15 30.0999L128.03 0.939819Z" fill="#4096D3"/>
+            </svg>
+          <h5 class="bef bef-m-0 bef-mt-MIN40px bef-ms-35px">{{semana.dosis}}</h5>
+
+        </div>
+
+
+      }
+      <div class="bef bef-position-relative bef-mt-15px bef-ms-MIN10px">
+        <h5 style="position: absolute; top: -23px; left: 43px; z-index: 1;">Semana 5+</h5>
+        <svg width="108" height="29" viewBox="0 0 108 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: -6px; left: 28px;">
+          <path d="M96.08 0.929932H0.380005L11.74 14.8298L0.380005 28.7198H96.08L107.44 14.8298L96.08 0.929932Z" fill="#EBAC1F"/>
+          </svg>
+        <svg width="172" height="100" viewBox="0 0 172 84" fill="none" xmlns="http://www.w3.org/2000/svg" class="bef bef-me-20px">
+          <path d="M12.55 0.519897L27.67 29.6799L0.26001 83.1H144.5L171.91 29.6799L139.9 0.519897H12.55Z" fill="#001965"/>
+          </svg>
+          <h5 class="bef bef-color-white bef-m-0 bef-mt-MIN80px bef-ms-35px">3.0 mg al día <br> Dosis de <br> mantenimiento</h5>
       </div>
-      @if(i<=4){
-      <div
-        class="bef bef-d-flex aliIte-center bef-w-4_1per bef-mb-1rem"
-        [innerHTML]="arrowRight | safeHtml"
-      ></div>
-      } }
+
     </div>
     <div class="bef bef-d-flex jusCon-center aliIte-stretch">
 
     </div>
     <div class="bef bef-w-100per bef-pe-0 ">
 
-      <div class="bef bef-d-flex fleDir-row  jusCon-around bef-w-100per">
+      <div class="bef bef-d-flex fleDir-row bef-mt-15px jusCon-around bef-w-100per">
         @if (institution === 'private') {
           <div class="bef bef-d-flex fleDir-row">
             <span>
@@ -59,7 +58,7 @@
             [labelClasses]="'bef  bef-text-black'"
             [inputClasses]="'bef texAli-center'"
             [containerClasses]="
-              ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_18rem__solid__oranvo bef-pSEL___matMINmdcMINformMINfieldMINinfix-18px  bef-w-190px   bef-dSEL___mdcMINlineMINripple-none bef-transformSEL__label-translateYSDMIN110perED bef-pSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-white'
+              ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_18rem__solid__yell bef-pSEL___matMINmdcMINformMINfieldMINinfix-18px  bef-w-190px   bef-dSEL___mdcMINlineMINripple-none bef-transformSEL__label-translateYSDMIN110perED bef-pSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-white'
             "
             (changesInput)="unitCostChange.emit($event.cost)"
                     >
@@ -97,12 +96,12 @@
       </div>
     </div>
   </div>
-  <div
-    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN350px bef-me-MIN125px"
-  >
-    <div
-      class="bef bef-w-180px bef-d-inline"
-      [innerHTML]="person | safeHtml"
-    ></div>
-  </div>
 </section>
+<div
+  class="bef bef-mt-MIN350px bef-ms-93per"
+>
+  <div
+    class="bef bef-w-180px "
+    [innerHTML]="person | safeHtml"
+  ></div>
+</div>

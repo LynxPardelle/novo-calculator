@@ -1,41 +1,44 @@
-<section class="bef bef-mb-5rem">
-  <h2 class="bef bef-color-novo">SELECCIONAR COMORBILIDADES</h2>
-  <div class="bef bef-d-flex">
-    <h3
-      class="bef bef-color-novo bef-fontWeight-900 bef-p-0 bef-h-3rem bef-pt-1rem bef-me-3rem bef-mb-0"
-    >
-      ¿CONSIDERAR COMORBILIDADES?
-    </h3>
-    <generic-input
-      [type]="'checkbox'"
-      [checkBoxFalseClasses]="falseClasses"
-      [checkBoxTrueClasses]="trueClasses"
-      [thingFather]="{ needs: needsComorbidities }"
-      [thing]="'needs'"
-      (changesInput)="needsComorbiditiesChange.emit($event.needs)"
-    >
-      <div [innerHTML]="thumbsUp | safeHtml"></div>
-    </generic-input>
-    <generic-input
-      [type]="'checkbox'"
-      [checkBoxTrueClasses]="falseClasses"
-      [checkBoxFalseClasses]="trueClasses"
-      [thingFather]="{ needs: needsComorbidities }"
-      [thing]="'needs'"
-      (changesInput)="needsComorbiditiesChange.emit($event.needs)"
-    >
-      <div [innerHTML]="thumbsDown | safeHtml" class=""></div>
-    </generic-input>
-  </div>
-  @if (needsComorbidities) {
+<section class="bef bef-mb-5rem bef-h-100per">
+  <h2 class="bef bef-text-novo bef-fontWeight-700 bef-d-flex jusCon-center">SELECCIONAR COMORBILIDADES</h2>
+  <div class="bef bef-bg-white">
+    <div class="bef bef-d-flex aliIte-center jusCon-center bef-p-1rem bef-px-2_5rem bef-pb-0 bef-ms-20px">
+      <h3
+        class="bef bef-color-novo bef-d-flex aliIte-center jusCon-center bef-fontWeight-700 bef-p-0 bef-h-3rem bef-m-0"
+      >
+        ¿CONSIDERAR COMORBILIDADES?
+      </h3>
+      <generic-input
+        [type]="'checkbox'"
+        [checkBoxFalseClasses]="falseClasses"
+        [checkBoxTrueClasses]="trueClasses"
+        [thingFather]="{ needs: needsComorbidities }"
+        [thing]="'needs'"
+        (changesInput)="needsComorbiditiesChange.emit($event.needs)"
+      >
+        <div [innerHTML]="thumbsUp | safeHtml" class="bef bef-d-flex jusCon-center aliIte-center"></div>
+      </generic-input>
+      <generic-input
+        [type]="'checkbox'"
+        [checkBoxTrueClasses]="falseClasses"
+        [checkBoxFalseClasses]="trueClasses"
+        [thingFather]="{ needs: needsComorbidities }"
+        [thing]="'needs'"
+        (changesInput)="needsComorbiditiesChange.emit($event.needs)"
+      >
+        <div [innerHTML]="thumbsDown | safeHtml" class="bef bef-d-flex jusCon-center aliIte-center"></div>
+      </generic-input>
+    </div>
+
   <div
-    class="bef bef-d-flex bef-bg-white bef-h-17rem fleDir-row bef-w-auto bef-p-1rem"
+    class="bef bef-d-flex jusCon-center aliIte-center bef-h-17rem fleDir-row bef-w-auto bef-p-1rem"
   >
 
 
     <div
       class="bef bef-d-flex fleDir-column jusCon-center bef-h-100per bef-w-13rem bef-me-1rem bef-ms-1rem"
     >
+
+
       @for (comorbiditie of [hipertension, dislipidemia, prediabetes]; track
       comorbiditie; let i = $index) {
       <generic-input
@@ -58,56 +61,57 @@
     </div>
 
     <div class="bef bef-d-flex fleDir-column jusCon-center bef-p-1rem bef-w-50per">
-      <h3 class="bef bef-hmn-4rem bef-m-0">
+      <h4 class="bef bef-hmn-4rem bef-m-0">
         <span class="bef bef-opacity-0_5">Pacientes con obesidad </span><br />
         <span
           [innerHTML]="comorbiditiesText | safeHtml"
           class="bef bef-borderBottom-1px__solid__novo bef-text-novo"
         ></span>
-      </h3>
+      </h4>
       <div class="bef bef-d-flex fleDir-row">
         <generic-span
           class="bef bef-w-30per bef-wmx-50per"
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
-          [textClasses]="'bef bef-color-novo'"
+          [textClasses]="'bef bef-color-novo bef-fs-20px'"
           [info]="
             (comorbiditiesPatientsPercentage
               | math : [{ operation: 'roundDigit', value: 2 }]) + '%'
           "
         >
         </generic-span>
-        <div class="bef bef-mx-5per" [innerHTML]="arrowRight | safeHtml"></div>
+        <div class="bef bef-mx-5per" [innerHTML]="arrowRight | safeHtml" class="bef bef-d-flex jusCon-center aliIte-center bef-m-20px"></div>
         <generic-span
           class="bef bef-w-160px"
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
-          [textClasses]="'bef bef-color-novo'"
+          [textClasses]="'bef bef-color-novo bef-fs-20px'"
           [info]="comorbiditiesPatients | math : [{ operation: 'round' }]"
         >
         </generic-span>
       </div>
     </div>
-    <div class="bef bef-d-flex fleDir-column jusCon-center aliIte-center bef-p-1rem">
+    <div class="bef  ">
       <generic-span
-      class="bef bef-w-160px"
-      [filledClasses]="'bef'"
+      class="bef bef-w-80per"
+      [filledClasses]="'bef  bef-mb-10px texAli-center'"
       [textClasses]="'bef bef-fs-1_2rem bef-fontWeight-BOLD bef-color-oranvo'"
       [info]="'POBLACIÓN OBJETIVO'"
         ></generic-span>
         <generic-span
-      class="bef bef-w-160px "
+      class="bef bef-w-90per "
       [filledClasses]="
-        'bef bef-bg-oranvo bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-h-2_5rem bef-p-0_5rem bef-rt-2px'
+        'bef bef-bg-oranvo bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-novo bef-h-2_5rem bef-p-0_5rem bef-rt-2px'
       "
-      [emptyClasses]="'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-oranvo  bef-h-2_5rem bef  bef-p-0_5rem'"
-      [textClasses]="'bef bef-fs-1_5rem bef-color-white'"
+      [emptyClasses]="'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-novo bef-rt-5px bef-bg-oranvo  bef-h-2_5rem bef  bef-p-0_5rem'"
+      [textClasses]="'bef bef-fs-20px bef-color-white bef-fontWeight-700'"
       [info]="populationTotal | math : [{ operation: 'round' }]"
         ></generic-span>
     </div>
 
   </div>
-  }
+  </div>
+
   <div
     class="bef bef-d-flex aliIte-center {{
       needsComorbidities ? 'bef-mt-MIN2rem' : 'bef-mt-2rem'
@@ -115,12 +119,12 @@
   >
 
   </div>
-  <div
-    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN250px bef-me-MIN125px"
-  >
-    <div
-      class="bef bef-w-180px bef-d-inline"
-      [innerHTML]="bascula | safeHtml"
-    ></div>
-  </div>
 </section>
+<div
+  class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN275px bef-me-MIN200px"
+>
+  <div
+    class="bef bef-w-200px bef-d-inline"
+    [innerHTML]="bascula | safeHtml"
+  ></div>
+</div>
