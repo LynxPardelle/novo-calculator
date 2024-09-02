@@ -42,15 +42,15 @@
     </div>
     <div class="bef bef-w-100per bef-pe-0 ">
 
-      <div class="bef bef-d-flex fleDir-row bef-mt-15px jusCon-around bef-w-100per">
+      <div class="bef bef-d-flex fleDir-row bef-mt-15px jusCon-around aliIte-center bef-w-100per">
         @if (institution === 'private') {
-          <div class="bef bef-d-flex fleDir-row">
+          <div class="bef bef-d-flex fleDir-row jusCon-around aliIte-center">
             <span>
               <h4 class="bef bef-m-0 bef-color-novo">Costo unitario</h4>
               <h5 class="bef bef-m-0 bef-color-novo">de tratamiento</h5>
             </span>
                     <generic-input
-            class="bef bef-d-flex jusCon-center aliIte-center bef-w-220px bef-d-flex "
+            class="bef bef-d-flex jusCon-center aliIte-center bef-mt-1_8rem bef-w-220px bef-d-flex "
             [labelTitle]="''"
             [type]="'text'"
             [thingFather]="{ cost: unitCost | currency }"
@@ -58,7 +58,7 @@
             [labelClasses]="'bef  bef-text-black'"
             [inputClasses]="'bef texAli-center'"
             [containerClasses]="
-              ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_18rem__solid__yell bef-pSEL___matMINmdcMINformMINfieldMINinfix-18px  bef-w-190px   bef-dSEL___mdcMINlineMINripple-none bef-transformSEL__label-translateYSDMIN110perED bef-pSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-white'
+              ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_22rem__solid__yell bef-pSEL___matMINmdcMINformMINfieldMINinfix-18px  bef-w-190px   bef-dSEL___mdcMINlineMINripple-none bef-transformSEL__label-translateYSDMIN110perED bef-bgSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-white'
             "
             (changesInput)="unitCostChange.emit($event.cost)"
                     >
@@ -98,10 +98,11 @@
   </div>
 </section>
 <div
-  class="bef bef-mt-MIN350px bef-ms-93per"
+  class="bef bef-mt-MIN250px bef-ms-100per"
 >
   <div
     class="bef bef-w-180px "
     [innerHTML]="person | safeHtml"
   ></div>
 </div>
+<hr class="bef bef-color-white bef-mt-5rem bef-w-80per">

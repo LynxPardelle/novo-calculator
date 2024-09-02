@@ -1,6 +1,6 @@
 <section class="bef bef-mb-5rem">
   <div class="bef bef-d-flex fleDir-column bef-p-1rem">
-    <h2 class="bef bef-text-novo bef-fontWeight-700">
+    <h2 class="bef bef-d-flex jusCon-fleStart bef-text-novo bef-fontWeight-700 bef-w-1000px ">
       LIRAGLUTIDA 3.0 MG PARA EL TRATAMIENTO DE PACIENTES CON OBESIDAD
     </h2>
     <div class="bef bef-d-flex aliIte-center jusCon-fleStart">
@@ -17,15 +17,15 @@
       <div class="bef bef-h-100per bef-w-55per">
         @for (treatmentTitle of treatmentTitles; track treatmentTitle.title) {
         <h4
-          class="bef bef-d-flex jusCon-center bef-ms-0_5rem aliCon-center bef-text-novo"
+          class="bef bef-d-flex jusCon-center bef-ms-0_5rem aliCon-center "
         >
           <span
-            class="bef bef-me-5rem bef-w-15per bef-fontWeight-500 bef-d-flex jusCon-fleStart"
-            ><u>{{ treatmentTitle.title }}</u></span
+            class="bef bef-me-5rem bef-w-15per bef-fontWeight-600 bef-d-flex jusCon-fleStart bef-opacity-0_5"
+            ><p class="bef bef-m-0">{{ treatmentTitle.title }}</p></span
           >
           <span
-            class="bef bef-w-65per bef-fontWeight-800 bef-d-flex jusCon-fleStart "
-            >{{ treatmentTitle.description }}</span
+            class="bef bef-w-65per bef-fontWeight-800 bef-d-flex jusCon-fleStart bef-text-novo"
+            ><p class="bef bef-m-0">{{ treatmentTitle.description }}</p></span
           >
         </h4>
         }
@@ -38,7 +38,7 @@
 
   </div>
   <div
-    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN300px bef-me-MIN125px"
+    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN175px bef-me-MIN185px"
   >
     <div
       class="bef bef-w-180px bef-d-inline"

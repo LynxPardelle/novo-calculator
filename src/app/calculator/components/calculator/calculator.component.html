@@ -19,7 +19,7 @@
       (totalPopulationChange)="totalPopulationChange($event)"
     >
     </patient-estimation>
-    <hr class="bef bef-color-white bef-w-80per">
+
     <obesity-degrees
       [obesityDegrees]="calculatorData.obesityDegrees"
       [obesityText]="calculatorData.obesityText"
@@ -28,7 +28,7 @@
       (obesityDegreesChange)="degreesChange($event)"
     >
     </obesity-degrees>
-    <hr class="bef bef-color-white bef-w-80per">
+
     <comorbidities
       [needsComorbidities]="calculatorData.needsComorbidities"
       [comorbidities]="calculatorData.comorbidities"
@@ -50,7 +50,7 @@
           : calculatorData.publicAnualCost
       "
     ></liraglutide-cost>
-    <hr class="bef bef-color-white bef-w-80per">
+
     <treatment-cost
       [institution]="calculatorData.institution"
       [unitCost]="
@@ -66,7 +66,7 @@
       (unitCostChange)="unitCostChange($event)"
     >
     </treatment-cost>
-    <hr class="bef bef-color-white bef-w-80per">
+
     <anual-treatment-cost
       [nutritionMonths]="calculatorData.nutritionMonths"
       [infirmaryMonths]="calculatorData.infirmaryMonths"
@@ -102,7 +102,7 @@
 
     @if (calculatorData.lifeStyleModification ||
     calculatorData.liraglutideNLifeStyleModification) {
-      <hr class="bef bef-color-white bef-w-80per">
+
     <h2
       class="bef bef-color-novo bef-fontWeight-700 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
     >
@@ -139,14 +139,14 @@
         calculatorData.dontArchiveGoalWithLiraglutide
       "
     ></liraglutide-and-lifestyle-modification>
-    <hr class="bef bef-color-white bef-w-80per">
+
     <archieve-goal-patients
       [lifeStyleModification]="calculatorData.lifeStyleModification"
       [liraglutideNLifeStyleModification]="
         calculatorData.liraglutideNLifeStyleModification
       "
     ></archieve-goal-patients>
-    <hr class="bef bef-color-white bef-w-80per">
+
     <h2
       class="bef bef-color-novo bef-d-flex jusCon-center bef-fontWeight-700 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
     >

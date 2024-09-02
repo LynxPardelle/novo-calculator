@@ -23,9 +23,9 @@ export class PatientEstimationComponent {
     new EventEmitter<number>();
   constructor(private _sharedService: SharedService) {}
   public filledClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-white bef-bwb-4px bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-white bef-bwb-4px bef-rt-0_5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED';
   public emptyClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-white bef-bwb-4px bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-white bef-bwb-4px bef-rt-0_5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED';
   public arrowRight = this._sharedService.getHtml('arrowRight');
   public fatDouble = this._sharedService.getHtml('fatDouble');
   public person1 = this._sharedService.getHtml('person1');
