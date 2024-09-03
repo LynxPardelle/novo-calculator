@@ -16,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
 export class AppComponent implements AfterViewInit {
   public colors: { [key: string]: string } = {
     novo: '#001965',
+    sky: '#4096D3',
     disk: '#939AA7',
     diskSoft: '#d1d3d8',
     nord: '#E2F0FA',
