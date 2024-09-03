@@ -33,12 +33,8 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
   @Input() lifeStyleModification: number = 5454615;
   @Input() liraglutideNLifeStyleModification: number = 1891406;
 
-  public barCombo = {
+  /* public barCombo = {
     bars: [
-      /*
-      'bef-fillSEL__g__g__g__gLastChild__path-HASHEBAC1F',
-      'bef-fillSEL__g__g__g__gFirstChild__path-HASH4096D3',
-      */
       'bef-widthSEL__g__g__g__gLastChildBefore-100px',
       'bef-heightSEL__g__g__g__gLastChildBefore-100px',
       'bef-bgSEL__g__g__g__gLastChildBefore-red',
@@ -48,7 +44,7 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
       'bef-displaySEL__g__g__g__gLastChildBefore-block',
       'bef-positionSEL__g__g__g__gLastChildBefore-absolute',
     ],
-  };
+  }; */
 
   public multi: any[] = [];
   public view: [number, number] = [500, 500];
@@ -80,7 +76,7 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
     private _sharedService: SharedService,
     private _bef: NgxBootstrapExpandedFeaturesService
   ) {
-    this._bef.pushCombos(this.barCombo);
+    // this._bef.pushCombos(this.barCombo);
   }
   public person = this._sharedService.getHtml('person6');
   ngOnInit(): void {

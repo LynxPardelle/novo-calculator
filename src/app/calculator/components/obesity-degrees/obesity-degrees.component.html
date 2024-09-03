@@ -1,7 +1,9 @@
 <section
-  class="bef bef-mb-2rem bef-d-flex jusCon-fleEnd fleDir-column bef-p-1rem "
+  class="bef bef-mb-2rem bef-d-flex jusCon-fleEnd fleDir-column bef-p-1rem"
 >
-  <h2 class="bef bef-d-flex jusCon-center bef-ms-1rem bef-mb-2rem bef-color-novo bef-fs-20px bef-fontWeight-700 bef-pt-1rem">
+  <h2
+    class="bef bef-d-flex jusCon-center bef-ms-1rem bef-mb-2rem bef-color-novo bef-fs-20px bef-fontWeight-700 bef-pt-1rem"
+  >
     SELECCIONAR LOS GRADOS DE OBESIDAD²
   </h2>
   <div class="bef bef-d-flex fleDir-row">
@@ -20,7 +22,7 @@
         (changesInput)="obesityDegreesChange.emit($event)"
       >
         <div
-          [innerHTML]="degree | safeHtml "
+          [innerHTML]="degree | safeHtml"
           class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-fleStart"
         ></div>
       </generic-input>
@@ -30,7 +32,9 @@
       class="bef bef-d-flex aliIte-center fleDir-column bef-p-1rem bef-w-calcSD50per__MIN__2remED aliIte-start"
     >
       <h4 class="bef bef-mb-2rem">
-        <span class="bef bef-opacity-0_5 bef-fs-14px"> Pacientes con obesidad </span><br />
+        <span class="bef bef-opacity-0_5 bef-fs-14px">
+          Pacientes con obesidad </span
+        ><br />
         <span
           [innerHTML]="obesityText | safeHtml"
           class="bef bef-borderBottom-1px__solid__novo bef-text-novo"
@@ -51,7 +55,11 @@
           "
         >
         </generic-span>
-        <div class="" [innerHTML]="arrowRight | safeHtml" class="bef bef-d-flex jusCon-center aliIte-center bef-m-20px" ></div>
+        <div
+          class=""
+          [innerHTML]="arrowRight | safeHtml"
+          class="bef bef-d-flex jusCon-center aliIte-center bef-m-20px"
+        ></div>
         <generic-span
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
@@ -65,12 +73,12 @@
     </div>
   </div>
 </section>
-<div
-  class="bef bef-ms-91per bef-mt-MIN19rem"
->
+<div class="bef bef-ms-91per bef-mt-MIN19rem">
   <div
-    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-w-140px "
+    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-w-140px"
     [innerHTML]="person | safeHtml"
   ></div>
 </div>
-<hr class="bef bef-border-1px__solid__white bef-w-80per bef-mt-10rem bef-mb-4rem">
+<hr
+  class="bef bef-border-1px__solid__white bef-w-80per bef-mt-10rem bef-mb-4rem"
+/>
