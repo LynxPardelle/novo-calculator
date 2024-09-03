@@ -1,8 +1,8 @@
 <section
   class="bef bef-mb-2rem bef-d-flex jusCon-fleEnd fleDir-column bef-p-1rem "
 >
-  <h2 class="bef bef-d-flex jusCon-center bef-ms-1rem bef-mb-2rem bef-color-novo bef-fontWeight-700 bef-pt-1rem">
-    SELECCIONAR GRADOS DE OBESIDAD
+  <h2 class="bef bef-d-flex jusCon-center bef-ms-1rem bef-mb-2rem bef-color-novo bef-fs-20px bef-fontWeight-700 bef-pt-1rem">
+    SELECCIONAR LOS GRADOS DE OBESIDAD²
   </h2>
   <div class="bef bef-d-flex fleDir-row">
     <div
@@ -10,9 +10,9 @@
     >
       @for (degree of [grade1, grade2, grade3]; track degree; let i = $index) {
       <generic-input
-        class="bef bef-w-70per"
+        class="bef bef-w-65per"
         [type]="'checkbox'"
-        [buttonClasses]="'bef bef-bw-0 bef-w-100per'"
+        [buttonClasses]="'bef bef-bw-0 bef-w-95per'"
         [checkBoxTrueClasses]="trueClasses"
         [checkBoxFalseClasses]="falseClasses"
         [thingFather]="obesityDegrees"
@@ -30,7 +30,7 @@
       class="bef bef-d-flex aliIte-center fleDir-column bef-p-1rem bef-w-calcSD50per__MIN__2remED aliIte-start"
     >
       <h4 class="bef bef-mb-2rem">
-        <span class="bef bef-opacity-0_5"> Pacientes con obesidad </span><br />
+        <span class="bef bef-opacity-0_5 bef-fs-14px"> Pacientes con obesidad </span><br />
         <span
           [innerHTML]="obesityText | safeHtml"
           class="bef bef-borderBottom-1px__solid__novo bef-text-novo"
@@ -73,4 +73,4 @@
     [innerHTML]="person | safeHtml"
   ></div>
 </div>
-<hr class="bef bef-color-white bef-w-80per bef-mt-10rem">
+<hr class="bef bef-border-1px__solid__white bef-w-80per bef-mt-10rem bef-mb-4rem">

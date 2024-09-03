@@ -3,7 +3,7 @@
     class="bef bef-mb-2rem bef-d-flex fleDir-column bef-w-auto bef-p-1rem"
   >
     <h2
-      class="bef bef-d-flex jusCon-center bef-w-100per bef-color-novo bef-fontWeight-700 bef-pt-1rem bef-me-1rem bef-mb-0 bef-h-auto"
+      class="bef bef-d-flex jusCon-center bef-w-100per bef-fs-20px bef-color-novo bef-fontWeight-700 bef-pt-1rem bef-me-1rem bef-mb-0 bef-h-auto"
     >
       COSTO DE TRATAMIENTO CON LIRAGLUTIDA 3.0 MG
     </h2>
@@ -12,21 +12,21 @@
       @for(semana of semanas; track semanas; let i = $index){
 
         <div class="bef bef-position-relative">
-          <h5 style="position: absolute; top: -32px; left: 33px; z-index: 1;">{{semana.semana}}</h5>
+          <h5 style="position: absolute; top: -38px; left: 33px; z-index: 1; font-size: 16px; color:#001965;">{{semana.semana}}</h5>
           <svg width="108" height="29" viewBox="0 0 108 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: -15px; left: 13px;">
             <path d="M96.08 0.929932H0.380005L11.74 14.8298L0.380005 28.7198H96.08L107.44 14.8298L96.08 0.929932Z" fill="#DFE1E4"/>
             </svg>
           <svg width="144" height="60" viewBox="0 0 144 60" fill="none" xmlns="http://www.w3.org/2000/svg" >
             <path d="M128.03 0.939819H0.690063L15.8101 30.0999L0.690063 59.2699H128.03L143.15 30.0999L128.03 0.939819Z" fill="#4096D3"/>
             </svg>
-          <h5 class="bef bef-m-0 bef-mt-MIN40px bef-ms-35px">{{semana.dosis}}</h5>
+          <h5 class="bef bef-m-0 bef-mt-MIN40px bef-ms-35px bef-color-novo bef-fs-16px">{{semana.dosis}}</h5>
 
         </div>
 
 
       }
       <div class="bef bef-position-relative bef-mt-15px bef-ms-MIN10px">
-        <h5 style="position: absolute; top: -23px; left: 43px; z-index: 1;">Semana 5+</h5>
+        <h5 style="position: absolute; top: -30px; left: 43px; z-index: 1; font-size: 16px; color:#001965;">Semana 5+</h5>
         <svg width="108" height="29" viewBox="0 0 108 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: -6px; left: 28px;">
           <path d="M96.08 0.929932H0.380005L11.74 14.8298L0.380005 28.7198H96.08L107.44 14.8298L96.08 0.929932Z" fill="#EBAC1F"/>
           </svg>
@@ -55,8 +55,8 @@
             [type]="'text'"
             [thingFather]="{ cost: unitCost | currency }"
             [thing]="'cost'"
-            [labelClasses]="'bef  bef-text-black'"
-            [inputClasses]="'bef texAli-center'"
+            [labelClasses]="'bef '"
+            [inputClasses]="'bef texAli-center bef-fs-18px bef-fontWeight-700 bef-color-novo'"
             [containerClasses]="
               ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_22rem__solid__yell bef-pSEL___matMINmdcMINformMINfieldMINinfix-18px  bef-w-190px   bef-dSEL___mdcMINlineMINripple-none bef-transformSEL__label-translateYSDMIN110perED bef-bgSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-white'
             "
@@ -69,7 +69,7 @@
           class="bef bef-w-50per"
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
-          [textClasses]="'bef bef-fs-1rem '"
+          [textClasses]="'bef bef-fs-18px bef-fontWeight-700 bef-color-novo '"
           [titleClasses]="'bef bef-m-0 bef-fs-1rem'"
           [title]="''"
           [info]="unitCost | currency"
@@ -86,7 +86,7 @@
             class="bef bef-d-flex jusCon-center aliIte-center bef-w-220px"
             [filledClasses]="filledClasses"
             [emptyClasses]="emptyClasses"
-            [textClasses]="'bef bef-m-0'"
+            [textClasses]="'bef bef-fs-18px bef-fontWeight-700 bef-color-novo'"
             [titleClasses]="'bef bef-m-0 bef-fs-1rem bef-letterSpacing-0_2px'"
             [title]="''"
             [info]="anualCost | currency"
@@ -105,4 +105,4 @@
     [innerHTML]="person | safeHtml"
   ></div>
 </div>
-<hr class="bef bef-color-white bef-mt-5rem bef-w-80per">
+<hr class="bef bef-border-1px__solid__white bef-w-80per bef-mt-5rem">

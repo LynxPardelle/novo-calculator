@@ -2,9 +2,9 @@
   class="bef bef-mb-2rem bef-d-flex fleDir-column bef-p-1rem "
 >
 <h2
-      class="bef bef-d-flex jusCon-center bef-color-novo bef-fontWeight-700 bef-pt-1rem bef-mb-2rem "
+      class="bef bef-d-flex jusCon-center bef-color-novo bef-fs-20px bef-fontWeight-700 bef-pt-1rem bef-mb-2rem "
     >
-      ESTIMACIÓN DE PACIENTES
+      ESTIMACIÓN DE PACIENTES¹
     </h2>
   <div class="bef bef-d-flex fleDir-row jusCon-center">
     <div
@@ -24,14 +24,15 @@
       <generic-input
         [type]="'number'"
         [containerClasses]="
-          'bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__oranvo bef-dSEL___mdcMINlineMINripple-none bef-fs-20px bef-fontWeight-700'
+          'bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__doranvo bef-dSEL___mdcMINlineMINripple-none bef-fs-20px bef-fontWeight-700'
         "
         [thingFather]="{ population: totalPopulation }"
         [thing]="'population'"
-        [labelTitle]="'población total'"
+        [labelTitle]="'Población total'"
+        [labelClasses]="'bef bef-fs-20px bef-fontWeight-700 bef-mt-4px'"
         (changesInput)="totalPopulationChange.emit($event.population)"
       ></generic-input>
-      <h4 class="bef bef-opacity-0_5 bef-mt-0 ">Pacientes con obesidad</h4>
+      <h4 class="bef bef-opacity-0_5 bef-mt-0 bef-fs-14px">Pacientes con obesidad</h4>
       <div class="bef bef-d-flex fleDir-row bef-flexGrow-1">
         <generic-span
           [filledClasses]="filledClasses"
@@ -65,4 +66,4 @@
     [innerHTML]="person1 | safeHtml"
   ></div>
 </div>
-<hr class="bef bef-color-white bef-w-80per bef-mt-5rem">
+<hr class="bef bef-border-1px__solid__white bef-w-80per bef-mt-5rem">

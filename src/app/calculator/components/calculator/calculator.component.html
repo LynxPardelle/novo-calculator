@@ -42,7 +42,7 @@
       (comorbiditiesChange)="comorbiditiesChange($event)"
     >
     </comorbidities>
-    <hr class="bef bef-color-white bef-w-80per bef-mt-5rem">
+
     <liraglutide-cost
       [anualCost]="
         calculatorData.institution === 'private'
@@ -104,13 +104,14 @@
     calculatorData.liraglutideNLifeStyleModification) {
 
     <h2
-      class="bef bef-color-novo bef-fontWeight-700 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
+      class="bef bef-color-novo texAli-center bef-fs-20px bef-fontWeight-700 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
     >
       BENEFICIOS DE LA INVERSIÓN EN LIRAGLUTIDA 3.0 MG EN UN AÑO DE TRATAMIENTO
     </h2>
     <generic-input
       type="select"
-      [containerClasses]="'bef bef-w-30per bef-mt-2rem'"
+      class="'bef bef-d-flex jusCon-center aliIte-center'"
+      [containerClasses]="'bef bef-w-80per bef-mt-2rem'"
       [labelTitle]="
         calculatorData.treatmentGoalPercentage === 5
           ? 'Pérdida de Peso > 5%'

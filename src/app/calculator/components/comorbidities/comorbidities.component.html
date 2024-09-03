@@ -1,9 +1,9 @@
 <section class="bef bef-mb-5rem bef-h-100per">
-  <h2 class="bef bef-text-novo bef-fontWeight-700 bef-d-flex jusCon-center">SELECCIONAR COMORBILIDADES</h2>
+  <h2 class="bef bef-text-novo bef-fs-20px bef-fontWeight-700 bef-d-flex jusCon-center">SELECCIONAR COMORBILIDADES¹</h2>
   <div class="bef bef-bg-white">
     <div class="bef bef-d-flex aliIte-center jusCon-center bef-p-1rem bef-px-2_5rem bef-pb-0 bef-ms-20px">
       <h3
-        class="bef bef-color-novo bef-d-flex aliIte-center jusCon-center bef-fontWeight-700 bef-p-0 bef-h-3rem bef-m-0"
+        class="bef bef-color-novo bef-d-flex aliIte-center jusCon-center bef-fs-18px bef-fontWeight-700 bef-p-0 bef-h-3rem bef-m-0"
       >
         ¿CONSIDERAR COMORBILIDADES?
       </h3>
@@ -44,7 +44,7 @@
       <generic-input
         class="bef bef-w-100per"
         [type]="'checkbox'"
-        [buttonClasses]="'bef bef-bw-0 bef-h-auto bef-w-192px bef-m-0_3rem'"
+        [buttonClasses]="'bef bef-bw-0 bef-h-auto bef-w-197px bef-m-0_3rem'"
         [checkBoxTrueClasses]="trueColors"
         [checkBoxFalseClasses]="falseColors"
         [thingFather]="comorbidities"
@@ -53,7 +53,7 @@
       >
         <div
           [innerHTML]="comorbiditie | safeHtml"
-          class="bef-d-flex bef-w-100per bef-h-100per jusCon-center aliIte-center"
+          class="bef-d-flex bef-w-100per bef-h-100per jusCon-fleStart aliIte-center"
         ></div>
       </generic-input>
 
@@ -62,7 +62,7 @@
 
     <div class="bef bef-d-flex fleDir-column jusCon-center bef-p-1rem bef-w-50per">
       <h4 class="bef bef-hmn-4rem bef-m-0">
-        <span class="bef bef-opacity-0_5">Pacientes con obesidad </span><br />
+        <span class="bef bef-opacity-0_5 bef-fs-14px">Pacientes con obesidad </span><br />
         <span
           [innerHTML]="comorbiditiesText | safeHtml"
           class="bef bef-borderBottom-1px__solid__novo bef-text-novo"
@@ -95,15 +95,15 @@
       <generic-span
       class="bef bef-w-80per"
       [filledClasses]="'bef  bef-mb-10px texAli-center'"
-      [textClasses]="'bef bef-fs-1_2rem bef-fontWeight-BOLD bef-color-oranvo'"
+      [textClasses]="'bef bef-fs-18px bef-fontWeight-BOLD bef-color-doranvo'"
       [info]="'POBLACIÓN OBJETIVO'"
         ></generic-span>
         <generic-span
       class="bef bef-w-160px "
       [filledClasses]="
-        'bef bef-bg-oranvo bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-novo bef-h-2_5rem bef-p-0_5rem bef-rt-0_5px'
+        'bef bef-bg-doranvo bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-novo bef-h-2_5rem bef-p-0_5rem bef-rt-0_5px'
       "
-      [emptyClasses]="'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-novo bef-rt-0_5px bef-bg-oranvo  bef-h-2_5rem  bef-p-0_5rem'"
+      [emptyClasses]="'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-novo bef-rt-0_5px bef-bg-doranvo  bef-h-2_5rem  bef-p-0_5rem'"
       [textClasses]="'bef bef-fs-20px bef-color-white bef-fontWeight-700'"
       [info]="populationTotal | math : [{ operation: 'round' }]"
         ></generic-span>
@@ -128,3 +128,4 @@
     [innerHTML]="bascula | safeHtml"
   ></div>
 </div>
+<hr class="bef bef-border-1px__solid__white bef-w-80per bef-mt-5rem">
