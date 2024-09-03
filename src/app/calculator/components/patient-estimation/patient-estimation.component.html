@@ -16,14 +16,15 @@
     mdc-line-ripple
     -->
       <generic-input
-        [type]="'number'"
+        [type]="'text'"
         [containerClasses]="
           'bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__doranvo bef-dSEL___mdcMINlineMINripple-none bef-fs-20px bef-fontWeight-700'
         "
-        [thingFather]="{ population: totalPopulation }"
+        [thingFather]="{ population: totalPopulation | number: '1.0' }"
         [thing]="'population'"
         [labelTitle]="'Población total'"
         [labelClasses]="'bef bef-fs-20px bef-fontWeight-700 bef-mt-4px'"
+        [inputClasses]="'bef bef-color-novo'"
         (changesInput)="totalPopulationChange.emit($event.population)"
       ></generic-input>
       <h4 class="bef bef-opacity-0_5 bef-mt-0 bef-fs-14px">
@@ -49,7 +50,7 @@
           [textClasses]="
             'bef bef-color-novo bef-w-100px bef-p-1rem bef-textAlign-center bef-fs-20px bef-fontWeight-700'
           "
-          [info]="patients"
+          [info]="patients | number: '1.0'"
         >
         </generic-span>
       </div>

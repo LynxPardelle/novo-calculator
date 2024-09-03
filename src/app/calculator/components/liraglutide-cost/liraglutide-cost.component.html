@@ -3,30 +3,32 @@
     <h2 class="bef bef-d-flex jusCon-center bef-text-novo bef-fs-20px bef-fontWeight-700 bef-w-100per ">
       LIRAGLUTIDA 3.0 MG PARA EL TRATAMIENTO DE PACIENTES CON OBESIDAD
     </h2>
-    <div class="bef bef-d-flex aliIte-center jusCon-fleStart">
+    <div class="bef bef-d-flex jusCon-center">
 
-        <img
-          src="./assets/img/Saxenda_PS.png"
-          alt="Saxenda 1"
-          class="bef bef-w-40per objFit-contain bef-p-1rem bef-me-MIN295px "
-        />
-        <img
-          src="./assets/img/Saxenda_PS2.png"
-          alt="Saxenda 1"
-          class="bef bef-w-40per objFit-contain bef-p-1rem bef-mb-MIN125px bef-ms-MIN0_5per bef-h-120px"
-        />
+        <div class="bef bef-w-60per">
+          <img
+            src="./assets/img/Saxenda_PS.png"
+            alt="Saxenda 1"
+            class="bef bef-w-75per objFit-contain bef-p-1rem  "
+          />
+          <img
+            src="./assets/img/Saxenda_PS2.png"
+            alt="Saxenda 1"
+            class="bef bef-w-75per objFit-contain bef-p-1rem bef-ms-MIN0_5per bef-h-120px"
+          />
+        </div>
 
-      <div class="bef bef-h-100per bef-w-55per">
+      <div class="bef bef-h-100per bef-w-65per">
         @for (treatmentTitle of treatmentTitles; track treatmentTitle.title) {
         <h4
-          class="bef bef-d-flex jusCon-center bef-ms-0_5rem aliCon-center "
+          class="bef bef-w-auto bef-d-flex jusCon-fleStart bef-my-10px bef-ms-0_5rem  "
         >
           <span
-            class="bef bef-me-5rem bef-w-15per bef-fs-14px bef-fontWeight-600 bef-d-flex jusCon-fleStart bef-opacity-0_5"
+            class="bef bef-me-1rem bef-w-15per bef-fs-14px bef-fontWeight-600 bef-d-flex jusCon-fleStart bef-opacity-0_5"
             ><p class="bef bef-m-0">{{ treatmentTitle.title }}</p></span
           >
           <span
-            class="bef bef-w-65per bef-fontWeight-800 bef-d-flex jusCon-fleStart bef-text-novo"
+            class="bef bef-w-33per bef-fontWeight-800 bef-d-flex jusCon-fleStart bef-text-novo"
             ><p class="bef bef-m-0">{{ treatmentTitle.description }}</p></span
           >
         </h4>
@@ -39,13 +41,13 @@
     <div class="bef bef-d-flex fleDir-column"></div>
 
   </div>
-  <div
-    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN175px bef-me-MIN185px"
-  >
-    <div
-      class="bef bef-w-180px bef-d-inline"
-      [innerHTML]="person | safeHtml"
-    ></div>
-  </div>
 </section>
+<div
+  class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN175px bef-me-MIN185px"
+>
+  <div
+    class="bef bef-w-180px bef-d-inline"
+    [innerHTML]="person | safeHtml"
+  ></div>
+</div>
 <hr class="bef bef-border-1px__solid__white bef-w-80per bef-mt-5rem">

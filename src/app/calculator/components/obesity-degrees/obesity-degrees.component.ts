@@ -9,6 +9,7 @@ import { GenericSpanComponent } from '../../../shared/components/generic-span/ge
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 import { TObesityDegrees } from '../../types/obesityDegrees.type';
 import { MathPipe } from '../../../shared/pipes/math.pipe';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'obesity-degrees',
@@ -18,6 +19,7 @@ import { MathPipe } from '../../../shared/pipes/math.pipe';
     GenericSpanComponent,
     SafeHtmlPipe,
     MathPipe,
+    DecimalPipe,
   ],
   templateUrl: './obesity-degrees.component.html',
   styleUrl: './obesity-degrees.component.scss',

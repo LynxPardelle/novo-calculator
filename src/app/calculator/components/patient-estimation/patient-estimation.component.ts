@@ -7,11 +7,13 @@ import { GenericInputComponent } from '../../../shared/components/generic-input/
 import { GenericSpanComponent } from '../../../shared/components/generic-span/generic-span.component';
 /* Pipes */
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
+import { DecimalPipe } from '@angular/common';
+
 
 @Component({
   selector: 'patient-estimation',
   standalone: true,
-  imports: [GenericInputComponent, GenericSpanComponent, SafeHtmlPipe],
+  imports: [GenericInputComponent, GenericSpanComponent, SafeHtmlPipe, DecimalPipe],
   templateUrl: './patient-estimation.component.html',
   styleUrl: './patient-estimation.component.scss',
 })
