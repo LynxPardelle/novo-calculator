@@ -33,9 +33,9 @@ export class ObesityDegreesComponent {
   public falseColors: string =
     'bef bef-d-flex bef-bg-#b2b7bf bef-bw-0 bef-w-auto bef-color-gray bef-mx-0_5rem';
   public filledClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center  bef-bsb-solid bef-bcb-novo bef-bwb-3px bef-rt-0_5px bef-bg-rgbaSD255COM__255COM__255COM__0_24ED ';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-novo bef-bwb-3px bef-rt-0_5px bef-bg-rgbaSD255COM__255COM__255COM__0_24ED ';
   public emptyClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center  bef-bsb-solid bef-bcb-novo bef-bwb-3px bef-rt-0_5px bef-bg-rgbaSD255COM__255COM__255COM__0_24ED ';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-novo bef-bwb-3px bef-rt-0_5px bef-bg-rgbaSD255COM__255COM__255COM__0_24ED ';
 
   public grade1 = this._sharedService.getHtml('grade1');
   public grade2 = this._sharedService.getHtml('grade2');

@@ -33,6 +33,7 @@ export class AppComponent implements AfterViewInit {
     fleEnd: 'flex-end',
     between: 'space-between',
     around: 'space-around',
+    evenly: 'space-evenly',
   };
 
   public abreviationsClasses: { [key: string]: string } = {
@@ -56,7 +57,9 @@ export class AppComponent implements AfterViewInit {
     // this._bef.changeDebugOption(true);
   }
   ngAfterViewInit(): void {
-    this.cssCreate();
+    setTimeout(() => {
+      this.cssCreate();
+    }, 1000);
   }
 
   getButtonId(event: string): void {
