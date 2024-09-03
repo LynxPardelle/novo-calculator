@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
 import { GenericButtonComponent } from '../../../shared/components/generic-button/generic-button.component';
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
@@ -7,6 +13,7 @@ import { GenericSpanComponent } from '../../../shared/components/generic-span/ge
 import { TComorbidities } from '../../types/comorbidities.type';
 import { MathPipe } from '../../../shared/pipes/math.pipe';
 import { CurrencyPipe } from '@angular/common';
+import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 
 @Component({
   selector: 'comorbidities',
@@ -17,17 +24,16 @@ import { CurrencyPipe } from '@angular/common';
     GenericSpanComponent,
     SafeHtmlPipe,
     MathPipe,
-    CurrencyPipe
+    CurrencyPipe,
   ],
   templateUrl: './comorbidities.component.html',
   styleUrl: './comorbidities.component.scss',
 })
-export class ComorbiditiesComponent {
-  constructor(private sharedService: SharedService) {}
+export class ComorbiditiesComponent implements AfterViewInit {
   public trueClasses: string =
-    'bef bef-bg-novo bef-bw-0 bef-w-4rem bef-h-4rem bef-color-white bef-mx-0_5rem bef-p-0_5rem bef-d-flex jusCon-center aliItem-center';
+    'bef bef-ptSEL__div-0_5rem bef-bg-novo bef-bw-0 bef-w-4rem bef-h-4rem bef-color-white bef-mx-0_5rem bef-p-0_5rem bef-bw-3px bef-bs-solid bef-bc-novo bef-d-flex jusCon-center aliItem-center';
   public falseClasses: string =
-    'bef  bef-color-rgbaSD255COM__255COM__255COM__0_24ED bef-bw-3px bef-bs-solid bef-bc-rgbaSD255COM__255COM__255COM__0_24ED bef-w-4rem bef-h-4rem bef-mx-0_5rem  bef-d-flex jusCon-center aliItem-center';
+    'bef bef-ptSEL__div-0_5rem bef-bg-white bef-color-HASHCBCFD5 bef-fillSEL__path-HASHCBCFD5 bef-bw-3px bef-bs-solid bef-bc-novo__OPA__0_24 bef-w-4rem bef-h-4rem bef-mx-0_5rem bef-p-0_5rem bef-d-flex jusCon-center aliItem-center';
   public trueColors: string =
     'bef bef-bg-novo bef-fontWeight-700 bef-bw-0 bef-w-auto bef-color-white bef-h-5rem';
   public falseColors: string =
@@ -68,4 +74,15 @@ export class ComorbiditiesComponent {
     new EventEmitter();
   @Output() comorbiditiesChange: EventEmitter<TComorbidities> =
     new EventEmitter();
+
+  constructor(
+    private sharedService: SharedService,
+    private _bef: NgxBootstrapExpandedFeaturesService
+  ) {}
+  ngAfterViewInit(): void {
+    this.cssCreate();
+  }
+  cssCreate() {
+    this._bef.cssCreate();
+  }
 }

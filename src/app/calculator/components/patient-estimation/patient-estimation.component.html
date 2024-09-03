@@ -1,23 +1,17 @@
-<section
-  class="bef bef-mb-2rem bef-d-flex fleDir-column bef-p-1rem "
->
-<h2
-      class="bef bef-d-flex jusCon-center bef-color-novo bef-fs-20px bef-fontWeight-700 bef-pt-1rem bef-mb-2rem "
-    >
-      ESTIMACIÓN DE PACIENTES¹
-    </h2>
+<section class="bef bef-mb-2rem bef-d-flex fleDir-column bef-p-1rem">
+  <h2
+    class="bef bef-d-flex jusCon-center bef-color-novo bef-fs-20px bef-fontWeight-700 bef-pt-1rem bef-mb-2rem"
+  >
+    ESTIMACIÓN DE PACIENTES¹
+  </h2>
   <div class="bef bef-d-flex fleDir-row jusCon-center">
-    <div
-      class="bef bef-w-25per bef-me-3_5rem bef-d-flex "
-    >
+    <div class="bef bef-w-25per bef-me-3_5rem bef-d-flex">
       <div
-        class="bef bef-w-100per bef-d-flex jusCon-center aliIte-center "
+        class="bef bef-w-100per bef-d-flex jusCon-center aliIte-center"
         [innerHTML]="fatDouble | safeHtml"
       ></div>
     </div>
-    <div
-      class="bef bef-d-flex fleDir-column bef-p-1rem "
-    >
+    <div class="bef bef-d-flex fleDir-column bef-p-1rem">
       <!--
     mdc-line-ripple
     -->
@@ -32,7 +26,9 @@
         [labelClasses]="'bef bef-fs-20px bef-fontWeight-700 bef-mt-4px'"
         (changesInput)="totalPopulationChange.emit($event.population)"
       ></generic-input>
-      <h4 class="bef bef-opacity-0_5 bef-mt-0 bef-fs-14px">Pacientes con obesidad</h4>
+      <h4 class="bef bef-opacity-0_5 bef-mt-0 bef-fs-14px">
+        Pacientes con obesidad
+      </h4>
       <div class="bef bef-d-flex fleDir-row bef-flexGrow-1">
         <generic-span
           [filledClasses]="filledClasses"
@@ -43,7 +39,10 @@
           [info]="patientsPercentage + '%'"
         >
         </generic-span>
-        <div [innerHTML]="arrowRight | safeHtml" class="bef bef-d-flex jusCon-center aliIte-center bef-m-20px"></div>
+        <div
+          [innerHTML]="arrowRight | safeHtml"
+          class="bef bef-d-flex jusCon-center aliIte-center bef-m-20px"
+        ></div>
         <generic-span
           [filledClasses]="filledClasses"
           [emptyClasses]="emptyClasses"
@@ -56,14 +55,11 @@
       </div>
     </div>
   </div>
-
 </section>
-<div
-  class="bef bef-ms-92per bef-mt-MIN15rem"
->
+<div class="bef bef-ms-92per bef-mt-MIN15rem">
   <div
     class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-w-140px"
     [innerHTML]="person1 | safeHtml"
   ></div>
 </div>
-<hr class="bef bef-border-1px__solid__white bef-w-80per bef-mt-5rem">
+<hr class="bef bef-border-1px__solid__white bef-w-80per bef-mt-5rem" />
