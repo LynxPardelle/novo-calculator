@@ -1,11 +1,56 @@
 <section class="bef bef-mb-2rem bef-p-1rem">
-  <h3
-    class="bef bef-w-50per bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakMINword"
-  >
-    Después de 10 años de tratamiento, el uso de Liraglutida 3.0 mg evitó que...
-  </h3>
-
   <div class="bef bef-p-1rem bef-my-3rem mat-elevation-z4">
+    <generic-input
+      type="select"
+      [containerClasses]="'bef bef-d-block bef-m-auto bef-w-205px'"
+      [labelTitle]="'Seleccionar el horizonte temporal'"
+      [thingFather]="{ year: year }"
+      [thing]="'year'"
+      (changesInput)="year = $event.year"
+      [options]="[
+        { type: 'option', option: '1 año', click: '1' },
+        { type: 'option', option: '2 años', click: '2' },
+        { type: 'option', option: '3 años', click: '3' },
+        { type: 'option', option: '4 años', click: '4' },
+        { type: 'option', option: '5 años', click: '5' },
+        { type: 'option', option: '6 años', click: '6' },
+        { type: 'option', option: '7 años', click: '7' },
+        { type: 'option', option: '8 años', click: '8' },
+        { type: 'option', option: '9 años', click: '9' },
+        { type: 'option', option: '10 años', click: '10' }
+      ]"
+    ></generic-input>
+    <h3
+      class="bef bef-fs-16px texAli-center bef-color-novo bef-pt-1rem bef-mb-0 bef-h-auto worBre-breakMINword"
+    >
+      Después de
+      <span
+        class="bef bef-textDecoration-underline__2px__solid__novo bef-fontWeight-900"
+        >"{{ year }}"</span
+      >
+      años de tratamiento, el uso de Liraglutida 3.0 mg evitó que...<sup>8</sup>
+    </h3>
+    <div class="bef bef-d-flex jusCon-between aliIte-center">
+      @for(result of results; track result; let i = $index) {
+      <div class="bef bef-d-flex fleDir-column aliIte-center bef-w-33_33per">
+        <h4 class="bef bef-d-flex jusCon-center bef-w-100per bef-color-novo">
+          <span
+            class="bef bef-textDecoration-underline__2px__solid__novo bef-fontWeight-900"
+            >{{ year }}</span
+          >
+          paciente(s) desarrollaran
+          <br />
+          {{ result.name }}
+        </h4>
+        <div class="bef bef-d-flex fleDir-row jusCon-center">
+          <!-- <generic-people-chart
+              [chartData]="result.chart"
+            ></generic-people-chart> -->
+        </div>
+      </div>
+      }
+    </div>
+    <!--
     <mat-tab-group (selectedTabChange)="cssCreate()">
       @for(result of results; track result; let i = $index) {
       <mat-tab label="{{ result.name }}">
@@ -22,6 +67,7 @@
       </mat-tab>
       }
     </mat-tab-group>
+    -->
   </div>
   <div
     class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN375px bef-me-MIN150px bef-mb-75px"

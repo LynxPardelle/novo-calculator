@@ -6,7 +6,7 @@
   </h2>
   @if (multi[0]) {
   <ngx-charts-bar-vertical
-    class="bef bef-mx-auto bef-d-block bef-w-500px"
+    class="bef bef-mx-auto bef-d-block bef-w-500px bars"
     [view]="view"
     [scheme]="colorScheme"
     [results]="multi"
@@ -23,6 +23,7 @@
     [barPadding]="barPadding"
     [showDataLabel]="showDataLabel"
     [yScaleMax]="yScaleMax"
+    [roundEdges]="roundEdges"
     (select)="onSelect($event)"
     (activate)="onActivate($event)"
     (deactivate)="onDeactivate($event)"

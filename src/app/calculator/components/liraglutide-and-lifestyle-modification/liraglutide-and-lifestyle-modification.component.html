@@ -10,14 +10,15 @@
     VECES MÁS PACIENTES CON LIRAGLUTIDA LOGRAN LAS METAS DE PÉRDIDA DE PESO
   </h2>
   <div class="bef bef-d-flex bef-jusCon-center aliIte-center wrap-wrap">
-    @for (results of [liraglutideAndLifeStyleModificationResults,
-    lifeStyleModificationResults]; track results[0].name; let i = $index) {
+    @for (results of
+    [lifeStyleModificationResults,liraglutideAndLifeStyleModificationResults ];
+    track results[0].name; let i = $index) {
     <div class="bef bef-w-300px bef-d-block bef-mx-auto bef-mb-1rem">
       <h3
         class="bef bef-w-75per bef-wordBreak-breakMINword bef-textAlign-center bef-mx-auto bef-mb-0 bef-d-block"
       >
         {{
-          i === 0
+          i === 1
             ? "Liraglutida + Modificación de Estilo de Vida"
             : "Modificación de Estilo de Vida"
         }}
@@ -25,7 +26,7 @@
       <ngx-charts-pie-chart
         class="bef bef-mx-auto bef-d-block bef-w-300px"
         [view]="view"
-        [scheme]="colorScheme"
+        [scheme]="colorSchemes[i]"
         [results]="results"
         [gradient]="gradient"
         [legend]="showLegend"

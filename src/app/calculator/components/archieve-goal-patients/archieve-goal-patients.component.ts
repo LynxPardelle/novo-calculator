@@ -12,6 +12,7 @@ import {
 /* Libraries */
 import {
   Color,
+  ColorHelper,
   LegendPosition,
   NgxChartsModule,
   ScaleType,
@@ -19,6 +20,8 @@ import {
 import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
 import { SharedService } from '../../../shared/services/shared.service';
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
+import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
+
 @Component({
   selector: 'archieve-goal-patients',
   standalone: true,
@@ -30,13 +33,30 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
   @Input() lifeStyleModification: number = 5454615;
   @Input() liraglutideNLifeStyleModification: number = 1891406;
 
+  public barCombo = {
+    bars: [
+      /*
+      'bef-fillSEL__g__g__g__gLastChild__path-HASHEBAC1F',
+      'bef-fillSEL__g__g__g__gFirstChild__path-HASH4096D3',
+      */
+      'bef-widthSEL__g__g__g__gLastChildBefore-100px',
+      'bef-heightSEL__g__g__g__gLastChildBefore-100px',
+      'bef-bgSEL__g__g__g__gLastChildBefore-red',
+      'bef-contentSEL__g__g__g__gLastChildBefore-CDB__CDB',
+      'bef-startSEL__g__g__g__gLastChildBefore-0',
+      'bef-topSEL__g__g__g__gLastChildBefore-0',
+      'bef-displaySEL__g__g__g__gLastChildBefore-block',
+      'bef-positionSEL__g__g__g__gLastChildBefore-absolute',
+    ],
+  };
+
   public multi: any[] = [];
   public view: [number, number] = [500, 500];
 
   // options
   public showXAxis: boolean = false;
   public showYAxis: boolean = true;
-  public gradient: boolean = true;
+  public gradient: boolean = false;
   public showLegend: boolean = true;
   public legendPosition: LegendPosition = LegendPosition.Below;
   public showXAxisLabel: boolean = false;
@@ -44,18 +64,24 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
   public showYAxisLabel: boolean = false;
   public yAxisLabel: string = 'Costo';
   public legendTitle: string = '';
-  public barPadding: number = 64;
+  public barPadding: number = 128;
   public showDataLabel: boolean = true;
   public yScaleMax: number = 200000;
+  public roundEdges: boolean = false;
 
   public colorScheme: string | Color = {
     name: 'novo',
     selectable: true,
     group: ScaleType.Linear,
-    domain: ['#001965', '#005AD2'],
+    domain: ['#4096D3', '#EBAC1F'],
   };
 
-  constructor(private _sharedService: SharedService) {}
+  constructor(
+    private _sharedService: SharedService,
+    private _bef: NgxBootstrapExpandedFeaturesService
+  ) {
+    this._bef.pushCombos(this.barCombo);
+  }
   public person = this._sharedService.getHtml('person6');
   ngOnInit(): void {
     this.configMulti();

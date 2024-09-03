@@ -24,6 +24,7 @@ import { ExistDirective } from '../../../shared/directives/exists.directive';
 import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 import { SharedService } from '../../../shared/services/shared.service';
+import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
 
 export type TPatients = {
   name: string;
@@ -44,6 +45,7 @@ export type TResult = {
     MatTabsModule,
     /* Components */
     GenericPeopleChartComponent,
+    GenericInputComponent,
     /* Directives */
     ExistDirective,
     /* Pipes */
@@ -53,8 +55,8 @@ export type TResult = {
   styleUrl: './patients.component.scss',
 })
 export class PatientsComponent implements OnInit, OnChanges {
-  results: TResult[] = [];
-  view: [number, number] = [275, 275];
+  public results: TResult[] = [];
+  public view: [number, number] = [275, 275];
 
   // options
   legend: boolean = false;
@@ -76,6 +78,8 @@ export class PatientsComponent implements OnInit, OnChanges {
     group: ScaleType.Linear,
     domain: ['#001965', '#D25A00'],
   };
+
+  public year: string = '1';
 
   constructor(
     private _calculatorService: CalculatorService,
@@ -100,7 +104,7 @@ export class PatientsComponent implements OnInit, OnChanges {
   configResults(): void {
     this.results = this.patients.map((patient) => {
       return {
-        name: patient.name,
+        name: patient.name.replace('Pacientes con', ''),
         chart: [
           {
             name: 'Liraglutida + modificación de estilo de vida',

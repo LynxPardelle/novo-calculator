@@ -23,6 +23,8 @@ import { person6 } from './person6.svg';
 import { person7 } from './person7.svg';
 import { person8 } from './person8.svg';
 import { poligonArrow } from './poligonArrow';
+import { fatChart2 } from './fatChart2';
+import { fatChart1 } from './fatChart1';
 
 export type TTotalSvg = {
   logo: string;
@@ -50,6 +52,8 @@ export type TTotalSvg = {
   person7: string;
   person8: string;
   poligonArrow: string;
+  fatChart1: string;
+  fatChart2: string;
 };
 export const svgTotal: TTotalSvg = {
   logo: logo,
@@ -77,4 +81,6 @@ export const svgTotal: TTotalSvg = {
   person7: person7,
   person8: person8,
   poligonArrow: poligonArrow,
+  fatChart1: fatChart1,
+  fatChart2: fatChart2,
 };

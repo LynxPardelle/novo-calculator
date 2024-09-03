@@ -15,6 +15,7 @@ import {
 import { MathPipe } from '../../../shared/pipes/math.pipe';
 import { SharedService } from '../../../shared/services/shared.service';
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
+
 @Component({
   selector: 'liraglutide-and-lifestyle-modification',
   standalone: true,
@@ -43,12 +44,20 @@ export class LiraglutideAndLifestyleModificationComponent
   public isDoughnut: boolean = false;
   public legendPosition: LegendPosition = LegendPosition.Below;
 
-  public colorScheme: string | Color = {
-    name: 'novo',
-    selectable: true,
-    group: ScaleType.Linear,
-    domain: ['#c1ecdc', '#939AA7'],
-  };
+  public colorSchemes: string[] | Color[] = [
+    {
+      name: 'novo',
+      selectable: true,
+      group: ScaleType.Linear,
+      domain: ['#4096D3', '#FFFFFF'],
+    },
+    {
+      name: 'yovo',
+      selectable: true,
+      group: ScaleType.Linear,
+      domain: ['#EBAC1F', '#FFFFFF'],
+    },
+  ];
 
   constructor(private _sharedService: SharedService) {}
   public person = this._sharedService.getHtml('person7');
