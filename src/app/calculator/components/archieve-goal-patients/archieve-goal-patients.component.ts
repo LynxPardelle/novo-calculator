@@ -33,18 +33,28 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
   @Input() lifeStyleModification: number = 5454615;
   @Input() liraglutideNLifeStyleModification: number = 1891406;
 
-  /* public barCombo = {
+  public barCombo = {
     bars: [
-      'bef-widthSEL__g__g__g__gLastChildBefore-100px',
-      'bef-heightSEL__g__g__g__gLastChildBefore-100px',
-      'bef-bgSEL__g__g__g__gLastChildBefore-red',
-      'bef-contentSEL__g__g__g__gLastChildBefore-CDB__CDB',
-      'bef-startSEL__g__g__g__gLastChildBefore-0',
-      'bef-topSEL__g__g__g__gLastChildBefore-0',
-      'bef-displaySEL__g__g__g__gLastChildBefore-block',
-      'bef-positionSEL__g__g__g__gLastChildBefore-absolute',
+      'bef-positionSEL__g__g__g__g-relative',
+      'bef-strokeWidthSEL__g__g__g__g__path-2px',
+      'bef-strokeLinejoinSEL__g__g__g__g__path-round',
+      'bef-strokeCapjoinSEL__g__g__g__g__path-round',
+      'bef-strokeDasharraySEL__g__g__g__gFirstChild__path-525__10',
+      'bef-strokeDashoffsetSEL__g__g__g__gFirstChild__path-MIN5',
+      'bef-strokeDasharraySEL__g__g__g__gLastChild__path-267_5__10',
+      'bef-strokeDashoffsetSEL__g__g__g__gLastChild__path-MIN5',
+      'bef-strokeSEL__g__g__g__gLastChild__path-doranvo',
+      'bef-strokeSEL__g__g__g__gFirstChild__path-novo',
+      'bef-positionSEL__g__g__g__gAfter-absolute',
+      'bef-widthSEL__g__g__g__gAfter-100per',
+      'bef-heightSEL__g__g__g__gAfter-100per',
+      'bef-contentSEL__g__g__g__gAfter-CDB__CDB',
+      'bef-startSEL__g__g__g__gAfter-0px',
+      'bef-topSEL__g__g__g__gAfter-0px',
+      'bef-displaySEL__g__g__g__gAfter-block',
+      'bef-borderSEL__g__g__g__gLastChildAfter-3px__solid__doranvo',
     ],
-  }; */
+  };
 
   public multi: any[] = [];
   public view: [number, number] = [500, 500];
@@ -53,7 +63,7 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
   public showXAxis: boolean = false;
   public showYAxis: boolean = true;
   public gradient: boolean = false;
-  public showLegend: boolean = true;
+  public showLegend: boolean = false;
   public legendPosition: LegendPosition = LegendPosition.Below;
   public showXAxisLabel: boolean = false;
   public xAxisLabel: string = 'Costo anual de tratamiento';
@@ -76,9 +86,9 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
     private _sharedService: SharedService,
     private _bef: NgxBootstrapExpandedFeaturesService
   ) {
-    // this._bef.pushCombos(this.barCombo);
+    this._bef.pushCombos(this.barCombo);
   }
-  public person = this._sharedService.getHtml('person6');
+  public person = this._sharedService.getHtml('person10');
   ngOnInit(): void {
     this.configMulti();
     this.configYScaleMax();
@@ -116,7 +126,7 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
       this.liraglutideNLifeStyleModification > this.lifeStyleModification
         ? this.liraglutideNLifeStyleModification
         : this.lifeStyleModification;
-    this.yScaleMax = Math.ceil(max / 500000) * 500000;
+    this.yScaleMax = (Math.ceil(max / 500000) + 1) * 500000;
   }
 
   onSelect(data: any): void {

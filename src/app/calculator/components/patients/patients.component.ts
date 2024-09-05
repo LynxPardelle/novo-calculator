@@ -25,6 +25,7 @@ import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-feat
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 import { SharedService } from '../../../shared/services/shared.service';
 import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
+import { TDropDownOption } from '../../../shared/types/dropDownOption.type';
 
 export type TPatients = {
   name: string;
@@ -80,6 +81,17 @@ export class PatientsComponent implements OnInit, OnChanges {
   };
 
   public year: string = '1';
+  public chosenYear: number = 1;
+  /* CreateArray of number from 1 to 10 */
+  public yearOptions: TDropDownOption[] = [...Array(10).keys()].map((value) => {
+    return {
+      type: 'option',
+      option: `${(value + 1).toString()} año${value > 2 ? 's' : ''}`,
+      click: (value + 1).toString(),
+      customClasses:
+        'bef bef-fs-14px texAli-center bef-mxSEL__span-auto bef-minHeight-14px',
+    };
+  });
 
   constructor(
     private _calculatorService: CalculatorService,
@@ -90,7 +102,12 @@ export class PatientsComponent implements OnInit, OnChanges {
       this.configResults();
     });
   }
-  public person = this._sharedService.getHtml('person8');
+  public person = this._sharedService.getHtml('person9');
+  public fatChart1 = this._sharedService.getHtml('fatChart1');
+  public fatChart2 = this._sharedService.getHtml('fatChart2');
+  public dm2 = this._sharedService.getHtml('dm2');
+  public hearPatients = this._sharedService.getHtml('hearPatients');
+  public brain = this._sharedService.getHtml('brain');
 
   get patients() {
     return this._calculatorService.patients$();
@@ -123,6 +140,11 @@ export class PatientsComponent implements OnInit, OnChanges {
         ],
       };
     });
+  }
+
+  setYear(year: string): void {
+    this.year = year;
+    this.chosenYear = parseInt(year);
   }
 
   onSelect(data: any): void {

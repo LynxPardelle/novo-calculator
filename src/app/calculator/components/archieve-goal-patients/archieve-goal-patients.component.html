@@ -1,10 +1,19 @@
-<section class="bef bef-mb-2rem bef-p-1rem">
+<section class="bef bef-mb-2rem bef-p-1rem bef-position-relative">
   <h2
     class="bef bef-color-novo bef-d-flex jusCon-center bef-fontWeight-700 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
   >
     COSTO POR PACIENTE QUE LOGRA LA META TERAPÉUTICA
   </h2>
   @if (multi[0]) {
+  <p
+    class="bef bef-position-absolute bef-bg-white bef-border-2px__solid__yell bef-w-205px bef-color-doranvo aliTex-center bef-p-1rem bef-fs-18px bef-top-150px bef-end-150px"
+  >
+    El costo de lograr la meta terapéutica es
+    <b>
+      37% menor con liraglutida
+      <sup>8</sup>
+    </b>
+  </p>
   <ngx-charts-bar-vertical
     class="bef bef-mx-auto bef-d-block bef-w-500px bars"
     [view]="view"
@@ -31,11 +40,35 @@
   </ngx-charts-bar-vertical>
   }
   <div
-    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN250px bef-me-MIN175px"
+    class="bef bef-d-flex jusCon-center aliIte-center bef-gap-1rem bef-mt-1rem"
   >
     <div
-      class="bef bef-w-180px bef-d-inline"
-      [innerHTML]="person | safeHtml"
-    ></div>
+      class="bef bef-p-0_25rem bef-bg-white bef-d-flex jusCon-evenly aliIte-center bef-gap-0_5rem"
+    >
+      <div
+        class="bef bef-w-10px bef-h-10px bef-bg-sky bef-border-1px__solid__novo"
+      ></div>
+      <p class="bef bef-color-novo bef-fs-14px">
+        Modificación de estilo de vida
+      </p>
+    </div>
+    <div
+      class="bef bef-p-0_25rem bef-bg-white bef-d-flex jusCon-evenly aliIte-center bef-gap-0_5rem"
+    >
+      <div
+        class="bef bef-w-10px bef-h-10px bef-bg-yell bef-border-1px__solid__doranvo"
+      ></div>
+      <p class="bef bef-color-doranvo bef-fs-14px">
+        Liraglutida + modificación de estilo de vida
+      </p>
+    </div>
   </div>
+  <p class="bef bef-color-novo texAli-center bef-mt-1rem">
+    *Costo por lograr la meta terapéutica= costo de tratamiento/ % de pacientes
+    que logran la meta terapéutica
+  </p>
+  <div
+    class="bef bef-w-136px bef-d-block bef-position-absolute bef-top-calcSD104px__PLUS__4remED bef-end-MIN100px"
+    [innerHTML]="person | safeHtml"
+  ></div>
 </section>

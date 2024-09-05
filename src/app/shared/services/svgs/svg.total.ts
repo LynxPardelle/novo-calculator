@@ -25,6 +25,11 @@ import { person8 } from './person8.svg';
 import { poligonArrow } from './poligonArrow';
 import { fatChart2 } from './fatChart2';
 import { fatChart1 } from './fatChart1';
+import { dm2 } from './dm2';
+import { hearPatients } from './heart-patients';
+import { brain } from './brain';
+import { person9 } from './person9';
+import { person10 } from './person10';
 
 export type TTotalSvg = {
   logo: string;
@@ -51,9 +56,14 @@ export type TTotalSvg = {
   person6: string;
   person7: string;
   person8: string;
+  person9: string;
+  person10: string;
   poligonArrow: string;
   fatChart1: string;
   fatChart2: string;
+  dm2: string;
+  hearPatients: string;
+  brain: string;
 };
 export const svgTotal: TTotalSvg = {
   logo: logo,
@@ -80,7 +90,12 @@ export const svgTotal: TTotalSvg = {
   person6: person6,
   person7: person7,
   person8: person8,
+  person9: person9,
+  person10: person10,
   poligonArrow: poligonArrow,
   fatChart1: fatChart1,
   fatChart2: fatChart2,
+  dm2: dm2,
+  hearPatients: hearPatients,
+  brain: brain,
 };
