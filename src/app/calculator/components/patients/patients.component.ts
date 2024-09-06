@@ -86,7 +86,7 @@ export class PatientsComponent implements OnInit, OnChanges {
   public yearOptions: TDropDownOption[] = [...Array(10).keys()].map((value) => {
     return {
       type: 'option',
-      option: `${(value + 1).toString()} año${value > 2 ? 's' : ''}`,
+      option: `${(value + 1).toString()} año${value >= 1 ? 's' : ''}`,
       click: (value + 1).toString(),
       customClasses:
         'bef bef-fs-14px texAli-center bef-mxSEL__span-auto bef-minHeight-14px',
