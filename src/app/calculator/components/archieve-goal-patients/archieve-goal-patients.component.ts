@@ -35,24 +35,44 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
 
   public barCombo = {
     bars: [
+      'bef-transformSEL__gFirstChildCHILD_textDataLabel-translateSD0__COM__MIN25pxED',
+      'bef-transformSEL__gLastChildCHILD_textDataLabel-translateSDMIN100px__COM__MIN25pxED',
+      'bef-fsSEL___textDataLabel-18px',
+      'bef-fontWeightSEL___textDataLabel-BOLD',
+      'bef-fillSEL___textDataLabel-doranvo',
+      'bef-positionSEL___textDataLabel-relative',
+      'bef-fillSEL___tick__text-disk',
+      'bef-strokeSEL___gridlineMINpath-white',
+
+      /* 'bef-contentSEL___textDataLabelBefore-CDBINCCDB',
+      'bef-widthSEL___textDataLabelAfter-100px',
+      'bef-heightSEL___textDataLabelAfter-100px',
+      'bef-displaySEL___textDataLabelAfter-inlineMINblock', */
+      /* 'bef-positionSEL___textDataLabelAfter-absolute',
+      'bef-startSEL___textDataLabelAfter-0px',
+      'bef-topSEL___textDataLabelAfter-0px',
+      'bef-borderSEL___textDataLabelAfter-3px__solid__doranvo', */
+
       'bef-positionSEL__g__g__g__g-relative',
       'bef-strokeWidthSEL__g__g__g__g__path-2px',
       'bef-strokeLinejoinSEL__g__g__g__g__path-round',
       'bef-strokeCapjoinSEL__g__g__g__g__path-round',
-      'bef-strokeDasharraySEL__g__g__g__gFirstChild__path-525__10',
+      'bef-strokeDasharraySEL__g__g__g__gFirstChild__path-461__10',
       'bef-strokeDashoffsetSEL__g__g__g__gFirstChild__path-MIN5',
-      'bef-strokeDasharraySEL__g__g__g__gLastChild__path-267_5__10',
+      'bef-strokeDasharraySEL__g__g__g__gLastChild__path-205__10',
       'bef-strokeDashoffsetSEL__g__g__g__gLastChild__path-MIN5',
-      'bef-strokeSEL__g__g__g__gLastChild__path-doranvo',
       'bef-strokeSEL__g__g__g__gFirstChild__path-novo',
-      'bef-positionSEL__g__g__g__gAfter-absolute',
+      'bef-transformSEL__g__g__g__gFirstChild__path-translateSD50pxED',
+      'bef-strokeSEL__g__g__g__gLastChild__path-doranvo',
+      'bef-transformSEL__g__g__g__gLastChild__path-translateSDMIN50pxED',
+      /* 'bef-positionSEL__g__g__g__gAfter-absolute',
       'bef-widthSEL__g__g__g__gAfter-100per',
       'bef-heightSEL__g__g__g__gAfter-100per',
       'bef-contentSEL__g__g__g__gAfter-CDB__CDB',
       'bef-startSEL__g__g__g__gAfter-0px',
       'bef-topSEL__g__g__g__gAfter-0px',
       'bef-displaySEL__g__g__g__gAfter-block',
-      'bef-borderSEL__g__g__g__gLastChildAfter-3px__solid__doranvo',
+      'bef-borderSEL__g__g__g__gLastChildAfter-3px__solid__doranvo', */
     ],
   };
 
@@ -70,7 +90,7 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
   public showYAxisLabel: boolean = false;
   public yAxisLabel: string = 'Costo';
   public legendTitle: string = '';
-  public barPadding: number = 128;
+  public barPadding: number = 256;
   public showDataLabel: boolean = true;
   public yScaleMax: number = 200000;
   public roundEdges: boolean = false;
@@ -81,6 +101,8 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
     group: ScaleType.Linear,
     domain: ['#4096D3', '#EBAC1F'],
   };
+
+  public minPercent: number = 0;
 
   constructor(
     private _sharedService: SharedService,
@@ -104,6 +126,16 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
     ) {
       this.configMulti();
       this.configYScaleMax();
+      /*
+      this.liraglutideNLifeStyleModification = 100%
+      this.lifeStyleModification = this.minPercent
+      */
+      this.minPercent = parseFloat(
+        (
+          (100 / this.lifeStyleModification) *
+          this.liraglutideNLifeStyleModification
+        ).toFixed(2)
+      );
     }
   }
 

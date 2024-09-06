@@ -187,62 +187,40 @@ export class CalculatorComponent implements OnInit, OnChanges {
     this.manageComorbiditiesPatientsPercentage();
   }
   manageComorbiditiesPatientsPercentage() {
-    let comorbiditiesPatientsPerDegree: TObesityDegreesNames = {
-      grade1: 0,
-      grade2: 0,
-      grade3: 0,
-    };
     this.calculatorData.comorbiditiesPatients = 0;
-    let percentage = [
+    let percentage: number[] | number = [
       ['1', 'I'],
       ['2', 'II'],
       ['3', 'III'],
-    ]
-      .map((d: string[]): number => {
-        let degree = `grade${d[0]}` as keyof TObesityDegrees;
-        let selectedDegree = this.calculatorData.obesityDegrees[degree];
-        if (!!selectedDegree) {
-          let k = `percentageObesity${d[1]}` as keyof TComorbidity;
-          let selectedComorbidities: number = -2;
-          let p: number = ['hipertensión', 'dislipidemia', 'prediabetes']
-            .map((c): number => {
-              let selectedComorbidity =
-                this.calculatorData.comorbidities[c as keyof TComorbidities];
-              if (!!selectedComorbidity) {
-                let comorbidity: TComorbidity | undefined =
-                  this.config.comorbidities.find((co) => co.name === c);
-                if (!comorbidity) return 1;
-                selectedComorbidities += 2;
-                return comorbidity[k] as number;
-              } else {
-                return 1;
-              }
-            })
-            .reduce((a, b) => a * b);
-          p =
-            p /
-            Math.pow(
-              10,
-              selectedComorbidities !== -2 ? selectedComorbidities : 0
-            );
-          if (p === 1 || p === 0.1) p = 0;
-          let de: number = this.config[
-            `percentageObesityDegree${d[1]}` as keyof TConfig
-          ] as number;
-          let patients: number = this.calculatorData.patients * (de / 100);
-          let comorbiditiesPatients: number = (p / 100) * patients;
-          comorbiditiesPatientsPerDegree[degree] = comorbiditiesPatients;
-          return p;
-        } else {
-          return 0;
-        }
-      })
-      .reduce((a, b) => a + b);
+    ].map((d: string[]): number => {
+      if (
+        !!this.calculatorData.obesityDegrees[
+          `grade${d[0]}` as keyof TObesityDegrees
+        ]
+      ) {
+        let k = `percentageObesity${d[1]}` as keyof TComorbidity;
+        let p: number = Object.keys(this.calculatorData.comorbidities)
+          .map((c: string): number => {
+            if (!this.calculatorData.comorbidities[c as keyof TComorbidities]) {
+              return 0;
+            }
+            let comorbidity: TComorbidity | undefined =
+              this.config.comorbidities.find((co) => co.name === c);
+            if (!comorbidity) return 0;
+            return comorbidity[k] as number;
+          })
+          .reduce((a, b) => a + b);
+        return p;
+      } else {
+        return 100;
+      }
+    });
+    percentage = percentage.every((p) => p === 100)
+      ? 0
+      : percentage.reduce((a, b) => a * b) / 10000;
     this.calculatorData.comorbiditiesPatientsPercentage = percentage;
     this.calculatorData.comorbiditiesPatients =
-      comorbiditiesPatientsPerDegree.grade1 +
-      comorbiditiesPatientsPerDegree.grade2 +
-      comorbiditiesPatientsPerDegree.grade3;
+      this.calculatorData.patients * (percentage / 100);
     this.calculatorData.populationTotal =
       this.calculatorData.comorbiditiesPatients;
     this.treatmentGoalToChange();
