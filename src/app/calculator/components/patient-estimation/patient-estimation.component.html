@@ -18,13 +18,13 @@
       <generic-input
         [type]="'text'"
         [containerClasses]="
-          'bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_25rem__solid__doranvo bef-dSEL___mdcMINlineMINripple-none bef-fs-20px bef-fontWeight-700 bef-rtSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-0_5px'
+          'bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-3px__solid__doranvo bef-dSEL___mdcMINlineMINripple-none bef-fs-20px bef-fontWeight-700 bef-rtSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-0_5px'
         "
         [thingFather]="{ population: totalPopulation | number: '1.0' }"
         [thing]="'population'"
         [labelTitle]="'Población total'"
-        [labelClasses]="'bef bef-fs-20px bef-fontWeight-700 bef-mt-4px'"
-        [inputClasses]="'bef bef-color-novo'"
+        [labelClasses]="'bef bef-fs-20px bef-display-block bef-fontWeight-700 bef-mt-4px'"
+        [inputClasses]="'bef bef-color-novo texAli-center'"
         (changesInput)="totalPopulationChange.emit($event.population)"
       ></generic-input>
       <h4 class="bef bef-opacity-0_5 bef-mt-0 bef-fs-14px">
