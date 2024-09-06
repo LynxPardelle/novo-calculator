@@ -16,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
 export class AppComponent implements AfterViewInit {
   public colors: { [key: string]: string } = {
     novo: '#001965',
+    sky: '#4096D3',
     disk: '#939AA7',
     diskSoft: '#d1d3d8',
     nord: '#E2F0FA',
@@ -24,12 +25,15 @@ export class AppComponent implements AfterViewInit {
     suvo: '#5AD200',
     rovo: '#921A00',
     oranvo: '#f27A00',
+    doranvo: '#E8563F',
+    yell: '#EBAC1F',
   };
   public abreviationsValues: { [key: string]: string } = {
     fleStart: 'flex-start',
     fleEnd: 'flex-end',
     between: 'space-between',
     around: 'space-around',
+    evenly: 'space-evenly',
   };
 
   public abreviationsClasses: { [key: string]: string } = {
@@ -53,7 +57,9 @@ export class AppComponent implements AfterViewInit {
     // this._bef.changeDebugOption(true);
   }
   ngAfterViewInit(): void {
-    this.cssCreate();
+    setTimeout(() => {
+      this.cssCreate();
+    }, 1000);
   }
 
   getButtonId(event: string): void {

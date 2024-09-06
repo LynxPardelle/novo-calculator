@@ -1,75 +1,84 @@
 <section
-  class="bef bef-mb-2rem bef-d-flex jusCon-fleEnd fleDir-row bef-p-1rem bef-me-6_5rem"
+  class="bef bef-mb-2rem bef-d-flex jusCon-fleEnd fleDir-column bef-p-1rem"
 >
-  <h2 class="bef bef-ms-1rem bef-color-novo bef-fontWeight-900 bef-pt-1rem">
-    Seleccionar <br />
-    Grados de <br />
-    obesidad
+  <h2
+    class="bef bef-d-flex jusCon-center bef-ms-1rem bef-mb-2rem bef-color-novo bef-fs-20px bef-fontWeight-700 bef-pt-1rem"
+  >
+    SELECCIONAR LOS GRADOS DE OBESIDAD²
   </h2>
-  <div
-    class="bef bef-d-flex fleDir-column bef-me-1rem bef-ms-1rem bef-w-calcSD50per__MIN__6remED aliIte-center"
-  >
-    @for (degree of [grade1, grade2, grade3]; track degree; let i = $index) {
-    <generic-input
-      class="bef bef-w-50per"
-      [type]="'checkbox'"
-      [buttonClasses]="'bef bef-bw-0 bef-w-100per'"
-      [checkBoxTrueClasses]="trueClasses"
-      [checkBoxFalseClasses]="falseClasses"
-      [thingFather]="obesityDegrees"
-      thing="grade{{ i + 1 }}"
-      (changesInput)="obesityDegreesChange.emit($event)"
-    >
-      <div
-        [innerHTML]="degree | safeHtml"
-        class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-fleStart"
-      ></div>
-    </generic-input>
-    }
-  </div>
-  <div
-    class="bef bef-d-flex aliIte-center fleDir-column bef-p-1rem bef-w-calcSD50per__MIN__2remED aliIte-start"
-  >
-    <h2 class="bef bef-mb-2rem">
-      <span class="bef bef-opacity-0_5"> Pacientes con obesidad </span><br />
-      <span
-        [innerHTML]="obesityText | safeHtml"
-        class="bef bef-borderBottom-1px__solid__novo bef-text-novo"
-      >
-      </span>
-    </h2>
+  <div class="bef bef-d-flex fleDir-row">
     <div
-      class="bef bef-d-flex jusCon-center aliIte-center bef-h-20per fleDir-row bef-w-auto"
+      class="bef bef-d-flex fleDir-column bef-me-1rem bef-ms-1rem bef-w-calcSD50per__MIN__6remED aliIte-center"
     >
-      <generic-span
-        [filledClasses]="filledClasses"
-        [emptyClasses]="emptyClasses"
-        [textClasses]="
-          'bef bef-color-novo bef-w-100px bef-p-1rem bef-textAlign-center'
-        "
-        [info]="
-          (obesityPatientsPercentage | math : [{ operation: 'round' }]) + '%'
-        "
+      @for (degree of [grade1, grade2, grade3]; track degree; let i = $index) {
+      <generic-input
+        class="bef bef-w-65per"
+        [type]="'checkbox'"
+        [buttonClasses]="'bef bef-bw-0 bef-w-95per'"
+        [checkBoxTrueClasses]="trueClasses"
+        [checkBoxFalseClasses]="falseClasses"
+        [thingFather]="obesityDegrees"
+        thing="grade{{ i + 1 }}"
+        (changesInput)="obesityDegreesChange.emit($event)"
       >
-      </generic-span>
-      <div class="" [innerHTML]="arrowRight | safeHtml"></div>
-      <generic-span
-        [filledClasses]="filledClasses"
-        [emptyClasses]="emptyClasses"
-        [textClasses]="
-          'bef bef-color-novo bef-w-100px bef-p-1rem bef-textAlign-center'
-        "
-        [info]="obesityPatients"
+        <div
+          [innerHTML]="degree | safeHtml"
+          class="bef-d-flex fleDir-row bef-w-100per bef-h-100per jusCon-fleStart"
+        ></div>
+      </generic-input>
+      }
+    </div>
+    <div
+      class="bef bef-d-flex aliIte-center fleDir-column bef-p-1rem bef-w-calcSD50per__MIN__2remED aliIte-start"
+    >
+      <h4 class="bef bef-mb-2rem">
+        <span class="bef bef-opacity-0_5 bef-fs-14px">
+          Pacientes con obesidad </span
+        ><br />
+        <span
+          [innerHTML]="obesityText | safeHtml"
+          class="bef bef-borderBottom-1px__solid__novo bef-text-novo"
+        >
+        </span>
+      </h4>
+      <div
+        class="bef bef-d-flex jusCon-fleStart aliIte-center bef-h-20per fleDir-row bef-w-100per"
       >
-      </generic-span>
+        <generic-span
+          [filledClasses]="filledClasses"
+          [emptyClasses]="emptyClasses"
+          [textClasses]="
+            'bef bef-color-novo bef-w-100px bef-fs-20px bef-fontWeight-700 bef-p-1rem bef-textAlign-center'
+          "
+          [info]="
+            (obesityPatientsPercentage | math : [{ operation: 'round' }]) + '%'
+          "
+        >
+        </generic-span>
+        <div
+          class=""
+          [innerHTML]="arrowRight | safeHtml"
+          class="bef bef-d-flex jusCon-center aliIte-center bef-m-20px"
+        ></div>
+        <generic-span
+          [filledClasses]="filledClasses"
+          [emptyClasses]="emptyClasses"
+          [textClasses]="
+            'bef bef-color-novo bef-w-100px bef-fs-20px bef-fontWeight-700 bef-p-1rem bef-textAlign-center'
+          "
+          [info]="obesityPatients | number: '1.0'"
+        >
+        </generic-span>
+      </div>
     </div>
   </div>
-  <div
-    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN100px bef-me-MIN225px"
-  >
-    <div
-      class="bef bef-w-180px bef-d-inline"
-      [innerHTML]="person | safeHtml"
-    ></div>
-  </div>
 </section>
+<div class="bef bef-ms-91per bef-mt-MIN19rem">
+  <div
+    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-w-140px"
+    [innerHTML]="person | safeHtml"
+  ></div>
+</div>
+<hr
+  class="bef bef-border-1px__solid__white bef-w-80per bef-mt-10rem bef-mb-4rem"
+/>

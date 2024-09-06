@@ -7,12 +7,14 @@ import { GenericSpanComponent } from '../../../shared/components/generic-span/ge
 /* Pipes */
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 /*Types */
+import { TSemanas } from '../../types/semanas.type';
 import { TInstitution } from '../../types/institution.type';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'treatment-cost',
   standalone: true,
-  imports: [GenericSpanComponent, SafeHtmlPipe, GenericInputComponent],
+  imports: [GenericSpanComponent, SafeHtmlPipe, GenericInputComponent, CurrencyPipe],
   templateUrl: './treatment-cost.component.html',
   styleUrl: './treatment-cost.component.scss',
 })
@@ -21,9 +23,9 @@ export class TreatmentCostComponent {
   @Input() unitCost: number = 2325;
   @Input() anualCost: number = 45208.33;
   public filledClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-oranvo  bef-rt-5px bef-bg-white bef-ms-1rem bef-wmn-5rem bef-w-80per bef-wmx-10rem bef-h-2_5rem bef-p-0_5rem';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bwb-3px bef-bcb-yell bef-rt-0_5px bef-bg-white bef-ms-1rem bef-wmn-5rem bef-w-80per bef-wmx-10rem bef-h-2_7rem bef-p-0_5rem';
   public emptyClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-oranvo  bef-rt-5px bef-bg-white bef-ms-1rem bef-wmn-5rem bef-w-80per bef-wmx-10rem bef-h-2_5rem bef-p-0_5rem';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bwb-3px bef-bcb-yell bef-rt-0_5px bef-bg-white bef-ms-1rem bef-wmn-5rem bef-w-80per bef-wmx-10rem bef-h-2_7rem bef-p-0_5rem';
   public thermo1: string = this._sharedService.getHtml('thermo1');
   public thermo2: string = this._sharedService.getHtml('thermo2');
   public arrowRight = this._sharedService.getHtml('arrowRight');
@@ -36,9 +38,51 @@ export class TreatmentCostComponent {
     {
       title: 'Presentación:',
       description:
-        'Caja de cartón con 3 plumas precargadas con 3 ml (6 mg/ml) Clave CNIS:7125.00',
+        `Caja de cartón con 3 plumas precargadas
+        con 3 ml (6 mg/ml) Clave CNIS:7125.00`,
     },
   ];
   @Output() unitCostChange: EventEmitter<number> = new EventEmitter<number>();
-  constructor(private _sharedService: SharedService) {}
+  constructor(private _sharedService: SharedService) {
+
+  }
+
+
+  semanas: TSemanas[] = [
+    {
+      semana: 'Semana 1:',
+      dosis: ' ' + '0.6 mg al día',
+      color: 'novo',
+      size: 'small',
+      cost: 181
+    },
+    {
+      semana: 'Semana 2:',
+      dosis: ' ' + '1.2 mg al día',
+      color: 'novo',
+      size: 'small',
+      cost: 362
+    },
+    {
+      semana: 'Semana 3:',
+      dosis: ' ' + '1.8 mg al día',
+      color: 'novo',
+      size: 'small',
+      cost: 543
+    },
+    {
+      semana: 'Semana 4:',
+      dosis: ' ' + '2.4 mg al día',
+      color: 'novo',
+      size: 'small',
+      cost: 724
+    },
+
+
+  ];
+
+  arrow: string = this._sharedService.getHtml('poligonArrow')
+
+
+
 }

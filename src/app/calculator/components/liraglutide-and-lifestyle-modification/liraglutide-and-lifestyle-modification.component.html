@@ -1,47 +1,78 @@
-<section class="bef bef-mb-2rem bef-p-1rem">
-  <h2
-    class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord texTra-uppercase"
-  >
-    {{ times | math : [{ operation: "roundDigit", value: 2 }] }} veces más
-    pacientes con liraglutida logran las metas de pérdida de peso
-  </h2>
-  <div class="bef bef-d-flex bef-jusCon-center aliIte-center wrap-wrap">
-    @for (results of [liraglutideAndLifeStyleModificationResults,
-    lifeStyleModificationResults]; track results[0].name; let i = $index) {
-    <div class="bef bef-w-300px bef-d-block bef-mx-auto bef-mb-1rem">
-      <h3
-        class="bef bef-w-75per bef-wordBreak-breakMINword bef-textAlign-center bef-mx-auto bef-mb-0 bef-d-block"
-      >
-        {{
-          i === 0
-            ? "Liraglutida + Modificación de Estilo de Vida"
-            : "Modificación de Estilo de Vida"
-        }}
-      </h3>
-      <ngx-charts-pie-chart
-        class="bef bef-mx-auto bef-d-block bef-w-300px"
-        [view]="view"
-        [scheme]="colorScheme"
-        [results]="results"
-        [gradient]="gradient"
-        [legend]="showLegend"
-        [legendPosition]="legendPosition"
-        [legendTitle]="legendTitle"
-        [labels]="showLabels"
-        [doughnut]="isDoughnut"
-        (select)="onSelect($event)"
-        (activate)="onActivate($event)"
-        (deactivate)="onDeactivate($event)"
-      >
-      </ngx-charts-pie-chart>
+<section class="bef bef-mb-2rem bef-py-1rem bef-pb-1rem">
+  <div class="bef-d-flex aliIte-center jusCon-center">
+    <div
+      class="bef bef-d-flex bef-jusCon-center aliIte-center wrap-wrap bef-w-500px bef-ms-4rem"
+    >
+      @for (results of
+      [lifeStyleModificationResults,liraglutideAndLifeStyleModificationResults
+      ]; track results[0].name; let i = $index) {
+      <div class="bef bef-w-250px bef-d-block bef-mx-auto bef-mb-1rem">
+        <h3
+          class="bef bef-fs-14px bef-color-novo bef-w-75per bef-wordBreak-breakMINword bef-textAlign-center bef-mx-auto bef-mt-0 bef-mb-0 bef-d-block bef-fontWeight-BOLD"
+        >
+          {{ i === 1 ? "Liraglutida + Modificación" : "Modificación" }}<br />de
+          Estilo de Vida
+        </h3>
+        <ngx-charts-pie-chart
+          class="bef bef-mx-auto bef-d-block bef-w-150px"
+          [view]="view"
+          [scheme]="colorSchemes[i]"
+          [results]="results"
+          [gradient]="gradient"
+          [legend]="showLegend"
+          [legendPosition]="legendPosition"
+          [legendTitle]="legendTitle"
+          [labels]="showLabels"
+          [doughnut]="isDoughnut"
+          (select)="onSelect($event)"
+          (activate)="onActivate($event)"
+          (deactivate)="onDeactivate($event)"
+        >
+        </ngx-charts-pie-chart>
+        <div class="bef bef-d-flex jusCon-center aliIte-center bef-mt-1rem">
+          <div
+            class="bef bef-p-0_25rem bef-bg-white bef-d-flex jusCon-evenly aliIte-center bef-gap-0_5rem"
+          >
+            <div
+              class="bef bef-w-10px bef-h-10px bef-bg-{{
+                i === 0 ? 'sky' : 'yell'
+              }} bef-border-1px__solid__{{ i === 0 ? 'novo' : 'doranvo' }}"
+            ></div>
+            <p
+              class="bef bef-color-{{
+                i === 0 ? 'novo' : 'doranvo'
+              }} bef-fs-14px bef-fontWeight-BOLD"
+            >
+              Logran la meta
+            </p>
+          </div>
+          <div
+            class="bef bef-p-0_25rem bef-bg-white bef-d-flex jusCon-evenly aliIte-center bef-gap-0_5rem"
+          >
+            <div
+              class="bef bef-w-10px bef-h-10px bef-bg-white bef-border-1px__solid__HASHDFE1E4"
+            ></div>
+            <p class="bef bef-color-doranvo bef-fs-14px bef-fontWeight-BOLD">
+              No logran la meta
+            </p>
+          </div>
+        </div>
+      </div>
+      }
     </div>
-    }
+    <p
+      class="bef bef-bg-white bef-border-2px__solid__yell bef-w-205px bef-color-doranvo texAli-center bef-p-0_5rem bef-fs-18px bef-top-150px bef-end-150px"
+    >
+      <b>2.33 veces más pacientes<br />con liraglutida</b>
+      logran las<br />metas de pérdida de peso
+      <sup> 7,8 </sup>
+    </p>
   </div>
   <div
-    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN250px bef-me-MIN150px"
+    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN250px bef-me-MIN100px"
   >
     <div
-      class="bef bef-w-180px bef-d-inline"
+      class="bef bef-w-140px bef-d-inline"
       [innerHTML]="person | safeHtml"
     ></div>
   </div>

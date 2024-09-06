@@ -9,6 +9,7 @@ import { GenericSpanComponent } from '../../../shared/components/generic-span/ge
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 import { TObesityDegrees } from '../../types/obesityDegrees.type';
 import { MathPipe } from '../../../shared/pipes/math.pipe';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'obesity-degrees',
@@ -18,6 +19,7 @@ import { MathPipe } from '../../../shared/pipes/math.pipe';
     GenericSpanComponent,
     SafeHtmlPipe,
     MathPipe,
+    DecimalPipe,
   ],
   templateUrl: './obesity-degrees.component.html',
   styleUrl: './obesity-degrees.component.scss',
@@ -27,15 +29,15 @@ export class ObesityDegreesComponent {
   public trueClasses: string =
     'bef bef-bg-novo bef-bw-0 bef-w-100per bef-color-white bef-mb-0_5rem bef-p-0_5rem';
   public falseClasses: string =
-    'bef bef-bg-#b2b7bf bef-bw-0 bef-w-100per bef-color-gray bef-mb-0_5rem bef-p-0_5rem';
+    'bef bef-bg-white__OPA__0_24 bef-bw-0 bef-w-100per bef-color-gray bef-mb-0_5rem bef-p-0_5rem';
   public trueColors: string =
     'bef bef-bg-novo bef-bw-0 bef-w-auto bef-color-white bef-mx-0_5rem';
   public falseColors: string =
     'bef bef-d-flex bef-bg-#b2b7bf bef-bw-0 bef-w-auto bef-color-gray bef-mx-0_5rem';
   public filledClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED ';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-novo bef-bwb-3px bef-rt-0_5px bef-bg-rgbaSD255COM__255COM__255COM__0_24ED ';
   public emptyClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-rt-5px bef-bg-rgbaSD184COM__201COM__214COM__0_2ED ';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-novo bef-bwb-3px bef-rt-0_5px bef-bg-rgbaSD255COM__255COM__255COM__0_24ED ';
 
   public grade1 = this._sharedService.getHtml('grade1');
   public grade2 = this._sharedService.getHtml('grade2');

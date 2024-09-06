@@ -21,12 +21,12 @@ import { TObesityDegrees } from '../../types/obesityDegrees.type';
 import { TComorbidity, TConfig } from '../../types/config.type';
 import { TComorbidities } from '../../types/comorbidities.type';
 import { TCalculatorData } from '../../types/calculatorData.type';
-import { TObesityDegreesNames } from '../../types/obesityDegreesNames.type';
 import { ArchieveGoalPatientsComponent } from '../archieve-goal-patients/archieve-goal-patients.component';
 import { LiraglutideCostComponent } from '../liraglutide-cost/liraglutide-cost.component';
 import { TLifeStyleModifications } from '../../types/lifeStyleModifications';
 import { TInstitution } from '../../types/institution.type';
 import { CalculatorService } from '../../services/calculator.service';
+import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 
 @Component({
   selector: 'app-calculator',
@@ -48,12 +48,18 @@ import { CalculatorService } from '../../services/calculator.service';
     PatientsComponent,
     SafeHtmlPipe,
   ],
+  providers: [
+    CalculatorService,
+    SharedService,
+    NgxBootstrapExpandedFeaturesService,
+  ],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss',
 })
 export class CalculatorComponent implements OnInit, OnChanges {
   constructor(
     private _sharedService: SharedService,
+    private _bef: NgxBootstrapExpandedFeaturesService,
     private _calculatorService: CalculatorService
   ) {}
   get config() {
@@ -64,6 +70,9 @@ export class CalculatorComponent implements OnInit, OnChanges {
   }
 
   public arrowLeft = this._sharedService.getHtml('arrowLeft');
+
+  public showPopUp1: boolean = false;
+  public showPopUp2: boolean = false;
 
   ngOnInit(): void {
     this.percentageCalculation();
@@ -187,62 +196,58 @@ export class CalculatorComponent implements OnInit, OnChanges {
     this.manageComorbiditiesPatientsPercentage();
   }
   manageComorbiditiesPatientsPercentage() {
-    let comorbiditiesPatientsPerDegree: TObesityDegreesNames = {
-      grade1: 0,
-      grade2: 0,
-      grade3: 0,
-    };
     this.calculatorData.comorbiditiesPatients = 0;
-    let percentage = [
+    let percentage: number[] | number = [
       ['1', 'I'],
       ['2', 'II'],
       ['3', 'III'],
-    ]
-      .map((d: string[]): number => {
-        let degree = `grade${d[0]}` as keyof TObesityDegrees;
-        let selectedDegree = this.calculatorData.obesityDegrees[degree];
-        if (!!selectedDegree) {
-          let k = `percentageObesity${d[1]}` as keyof TComorbidity;
-          let selectedComorbidities: number = -2;
-          let p: number = ['hipertensión', 'dislipidemia', 'prediabetes']
-            .map((c): number => {
-              let selectedComorbidity =
-                this.calculatorData.comorbidities[c as keyof TComorbidities];
-              if (!!selectedComorbidity) {
-                let comorbidity: TComorbidity | undefined =
-                  this.config.comorbidities.find((co) => co.name === c);
-                if (!comorbidity) return 1;
-                selectedComorbidities += 2;
-                return comorbidity[k] as number;
-              } else {
-                return 1;
-              }
-            })
-            .reduce((a, b) => a * b);
-          p =
-            p /
-            Math.pow(
-              10,
-              selectedComorbidities !== -2 ? selectedComorbidities : 0
-            );
-          if (p === 1 || p === 0.1) p = 0;
-          let de: number = this.config[
-            `percentageObesityDegree${d[1]}` as keyof TConfig
-          ] as number;
-          let patients: number = this.calculatorData.patients * (de / 100);
-          let comorbiditiesPatients: number = (p / 100) * patients;
-          comorbiditiesPatientsPerDegree[degree] = comorbiditiesPatients;
-          return p;
-        } else {
-          return 0;
-        }
-      })
-      .reduce((a, b) => a + b);
-    this.calculatorData.comorbiditiesPatientsPercentage = percentage;
+    ].map((d: string[]): number => {
+      if (
+        !!this.calculatorData.obesityDegrees[
+          `grade${d[0]}` as keyof TObesityDegrees
+        ]
+      ) {
+        let k = `percentageObesity${d[1]}` as keyof TComorbidity;
+        let p: number = Object.keys(this.calculatorData.comorbidities)
+          .map((c: string): number => {
+            if (!this.calculatorData.comorbidities[c as keyof TComorbidities]) {
+              return 0;
+            }
+            let comorbidity: TComorbidity | undefined =
+              this.config.comorbidities.find((co) => co.name === c);
+            if (!comorbidity) return 0;
+            return comorbidity[k] as number;
+          })
+          .reduce((a, b) => a + b);
+        return p;
+      } else {
+        return 100;
+      }
+    });
+    this.calculatorData.comorbiditiesPatientsPercentage = percentage.every(
+      (p) => p === 100
+    )
+      ? 0
+      : percentage.reduce((a, b) => a * b) / 10000;
+    let patientsPercentageDegree1: number = !!this.calculatorData.obesityDegrees
+      .grade1
+      ? this.calculatorData.patients *
+        (this.config.percentageObesityDegreeI / 100)
+      : 0;
+    let patientsPercentageDegree2: number = !!this.calculatorData.obesityDegrees
+      .grade2
+      ? this.calculatorData.patients *
+        (this.config.percentageObesityDegreeII / 100)
+      : 0;
+    let patientsPercentageDegree3: number = !!this.calculatorData.obesityDegrees
+      .grade3
+      ? this.calculatorData.patients *
+        (this.config.percentageObesityDegreeIII / 100)
+      : 0;
     this.calculatorData.comorbiditiesPatients =
-      comorbiditiesPatientsPerDegree.grade1 +
-      comorbiditiesPatientsPerDegree.grade2 +
-      comorbiditiesPatientsPerDegree.grade3;
+      patientsPercentageDegree1 * (percentage[0] / 100) +
+      patientsPercentageDegree2 * (percentage[1] / 100) +
+      patientsPercentageDegree3 * (percentage[2] / 100);
     this.calculatorData.populationTotal =
       this.calculatorData.comorbiditiesPatients;
     this.treatmentGoalToChange();
@@ -291,6 +296,17 @@ export class CalculatorComponent implements OnInit, OnChanges {
     this.treatmentGoalToChange();
   }
   /* Archive-Goal-Patients */
+  selectTreatmentGoalPercentage(event: any) {
+    console.log('event', event);
+    this.calculatorData.treatmentGoalPercentage = parseInt(
+      event.treatmentGoalPercentage
+    ) as 5 | 10 | 15;
+    console.log(
+      'calculatorData.treatmentGoalPercentage',
+      this.calculatorData.treatmentGoalPercentage
+    );
+    this.treatmentGoalToChange();
+  }
   treatmentGoalToChange() {
     let populationTotal: number = this.calculatorData.populationTotal / 100;
     this.calculatorData.archieveGoal =
@@ -327,5 +343,11 @@ export class CalculatorComponent implements OnInit, OnChanges {
     this.calculatorData.dontArchiveGoalWithLiraglutidePercentage =
       this.calculatorData.dontArchiveGoalWithLiraglutide / populationTotal;
     this.setCalculatorData();
+  }
+
+  cssCreate() {
+    setTimeout(() => {
+      this._bef.cssCreate();
+    }, 100);
   }
 }

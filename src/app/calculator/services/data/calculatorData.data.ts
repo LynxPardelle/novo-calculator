@@ -48,7 +48,7 @@ export const calculatorData: TCalculatorData = {
   totalAnualCost: 0,
   totalAnualCostPlusLiraglutide: 0,
   /* Archive-Goal-Patients */
-  treatmentGoalPercentage: 15,
+  treatmentGoalPercentage: 5,
   lifeStyleModification: 0,
   liraglutideNLifeStyleModification: 0,
   archieveGoal: 0,

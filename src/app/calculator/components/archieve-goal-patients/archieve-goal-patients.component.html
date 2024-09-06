@@ -1,33 +1,21 @@
-<section class="bef bef-mb-2rem bef-p-1rem">
+<section class="bef bef-mb-2rem bef-p-1rem bef-position-relative">
   <h2
-    class="bef bef-color-novo bef-fontWeight-900 bef-pt-1rem bef-me-3rem bef-mb-0 bef-h-auto worBre-breakWord"
+    class="bef bef-color-novo bef-d-flex jusCon-center bef-w-100per bef-fs-20px bef-fontWeight-700 bef-pt-1rem bef-ps-1rem bef-mb-0 worBre-breakWord"
   >
-    COSTO POR PACIENTE QUE LOGRA LA META TERAPÉUTICA
+    COSTO POR PACIENTE QUE LOGRA LA META TERAPÉUTICA*
   </h2>
-  <generic-input
-    type="select"
-    [containerClasses]="'bef bef-w-30per bef-mt-2rem'"
-    [labelTitle]="
-      treatmentGoalPercentage === 5
-        ? 'Pérdida de Peso > 5%'
-        : treatmentGoalPercentage === 10
-        ? 'Pérdida de Peso > 10%'
-        : treatmentGoalPercentage === 15
-        ? 'Pérdida de Peso > 15%'
-        : 'Meta de Tratamiento'
-    "
-    [thingFather]="{ percentage: treatmentGoalPercentage }"
-    [thing]="'percentage'"
-    (changesInput)="selectTreatmentGoalPersentage($event)"
-    [options]="[
-      { type: 'option', option: 'Pérdida de Peso > 5%', click: '5' },
-      { type: 'option', option: 'Pérdida de Peso > 10%', click: '10' },
-      { type: 'option', option: 'Pérdida de Peso > 15%', click: '15' }
-    ]"
-  ></generic-input>
   @if (multi[0]) {
+  <p
+    class="bef bef-position-absolute bef-bg-white bef-border-2px__solid__yell bef-w-205px bef-color-doranvo texAli-center bef-p-1rem bef-fs-18px bef-top-150px bef-end-150px"
+  >
+    El costo de lograr la meta terapéutica es
+    <b>
+      {{ minPercent }}% menor con liraglutida
+      <sup>8</sup>
+    </b>
+  </p>
   <ngx-charts-bar-vertical
-    class="bef bef-mx-auto bef-d-block bef-w-500px"
+    class="bef bef-mx-auto bef-d-block bef-w-500px bars"
     [view]="view"
     [scheme]="colorScheme"
     [results]="multi"
@@ -44,6 +32,7 @@
     [barPadding]="barPadding"
     [showDataLabel]="showDataLabel"
     [yScaleMax]="yScaleMax"
+    [roundEdges]="roundEdges"
     (select)="onSelect($event)"
     (activate)="onActivate($event)"
     (deactivate)="onDeactivate($event)"
@@ -51,11 +40,35 @@
   </ngx-charts-bar-vertical>
   }
   <div
-    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN250px bef-me-MIN175px"
+    class="bef bef-d-flex jusCon-center aliIte-center bef-gap-1rem bef-mt-1rem"
   >
     <div
-      class="bef bef-w-180px bef-d-inline"
-      [innerHTML]="person | safeHtml"
-    ></div>
+      class="bef bef-p-0_25rem bef-bg-white bef-d-flex jusCon-evenly aliIte-center bef-gap-0_5rem"
+    >
+      <div
+        class="bef bef-w-10px bef-h-10px bef-bg-sky bef-border-1px__solid__novo"
+      ></div>
+      <p class="bef bef-color-novo bef-fs-14px bef-fontWeight-BOLD">
+        Modificación de estilo de vida
+      </p>
+    </div>
+    <div
+      class="bef bef-p-0_25rem bef-bg-white bef-d-flex jusCon-evenly aliIte-center bef-gap-0_5rem"
+    >
+      <div
+        class="bef bef-w-10px bef-h-10px bef-bg-yell bef-border-1px__solid__doranvo"
+      ></div>
+      <p class="bef bef-color-doranvo bef-fs-14px bef-fontWeight-BOLD">
+        Liraglutida + modificación de estilo de vida
+      </p>
+    </div>
   </div>
+  <p class="bef bef-color-novo texAli-center bef-mt-1rem bef-fs-13px">
+    *Costo por lograr la meta terapéutica= costo de tratamiento/ % de pacientes
+    que logran la meta terapéutica
+  </p>
+  <div
+    class="bef bef-w-136px bef-d-block bef-position-absolute bef-top-calcSD104px__PLUS__5remED bef-end-MIN100px"
+    [innerHTML]="person | safeHtml"
+  ></div>
 </section>
