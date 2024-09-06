@@ -208,6 +208,7 @@
     }
     <div class="bef bef-position-relative">
       <svg
+        (click)="showPopUp2 = !showPopUp2; cssCreate()"
         class="bef bef-position-absolute bef-bottom-1rem bef-end-MIN12vw"
         width="40"
         height="47"
@@ -249,4 +250,71 @@
       </svg>
     </div>
   </div>
+  @if (!!showPopUp2) {
+  <div
+    class="bef-zIndex-100 bef bef-position-fixed bef-top-calcSD50vh__MIN__280pxED bef-end-calcSD50vw__MIN__412_5pxED bef-w-825px bef-h-560px"
+  >
+    <div
+      class="bef bef-position-relative bef-w-100per bef-h-100per bef-r-0_5rem bef-bg-nord mat-elevation-z4 bef-color-novo"
+    >
+      <button
+        class="bef bef-position-absolute bef-top-0_5rem bef-end-0_5rem bef-p-0 bef-r-100per bef-btn-nord mat-elevation-z2 bef-w-24px bef-h-24px bef-color-disk bef-fontWeight-BOLD"
+        (click)="showPopUp2 = false"
+      >
+        <svg
+          width="11"
+          height="10"
+          viewBox="0 0 11 10"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.77997 5.11L9.77997 2.11C9.94379 1.9187 10.0294 1.67263 10.0197 1.42095C10.01 1.16927 9.90563 0.930535 9.72754 0.75244C9.54944 0.574346 9.3107 0.470014 9.05902 0.460293C8.80735 0.450572 8.56127 0.536177 8.36996 0.700004L5.36996 3.7L2.36996 0.700004C2.277 0.606275 2.16641 0.531881 2.04456 0.481112C1.9227 0.430344 1.79199 0.404205 1.65997 0.404205C1.52796 0.404205 1.39725 0.430344 1.27539 0.481112C1.15353 0.531881 1.04294 0.606275 0.949982 0.700004C0.763731 0.887366 0.65918 1.14082 0.65918 1.405C0.65918 1.66919 0.763731 1.92264 0.949982 2.11L3.94998 5.11L0.949982 8.11C0.856253 8.20297 0.781848 8.31357 0.731079 8.43543C0.68031 8.55729 0.654175 8.68799 0.654175 8.82C0.654175 8.95201 0.68031 9.08272 0.731079 9.20458C0.781848 9.32644 0.856253 9.43704 0.949982 9.53C1.04342 9.62269 1.15422 9.69601 1.27606 9.74578C1.3979 9.79554 1.52837 9.82076 1.65997 9.82C1.79158 9.82076 1.92205 9.79554 2.04388 9.74578C2.16572 9.69601 2.27652 9.62269 2.36996 9.53L5.36996 6.53L8.36996 9.53C8.55827 9.71698 8.81313 9.8215 9.07849 9.82056C9.34385 9.81962 9.598 9.71331 9.78497 9.525C9.97195 9.3367 10.0765 9.08183 10.0755 8.81647C10.0746 8.55111 9.96827 8.29698 9.77997 8.11L6.77997 5.11Z"
+            fill="#939AA7"
+          />
+        </svg>
+      </button>
+      <h3
+        class="bef bef-pb-1rem bef-pt-2rem texAli-center bef-mx-auto bef-color-novo"
+      >
+        REFERENCIAS
+      </h3>
+      <p class="bef bef-color-novo bef-px-2rem bef-pb-2rem">
+        <b>1.</b> Campos-Nonato, I. G.-V.-B.-S. (2023). Prevalencia de obesidad
+        y factores de riesgo asociados en adultos mexicanos: resultados de la
+        Ensanut 2022. Salud Publica Mex., S238-S247.
+        https://doi.org/10.21149/14809. <b>2.</b> Costos unitarios IMSS. (08 de
+        2023). Costos Unitarios por Nivel de Atención Médica. Obtenido de DOF -
+        Diario Oficial de la Federación. <b>3.</b> Garvey WT. New Horizons. A
+        New Paradigm for Treating to Target with Second-Generation Obesity
+        Medications. J Clin Endocrinol Metab. 2022 Mar 24;107(4):e1339-e1347.
+        <b>4.</b> Jensen MD, Ryan DH, Apovian CM, Ard JD, Comuzzie AG, Donato
+        KA, Hu FB, Hubbard VS, Jakicic JM, Kushner RF, Loria CM, Millen BE,
+        Nonas CA, Pi-Sunyer FX, Stevens J, Stevens VJ, Wadden TA, Wolfe BM,
+        Yanovski SZ, Jordan HS, Kendall KA, Lux LJ, Mentor-Marcel R, Morgan LC,
+        Trisolini MG, Wnek J, Anderson JL, Halperin JL, Albert NM, Bozkurt B,
+        Brindis RG, Curtis LH, DeMets D, Hochman JS, Kovacs RJ, Ohman EM,
+        Pressler SJ, Sellke FW, Shen WK, Smith SC Jr, Tomaselli GF; American
+        College of Cardiology/American Heart Association Task Force on Practice
+        Guidelines; Obesity Society. 2013 AHA/ACC/TOS guideline for the
+        management of overweight and obesity in adults: a report of the American
+        College of Cardiology/American Heart Association Task Force on Practice
+        Guidelines and The Obesity Society. Circulation. 2014 Jun 24;129(25
+        Suppl 2):S102-38. doi: 10.1161/01.cir.0000437739.71477.ee. Epub 2013 Nov
+        12. Erratum in: Circulation. 2014 Jun 24;129(25 Suppl 2):S139-40. PMID:
+        24222017; PMCID: PMC5819889. <b>5.</b> Valenzuela PL, Carrera-Bastos P,
+        Castillo-García A, Lieberman DE, Santos-Lozano A, Lucia A. Obesity and
+        the risk of cardiometabolic diseases. Nat Rev Cardiol. 2023
+        Jul;20(7):475-494. doi: 10.1038/s41569-023-00847-5. Epub 2023 Mar 16.
+        PMID: 36927772. <b>6.</b> Johnson WD, Brashear MM, Gupta AK, Rood JC,
+        Ryan DH. Incremental weight loss improves cardiometabolic risk in
+        extremely obese adults. Am J Med 2011;124:931-938. <b>7.</b> Pi-Sunyer,
+        X. A.-R.-O.-1. (2015). A Randomized, Controlled Trial of 3.0 mg of
+        Liraglutide in Weight Management. N Engl J Med., 11-22. doi:
+        10.1056/NEJMoa1411892. <b>8.</b> Novo Nordisk (2023). Estudio de
+        Evaluación Económica de liraglutida 3.0 mg para pacientes con obesidad.
+      </p>
+    </div>
+  </div>
+  }
 </main>
