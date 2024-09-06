@@ -23,9 +23,9 @@ export class TreatmentCostComponent {
   @Input() unitCost: number = 2325;
   @Input() anualCost: number = 45208.33;
   public filledClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center  bef-bsb-solid bef-bcb-yell bef-rt-0_5px bef-bg-white bef-ms-1rem bef-wmn-5rem bef-w-80per bef-wmx-10rem bef-h-2_7rem bef-p-0_5rem';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bwb-3px bef-bcb-yell bef-rt-0_5px bef-bg-white bef-ms-1rem bef-wmn-5rem bef-w-80per bef-wmx-10rem bef-h-2_7rem bef-p-0_5rem';
   public emptyClasses: string =
-    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-yell bef-rt-0_5px bef-bg-white bef-ms-1rem bef-wmn-5rem bef-w-80per bef-wmx-10rem bef-h-2_7rem bef-p-0_5rem';
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bwb-3px bef-bcb-yell bef-rt-0_5px bef-bg-white bef-ms-1rem bef-wmn-5rem bef-w-80per bef-wmx-10rem bef-h-2_7rem bef-p-0_5rem';
   public thermo1: string = this._sharedService.getHtml('thermo1');
   public thermo2: string = this._sharedService.getHtml('thermo2');
   public arrowRight = this._sharedService.getHtml('arrowRight');
