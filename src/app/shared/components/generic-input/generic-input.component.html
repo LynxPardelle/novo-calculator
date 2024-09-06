@@ -45,6 +45,7 @@
     <mat-select
       [(ngModel)]="thingFather[thing]"
       (ngModelChange)="writtingInInput($event)"
+      [disabled]="disabled || readonly"
       name="{{ thing }}"
       value="{{ thingFather[thing] }}"
     >

@@ -54,7 +54,9 @@
         <generic-input
           class="bef bef-w-100per"
           [type]="'checkbox'"
-          [buttonClasses]="'bef bef-bw-0 bef-h-auto bef-w-197px bef-m-0_3rem'"
+          [disabled]="!needsComorbidities"
+          [buttonClasses]="'bef bef-bw-0 bef-w-197px bef-m-0_3rem'"
+          [disabledClassButton]="'bef bef-bw-0 bef-w-197px bef-m-0_3rem'"
           [checkBoxTrueClasses]="trueColors"
           [checkBoxFalseClasses]="falseColors"
           [thingFather]="comorbidities"

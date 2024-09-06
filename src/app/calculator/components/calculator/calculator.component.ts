@@ -21,12 +21,12 @@ import { TObesityDegrees } from '../../types/obesityDegrees.type';
 import { TComorbidity, TConfig } from '../../types/config.type';
 import { TComorbidities } from '../../types/comorbidities.type';
 import { TCalculatorData } from '../../types/calculatorData.type';
-import { TObesityDegreesNames } from '../../types/obesityDegreesNames.type';
 import { ArchieveGoalPatientsComponent } from '../archieve-goal-patients/archieve-goal-patients.component';
 import { LiraglutideCostComponent } from '../liraglutide-cost/liraglutide-cost.component';
 import { TLifeStyleModifications } from '../../types/lifeStyleModifications';
 import { TInstitution } from '../../types/institution.type';
 import { CalculatorService } from '../../services/calculator.service';
+import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 
 @Component({
   selector: 'app-calculator',
@@ -48,12 +48,18 @@ import { CalculatorService } from '../../services/calculator.service';
     PatientsComponent,
     SafeHtmlPipe,
   ],
+  providers: [
+    CalculatorService,
+    SharedService,
+    NgxBootstrapExpandedFeaturesService,
+  ],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss',
 })
 export class CalculatorComponent implements OnInit, OnChanges {
   constructor(
     private _sharedService: SharedService,
+    private _bef: NgxBootstrapExpandedFeaturesService,
     private _calculatorService: CalculatorService
   ) {}
   get config() {
@@ -64,6 +70,8 @@ export class CalculatorComponent implements OnInit, OnChanges {
   }
 
   public arrowLeft = this._sharedService.getHtml('arrowLeft');
+
+  public showPopUp1: boolean = false;
 
   ngOnInit(): void {
     this.percentageCalculation();
@@ -215,12 +223,30 @@ export class CalculatorComponent implements OnInit, OnChanges {
         return 100;
       }
     });
-    percentage = percentage.every((p) => p === 100)
+    this.calculatorData.comorbiditiesPatientsPercentage = percentage.every(
+      (p) => p === 100
+    )
       ? 0
       : percentage.reduce((a, b) => a * b) / 10000;
-    this.calculatorData.comorbiditiesPatientsPercentage = percentage;
+    let patientsPercentageDegree1: number = !!this.calculatorData.obesityDegrees
+      .grade1
+      ? this.calculatorData.patients *
+        (this.config.percentageObesityDegreeI / 100)
+      : 0;
+    let patientsPercentageDegree2: number = !!this.calculatorData.obesityDegrees
+      .grade2
+      ? this.calculatorData.patients *
+        (this.config.percentageObesityDegreeII / 100)
+      : 0;
+    let patientsPercentageDegree3: number = !!this.calculatorData.obesityDegrees
+      .grade3
+      ? this.calculatorData.patients *
+        (this.config.percentageObesityDegreeIII / 100)
+      : 0;
     this.calculatorData.comorbiditiesPatients =
-      this.calculatorData.patients * (percentage / 100);
+      patientsPercentageDegree1 * (percentage[0] / 100) +
+      patientsPercentageDegree2 * (percentage[1] / 100) +
+      patientsPercentageDegree3 * (percentage[2] / 100);
     this.calculatorData.populationTotal =
       this.calculatorData.comorbiditiesPatients;
     this.treatmentGoalToChange();
@@ -270,10 +296,10 @@ export class CalculatorComponent implements OnInit, OnChanges {
   }
   /* Archive-Goal-Patients */
   selectTreatmentGoalPercentage(event: any) {
-    this.calculatorData.treatmentGoalPercentage = parseInt(event.percentage) as
-      | 5
-      | 10
-      | 15;
+    console.log('event', event);
+    this.calculatorData.treatmentGoalPercentage = parseInt(
+      event.treatmentGoalPercentage
+    ) as 5 | 10 | 15;
     console.log(
       'calculatorData.treatmentGoalPercentage',
       this.calculatorData.treatmentGoalPercentage
@@ -316,5 +342,11 @@ export class CalculatorComponent implements OnInit, OnChanges {
     this.calculatorData.dontArchiveGoalWithLiraglutidePercentage =
       this.calculatorData.dontArchiveGoalWithLiraglutide / populationTotal;
     this.setCalculatorData();
+  }
+
+  cssCreate() {
+    setTimeout(() => {
+      this._bef.cssCreate();
+    }, 100);
   }
 }

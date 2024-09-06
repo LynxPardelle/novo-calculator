@@ -1,4 +1,4 @@
-<section class="bef bef-mb-2rem bef-p-1rem">
+<section class="bef bef-position-relative bef-pb-2rem bef-p-1rem">
   <h2
     class="bef bef-d-flex jusCon-center bef-w-100per bef-color-novo bef-fs-20px bef-fontWeight-700 bef-pt-1rem bef-mb-2rem bef-h-auto"
   >
@@ -9,7 +9,9 @@
       @for(tab of tabs; track tab; let i = $index) {
       <mat-tab label="{{ tab.title }}">
         <div class="bef bef-d-flex fleDir-column aliIte-center">
-          <h3 class="bef bef-d-flex jusCon-center bef-w-100per bef-color-novo bef-fs-18px">
+          <h3
+            class="bef bef-d-flex jusCon-center bef-w-100per bef-color-novo bef-fs-18px"
+          >
             {{ tab.title }}
           </h3>
           <div class="bef bef-d-flex fleDir-row jusCon-center">
@@ -17,8 +19,12 @@
               id="{{ i }}"
               [type]="'number'"
               [labelTitle]="tab.inputLable"
-              [labelClasses]="'bef bef-color-disk bef-fs-16px bef-fontWeight-700 texAli-center'"
-              [inputClasses]="'bef bef-fs-18px bef-fontWeight-700 bef-color-novo texAli-center'"
+              [labelClasses]="
+                'bef bef-color-disk bef-fs-16px bef-fontWeight-700 texAli-center'
+              "
+              [inputClasses]="
+                'bef bef-fs-18px bef-fontWeight-700 bef-color-novo texAli-center'
+              "
               [thingFather]="{
                 months:
                   tab.type === 'nutrition'
@@ -40,9 +46,13 @@
             <div class="bef bef-w-3rem"></div>
             <generic-span
               [title]="'Costo Unitario'"
-              [titleClasses]="'bef bef-p-0_2rem bef-fontWeight-700 bef-color-disk '"
+              [titleClasses]="
+                'bef bef-p-0_2rem bef-fontWeight-700 bef-color-disk '
+              "
               [info]="tab.spanNumber | currency"
-              [textClasses]="'bef bef-m-0 bef-fs-18px bef-fontWeight-700 bef-color-novo texAli-center'"
+              [textClasses]="
+                'bef bef-m-0 bef-fs-18px bef-fontWeight-700 bef-color-novo texAli-center'
+              "
               [filledClasses]="
                 'bef  bef-d-flex fleDir-column jusCon-center aliIte-center bef-borderBottom-0_25rem__solid__novo bef-rt-0_5px bef-bg-white bef-w-12rem bef-h-3_5rem bef-px-0_5rem'
               "
@@ -62,7 +72,9 @@
       [titleClasses]="
         'bef bef-color-disk bef-fs-14px bef-fontWeight-700 texAli-center '
       "
-      [textClasses]="'bef bef-color-novo bef-m-0 bef-fs-18px bef-fontWeight-700 texAli-center bef-mt-16px bef-pt-4px'"
+      [textClasses]="
+        'bef bef-color-novo bef-m-0 bef-fs-18px bef-fontWeight-700 texAli-center bef-mt-16px bef-pt-4px'
+      "
       [info]="totalAnualCost | currency"
       [filledClasses]="
         'bef bef-d-flex jusCon-center aliIte-center bef-borderBottom-0_25rem__solid__oranvo bef-rt-0_5px bef-bg-white bef-w-11_7rem bef-h-3rem bef-p-0_5rem'
@@ -77,7 +89,9 @@
       [titleClasses]="
         'bef bef-color-disk bef-fs-14px bef-fontWeight-700 texAli-center '
       "
-      [textClasses]="'bef bef-color-novo bef-m-0 bef-fs-18px bef-fontWeight-700 texAli-center bef-mt-4px'"
+      [textClasses]="
+        'bef bef-color-novo bef-m-0 bef-fs-18px bef-fontWeight-700 texAli-center bef-mt-4px'
+      "
       [info]="totalAnualCostPlusLiraglutide | currency"
       [filledClasses]="
         'bef-d-flex jusCon-center aliIte-center bef-borderBottom-0_25rem__solid__oranvo bef-rt-0_5px bef-bg-white bef-w-11_7rem bef-h-3rem bef-p-0_5rem'
@@ -113,12 +127,8 @@
   </ngx-charts-bar-vertical>
   }
   <div
-    class="bef bef-d-flex jusCon-fleEnd aliIte-center bef-mt-MIN340px bef-me-MIN190px bef-mb-100px"
-  >
-    <div
-      class="bef bef-w-180px bef-d-inline"
-      [innerHTML]="person | safeHtml"
-    ></div>
-  </div>
+    class="bef bef-w-136px bef-d-block bef-position-absolute bef-top-calcSD104px__PLUS__3remED bef-end-MIN150px"
+    [innerHTML]="person | safeHtml"
+  ></div>
+  <hr class="bef bef-border-1px__solid__white bef-w-80per bef-mt-1rem" />
 </section>
-<hr class="bef bef-border-1px__solid__white bef-w-80per bef-mt-10rem bef-mb-4rem">

@@ -34,11 +34,11 @@ export class LiraglutideAndLifestyleModificationComponent
   @Input() dontArchiveGoal: number = 13.93;
   public liraglutideAndLifeStyleModificationResults: any[] = [];
   public lifeStyleModificationResults: any[] = [];
-  public view: [number, number] = [300, 300];
+  public view: [number, number] = [150, 150];
 
   // options
   public gradient: boolean = true;
-  public showLegend: boolean = true;
+  public showLegend: boolean = false;
   public legendTitle: string = '';
   public showLabels: boolean = false;
   public isDoughnut: boolean = false;

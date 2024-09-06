@@ -1,8 +1,12 @@
 <main>
-  <div class="bef bef-display-block bef-position-absolute bef-transform-scaleXSDMIN1ED">
-    <img src="../../../../assets/img/Novo-Nordisk_Signin.jpg" alt="">
-  </div>
-  <div class="bef bef-p-2rem bef-bg-nord bef-h-100per bef-w-83vw bef-pb-5rem bef-position-relative">
+  <img
+    class="bef bef-display-block bef-transform-scaleXSDMIN1ED"
+    src="./assets/img/Novo-Nordisk_Signin.jpg"
+    alt="BG"
+  />
+  <div
+    class="bef bef-px-2rem bef-pt-1_5rem bef-mt-MIN100_5vh bef-bg-nord bef-w-83vw bef-position-relative"
+  >
     <!--   <a
       class="bef bef-color-novo bef-px-1rem bef-textDecoration-none bef-d-flex aliIte-center jusCon-fleStart jusSel-start aliSel-start"
       href="/"
@@ -110,28 +114,73 @@
     >
       BENEFICIOS DE LA INVERSIÓN EN LIRAGLUTIDA 3.0 MG EN UN AÑO DE TRATAMIENTO
     </h2>
-    <generic-input
-      type="select"
-      class="bef bef-d-flex jusCon-center aliIte-center"
-      [containerClasses]="'bef bef-w-80per bef-mt-2rem'"
-      [labelTitle]="
-        calculatorData.treatmentGoalPercentage === 5
-          ? 'Pérdida de Peso > 5%'
-          : calculatorData.treatmentGoalPercentage === 10
-          ? 'Pérdida de Peso > 10%'
-          : calculatorData.treatmentGoalPercentage === 15
-          ? 'Pérdida de Peso > 15%'
-          : 'Meta de Tratamiento'
-      "
-      [thingFather]="{ percentage: calculatorData.treatmentGoalPercentage }"
-      [thing]="'treatmentGoalPercentage'"
-      (changesInput)="selectTreatmentGoalPercentage($event)"
-      [options]="[
-        { type: 'option', option: 'Pérdida de Peso > 5%', click: '5' },
-        { type: 'option', option: 'Pérdida de Peso > 10%', click: '10' },
-        { type: 'option', option: 'Pérdida de Peso > 15%', click: '15' }
-      ]"
-    ></generic-input>
+    <div
+      class="bef bef-position-relative bef-d-flex jusCon-center aliIte-center bef-gap-1rem"
+    >
+      <p class="bef bef-color-novo bef-fontWeight-BOLD">Meta terapéutica:</p>
+      <generic-input
+        type="select"
+        class="bef bef-d-flex jusCon-center aliIte-center"
+        [containerClasses]="'bef bef-w-80per bef-mt-2rem'"
+        [labelTitle]="
+          calculatorData.treatmentGoalPercentage === 5
+            ? 'Pérdida de Peso > 5%'
+            : calculatorData.treatmentGoalPercentage === 10
+            ? 'Pérdida de Peso > 10%'
+            : calculatorData.treatmentGoalPercentage === 15
+            ? 'Pérdida de Peso > 15%'
+            : 'Meta de Tratamiento'
+        "
+        [disabled]="true"
+        [thingFather]="{
+          treatmentGoalPercentage: calculatorData.treatmentGoalPercentage + ''
+        }"
+        [thing]="'treatmentGoalPercentage'"
+        (changesInput)="selectTreatmentGoalPercentage($event)"
+        [options]="[
+          { type: 'option', option: 'Pérdida de Peso > 5%', click: '5' },
+          { type: 'option', option: 'Pérdida de Peso > 10%', click: '10' },
+          { type: 'option', option: 'Pérdida de Peso > 15%', click: '15' }
+        ]"
+        (click)="showPopUp1 = !showPopUp1; cssCreate()"
+      ></generic-input>
+      @if (!!showPopUp1) {
+      <div class="bef bef-position-absolute bef-top-0 bef-end-MIN130px">
+        <div
+          class="bef bef-position-relative bef-w-308px bef-h-143px bef-r-0_5rem bef-py-1rem bef-px-2rem bef-bg-nord__OPA__0_5 mat-elevation-z4 bef-color-novo"
+        >
+          <button
+            class="bef bef-position-absolute bef-top-0_5rem bef-end-0_5rem bef-p-0 bef-r-100per bef-btn-nord mat-elevation-z2 bef-w-24px bef-h-24px bef-color-disk bef-fontWeight-BOLD"
+            (click)="showPopUp1 = false"
+          >
+            <svg
+              width="11"
+              height="10"
+              viewBox="0 0 11 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.77997 5.11L9.77997 2.11C9.94379 1.9187 10.0294 1.67263 10.0197 1.42095C10.01 1.16927 9.90563 0.930535 9.72754 0.75244C9.54944 0.574346 9.3107 0.470014 9.05902 0.460293C8.80735 0.450572 8.56127 0.536177 8.36996 0.700004L5.36996 3.7L2.36996 0.700004C2.277 0.606275 2.16641 0.531881 2.04456 0.481112C1.9227 0.430344 1.79199 0.404205 1.65997 0.404205C1.52796 0.404205 1.39725 0.430344 1.27539 0.481112C1.15353 0.531881 1.04294 0.606275 0.949982 0.700004C0.763731 0.887366 0.65918 1.14082 0.65918 1.405C0.65918 1.66919 0.763731 1.92264 0.949982 2.11L3.94998 5.11L0.949982 8.11C0.856253 8.20297 0.781848 8.31357 0.731079 8.43543C0.68031 8.55729 0.654175 8.68799 0.654175 8.82C0.654175 8.95201 0.68031 9.08272 0.731079 9.20458C0.781848 9.32644 0.856253 9.43704 0.949982 9.53C1.04342 9.62269 1.15422 9.69601 1.27606 9.74578C1.3979 9.79554 1.52837 9.82076 1.65997 9.82C1.79158 9.82076 1.92205 9.79554 2.04388 9.74578C2.16572 9.69601 2.27652 9.62269 2.36996 9.53L5.36996 6.53L8.36996 9.53C8.55827 9.71698 8.81313 9.8215 9.07849 9.82056C9.34385 9.81962 9.598 9.71331 9.78497 9.525C9.97195 9.3367 10.0765 9.08183 10.0755 8.81647C10.0746 8.55111 9.96827 8.29698 9.77997 8.11L6.77997 5.11Z"
+                fill="#939AA7"
+              />
+            </svg>
+          </button>
+          <p class="bef bef-my-0_5rem">
+            Una pérdida de peso ≥5% del peso basal mejora<br />el control
+            metabólico y reduce la mortalidad:
+            <sup> 3-6 </sup>
+          </p>
+          <ul class="bef bef-listStyle-disc__inside bef-ps-1rem">
+            <li><b>Mejora</b> cifras de tensión arterial sistólica</li>
+            <li><b>Mejora</b> el perfil lipídico</li>
+            <li><b>Reduce</b> el riesgo de diabetes</li>
+            <li><b>Reduce</b> la mortalidad cardiovascular</li>
+          </ul>
+        </div>
+      </div>
+      }
+    </div>
 
     <liraglutide-and-lifestyle-modification
       [times]="calculatorData.moreTimes"
@@ -157,5 +206,47 @@
     </h2>
     <patients> </patients>
     }
+    <div class="bef bef-position-relative">
+      <svg
+        class="bef bef-position-absolute bef-bottom-1rem bef-end-MIN12vw"
+        width="40"
+        height="47"
+        viewBox="0 0 40 47"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M32.1801 37.14H32.4601V41.7999C32.4601 42.3699 32.7801 42.6799 33.4601 42.7999V43.0499H29.6401V42.7999C29.9375 42.77 30.221 42.6593 30.4601 42.4799C30.6139 42.2579 30.6847 41.9888 30.66 41.7199V38.7199C30.6833 38.4604 30.6044 38.2021 30.4401 37.9999C30.1843 37.8165 29.8837 37.7061 29.5701 37.6801V37.4201L32.1801 37.14ZM30.5001 34.58C30.4986 34.4503 30.5246 34.3219 30.5763 34.203C30.628 34.0841 30.7042 33.9774 30.8 33.89C31.0075 33.7016 31.28 33.6012 31.5601 33.61C31.6943 33.6052 31.8281 33.6276 31.9536 33.6757C32.079 33.7238 32.1934 33.7967 32.29 33.89C32.3882 33.9773 32.4667 34.0842 32.5205 34.204C32.5743 34.3238 32.6021 34.4535 32.6021 34.5849C32.6021 34.7162 32.5743 34.8462 32.5205 34.966C32.4667 35.0857 32.3882 35.1927 32.29 35.2799C32.1942 35.375 32.0802 35.4498 31.9547 35.4997C31.8293 35.5495 31.695 35.5734 31.5601 35.57C31.2788 35.575 31.0065 35.471 30.8 35.2799C30.6116 35.0953 30.5038 34.8437 30.5001 34.58Z"
+          fill="white"
+        />
+        <path
+          d="M34.1501 29.97V9.66016H32.8101V29.6602C33.2649 29.7242 33.7133 29.8278 34.1501 29.97Z"
+          fill="white"
+        />
+        <path
+          d="M22.8401 39.73H3.92004C3.44531 39.73 2.99005 39.5415 2.65436 39.2058C2.31867 38.8701 2.13007 38.4149 2.13007 37.9402V3.22998C2.13007 2.75524 2.31867 2.30005 2.65436 1.96436C2.99005 1.62867 3.44531 1.44019 3.92004 1.44019H25.1901V0.98999H24.66V0.100098H3.92004C3.09073 0.102735 2.29613 0.433357 1.70972 1.01978C1.1233 1.60619 0.792676 2.40066 0.790039 3.22998V37.9402C0.792676 38.7695 1.1233 39.564 1.70972 40.1504C2.29613 40.7368 3.09073 41.0674 3.92004 41.0701H23.17C23.0259 40.6325 22.9156 40.1844 22.8401 39.73Z"
+          fill="white"
+        />
+        <path
+          d="M31.49 46.0802C30.459 46.0819 29.4384 45.8742 28.49 45.4701C27.5689 45.0782 26.7308 44.515 26.02 43.8101C25.3109 43.1029 24.747 42.2639 24.36 41.3402C23.9628 40.3899 23.7583 39.3701 23.7583 38.3402C23.7583 37.3102 23.9628 36.2905 24.36 35.3402C24.747 34.4165 25.3109 33.5774 26.02 32.8702C26.7308 32.1654 27.5689 31.6019 28.49 31.21C29.5498 30.763 30.6957 30.5573 31.8448 30.6075C32.9939 30.6578 34.1174 30.963 35.1342 31.5008C36.1509 32.0386 37.0353 32.7955 37.7235 33.7171C38.4117 34.6387 38.8864 35.7018 39.1133 36.8294C39.3402 37.957 39.3136 39.1211 39.0354 40.2371C38.7572 41.3532 38.2344 42.3934 37.5048 43.2826C36.7752 44.1717 35.857 44.8875 34.8168 45.3783C33.7765 45.869 32.6402 46.1225 31.49 46.1202V46.0802ZM31.49 31.5301C30.1471 31.5301 28.8343 31.9283 27.7177 32.6744C26.601 33.4205 25.7308 34.4811 25.2169 35.7218C24.7029 36.9625 24.5685 38.3277 24.8304 39.6449C25.0924 40.962 25.7391 42.1718 26.6887 43.1214C27.6383 44.071 28.8482 44.7176 30.1653 44.9796C31.4825 45.2416 32.8477 45.1073 34.0884 44.5933C35.3292 44.0794 36.3896 43.209 37.1357 42.0924C37.8818 40.9758 38.28 39.6631 38.28 38.3202C38.2668 36.528 37.5456 34.8137 36.2737 33.5511C35.0017 32.2885 33.2822 31.5801 31.49 31.5802V31.5301Z"
+          fill="white"
+        />
+        <path
+          d="M33.4101 8.32016C34.6901 9.59016 34.2601 10.5801 32.4601 10.5101L27.3401 10.3102C26.4521 10.26 25.6135 9.88466 24.9846 9.25571C24.3556 8.62676 23.9803 7.78829 23.9301 6.90024L23.7301 1.79013C23.6601 -0.0198694 24.6501 -0.44987 25.9301 0.79013L33.4101 8.32016Z"
+          fill="white"
+        />
+        <path
+          d="M22.7701 5.31006H5.94006V7.01001H22.7701V5.31006Z"
+          fill="white"
+        />
+        <path
+          d="M22.7701 12.1902H5.94006V13.8901H22.7701V12.1902Z"
+          fill="white"
+        />
+        <path d="M30.23 19.0701H5.94006V20.77H30.23V19.0701Z" fill="white" />
+        <path d="M30.23 25.96H5.94006V27.6602H30.23V25.96Z" fill="white" />
+        <path d="M17.36 32.8401H5.94006V34.54H17.36V32.8401Z" fill="white" />
+      </svg>
+    </div>
   </div>
 </main>

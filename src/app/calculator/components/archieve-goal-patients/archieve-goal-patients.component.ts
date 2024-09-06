@@ -35,8 +35,8 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
 
   public barCombo = {
     bars: [
-      'bef-transformSEL__gFirstChildCHILD_textDataLabel-translateSD0__COM__MIN25pxED',
-      'bef-transformSEL__gLastChildCHILD_textDataLabel-translateSDMIN100px__COM__MIN25pxED',
+      'bef-transformSEL__gFirstChildCHILD_textDataLabel-translateSD20px__COM__MIN12_5pxED',
+      'bef-transformSEL__gLastChildCHILD_textDataLabel-translateSDMIN80px__COM__MIN12_5pxED',
       'bef-fsSEL___textDataLabel-18px',
       'bef-fontWeightSEL___textDataLabel-BOLD',
       'bef-fillSEL___textDataLabel-doranvo',
@@ -53,7 +53,7 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
       'bef-topSEL___textDataLabelAfter-0px',
       'bef-borderSEL___textDataLabelAfter-3px__solid__doranvo', */
 
-      'bef-positionSEL__g__g__g__g-relative',
+      /* 'bef-positionSEL__g__g__g__g-relative',
       'bef-strokeWidthSEL__g__g__g__g__path-2px',
       'bef-strokeLinejoinSEL__g__g__g__g__path-round',
       'bef-strokeCapjoinSEL__g__g__g__g__path-round',
@@ -62,8 +62,9 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
       'bef-strokeDasharraySEL__g__g__g__gLastChild__path-205__10',
       'bef-strokeDashoffsetSEL__g__g__g__gLastChild__path-MIN5',
       'bef-strokeSEL__g__g__g__gFirstChild__path-novo',
-      'bef-transformSEL__g__g__g__gFirstChild__path-translateSD50pxED',
       'bef-strokeSEL__g__g__g__gLastChild__path-doranvo',
+      */
+      'bef-transformSEL__g__g__g__gFirstChild__path-translateSD50pxED',
       'bef-transformSEL__g__g__g__gLastChild__path-translateSDMIN50pxED',
       /* 'bef-positionSEL__g__g__g__gAfter-absolute',
       'bef-widthSEL__g__g__g__gAfter-100per',
@@ -77,7 +78,7 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
   };
 
   public multi: any[] = [];
-  public view: [number, number] = [500, 500];
+  public view: [number, number] = [500, 350];
 
   // options
   public showXAxis: boolean = false;
@@ -143,11 +144,11 @@ export class ArchieveGoalPatientsComponent implements OnChanges, OnInit {
     this.multi = [
       {
         name: 'Modificación de estilo de vida',
-        value: this.lifeStyleModification,
+        value: parseInt(this.lifeStyleModification + ''),
       },
       {
         name: 'Liraglutida + modificación de estilo de vida',
-        value: this.liraglutideNLifeStyleModification,
+        value: parseInt(this.liraglutideNLifeStyleModification + ''),
       },
     ];
     this.configYScaleMax();

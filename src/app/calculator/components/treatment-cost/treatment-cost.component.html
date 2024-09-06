@@ -1,69 +1,134 @@
 <section>
-  <div
-    class="bef bef-mb-2rem bef-d-flex fleDir-column bef-w-auto bef-p-1rem"
-  >
+  <div class="bef bef-mb-2rem bef-d-flex fleDir-column bef-w-auto bef-p-1rem">
     <h2
-      class="bef bef-d-flex jusCon-center bef-w-100per bef-fs-20px bef-color-novo bef-fontWeight-700 bef-pt-1rem bef-me-1rem bef-mb-0 bef-h-auto"
+      class="bef bef-d-flex jusCon-center bef-w-100per bef-fs-20px bef-color-novo bef-fontWeight-700 bef-pt-1rem bef-me-1rem bef-mb-0"
     >
       COSTO DE TRATAMIENTO CON LIRAGLUTIDA 3.0 MG
     </h2>
 
-    <div class="bef bef-d-flex aliIte-center bef-p-1rem fleDir-row ">
+    <div class="bef bef-d-flex aliIte-center bef-p-1rem fleDir-row">
       @for(semana of semanas; track semanas; let i = $index){
 
-        <div class="bef bef-position-relative">
-          <h5 style="position: absolute; top: -38px; left: 33px; z-index: 1; font-size: 16px; color:#001965;">{{semana.semana}}</h5>
-          <svg width="108" height="29" viewBox="0 0 108 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: -15px; left: 13px;">
-            <path d="M96.08 0.929932H0.380005L11.74 14.8298L0.380005 28.7198H96.08L107.44 14.8298L96.08 0.929932Z" fill="#DFE1E4"/>
-            </svg>
-          <svg width="144" height="60" viewBox="0 0 144 60" fill="none" xmlns="http://www.w3.org/2000/svg" >
-            <path d="M128.03 0.939819H0.690063L15.8101 30.0999L0.690063 59.2699H128.03L143.15 30.0999L128.03 0.939819Z" fill="#4096D3"/>
-            </svg>
-          <h5 class="bef bef-m-0 bef-mt-MIN40px bef-ms-35px bef-color-novo bef-fs-16px">{{semana.dosis}}</h5>
-
-        </div>
-
+      <div class="bef bef-position-relative">
+        <h5
+          style="
+            position: absolute;
+            top: -38px;
+            left: 33px;
+            z-index: 1;
+            font-size: 16px;
+            color: #001965;
+          "
+        >
+          {{ semana.semana }}
+        </h5>
+        <svg
+          width="108"
+          height="29"
+          viewBox="0 0 108 29"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="position: absolute; top: -15px; left: 13px"
+        >
+          <path
+            d="M96.08 0.929932H0.380005L11.74 14.8298L0.380005 28.7198H96.08L107.44 14.8298L96.08 0.929932Z"
+            fill="#DFE1E4"
+          />
+        </svg>
+        <svg
+          width="144"
+          height="60"
+          viewBox="0 0 144 60"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128.03 0.939819H0.690063L15.8101 30.0999L0.690063 59.2699H128.03L143.15 30.0999L128.03 0.939819Z"
+            fill="#4096D3"
+          />
+        </svg>
+        <h5
+          class="bef bef-m-0 bef-mt-MIN40px bef-ms-35px bef-color-novo bef-fs-16px"
+        >
+          {{ semana.dosis }}
+        </h5>
+      </div>
 
       }
       <div class="bef bef-position-relative bef-mt-15px bef-ms-MIN10px">
-        <h5 style="position: absolute; top: -30px; left: 43px; z-index: 1; font-size: 16px; color:#001965;">Semana 5+</h5>
-        <svg width="108" height="29" viewBox="0 0 108 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: -6px; left: 28px;">
-          <path d="M96.08 0.929932H0.380005L11.74 14.8298L0.380005 28.7198H96.08L107.44 14.8298L96.08 0.929932Z" fill="#EBAC1F"/>
-          </svg>
-        <svg width="172" height="100" viewBox="0 0 172 84" fill="none" xmlns="http://www.w3.org/2000/svg" class="bef bef-me-20px">
-          <path d="M12.55 0.519897L27.67 29.6799L0.26001 83.1H144.5L171.91 29.6799L139.9 0.519897H12.55Z" fill="#001965"/>
-          </svg>
-          <h5 class="bef bef-color-white bef-m-0 bef-mt-MIN80px bef-ms-35px">3.0 mg al día <br> Dosis de <br> mantenimiento</h5>
+        <h5
+          style="
+            position: absolute;
+            top: -30px;
+            left: 43px;
+            z-index: 1;
+            font-size: 16px;
+            color: #001965;
+          "
+        >
+          Semana 5+
+        </h5>
+        <svg
+          width="108"
+          height="29"
+          viewBox="0 0 108 29"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="position: absolute; top: -6px; left: 28px"
+        >
+          <path
+            d="M96.08 0.929932H0.380005L11.74 14.8298L0.380005 28.7198H96.08L107.44 14.8298L96.08 0.929932Z"
+            fill="#EBAC1F"
+          />
+        </svg>
+        <svg
+          width="172"
+          height="100"
+          viewBox="0 0 172 84"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="bef bef-me-20px"
+        >
+          <path
+            d="M12.55 0.519897L27.67 29.6799L0.26001 83.1H144.5L171.91 29.6799L139.9 0.519897H12.55Z"
+            fill="#001965"
+          />
+        </svg>
+        <h5 class="bef bef-color-white bef-m-0 bef-mt-MIN80px bef-ms-35px">
+          3.0 mg al día <br />
+          Dosis de <br />
+          mantenimiento
+        </h5>
       </div>
-
     </div>
-    <div class="bef bef-d-flex jusCon-center aliIte-stretch">
-
-    </div>
-    <div class="bef bef-w-100per bef-pe-0 ">
-
-      <div class="bef bef-d-flex fleDir-row bef-mt-15px jusCon-around aliIte-center bef-w-100per">
+    <div class="bef bef-d-flex jusCon-center aliIte-stretch"></div>
+    <div class="bef bef-w-100per bef-pe-0">
+      <div
+        class="bef bef-d-flex fleDir-row bef-mt-15px jusCon-around aliIte-center bef-w-100per"
+      >
         @if (institution === 'private') {
-          <div class="bef bef-d-flex fleDir-row jusCon-around aliIte-center">
-            <span>
-              <h4 class="bef bef-m-0 bef-color-novo">Costo unitario</h4>
-              <h5 class="bef bef-m-0 bef-color-novo">de tratamiento</h5>
-            </span>
-                    <generic-input
+        <div class="bef bef-d-flex fleDir-row jusCon-around aliIte-center">
+          <span>
+            <h4 class="bef bef-m-0 bef-color-novo">Costo unitario</h4>
+            <h5 class="bef bef-m-0 bef-color-novo">de tratamiento</h5>
+          </span>
+          <generic-input
             class="bef bef-d-flex jusCon-center aliIte-center bef-mt-1_7rem bef-w-220px bef-d-flex"
             [labelTitle]="''"
             [type]="'text'"
             [thingFather]="{ cost: unitCost | currency }"
             [thing]="'cost'"
             [labelClasses]="'bef '"
-            [inputClasses]="'bef texAli-center bef-fs-18px bef-fontWeight-700 bef-color-novo'"
+            [inputClasses]="
+              'bef texAli-center bef-fs-18px bef-fontWeight-700 bef-color-novo'
+            "
             [containerClasses]="
               ' bef-borderBottomSEL___matMINmdcMINtextMINfieldMINwrapper-0_22rem__solid__yell bef-pSEL___matMINmdcMINformMINfieldMINinfix-18px  bef-w-190px   bef-dSEL___mdcMINlineMINripple-none bef-transformSEL__label-translateYSDMIN110perED bef-bgSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-white bef-rtSEL___mdcMINtextMINfieldMINMINfilledDPSnotSD_mdcMINtextMINfieldMINMINdisabledED-0_5px'
             "
             (changesInput)="unitCostChange.emit($event.cost)"
-                    >
-                    </generic-input>
-          </div>
+          >
+          </generic-input>
+        </div>
         } @else{
         <generic-span
           class="bef bef-w-50per"
@@ -97,12 +162,7 @@
     </div>
   </div>
 </section>
-<div
-  class="bef bef-mt-MIN250px bef-ms-100per"
->
-  <div
-    class="bef bef-w-180px "
-    [innerHTML]="person | safeHtml"
-  ></div>
+<div class="bef bef-mt-MIN250px bef-ms-100per">
+  <div class="bef bef-w-180px" [innerHTML]="person | safeHtml"></div>
 </div>
-<hr class="bef bef-border-1px__solid__white bef-w-80per bef-mt-5rem">
+<hr class="bef bef-border-1px__solid__white bef-w-80per bef-mt-5rem" />
