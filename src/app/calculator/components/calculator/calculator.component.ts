@@ -72,6 +72,7 @@ export class CalculatorComponent implements OnInit, OnChanges {
   public arrowLeft = this._sharedService.getHtml('arrowLeft');
 
   public showPopUp1: boolean = false;
+  public showPopUp2: boolean = false;
 
   ngOnInit(): void {
     this.percentageCalculation();
