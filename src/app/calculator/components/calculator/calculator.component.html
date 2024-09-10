@@ -98,7 +98,7 @@
     calculatorData.liraglutideNLifeStyleModification) {
 
     <h2
-      class="bef bef-color-novo texAli-center bef-fs-20px bef-fontWeight-700 bef-pt-1rem bef-mb-0 worBre-breakWord"
+      class="bef bef-color-novo texAli-center bef-fs-20px bef-fontWeight-700 bef-mb-3rem worBre-breakWord"
     >
       BENEFICIOS DE LA INVERSIÓN EN LIRAGLUTIDA 3.0 MG EN UN AÑO DE TRATAMIENTO
     </h2>
@@ -140,16 +140,17 @@
           'bef bef-color-disk bef-w-190px bef-fs-18px bef-fontWeight-700 bef-p-1rem bef-textAlign-center'
         "
         [info]="'Pérdida de Peso > ' + calculatorData.treatmentGoalPercentage"
+        (click)="  cssCreate(); showPopUp1 = !showPopUp1;"
       >
       </generic-span>
       @if (!!showPopUp1) {
-      <div class="bef bef-position-absolute bef-top-0 bef-end-MIN130px">
+      <div class="bef bef-position-absolute bef-top-MIN2_6rem bef-end-MIN140px ">
         <div
-          class="bef bef-position-relative bef-w-308px bef-h-143px bef-r-0_5rem bef-py-1rem bef-px-2rem bef-bg-nord__OPA__0_5 mat-elevation-z4 bef-color-novo"
+          class="bef bef-position-relative bef-bs-solid bef-bw-2px bef-bc-white__OPA__0_5 bef-w-308px bef-h-149px bef-r-0_5rem bef-py-1rem bef-px-2rem bef-bg-nord__OPA__0_5 mat-elevation-z4 bef-color-novo"
         >
           <button
             class="bef bef-position-absolute bef-top-0_5rem bef-end-0_5rem bef-p-0 bef-r-100per bef-btn-nord mat-elevation-z2 bef-w-24px bef-h-24px bef-color-disk bef-fontWeight-BOLD"
-            (click)="showPopUp1 = false"
+            (click)="showPopUp1 = false;"
           >
             <svg
               width="11"
@@ -169,7 +170,7 @@
             metabólico y reduce la mortalidad:
             <sup> 3-6 </sup>
           </p>
-          <ul class="bef bef-listStyle-disc__inside bef-ps-1rem">
+          <ul class="bef bef-listStyle-disc__inside bef-ps-1rem bef-my-12px">
             <li><b>Mejora</b> cifras de tensión arterial sistólica</li>
             <li><b>Mejora</b> el perfil lipídico</li>
             <li><b>Reduce</b> el riesgo de diabetes</li>
