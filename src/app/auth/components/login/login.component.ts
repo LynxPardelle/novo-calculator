@@ -12,11 +12,13 @@ import { GenericButtonComponent } from '../../../shared/components/generic-butto
 import { ExistDirective } from '../../../shared/directives/exists.directive';
 /* Pipes */
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
+import { CalculatorService } from '../../../calculator/services/calculator.service';
+import { TInstitution } from '../../../calculator/types/institution.type';
 
 export type TLoginCredentials = {
   email: string;
   password: string;
-  institution: 'private' | 'public' | '';
+  institution: TInstitution;
   locked: boolean;
 };
 export type TLocks = {
@@ -49,7 +51,7 @@ export class LoginComponent implements OnInit {
   public loginCredentials: TLoginCredentials = {
     email: '',
     password: '',
-    institution: '',
+    institution: 'public',
     locked: true,
   };
   public lockeds: TLocks = {
@@ -67,8 +69,12 @@ export class LoginComponent implements OnInit {
   constructor(
     private _router: Router,
     private _sharedService: SharedService,
-    private _bef: NgxBootstrapExpandedFeaturesService
+    private _bef: NgxBootstrapExpandedFeaturesService,
+    private _calculatorService: CalculatorService
   ) {}
+  get calculatorData() {
+    return this._calculatorService.calculatorData$();
+  }
 
   ngOnInit(): void {
     this.cssCreate();
@@ -82,6 +88,10 @@ export class LoginComponent implements OnInit {
         this.loginCredentials.email === 'demo' &&
         this.loginCredentials.password === 'test1'
       ) {
+        this.calculatorData.institution = this.loginCredentials.institution;
+        this._calculatorService.calculatorData$.set(
+          JSON.parse(JSON.stringify(this.calculatorData))
+        );
         this._router.navigate(['/calculator']);
       }
     } catch (error: unknown) {

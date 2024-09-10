@@ -5,7 +5,7 @@
     <generic-input
       type="select"
       [containerClasses]="
-        'bef bef-d-block bef-mx-auto bef-mt-0 bef-w-205px bef-bgSEL___matMINmdcMINtextMINfieldMINwrapper-nord'
+        'bef bef-d-block bef-mx-auto bef-mt-0 bef-w-205px bef-bgSEL___matMINmdcMINtextMINfieldMINwrapper-nord bef-textAlignSEL___matMINmdcMINselectMINvalueCOM___matMINmdcMINoption-center bef-mxSELCOM___matMINmdcMINoption__span-auto'
       "
       [labelTitle]="'Seleccionar el horizonte temporal'"
       [thingFather]="{ year: year }"
@@ -14,12 +14,12 @@
       [options]="yearOptions"
     ></generic-input>
     <h3
-      class="bef bef-fs-16px texAli-center bef-color-novo bef-mb-0 worBre-breakMINword"
+      class="bef bef-fontWeight-normal bef-fs-16px texAli-center bef-color-novo bef-mb-0 worBre-breakMINword"
     >
       Después de
-      <span
+      <b
         class="bef bef-textDecoration-underline__2px__solid__novo bef-fontWeight-900"
-        >"{{ year }}"</span
+        >"{{ year }}"</b
       >
       años de tratamiento, el uso de Liraglutida 3.0 mg evitó que...<sup>8</sup>
     </h3>
@@ -27,14 +27,16 @@
       @for(result of results; track result; let i = $index) {
       <div class="bef bef-d-flex fleDir-column aliIte-center bef-w-33per">
         <h4
-          class="bef bef-d-flex jusCon-center texAli-center bef-w-100per bef-color-novo bef-my-1rem"
+          class="bef bef-fontWeight-normal texAli-center bef-w-100per bef-color-novo bef-my-1rem"
         >
-          <span
+          <b
             class="bef bef-textDecoration-underline__2px__solid__novo bef-fontWeight-900 bef-me-0_5rem"
-            >{{ results[i].chart[0].series[chosenYear - 1].value }}</span
+            >{{ results[i].chart[0].series[chosenYear - 1].value }}</b
           >paciente(s) desarrollaran
           <br />
-          {{ result.name }}
+          <b>
+            {{ result.name }}
+          </b>
         </h4>
         <div
           class="bef bef-d-flex fleDir-row jusCon-between aliIte-center bef-w-160px bef-position-relative bef-pt-1rem"
@@ -71,7 +73,7 @@
       class="bef bef-d-flex jusCon-center aliIte-center bef-gap-0_5rem bef-mt-1rem"
     >
       <div
-        class="bef bef-p-0_25rem bef-bg-white bef-d-flex jusCon-evenly aliIte-center bef-gap-0_5rem"
+        class="bef bef-px-0_25rem bef-bg-white bef-d-flex jusCon-evenly aliIte-center bef-gap-0_5rem"
       >
         <div
           class="bef bef-w-10px bef-h-10px bef-bg-sky bef-border-1px__solid__novo"
@@ -82,7 +84,7 @@
       </div>
       <p class="bef bef-color-novo bef-fs-14px bef-fontWeight-BOLD">vs.</p>
       <div
-        class="bef bef-p-0_25rem bef-bg-white bef-d-flex jusCon-evenly aliIte-center bef-gap-0_5rem"
+        class="bef befx-p-0_25rem bef-bg-white bef-d-flex jusCon-evenly aliIte-center bef-gap-0_5rem"
       >
         <div
           class="bef bef-w-10px bef-h-10px bef-bg-yell bef-border-1px__solid__doranvo"

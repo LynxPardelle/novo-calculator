@@ -73,6 +73,10 @@ export class CalculatorComponent implements OnInit, OnChanges {
 
   public showPopUp1: boolean = false;
   public showPopUp2: boolean = false;
+  public filledClasses: string =
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-novo bef-bwb-3px bef-rt-0_5px bef-bg-white ';
+  public emptyClasses: string =
+    'bef bef-d-flex jusCon-center aliIte-center bef-bsb-solid bef-bcb-novo bef-bwb-3px bef-rt-0_5px bef-bg-white ';
 
   ngOnInit(): void {
     this.percentageCalculation();

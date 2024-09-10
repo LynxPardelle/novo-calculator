@@ -1,24 +1,12 @@
 <main>
-  <img
+  <!-- <img
     class="bef bef-display-block bef-transform-scaleXSDMIN1ED"
     src="./assets/img/Novo-Nordisk_Signin.jpg"
     alt="BG"
-  />
+  /> -->
   <div
-    class="bef bef-px-2rem bef-pt-1_5rem bef-mt-MIN100_5vh bef-bg-nord bef-w-83vw bef-position-relative"
+    class="bef bef-px-2rem bef-pt-1_5rem bef-bg-nord bef-w-83vw bef-position-relative"
   >
-    <!--   <a
-      class="bef bef-color-novo bef-px-1rem bef-textDecoration-none bef-d-flex aliIte-center jusCon-fleStart jusSel-start aliSel-start"
-      href="/"
-      [routerLink]="['/']"
-      routerLinkActive="router-link-active"
-    >
-      <span
-        class="bef bef-h-24px bef-me-1rem"
-        [innerHTML]="arrowLeft | safeHtml"
-      ></span>
-      Regresar</a
-    > -->
     <patient-estimation
       [patientsPercentage]="calculatorData.patientsPercentage"
       [patients]="calculatorData.patients"
@@ -118,7 +106,7 @@
       class="bef bef-position-relative bef-d-flex jusCon-center aliIte-center bef-gap-1rem"
     >
       <p class="bef bef-color-novo bef-fontWeight-BOLD">Meta terapéutica:</p>
-      <generic-input
+      <!-- <generic-input
         type="select"
         class="bef bef-d-flex jusCon-center aliIte-center"
         [containerClasses]="'bef bef-w-80per bef-mt-2rem'"
@@ -143,7 +131,17 @@
           { type: 'option', option: 'Pérdida de Peso > 15%', click: '15' }
         ]"
         (click)="showPopUp1 = !showPopUp1; cssCreate()"
-      ></generic-input>
+      ></generic-input> -->
+
+      <generic-span
+        [filledClasses]="filledClasses"
+        [emptyClasses]="emptyClasses"
+        [textClasses]="
+          'bef bef-color-disk bef-w-190px bef-fs-18px bef-fontWeight-700 bef-p-1rem bef-textAlign-center'
+        "
+        [info]="'Pérdida de Peso > ' + calculatorData.treatmentGoalPercentage"
+      >
+      </generic-span>
       @if (!!showPopUp1) {
       <div class="bef bef-position-absolute bef-top-0 bef-end-MIN130px">
         <div
