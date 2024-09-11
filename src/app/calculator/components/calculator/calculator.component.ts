@@ -98,7 +98,9 @@ export class CalculatorComponent implements OnInit, OnChanges {
   }
   /* Patient Estimation */
   totalPopulationChange(event: any) {
-    this.calculatorData.totalPopulation = event;
+    const sanitizedValue = event.replace(/,/g, '');
+    const numericValue = Number(sanitizedValue);
+    this.calculatorData.totalPopulation = numericValue;
     this.percentageCalculation();
     this.manageObesityPatientsPercentage();
   }

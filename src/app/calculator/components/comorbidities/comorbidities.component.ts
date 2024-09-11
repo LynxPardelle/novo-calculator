@@ -12,7 +12,7 @@ import { SharedService } from '../../../shared/services/shared.service';
 import { GenericSpanComponent } from '../../../shared/components/generic-span/generic-span.component';
 import { TComorbidities } from '../../types/comorbidities.type';
 import { MathPipe } from '../../../shared/pipes/math.pipe';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
 
 @Component({
@@ -25,6 +25,7 @@ import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-feat
     SafeHtmlPipe,
     MathPipe,
     CurrencyPipe,
+    DecimalPipe,
   ],
   templateUrl: './comorbidities.component.html',
   styleUrl: './comorbidities.component.scss',
