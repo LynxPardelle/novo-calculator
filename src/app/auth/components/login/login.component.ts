@@ -13,7 +13,7 @@ import { ExistDirective } from '../../../shared/directives/exists.directive';
 /* Pipes */
 import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 import { CalculatorService } from '../../../calculator/services/calculator.service';
-import { TInstitution } from '../../../calculator/types/institution.type';
+import { TInstitution, TInstitutionExtended } from '../../../calculator/types/institution.type';
 
 export type TLoginCredentials = {
   email: string;
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
   public loginCredentials: TLoginCredentials = {
     email: '',
     password: '',
-    institution: 'public',
+    institution: '' as TInstitution,
     locked: true,
   };
   public lockeds: TLocks = {
