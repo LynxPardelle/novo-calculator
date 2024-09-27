@@ -70,7 +70,7 @@ export class AppComponent implements AfterViewInit {
     this._bef.pushAbreviationsClasses(this.abreviationsClasses);
     this._bef.pushAbreviationsValues(this.abreviationsValues);
     this._bef.pushBPS(this.breakpoints);
-    this._bef.changeDebugOption(true);
+    // this._bef.changeDebugOption(true);
   }
   ngAfterViewInit(): void {
     setTimeout(() => {
