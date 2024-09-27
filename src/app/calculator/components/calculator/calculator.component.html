@@ -139,18 +139,20 @@
         [textClasses]="
           'bef bef-color-disk bef-w-190px bef-fs-18px bef-fontWeight-700 bef-p-1rem bef-textAlign-center'
         "
-        [info]="'Pérdida de Peso ≥ ' + calculatorData.treatmentGoalPercentage + '%'"
-        (click)="  cssCreate(); showPopUp1 = !showPopUp1;"
+        [info]="
+          'Pérdida de Peso ≥ ' + calculatorData.treatmentGoalPercentage + '%'
+        "
+        (click)="cssCreate(); showPopUp1 = !showPopUp1"
       >
       </generic-span>
       @if (!!showPopUp1) {
-      <div class="bef bef-position-absolute bef-top-MIN2_6rem bef-end-MIN140px ">
+      <div class="bef bef-position-absolute bef-top-MIN2_6rem bef-end-MIN140px">
         <div
           class="bef bef-position-relative bef-bs-solid bef-bw-2px bef-bc-white__OPA__0_5 bef-w-308px bef-h-149px bef-r-0_5rem bef-py-1rem bef-px-2rem bef-bg-nord__OPA__0_5 mat-elevation-z4 bef-color-novo"
         >
           <button
             class="bef bef-position-absolute bef-top-0_5rem bef-end-0_5rem bef-p-0 bef-r-100per bef-btn-nord mat-elevation-z2 bef-w-24px bef-h-24px bef-color-disk bef-fontWeight-BOLD"
-            (click)="showPopUp1 = false;"
+            (click)="showPopUp1 = false"
           >
             <svg
               width="11"
@@ -312,7 +314,8 @@
         Liraglutide in Weight Management. N Engl J Med., 11-22. doi:
         10.1056/NEJMoa1411892. <b>8.</b> Novo Nordisk (2023). Estudio de
         Evaluación Económica de liraglutida 3.0 mg para pacientes con obesidad.
-        <b>9.</b> información para prescribir amplia vigente de liraglutida (Saxenda (R)).
+        <b>9.</b> Información para prescribir amplia vigente de liraglutida
+        (Saxenda (R)).
       </p>
     </div>
   </div>
