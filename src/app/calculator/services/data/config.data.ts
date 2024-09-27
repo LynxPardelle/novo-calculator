@@ -35,7 +35,7 @@ export const config: TConfig = {
   privateNutritionUnitCost: 5340,
   publicInfirmaryUnitCost: 1136,
   privateInfirmaryUnitCost: 2272,
-  publicPhysicalActivityUnitCost: 2570,
+  publicPhysicalActivityUnitCost: 2670,
   privatePhysicalActivityUnitCost: 5340,
   publicPsychologyUnitCost: 1531,
   privatePsychologyUnitCost: 3062,
