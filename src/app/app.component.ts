@@ -1,7 +1,10 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 /* Services */
-import { NgxBootstrapExpandedFeaturesService } from 'ngx-bootstrap-expanded-features';
+import {
+  NgxBootstrapExpandedFeaturesService,
+  TBPS,
+} from 'ngx-bootstrap-expanded-features';
 /*Modules*/
 import { SharedModule } from './shared/shared.module';
 
@@ -50,11 +53,24 @@ export class AppComponent implements AfterViewInit {
     shrink: 'bef-flexShrink',
     objFit: 'bef-objectFit',
   };
+
+  public breakpoints: TBPS[] = [
+    {
+      bp: 'mini',
+      value: '1px) and (max-width: 1025px',
+    },
+    {
+      bp: 'air',
+      value: '1026px',
+    },
+  ];
+
   constructor(private readonly _bef: NgxBootstrapExpandedFeaturesService) {
     this._bef.pushColors(this.colors);
     this._bef.pushAbreviationsClasses(this.abreviationsClasses);
     this._bef.pushAbreviationsValues(this.abreviationsValues);
-    // this._bef.changeDebugOption(true);
+    this._bef.pushBPS(this.breakpoints);
+    this._bef.changeDebugOption(true);
   }
   ngAfterViewInit(): void {
     setTimeout(() => {

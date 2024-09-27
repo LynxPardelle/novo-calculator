@@ -25,6 +25,7 @@
     "@ngneat/input-mask": "^6.1.0",
     "@swimlane/ngx-charts": "^20.5.0",
     "ngx-bootstrap-expanded-features": "^1.4.3",
+    "novo": "file:",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

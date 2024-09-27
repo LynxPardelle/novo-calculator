@@ -1,9 +1,9 @@
 <main>
   <div
-    class="bef bef-w-40per bef-h-100vh bef-bg-nord bef-p-4rem bef-d-flex fleDir-column jusCon-center aliIte-center"
+    class="bef bef-w-40per bef-h-100per bef-bg-nord bef-p-3rem bef-d-flex fleDir-column jusCon-center aliIte-center bef-gap-1rem"
   >
     <div
-      class="bef bef-d-flex bef-bg-white bef-p-1rem fleDir-column jusCon-center aliIte-center bef-text-novo bef-h-20rem bef-w-auto"
+      class="bef bef-d-flex bef-bg-white bef-p-1rem fleDir-column jusCon-center aliIte-center bef-text-novo bef-h-mini-20rem bef-h-air-15rem bef-w-auto"
     >
       <div
         [innerHTML]="logo | safeHtml"
@@ -20,9 +20,7 @@
         PARA EL TRATAMIENTO DE PACIENTES CON OBESIDAD
       </h3>
     </div>
-    <div
-      class="bef bef-d-flex fleDir-column aliIte-center jusCon-around bef-mt-3rem"
-    >
+    <div class="bef bef-d-flex fleDir-column aliIte-center jusCon-around">
       <generic-button
         [buttonClass]="
           'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-18rem bef-m-0_8rem'
@@ -43,10 +41,10 @@
         [buttonType]="'rounded'"
         (buttonClick)="goTo('register')"
       ></generic-button>
-      <p class="bef  bef-ms-MIN365px bef-mt-85px bef-d-inline">
-        Codigo interno: MX24SX00087 <br />
-          No. aviso XXXXXXXXX
-      </p>
     </div>
+    <p class="bef bef-ms-MIN2rem bef-alignSelf-selfMINstart">
+      Codigo interno: MX24SX00087 <br />
+      No. aviso XXXXXXXXX
+    </p>
   </div>
 </main>
