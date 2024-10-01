@@ -31,7 +31,16 @@
         >
           <b
             class="bef bef-textDecoration-underline__2px__solid__novo bef-fontWeight-900 bef-me-0_5rem"
-            >{{ results[i].chart[0].series[chosenYear - 1].value }}</b
+            >{{
+              results[i].chart[1].series[chosenYear - 1].value
+                | math
+                  : [
+                      {
+                        operation: "sub",
+                        value: results[i].chart[0].series[chosenYear - 1].value
+                      }
+                    ]
+            }}</b
           >paciente(s) desarrollaran
           <br />
           <b>

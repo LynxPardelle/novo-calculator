@@ -26,6 +26,7 @@ import { SafeHtmlPipe } from '../../../shared/pipes/safe-html.pipe';
 import { SharedService } from '../../../shared/services/shared.service';
 import { GenericInputComponent } from '../../../shared/components/generic-input/generic-input.component';
 import { TDropDownOption } from '../../../shared/types/dropDownOption.type';
+import { MathPipe } from '../../../shared/pipes/math.pipe';
 
 export type TPatients = {
   name: string;
@@ -51,6 +52,7 @@ export type TResult = {
     ExistDirective,
     /* Pipes */
     SafeHtmlPipe,
+    MathPipe,
   ],
   templateUrl: './patients.component.html',
   styleUrl: './patients.component.scss',
