@@ -43,7 +43,7 @@ export const calculatorData: TCalculatorData = {
   psychologyAnualCost: 0,
   publicUnitCost: 2325,
   publicAnualCost: 45208.33,
-  privateUnitCost: 4141.16,
+  privateUnitCost: 1550,
   privateAnualCost: 80522.56,
   totalAnualCost: 0,
   totalAnualCostPlusLiraglutide: 0,
