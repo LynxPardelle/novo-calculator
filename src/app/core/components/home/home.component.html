@@ -1,27 +1,20 @@
 <main>
   <div
-    class="bef bef-w-40per bef-h-100per bef-bg-nord bef-p-3rem bef-d-flex fleDir-column jusCon-evenly aliIte-center bef-gap-1rem"
-  >
-    <div
-      class="bef bef-d-flex bef-bg-white bef-p-1rem fleDir-column jusCon-center aliIte-center bef-text-novo bef-h-20rem bef-w-auto"
+    class="bef bef-w-40per bef-h-100per bef-bg-nord bef-p-3rem bef-d-flex fleDir-column jusCon-evenly aliIte-center "
+    [ngClass]="consoleMessage.message && consoleMessage.message !== '' ? 'bef-gap-0_0625rem' : 'bef-gap-0_75rem'"
     >
-      <div
-        [innerHTML]="logo | safeHtml"
-        class="bef bef-w-6rem bef-h-6rem"
-      ></div>
-      <h2
-        class="bef fonWei-BOLD bef-lh-24pxrem texAli-center bef-fs-40px bef-pt-1rem bef-mb-0 bef-p-0"
-      >
+    <div
+      class="bef bef-d-flex bef-bg-white bef-p-1rem fleDir-column jusCon-center aliIte-center bef-text-novo bef-h-20rem bef-w-auto">
+      <div [innerHTML]="logo | safeHtml" class="bef bef-w-6rem bef-h-6rem"></div>
+      <h2 class="bef fonWei-BOLD bef-lh-24pxrem texAli-center bef-fs-40px bef-pt-1rem bef-mb-0 bef-p-0">
         arGLP-1
       </h2>
-      <h3
-        class="bef bef-d-flex jusCon-center aliIte-center texAli-center bef-fs-24px bef-lh-24pxrem bef-h-4rem"
-      >
+      <h3 class="bef bef-d-flex jusCon-center aliIte-center texAli-center bef-fs-24px bef-lh-24pxrem bef-h-4rem">
         PARA EL TRATAMIENTO DE PACIENTES CON OBESIDAD
       </h3>
     </div>
     <div class="bef bef-d-flex fleDir-column aliIte-center jusCon-around">
-      <generic-button
+      <!-- <generic-button
         [buttonClass]="
           'bef-d-flex aliIte-center texAli-center jusCon-center bef-w-18rem bef-m-0_8rem'
         "
@@ -40,9 +33,44 @@
         [buttonTextColor]="'novo'"
         [buttonType]="'rounded'"
         (buttonClick)="goTo('register')"
-      ></generic-button>
+      ></generic-button> -->
+      <generic-input type="select" [containerClasses]="containerClasses" [labelTitle]="'Institución'"
+        [thingFather]="loginCredentials" [thing]="'institution'"
+        (changesInput)="recoverChangesFromInput($event, 'institution')" [options]="[
+              { type: 'option', option: 'Elige una opción', click: '' },
+              { type: 'option', option: 'Público', click: 'public' },
+              { type: 'option', option: 'Privado', click: 'private' }
+            ]" [spans]="[
+              {
+                text: 'Es necesario elegir una opción válida.',
+                evalThing: 'required',
+                spanClass: spanClass
+              }
+            ]"></generic-input>
+      @if (consoleMessage.message && consoleMessage.message !== '') {
+      <p class="bef bef-text-{{
+              consoleMessage.type === 'success'
+                ? 'suvo'
+                : consoleMessage.type === 'error'
+                ? 'rovo'
+                : consoleMessage.type === 'warning'
+                ? 'oranvo'
+                : consoleMessage.type === 'info'
+                ? 'novo'
+                : ''
+            }} bef-my-1rem bef-fontWeight-800 bef-textAlign-center" [exists]="
+              !!(consoleMessage.message && consoleMessage.message !== '')
+            " (exists)="cssCreate()">
+        {{ consoleMessage.message }}
+      </p>
+      }
+      <generic-button [buttonClass]="
+        'bef bef-mx-auto bef-d-flex jusCon-center aliIte-center texAli-center bef-w-250px bef-p-0_5rem'
+      " [buttonBGColor]="'novo'" [buttonInner]="arrowRight" [buttonTextColor]="'white'" [buttonType]="'rounded'"
+        (buttonClick)="submit()"></generic-button>
     </div>
-    <p class="bef bef-ms-MIN2rem bef-alignSelf-selfMINstart">
+    <p class="bef bef-ms-MIN2rem bef-alignSelf-selfMINstart"
+    [ngClass]="consoleMessage.message && consoleMessage.message !== '' ? 'bef-mb-0_5rem' : ''">
       Codigo interno: MX24SX00087 <br />
       No. aviso 2415142002C00666
     </p>
