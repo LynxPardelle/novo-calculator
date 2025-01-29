@@ -81,6 +81,7 @@ export class CalculatorComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.percentageCalculation();
     this.calculatorDataInitialAnualCostChange();
+    this.getInstitutionFromLocalStorage();
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (
@@ -88,6 +89,18 @@ export class CalculatorComponent implements OnInit, OnChanges {
       changes['calculatorData'].currentValue !==
         changes['calculatorData'].previousValue
     ) {
+    }
+  }
+
+  getInstitutionFromLocalStorage() {
+    let institution: TInstitution = localStorage.getItem(
+      'NOVOCALC_Institution'
+    ) as TInstitution;
+    if (institution) {
+      this.calculatorData.institution = institution;
+      this._calculatorService.calculatorData$.set(
+        JSON.parse(JSON.stringify(this.calculatorData))
+      );
     }
   }
 
@@ -303,14 +316,9 @@ export class CalculatorComponent implements OnInit, OnChanges {
   }
   /* Archive-Goal-Patients */
   selectTreatmentGoalPercentage(event: any) {
-    console.log('event', event);
     this.calculatorData.treatmentGoalPercentage = parseInt(
       event.treatmentGoalPercentage
     ) as 5 | 10 | 15;
-    console.log(
-      'calculatorData.treatmentGoalPercentage',
-      this.calculatorData.treatmentGoalPercentage
-    );
     this.treatmentGoalToChange();
   }
   treatmentGoalToChange() {

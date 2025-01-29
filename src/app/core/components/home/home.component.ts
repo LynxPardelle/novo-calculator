@@ -72,6 +72,7 @@ export class HomeComponent implements AfterViewInit {
         throw new Error('Por favor, llene los campos requeridos.');
       }
       this.calculatorData.institution = this.loginCredentials.institution;
+      localStorage.setItem('NOVOCALC_Institution', this.calculatorData.institution);
       this._calculatorService.calculatorData$.set(
         JSON.parse(JSON.stringify(this.calculatorData))
       );
@@ -88,7 +89,6 @@ export class HomeComponent implements AfterViewInit {
   }
 
   recoverChangesFromInput(event: any, input: TInputLoginOptions) {
-    console.log('recoverChangesFromInput', event);
     let { credentials, locked } = event;
     this.loginCredentials = {
       ...this.loginCredentials,
@@ -101,7 +101,6 @@ export class HomeComponent implements AfterViewInit {
         break;
     }
     this.loginCredentials.locked = Object.values(this.lockeds).some((l) => l);
-    console.log('loginCredentials', this.loginCredentials);
   }
 
   cssCreate() {
