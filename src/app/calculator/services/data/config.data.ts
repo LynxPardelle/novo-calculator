@@ -32,13 +32,13 @@ export const config: TConfig = {
   /* AnualTreatment */
   privateCostTreatmentMultiplicator: 19.44,
   publicNutritionUnitCost: 2670,
-  privateNutritionUnitCost: 5340,
+  privateNutritionUnitCost: 4005,
   publicInfirmaryUnitCost: 1136,
-  privateInfirmaryUnitCost: 2272,
+  privateInfirmaryUnitCost: 1704,
   publicPhysicalActivityUnitCost: 2670,
-  privatePhysicalActivityUnitCost: 5340,
+  privatePhysicalActivityUnitCost: 4005,
   publicPsychologyUnitCost: 1531,
-  privatePsychologyUnitCost: 3062,
+  privatePsychologyUnitCost: 2297,
   /* Archive-Goal-Patients */
   treatMentGoal5LifestyleModification: 27.1,
   treatMentGoal5LifestyleModificationNLirglutide: 63.2,
