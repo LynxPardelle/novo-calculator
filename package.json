@@ -1,6 +1,6 @@
 {
   "name": "novo",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +10,24 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "author": {
+    "name": "Héctor Coronado",
+    "url": "https://narygath.com/",
+    "email": "hector_coronado@narygath.com"
+  },
+  "contributors": [
+    {
+      "name": "Lynx Pardelle",
+      "url": "https://lynxpardelle.com/",
+      "email": "lynxpardelle@lynxpardelle.com"
+    }
+  ],
   "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LynxPardelle/novo-calculator"
+  },
   "dependencies": {
     "@angular/animations": "^17.3.0",
     "@angular/cdk": "^17.3.9",
